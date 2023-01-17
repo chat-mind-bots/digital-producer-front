@@ -1,0 +1,77 @@
+*{
+    font-family: 'Inter', sans-serif;
+}
+body{
+    width: 100vw;
+    overflow-x:hidden;
+    background: blue;
+}
+input{
+    padding: 0;
+    margin: 0;
+}
+input[type="number"]::-webkit-outer-spin-button,input[type="number"]::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+}
+input[type='number'] {
+    -moz-appearance: textfield;
+}
+body {
+    margin: 0;
+    padding: 0;
+    position: relative;
+}
+ol, ul {
+    list-style: none;
+}
+a {
+    text-decoration: none;
+    outline: none !important;
+    color: inherit;
+}
+p, h1, h2, h3, h4, h5, h6, ul, li {
+    padding: 0;
+    margin: 0;
+}
+img{
+    width: auto;
+    height: auto;
+}
+button {
+    border: none;
+    outline: none;
+    cursor: pointer;
+    background: transparent;
+    padding: 0;
+    margin: 0;
+    display: flex;
+}
+picture{
+    font-size: 0;
+}
+textarea:focus, input:focus{
+    outline: none;
+}
+input:-webkit-autofill,input:-webkit-autofill:hover,input:-webkit-autofill:focus,textarea:-webkit-autofill,textarea:-webkit-autofill:hover,textarea:-webkit-autofill:focus,select:-webkit-autofill,select:-webkit-autofill:hover,select:-webkit-autofill:focus {
+    -webkit-box-shadow: 0 0 0 1000px #0000 inset;
+    -webkit-transition: background-color 5000s ease-in-out 0s;
+    transition: background-color 5000s ease-in-out 0s;
+}
+@media (max-width: 767px) {
+    .swiper-slide {
+        width: unset !important;
+        margin-top: 10px;
+        margin-bottom: 15px;
+    }
+}
+.ymaps-2-1-79-events-pane.ymaps-2-1-79-user-selection-none{
+    z-index: 1000 !important;
+}
+.noScrollView::-webkit-scrollbar {
+    width: 0;
+    height: 0;
+}
+#__next{
+    min-height: 100vh;
+}
