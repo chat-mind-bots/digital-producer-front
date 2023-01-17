@@ -1,7 +1,7 @@
 import { Navigate, Outlet } from 'react-router-dom';
+import checkAuth from 'Utils/CheckAuth';
 
-const PrivateRouteAuth = () => {
-  const auth = true;
-  return auth ? <Navigate to="/main" /> : <Outlet />;
-};
+const PrivateRouteAuth = () =>
+  checkAuth() ? <Navigate to="/main" /> : <Outlet />;
+
 export default PrivateRouteAuth;
