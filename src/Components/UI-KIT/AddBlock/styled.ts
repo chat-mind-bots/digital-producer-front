@@ -14,7 +14,7 @@ export const Title = styled.p`
   font-weight: 700;
   font-size: 24px;
   line-height: 32px;
-  color: ${Colors.BLACK};
+  color: ${Colors.BLACK1};
   margin-top: 24px;
   text-align: center;
   padding: 0 5px;
@@ -25,7 +25,7 @@ export const Description = styled.p`
   font-size: 14px;
   line-height: 24px;
   text-align: center;
-  color: ${Colors.BLACK};
+  color: ${Colors.BLACK1};
   margin-top: 12px;
   padding: 0 5px;
 `;
