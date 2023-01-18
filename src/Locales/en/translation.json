@@ -1,0 +1,11 @@
+{
+  "Components": {
+    "UIKIT": {
+      "AddBlock": {
+        "Title": "Create your course",
+        "Description": "Become your course producer and deliver lessons on the platform",
+        "Button": "Create course"
+      }
+    }
+  }
+}
