@@ -1,5 +1,5 @@
 import styled from 'styled-components';
-import colors from 'Colors';
+import Colors from 'Colors';
 
 type LevelItemProps = {
   isActive: boolean;
@@ -8,7 +8,7 @@ type LevelItemProps = {
 export const CourseCard = styled.div`
   padding: 19px;
   border-radius: 20px;
-  background: ${colors.WHITE};
+  background: ${Colors.WHITE};
   max-width: 700px;
   display: flex;
   box-sizing: border-box;
@@ -32,8 +32,8 @@ export const Button = styled.button`
   line-height: 20px;
   text-align: center;
   letter-spacing: 1px;
-  background: ${colors.SKYBLUE};
-  color: ${colors.BLUE};
+  background: ${Colors.SKYBLUE};
+  color: ${Colors.BLUE};
   text-transform: uppercase;
 `;
 
@@ -44,19 +44,19 @@ export const Title = styled.p`
   margin-bottom: 6px;
   font-size: 20px;
   line-height: 140%;
-  color: ${colors.BLACK2};
+  color: ${Colors.BLACK2};
 `;
 
 export const CourseDescription = styled.p`
   font-weight: 400;
   font-size: 14px;
   line-height: 150%;
-  color: ${colors.GREY1};
+  color: ${Colors.GREY1};
   margin-bottom: 12px;
 `;
 
 export const LevelOfDifficulty = styled.p`
-  color: ${colors.GREY2};
+  color: ${Colors.GREY2};
   font-weight: 600;
   font-size: 12px;
   line-height: 18px;
@@ -73,5 +73,5 @@ export const LevelItem = styled.div<LevelItemProps>`
   border-radius: 3px;
   width: 54px;
   height: 10px;
-  background: ${({ isActive }) => (isActive ? colors.BLUE : colors.GREY3)};
+  background: ${({ isActive }) => (isActive ? Colors.BLUE : Colors.GREY3)};
 `;
