@@ -18,7 +18,7 @@ export const Title = styled.p`
   color: ${Colors.BLACK1};
 `;
 
-export const Wrapper = styled.div`
+export const WrapperInfo = styled.div`
   padding: 48px 36px;
   max-width: 327px;
   width: 100%;
