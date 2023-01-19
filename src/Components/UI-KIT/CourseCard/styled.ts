@@ -18,13 +18,13 @@ export const MainWrapper = styled.div`
   margin-left: 32px;
 `;
 
-export const Buttons = styled.div`
+export const Tags = styled.div`
   display: flex;
   gap: 10px;
   margin-top: 12px;
 `;
 
-export const Button = styled.button`
+export const Tag = styled.p`
   border-radius: 6px;
   font-weight: 600;
   font-size: 10px;

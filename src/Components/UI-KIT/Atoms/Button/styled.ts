@@ -102,7 +102,7 @@ export const AnimationWrapper = styled.span<AnimationWrapperProps>`
   top: 0;
   width: 100%;
   height: 100%;
-  border-radius: 10px;
+  border-radius: 7px;
   background: ${({ background }) => background};
 `;
 

@@ -33,15 +33,8 @@ export const Description = styled.p`
   padding-right: 41px;
 `;
 
-export const Button = styled.button`
-  color: ${Colors.BLACK1};
-  border: 2px solid ${Colors.BLACK1};
-  border-radius: 8px;
-  font-weight: 600;
-  font-size: 14px;
-  line-height: 20px;
-  text-align: center;
-  padding: 13px 23px;
+export const WrapperButton = styled.div`
+  height: max-content;
   margin-top: 24px;
 `;
 

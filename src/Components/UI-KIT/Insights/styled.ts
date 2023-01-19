@@ -34,6 +34,7 @@ export const Tags = styled.div`
   display: flex;
   gap: 12px;
   align-items: center;
+  height: max-content;
 `;
 
 export const InsightTitle = styled.p`
@@ -55,17 +56,6 @@ export const Description = styled.p`
   padding-top: 14px;
 `;
 
-export const Button = styled.button`
-  font-size: 14px;
-  line-height: 20px;
-  text-align: center;
-  color: ${Colors.WHITE};
-  background: ${Colors.BLUE};
-  padding: 11px 28px;
-  margin-top: 25px;
-  border-radius: 10px;
-`;
-
 export const TagItem = styled.p`
   align-items: flex-start;
   padding: 3px 12px;
@@ -82,7 +72,12 @@ export const TagItem = styled.p`
 export const WrapperContent = styled.div`
   max-width: 244px;
   padding: 48px 0 48px 36px;
+  display: flex;
+  flex-wrap: wrap;
+  align-content: space-between;
 `;
+
+export const WrapperText = styled.div``;
 
 export const Circles = styled.div`
   display: flex;
@@ -102,3 +97,11 @@ export const CircleItem = styled.button<LevelItemProps>`
     isActive && `0px 0px 0px 3.75px ${Colors.RGBA_LIGHTBLUE}`};
   gap: 24px;
 `;
+
+export const WrapperButton = styled.div`
+  display: flex;
+  height: max-content;
+  place-self: flex-end;
+`;
+
+export const WrapperInfoContent = styled.div``;
