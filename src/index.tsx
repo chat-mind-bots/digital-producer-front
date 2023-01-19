@@ -13,6 +13,9 @@ import BreadCrumbs, {
   BreadCrumbsArrayType,
 } from 'Components/UI-KIT/BreadCrumbs';
 import AuthBlock from 'Components/UI-KIT/AuthBlock';
+import BreadCrumbs, {
+  BreadCrumbsArrayType,
+} from 'Components/UI-KIT/BreadCrumbs';
 import Colors from 'Colors';
 import 'index.css';
 
@@ -55,6 +58,7 @@ root.render(
         border={`2px solid ${Colors.BLACK1}`}
         width={'max-content'}
       />
+      <BreadCrumbs array={breadCrumbsArr} />
       <AuthBlock />
       <BreadCrumbs array={breadCrumbsArr} />
       <AuthBlock />
