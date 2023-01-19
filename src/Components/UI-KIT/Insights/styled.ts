@@ -28,6 +28,7 @@ export const WrapperInfo = styled.div`
   justify-content: space-between;
   display: flex;
   overflow: hidden;
+  height: 382px;
 `;
 
 export const Tags = styled.div`
@@ -105,3 +106,6 @@ export const WrapperButton = styled.div`
 `;
 
 export const WrapperInfoContent = styled.div``;
+export const IconWrapper = styled.div`
+  width: max-content;
+`;
