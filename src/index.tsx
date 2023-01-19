@@ -13,9 +13,6 @@ import BreadCrumbs, {
   BreadCrumbsArrayType,
 } from 'Components/UI-KIT/BreadCrumbs';
 import AuthBlock from 'Components/UI-KIT/AuthBlock';
-import BreadCrumbs, {
-  BreadCrumbsArrayType,
-} from 'Components/UI-KIT/BreadCrumbs';
 import Colors from 'Colors';
 import 'index.css';
 
