@@ -6,11 +6,11 @@ const CourseCard = () => {
     <ST.CourseCard>
       <IconForCourseCard />
       <ST.MainWrapper>
-        <ST.Buttons>
-          <ST.Button>дизайн</ST.Button>
-          <ST.Button>дизайн</ST.Button>
-          <ST.Button>дизайн</ST.Button>
-        </ST.Buttons>
+        <ST.Tags>
+          <ST.Tag>дизайн</ST.Tag>
+          <ST.Tag>дизайн</ST.Tag>
+          <ST.Tag>дизайн</ST.Tag>
+        </ST.Tags>
         <ST.Title>Название курса</ST.Title>
         <ST.CourseDescription>Подробное описание курса</ST.CourseDescription>
         <ST.LevelOfDifficulty>УРОВЕНЬ СЛОЖНОСТИ:</ST.LevelOfDifficulty>

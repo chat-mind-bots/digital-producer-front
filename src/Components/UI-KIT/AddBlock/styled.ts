@@ -1,5 +1,5 @@
-import styled from 'styled-components';
 import Colors from 'Colors';
+import styled from 'styled-components';
 
 export const AddBlock = styled.div`
   padding: 20px 20px 32px;
@@ -15,9 +15,8 @@ export const Title = styled.p`
   font-size: 24px;
   line-height: 32px;
   color: ${Colors.BLACK1};
-  margin-top: 24px;
   text-align: center;
-  padding: 0 5px;
+  padding: 24px 0 0 5px;
 `;
 
 export const Description = styled.p`
@@ -26,20 +25,9 @@ export const Description = styled.p`
   line-height: 24px;
   text-align: center;
   color: ${Colors.BLACK1};
-  margin-top: 12px;
-  padding: 0 5px;
+  padding: 12px 0 0 5px;
 `;
 
-export const Button = styled.button`
-  font-weight: 600;
-  font-size: 14px;
-  line-height: 20px;
-  text-align: center;
-  color: ${Colors.WHITE};
-  background: ${Colors.BLUE};
-  border-radius: 8px;
-  display: block;
-  width: 100%;
-  margin-top: 28px;
-  padding: 13px 0;
+export const WrapperButton = styled.div`
+  padding-top: 28px;
 `;
