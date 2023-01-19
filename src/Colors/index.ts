@@ -9,7 +9,9 @@ enum Colors {
   GREY3 = '#E1E3E6',
   WHITE1 = '#EFF5FF',
   BLUE1 = '#4E87FF',
+  BLUE_DARK = '#0505A9',
   RGBA_LIGHTBLUE = 'rgba(255, 255, 255, 0.3)',
+  TRANSPARENT = 'transparent',
 }
 
 export default Colors;

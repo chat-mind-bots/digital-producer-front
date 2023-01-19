@@ -6,6 +6,8 @@ import AddBlock from 'Components/UI-KIT/AddBlock';
 import CourseCard from 'Components/UI-KIT/CourseCard';
 import CardNews from 'Components/UI-KIT/CardNews';
 import Insights from 'Components/UI-KIT/Insights';
+import Button from './Components/UI-KIT/Atoms/Button';
+import Colors from './Colors';
 import 'index.css';
 
 const root = ReactDOM.createRoot(
@@ -15,6 +17,30 @@ const root = ReactDOM.createRoot(
 root.render(
   <React.StrictMode>
     <Suspense fallback={<div>...loading</div>}>
+      <Button
+        title={'Читать статью'}
+        padding={'11px 28px'}
+        fontSize={'14px'}
+        lineHeight={'20px'}
+        fontWeight={'600'}
+        background={Colors.BLUE}
+        color={Colors.WHITE}
+        backgroundAnimation={Colors.BLUE_DARK}
+        colorHover={Colors.WHITE}
+      />
+
+      <Button
+        title={'Читать статью'}
+        padding={'13px 23px'}
+        fontSize={'14px'}
+        lineHeight={'20px'}
+        fontWeight={'600'}
+        background={Colors.TRANSPARENT}
+        color={Colors.BLACK1}
+        backgroundAnimation={Colors.BLACK1}
+        colorHover={Colors.WHITE}
+        border={`2px solid ${Colors.BLACK1}`}
+      />
       <Insights />
       <CardNews />
       <CourseCard />
