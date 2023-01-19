@@ -1,7 +1,7 @@
 import styled from 'styled-components';
 import Colors from 'Colors';
 
-export const CardNews = styled.div`
+export const NewsBanner = styled.div`
   display: flex;
   background: ${Colors.WHITE1};
   border-radius: 24px;

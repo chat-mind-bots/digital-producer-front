@@ -16,7 +16,8 @@ export const Title = styled.p`
   line-height: 32px;
   color: ${Colors.BLACK1};
   text-align: center;
-  padding: 24px 0 0 5px;
+  margin-top: 24px;
+  padding: 0 5px;
 `;
 
 export const Description = styled.p`
@@ -25,9 +26,10 @@ export const Description = styled.p`
   line-height: 24px;
   text-align: center;
   color: ${Colors.BLACK1};
-  padding: 12px 0 0 5px;
+  margin-top: 12px;
+  padding: 0 5px;
 `;
 
 export const WrapperButton = styled.div`
-  padding-top: 28px;
+  margin-top: 28px;
 `;

@@ -38,14 +38,14 @@ export const Tags = styled.div`
   height: max-content;
 `;
 
-export const InsightTitle = styled.p`
+export const Name = styled.p`
   font-family: 'Vela Sans';
   font-style: normal;
   font-weight: 700;
   font-size: 24px;
   line-height: 33px;
   letter-spacing: -0.5px;
-  padding-top: 14px;
+  margin-top: 14px;
   color: ${Colors.BLACK1};
 `;
 
@@ -54,10 +54,10 @@ export const Description = styled.p`
   font-size: 14px;
   line-height: 22px;
   color: ${Colors.GREY1};
-  padding-top: 14px;
+  margin-top: 14px;
 `;
 
-export const TagItem = styled.p`
+export const Tag = styled.p`
   align-items: flex-start;
   padding: 3px 12px;
   gap: 10px;
@@ -65,6 +65,7 @@ export const TagItem = styled.p`
   background: ${Colors.SKYBLUE};
   color: ${Colors.BLUE};
   text-transform: uppercase;
+  letter-spacing: 1px;
   font-weight: 600;
   font-size: 10px;
   line-height: 20px;
