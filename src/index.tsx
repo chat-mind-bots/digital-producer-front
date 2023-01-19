@@ -57,6 +57,7 @@ root.render(
       />
       <AuthBlock />
       <BreadCrumbs array={breadCrumbsArr} />
+      <AuthBlock />
       <NewsCard />
       <BlockAllCoursesPlatform />
       <Insights />
