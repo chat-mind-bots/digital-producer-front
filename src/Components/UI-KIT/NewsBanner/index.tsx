@@ -2,8 +2,8 @@ import Colors from 'Colors';
 import Button from 'Components/UI-KIT/Atoms/Button';
 import * as ST from './styled';
 
-const CardNews = () => (
-  <ST.CardNews>
+const NewsBanner = () => (
+  <ST.NewsBanner>
     <ST.WrapperInfo>
       <ST.Title>Новости платформы</ST.Title>
       <ST.Description>
@@ -26,7 +26,7 @@ const CardNews = () => (
       </ST.WrapperButton>
     </ST.WrapperInfo>
     <ST.Image />
-  </ST.CardNews>
+  </ST.NewsBanner>
 );
 
-export default CardNews;
+export default NewsBanner;

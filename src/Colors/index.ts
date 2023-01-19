@@ -1,5 +1,6 @@
 enum Colors {
   WHITE = '#FFFFFF',
+  WHITE3 = '#F4F6F7',
   BLACK1 = '#333333',
   BLUE = '#2E6CEE',
   SKYBLUE = '#D5E2FC',
@@ -8,8 +9,10 @@ enum Colors {
   GREY2 = '#969DB1',
   GREY3 = '#E1E3E6',
   WHITE1 = '#EFF5FF',
+  WHITE2 = '#E4E4E4',
   BLUE1 = '#4E87FF',
   BLUE_DARK = '#0505A9',
+  GREY4 = '#878FA6',
   RGBA_LIGHTBLUE = 'rgba(255, 255, 255, 0.3)',
   TRANSPARENT = 'transparent',
 }

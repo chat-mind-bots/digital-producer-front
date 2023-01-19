@@ -4,11 +4,12 @@ import Router from 'Router';
 import '18n.ts';
 import AddBlock from 'Components/UI-KIT/AddBlock';
 import CourseCard from 'Components/UI-KIT/CourseCard';
-import CardNews from 'Components/UI-KIT/CardNews';
+import NewsBanner from 'Components/UI-KIT/NewsBanner';
 import Insights from 'Components/UI-KIT/Insights';
-import Button from './Components/UI-KIT/Atoms/Button';
-import BlockAllCoursesPlatform from './Components/UI-KIT/BlockAllCoursesPlatform';
-import Colors from './Colors';
+import Button from 'Components/UI-KIT/Atoms/Button';
+import BlockAllCoursesPlatform from 'Components/UI-KIT/BlockAllCoursesPlatform';
+import NewsCard from 'Components/UI-KIT/NewsCard';
+import Colors from 'Colors';
 import 'index.css';
 
 const root = ReactDOM.createRoot(
@@ -43,9 +44,10 @@ root.render(
         border={`2px solid ${Colors.BLACK1}`}
         width={'max-content'}
       />
+      <NewsCard />
       <BlockAllCoursesPlatform />
       <Insights />
-      <CardNews />
+      <NewsBanner />
       <CourseCard />
       <AddBlock />
       <Router />

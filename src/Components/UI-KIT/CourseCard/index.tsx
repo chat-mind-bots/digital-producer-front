@@ -11,7 +11,7 @@ const CourseCard = () => (
         <ST.Tag>дизайн</ST.Tag>
       </ST.Tags>
       <ST.Title>Название курса</ST.Title>
-      <ST.CourseDescription>Подробное описание курса</ST.CourseDescription>
+      <ST.Description>Подробное описание курса</ST.Description>
       <ST.LevelOfDifficulty>УРОВЕНЬ СЛОЖНОСТИ:</ST.LevelOfDifficulty>
       <ST.LevelItems>
         {[true, false, false].map((item, index) => (

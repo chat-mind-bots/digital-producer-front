@@ -64,11 +64,11 @@ const Insights = () => {
           <ST.WrapperInfoContent>
             <ST.Tags>
               {currentObject.tags.map((tag) => (
-                <ST.TagItem key={`TagItem-${tag.id}`}>{tag.name}</ST.TagItem>
+                <ST.Tag key={`TagItem-${tag.id}`}>{tag.name}</ST.Tag>
               ))}
             </ST.Tags>
             <ST.WrapperText>
-              <ST.InsightTitle>{currentObject.title}</ST.InsightTitle>
+              <ST.Name>{currentObject.title}</ST.Name>
               <ST.Description>{currentObject.description}</ST.Description>
             </ST.WrapperText>
           </ST.WrapperInfoContent>

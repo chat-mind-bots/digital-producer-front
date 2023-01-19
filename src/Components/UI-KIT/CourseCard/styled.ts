@@ -12,11 +12,10 @@ export const CourseCard = styled.div`
   max-width: 700px;
   display: flex;
   box-sizing: border-box;
+  gap: 32px;
 `;
 
-export const MainWrapper = styled.div`
-  margin-left: 32px;
-`;
+export const MainWrapper = styled.div``;
 
 export const Tags = styled.div`
   display: flex;
@@ -41,18 +40,17 @@ export const Title = styled.p`
   font-family: 'Vela Sans';
   font-weight: 600;
   margin-top: 16px;
-  margin-bottom: 6px;
   font-size: 20px;
   line-height: 140%;
   color: ${Colors.BLACK2};
 `;
 
-export const CourseDescription = styled.p`
+export const Description = styled.p`
   font-weight: 400;
   font-size: 14px;
   line-height: 150%;
+  margin-top: 6px;
   color: ${Colors.GREY1};
-  margin-bottom: 12px;
 `;
 
 export const LevelOfDifficulty = styled.p`
@@ -61,6 +59,7 @@ export const LevelOfDifficulty = styled.p`
   font-size: 12px;
   line-height: 18px;
   letter-spacing: 1px;
+  margin-top: 12px;
 `;
 
 export const LevelItems = styled.div`
