@@ -9,6 +9,7 @@ import Insights from 'Components/UI-KIT/Insights';
 import Button from 'Components/UI-KIT/Atoms/Button';
 import BlockAllCoursesPlatform from 'Components/UI-KIT/BlockAllCoursesPlatform';
 import NewsCard from 'Components/UI-KIT/NewsCard';
+import ReadMoreItem from './Components/UI-KIT/ReadMoreItem';
 import Colors from 'Colors';
 import 'index.css';
 
@@ -44,6 +45,7 @@ root.render(
         border={`2px solid ${Colors.BLACK1}`}
         width={'max-content'}
       />
+      <ReadMoreItem />
       <NewsCard />
       <BlockAllCoursesPlatform />
       <Insights />
