@@ -7,7 +7,7 @@ import CourseCard from 'Components/UI-KIT/CourseCard';
 import CardNews from 'Components/UI-KIT/CardNews';
 import Insights from 'Components/UI-KIT/Insights';
 import Button from './Components/UI-KIT/Atoms/Button';
-import ComponentForNavBar from './Components/UI-KIT/ComponentForNavBar';
+import BlockAllCoursesPlatform from './Components/UI-KIT/BlockAllCoursesPlatform';
 import Colors from './Colors';
 import 'index.css';
 
@@ -43,7 +43,7 @@ root.render(
         border={`2px solid ${Colors.BLACK1}`}
         width={'max-content'}
       />
-      <ComponentForNavBar />
+      <BlockAllCoursesPlatform />
       <Insights />
       <CardNews />
       <CourseCard />

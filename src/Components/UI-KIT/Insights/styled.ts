@@ -106,6 +106,7 @@ export const WrapperButton = styled.div`
 `;
 
 export const WrapperInfoContent = styled.div``;
+
 export const IconWrapper = styled.div`
   width: max-content;
 `;
