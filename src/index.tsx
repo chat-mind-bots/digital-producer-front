@@ -9,13 +9,26 @@ import Insights from 'Components/UI-KIT/Insights';
 import Button from 'Components/UI-KIT/Atoms/Button';
 import BlockAllCoursesPlatform from 'Components/UI-KIT/BlockAllCoursesPlatform';
 import NewsCard from 'Components/UI-KIT/NewsCard';
+import BreadCrumbs, {
+  BreadCrumbsArrayType,
+} from 'Components/UI-KIT/BreadCrumbs';
 import AuthBlock from 'Components/UI-KIT/AuthBlock';
+import BreadCrumbs, {
+  BreadCrumbsArrayType,
+} from 'Components/UI-KIT/BreadCrumbs';
 import Colors from 'Colors';
 import 'index.css';
 
 const root = ReactDOM.createRoot(
   document.getElementById('root') as HTMLElement
 );
+
+const breadCrumbsArr: BreadCrumbsArrayType[] = [
+  { id: 1, name: 'Главная', url: '/Main' },
+  { id: 1, name: 'Мои курсы', url: '/myCourses' },
+  { id: 1, name: 'Название курса', url: '/courseName' },
+  { id: 1, name: 'Урок 1 ', url: '/Course/1' },
+];
 
 root.render(
   <React.StrictMode>
@@ -45,6 +58,9 @@ root.render(
         border={`2px solid ${Colors.BLACK1}`}
         width={'max-content'}
       />
+      <BreadCrumbs array={breadCrumbsArr} />
+      <AuthBlock />
+      <BreadCrumbs array={breadCrumbsArr} />
       <AuthBlock />
       <NewsCard />
       <BlockAllCoursesPlatform />
