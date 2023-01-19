@@ -1,7 +1,7 @@
 import * as ST from './styled';
 
-const ReadMoreItem = () => (
-  <ST.ReadMoreItem>
+const ReadMoreCard = () => (
+  <ST.ReadMoreCard>
     <ST.Tags>
       <ST.Tag>обновления</ST.Tag>
       <ST.Tag>кейсы</ST.Tag>
@@ -11,7 +11,7 @@ const ReadMoreItem = () => (
       Встретитесь со своими глубинными страхами, пробьете свой финансовый
       потолок и научитесь получать ответы
     </ST.Description>
-  </ST.ReadMoreItem>
+  </ST.ReadMoreCard>
 );
 
-export default ReadMoreItem;
+export default ReadMoreCard;

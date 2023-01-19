@@ -1,7 +1,7 @@
 import styled from 'styled-components';
 import Colors from 'Colors';
 
-export const ReadMoreItem = styled.div`
+export const ReadMoreCard = styled.div`
   background: ${Colors.WHITE};
   border: 2px solid ${Colors.WHITE2};
   border-radius: 16px;
