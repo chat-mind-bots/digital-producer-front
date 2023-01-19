@@ -1,4 +1,7 @@
 import { ReactComponent as IconForInsight1 } from 'Icons/IconForInsight1.svg';
+import { ReactComponent as IconForInsight2 } from 'Icons/IconForInsight2.svg';
+import { ReactComponent as IconForInsight3 } from 'Icons/IconForInsight3.svg';
+import { ReactComponent as IconForInsight4 } from 'Icons/IconForInsight4.svg';
 import { useState } from 'react';
 import Button from 'Components/UI-KIT/Atoms/Button';
 import Colors from 'Colors';
@@ -16,6 +19,7 @@ const dataInsights = [
     title: 'Как распределить % между продюсером и экспертом?',
     description:
       'Пишем о том, что самое главное при формировании условий для каждого участника в проекте',
+    Icon: <IconForInsight1 />,
   },
   {
     id: 2,
@@ -23,6 +27,7 @@ const dataInsights = [
     title: 'Что нужно для создании дизайн концепции?',
     description:
       'Дизайн-коцепция - визуальный набросок того как будет или должен выглядеть логотип...',
+    Icon: <IconForInsight2 />,
   },
   {
     id: 3,
@@ -30,6 +35,7 @@ const dataInsights = [
     title: 'Что такое customer journey map?',
     description:
       'Читайте, что такое customer journey, почему его важно учитывать и как составить карту клиентского пути',
+    Icon: <IconForInsight3 />,
   },
   {
     id: 4,
@@ -40,6 +46,7 @@ const dataInsights = [
     title: 'Кто такой Product Manager и чем он занимается?',
     description:
       'Сегодня разберём новую профессию - кто такой Product Manager и чем он занимается',
+    Icon: <IconForInsight4 />,
   },
 ];
 
@@ -80,7 +87,7 @@ const Insights = () => {
             />
           </ST.WrapperButton>
         </ST.WrapperContent>
-        <IconForInsight1 />
+        <ST.IconWrapper>{currentObject.Icon}</ST.IconWrapper>
       </ST.WrapperInfo>
       <ST.Circles>
         {dataInsights.map((_, index) => (
