@@ -1,7 +1,7 @@
 import styled from 'styled-components';
 import Colors from 'Colors';
 
-type LevelItemProps = {
+type CircleItemProps = {
   isActive: boolean;
 };
 
@@ -90,7 +90,7 @@ export const Circles = styled.div`
   align-items: center;
 `;
 
-export const CircleItem = styled.button<LevelItemProps>`
+export const CircleItem = styled.button<CircleItemProps>`
   width: 7.5px;
   height: 7.5px;
   border-radius: 10px;
