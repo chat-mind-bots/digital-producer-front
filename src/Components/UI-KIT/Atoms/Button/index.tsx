@@ -6,6 +6,7 @@ type ButtonProps = ButtonOtherStyles & {
 };
 
 export type ButtonOtherStyles = {
+  width: string;
   padding: string;
   fontSize: string;
   lineHeight: string;
@@ -19,6 +20,7 @@ export type ButtonOtherStyles = {
 
 const Button: FC<ButtonProps> = ({
   title,
+  width,
   padding,
   fontSize,
   lineHeight,
@@ -30,6 +32,7 @@ const Button: FC<ButtonProps> = ({
   border,
 }) => (
   <ST.Button
+    width={width}
     padding={padding}
     fontSize={fontSize}
     lineHeight={lineHeight}

@@ -27,8 +27,8 @@ root.render(
         color={Colors.WHITE}
         backgroundAnimation={Colors.BLUE_DARK}
         colorHover={Colors.WHITE}
+        width={'max-content'}
       />
-
       <Button
         title={'Читать статью'}
         padding={'13px 23px'}
@@ -40,6 +40,7 @@ root.render(
         backgroundAnimation={Colors.BLACK1}
         colorHover={Colors.WHITE}
         border={`2px solid ${Colors.BLACK1}`}
+        width={'max-content'}
       />
       <Insights />
       <CardNews />

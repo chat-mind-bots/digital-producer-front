@@ -47,7 +47,7 @@ export const Button = styled.button<ButtonOtherStyles>`
   z-index: 1;
   position: relative;
   padding: ${({ padding }) => padding};
-  width: 100%;
+  width: ${({ width }) => width};
   border-radius: 10px;
   color: ${({ color }) => color};
   justify-content: center;
