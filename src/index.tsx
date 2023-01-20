@@ -16,6 +16,7 @@ import AuthBlock from 'Components/UI-KIT/AuthBlock';
 import NewsView from 'Components/UI-KIT/NewsView';
 import LessonView from 'Components/UI-KIT/LessonView';
 import Logo from 'Components/UI-KIT/Logo';
+import Accordion, { HandleClickType } from 'Components/UI-KIT/Accordion';
 import Colors from 'Colors';
 import 'index.css';
 
@@ -25,10 +26,126 @@ const root = ReactDOM.createRoot(
 
 const breadCrumbsArr: BreadCrumbsArrayType[] = [
   { id: 1, name: 'Главная', url: '/Main' },
-  { id: 1, name: 'Мои курсы', url: '/myCourses' },
-  { id: 1, name: 'Название курса', url: '/courseName' },
-  { id: 1, name: 'Урок 1 ', url: '/Course/1' },
+  { id: 2, name: 'Мои курсы', url: '/myCourses' },
+  { id: 3, name: 'Название курса', url: '/courseName' },
+  { id: 4, name: 'Урок 1 ', url: '/Course/1' },
 ];
+const array = [
+  {
+    id: 0,
+    name: 'Мышление успешного человека',
+    items: [
+      {
+        id: 0,
+        name: 'Работа со страхами',
+        isActive: false,
+      },
+      {
+        id: 1,
+        name: 'Синдром самозванца',
+        isActive: true,
+      },
+      {
+        id: 2,
+        name: 'Практика "контроль над мыслями"',
+        isActive: false,
+      },
+      {
+        id: 3,
+        name: 'Работа со страхами',
+        isActive: false,
+      },
+      {
+        id: 4,
+        name: 'Аффирмации',
+        isActive: false,
+      },
+    ],
+  },
+  {
+    id: 1,
+    name: 'Мышление на миллион',
+    items: [
+      {
+        id: 5,
+        name: 'Работа со страхами',
+        isActive: false,
+      },
+      {
+        id: 6,
+        name: 'Синдром самозванца',
+        isActive: false,
+      },
+      {
+        id: 7,
+        name: 'Практика "контроль над мыслями"',
+        isActive: false,
+      },
+      {
+        id: 8,
+        name: 'Работа со страхами',
+        isActive: false,
+      },
+    ],
+  },
+  {
+    id: 2,
+    name: 'Выбор и анализ ниши',
+    items: [
+      {
+        id: 9,
+        name: 'Работа со страхами',
+        isActive: false,
+      },
+      {
+        id: 10,
+        name: 'Синдром самозванца',
+        isActive: false,
+      },
+    ],
+  },
+  {
+    id: 3,
+    name: 'Визуальная айдентика для эксперта',
+    items: [
+      {
+        id: 11,
+        name: 'Работа со страхами',
+        isActive: false,
+      },
+      {
+        id: 12,
+        name: 'Синдром самозванца',
+        isActive: false,
+      },
+      {
+        id: 13,
+        name: 'Практика "контроль над мыслями"',
+        isActive: false,
+      },
+      {
+        id: 14,
+        name: 'Работа со страхами',
+        isActive: false,
+      },
+      {
+        id: 15,
+        name: 'Аффирмации',
+        isActive: false,
+      },
+      {
+        id: 16,
+        name: 'Аффирмации',
+        isActive: false,
+      },
+    ],
+  },
+];
+
+const f = ({ moduleId, itemId }: HandleClickType) => {
+  console.log(moduleId);
+  console.log(itemId);
+};
 
 root.render(
   <React.StrictMode>
@@ -57,6 +174,10 @@ root.render(
         colorHover={Colors.WHITE}
         border={`2px solid ${Colors.BLACK1}`}
         width={'max-content'}
+      />
+      <Accordion
+        array={array}
+        handleClick={f}
       />
       <Logo isMax={true} />
       <Logo isMax={false} />

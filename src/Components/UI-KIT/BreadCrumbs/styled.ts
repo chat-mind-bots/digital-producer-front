@@ -20,3 +20,9 @@ export const Item = styled.p<ItemProps>`
   color: ${({ isLast }) => (isLast ? Colors.BLUE : Colors.GREY4)};
   cursor: ${({ isLast, isHover }) => isHover && !isLast && 'pointer'};
 `;
+
+export const Items = styled.div`
+  display: flex;
+  align-items: center;
+  gap: 12px;
+`;
