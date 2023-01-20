@@ -1,10 +1,6 @@
 import styled from 'styled-components';
 import Colors from 'Colors';
 
-type LevelItemProps = {
-  isActive: boolean;
-};
-
 export const CourseCard = styled.div`
   padding: 19px;
   border-radius: 20px;
@@ -53,24 +49,6 @@ export const Description = styled.p`
   color: ${Colors.GREY1};
 `;
 
-export const LevelOfDifficulty = styled.p`
-  color: ${Colors.GREY2};
-  font-weight: 600;
-  font-size: 12px;
-  line-height: 18px;
-  letter-spacing: 1px;
+export const WrapperLevel = styled.div`
   margin-top: 12px;
-`;
-
-export const LevelItems = styled.div`
-  display: flex;
-  gap: 8px;
-  margin-top: 8px;
-`;
-
-export const LevelItem = styled.div<LevelItemProps>`
-  border-radius: 3px;
-  width: 54px;
-  height: 10px;
-  background: ${({ isActive }) => (isActive ? Colors.BLUE : Colors.GREY3)};
 `;
