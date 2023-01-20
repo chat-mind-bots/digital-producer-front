@@ -14,6 +14,7 @@ enum Colors {
   BLUE_DARK = '#0505A9',
   GREY4 = '#878FA6',
   GREY5 = '#B2B3BD',
+  ORANGE = '#FF754C',
   RGBA_LIGHTBLUE = 'rgba(255, 255, 255, 0.3)',
   TRANSPARENT = 'transparent',
 }
