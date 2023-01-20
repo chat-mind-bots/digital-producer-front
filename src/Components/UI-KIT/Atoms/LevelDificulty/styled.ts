@@ -13,6 +13,7 @@ export const Title = styled.p`
   font-size: 12px;
   line-height: 18px;
   letter-spacing: 1px;
+  text-transform: uppercase;
 `;
 
 export const Items = styled.div`

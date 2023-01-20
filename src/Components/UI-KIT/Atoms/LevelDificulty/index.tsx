@@ -2,7 +2,7 @@ import * as ST from './styled';
 
 const LevelDifficulty = () => (
   <ST.LevelDifficulty>
-    <ST.Title>УРОВЕНЬ СЛОЖНОСТИ:</ST.Title>
+    <ST.Title>уровень сложности:</ST.Title>
     <ST.Items>
       {[true, false, false].map((item, index) => (
         <ST.Item
