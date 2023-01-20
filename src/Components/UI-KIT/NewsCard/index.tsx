@@ -1,6 +1,6 @@
-import { ReactComponent as Calendar } from 'Icons/Calendar.svg';
 import { ReactComponent as IconForPlatformNewsCard } from 'Icons/IconForPlatformNewsCard.svg';
-import { ReactComponent as Clock } from 'Icons/Clock.svg';
+import Date from 'Components/UI-KIT/Atoms/Date';
+import Time from 'Components/UI-KIT/Atoms/Time';
 import * as ST from './styled';
 
 const NewsCard = () => (
@@ -15,14 +15,8 @@ const NewsCard = () => (
       Встретитесь со своими глубинными страхами, пробьете свой финансовый
       потолок и научитесь получать ответы
     </ST.Description>
-    <ST.Time>
-      <Clock />
-      Время чтения: 1 мин
-    </ST.Time>
-    <ST.Date>
-      <Calendar />
-      Дата: 18 января 2021
-    </ST.Date>
+    <Time value="1 мин" />
+    <Date value="18 января 2021" />
   </ST.NewsCard>
 );
 
