@@ -17,6 +17,11 @@ import NewsView from 'Components/UI-KIT/NewsView';
 import LessonView from 'Components/UI-KIT/LessonView';
 import Logo from 'Components/UI-KIT/Logo';
 import Accordion, { HandleClickType } from 'Components/UI-KIT/Accordion';
+import NavBar, { NavBarType } from 'Components/UI-KIT/ItemBar';
+import { ReactComponent as Main } from 'Icons/NavBar/Main.svg';
+import { ReactComponent as MetaCourse } from 'Icons/NavBar/MetaCourses.svg';
+import { ReactComponent as MyCourses } from 'Icons/NavBar/MyCourses.svg';
+import { ReactComponent as News } from 'Icons/NavBar/News.svg';
 import Colors from 'Colors';
 import 'index.css';
 
@@ -30,6 +35,7 @@ const breadCrumbsArr: BreadCrumbsArrayType[] = [
   { id: 3, name: 'Название курса', url: '/courseName' },
   { id: 4, name: 'Урок 1 ', url: '/Course/1' },
 ];
+
 const array = [
   {
     id: 0,
@@ -142,6 +148,37 @@ const array = [
   },
 ];
 
+const arrayNav: NavBarType[] = [
+  {
+    id: 1,
+    name: 'Главная',
+    count: 10,
+    isActive: true,
+    svg: <Main />,
+  },
+  {
+    id: 2,
+    name: 'Мои курсы',
+    count: 12,
+    isActive: false,
+    svg: <MyCourses />,
+  },
+  {
+    id: 3,
+    name: 'Новости',
+    count: 15,
+    isActive: false,
+    svg: <News />,
+  },
+  {
+    id: 4,
+    name: 'Курсы meta',
+    count: 0,
+    isActive: false,
+    svg: <MetaCourse />,
+  },
+];
+
 const f = ({ moduleId, itemId }: HandleClickType) => {
   console.log(moduleId);
   console.log(itemId);
@@ -175,6 +212,8 @@ root.render(
         border={`2px solid ${Colors.BLACK1}`}
         width={'max-content'}
       />
+
+      <NavBar arrayNav={arrayNav} />
       <Accordion
         array={array}
         handleClick={f}
