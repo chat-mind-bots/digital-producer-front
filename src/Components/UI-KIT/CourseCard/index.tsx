@@ -1,4 +1,5 @@
 import { ReactComponent as IconForCourseCard } from 'Icons/IconForCourseCard.svg';
+import LevelDifficulty from 'Components/UI-KIT/Atoms/LevelDificulty';
 import * as ST from './styled';
 
 const CourseCard = () => (
@@ -12,15 +13,9 @@ const CourseCard = () => (
       </ST.Tags>
       <ST.Title>Название курса</ST.Title>
       <ST.Description>Подробное описание курса</ST.Description>
-      <ST.LevelOfDifficulty>УРОВЕНЬ СЛОЖНОСТИ:</ST.LevelOfDifficulty>
-      <ST.LevelItems>
-        {[true, false, false].map((item, index) => (
-          <ST.LevelItem
-            key={`List-items-for-CourseCard-${index}`}
-            isActive={item}
-          />
-        ))}
-      </ST.LevelItems>
+      <ST.WrapperLevel>
+        <LevelDifficulty />
+      </ST.WrapperLevel>
     </ST.MainWrapper>
   </ST.CourseCard>
 );

@@ -14,6 +14,7 @@ import BreadCrumbs, {
 } from 'Components/UI-KIT/BreadCrumbs';
 import AuthBlock from 'Components/UI-KIT/AuthBlock';
 import NewsView from 'Components/UI-KIT/NewsView';
+import LessonView from 'Components/UI-KIT/LessonView';
 import Colors from 'Colors';
 import 'index.css';
 
@@ -56,6 +57,7 @@ root.render(
         border={`2px solid ${Colors.BLACK1}`}
         width={'max-content'}
       />
+      <LessonView />
       <NewsView />
       <BreadCrumbs array={breadCrumbsArr} />
       <AuthBlock />
