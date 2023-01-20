@@ -14,7 +14,7 @@ const CourseCard = () => (
       <ST.Title>Название курса</ST.Title>
       <ST.Description>Подробное описание курса</ST.Description>
       <ST.WrapperLevel>
-        <LevelDifficulty />
+        <LevelDifficulty count={2} />
       </ST.WrapperLevel>
     </ST.MainWrapper>
   </ST.CourseCard>
