@@ -13,6 +13,7 @@ import BreadCrumbs, {
   BreadCrumbsArrayType,
 } from 'Components/UI-KIT/BreadCrumbs';
 import AuthBlock from 'Components/UI-KIT/AuthBlock';
+import NewsView from 'Components/UI-KIT/NewsView';
 import Colors from 'Colors';
 import 'index.css';
 
@@ -55,6 +56,7 @@ root.render(
         border={`2px solid ${Colors.BLACK1}`}
         width={'max-content'}
       />
+      <NewsView />
       <BreadCrumbs array={breadCrumbsArr} />
       <AuthBlock />
       <NewsCard />
