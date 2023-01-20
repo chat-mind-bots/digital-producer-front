@@ -10,5 +10,4 @@ export const Date = styled.p`
   display: flex;
   align-items: center;
   gap: 8px;
-  margin-top: 12px;
 `;

@@ -46,24 +46,10 @@ export const Description = styled.p`
   margin-top: 10px;
 `;
 
-export const Time = styled.p`
-  font-weight: 700;
-  font-size: 12px;
-  line-height: 120%;
-  color: ${Colors.GREY2};
-  display: flex;
-  align-items: center;
-  gap: 8px;
+export const WrapperTime = styled.div`
   margin-top: 20px;
 `;
 
-export const Date = styled.p`
-  font-weight: 700;
-  font-size: 12px;
-  line-height: 120%;
-  color: ${Colors.GREY2};
-  display: flex;
-  align-items: center;
-  gap: 8px;
+export const WrapperDate = styled.div`
   margin-top: 12px;
 `;

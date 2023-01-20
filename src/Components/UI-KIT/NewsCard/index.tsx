@@ -15,8 +15,12 @@ const NewsCard = () => (
       Встретитесь со своими глубинными страхами, пробьете свой финансовый
       потолок и научитесь получать ответы
     </ST.Description>
-    <Time value="1 мин" />
-    <Date value="18 января 2021" />
+    <ST.WrapperTime>
+      <Time value="1 мин" />
+    </ST.WrapperTime>
+    <ST.WrapperDate>
+      <Date value="18 января 2021" />
+    </ST.WrapperDate>
   </ST.NewsCard>
 );
 
