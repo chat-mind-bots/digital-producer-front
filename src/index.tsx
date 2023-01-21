@@ -22,6 +22,7 @@ import { ReactComponent as Main } from 'Icons/NavBar/Main.svg';
 import { ReactComponent as MetaCourse } from 'Icons/NavBar/MetaCourses.svg';
 import { ReactComponent as MyCourses } from 'Icons/NavBar/MyCourses.svg';
 import { ReactComponent as News } from 'Icons/NavBar/News.svg';
+import WrapperContent from 'Components/WrapperContent';
 import Colors from 'Colors';
 import 'index.css';
 
@@ -212,11 +213,16 @@ root.render(
         border={`2px solid ${Colors.BLACK1}`}
         width={'max-content'}
       />
+      <WrapperContent header={'Рекомендованные курсы'}>
+        <>
+          <LessonView />
+          <Accordion
+            array={array}
+            handleClick={f}
+          />
+        </>
+      </WrapperContent>
       <NavBar arrayNav={arrayNav} />
-      <Accordion
-        array={array}
-        handleClick={f}
-      />
       <Logo isMax={true} />
       <Logo isMax={false} />
       <LessonView />
