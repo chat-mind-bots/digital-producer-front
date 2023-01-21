@@ -17,7 +17,7 @@ import NewsView from 'Components/UI-KIT/NewsView';
 import LessonView from 'Components/UI-KIT/LessonView';
 import Logo from 'Components/UI-KIT/Logo';
 import Accordion, { HandleClickType } from 'Components/UI-KIT/Accordion';
-import NavBar, { NavBarType } from 'Components/UI-KIT/ItemBar';
+import NavBar, { NavBarType } from 'Components/UI-KIT/NavBar';
 import { ReactComponent as Main } from 'Icons/NavBar/Main.svg';
 import { ReactComponent as MetaCourse } from 'Icons/NavBar/MetaCourses.svg';
 import { ReactComponent as MyCourses } from 'Icons/NavBar/MyCourses.svg';
