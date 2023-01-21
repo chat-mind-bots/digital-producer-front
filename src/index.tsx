@@ -212,7 +212,6 @@ root.render(
         border={`2px solid ${Colors.BLACK1}`}
         width={'max-content'}
       />
-
       <NavBar arrayNav={arrayNav} />
       <Accordion
         array={array}
