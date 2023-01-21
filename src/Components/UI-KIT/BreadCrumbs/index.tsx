@@ -29,7 +29,7 @@ const BreadCrumbs: FC<BreadCrumbsProps> = ({ array }) => {
           >
             {item.name}
           </ST.Item>
-          {!(index === lengthArray) && (
+          {index !== lengthArray && (
             <ST.Item isHover={DefaultsValues.HoverDisable}>/</ST.Item>
           )}
         </ST.Items>

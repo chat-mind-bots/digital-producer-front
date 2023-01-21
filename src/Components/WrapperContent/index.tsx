@@ -1,5 +1,7 @@
 import React, { FC } from 'react';
-import BreadCrumbs, { BreadCrumbsArrayType } from '../UI-KIT/BreadCrumbs';
+import BreadCrumbs, {
+  BreadCrumbsArrayType,
+} from 'Components/UI-KIT/BreadCrumbs';
 import * as ST from './styled';
 
 type WrapperContentProps = {
