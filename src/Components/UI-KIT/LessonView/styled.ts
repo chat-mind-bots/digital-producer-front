@@ -5,7 +5,7 @@ type Props = {
   isLoading: boolean;
 };
 
-type SubTitleInfoProps = Props & {
+type WrapperSubTitleProps = Props & {
   delay: number;
 };
 
@@ -55,30 +55,14 @@ export const WrapperInfo = styled.div`
   flex-wrap: wrap;
 `;
 
-export const SubTitleInfo = styled.p<SubTitleInfoProps>`
+export const SubTitleInfo = styled.p`
   font-weight: 400;
   font-size: 16px;
   line-height: 155%;
   color: ${Colors.GREY1};
   position: relative;
   overflow: hidden;
-  width: max-content;
-  &:after {
-    content: '';
-    width: 100%;
-    left: 0;
-    top: 0;
-    position: absolute;
-    background: ${Colors.BLUE};
-    height: 100%;
-    transform: ${({ isLoading }) => !isLoading && 'translate(-100%, 0)'};
-    border-top-right-radius: 8px;
-    border-bottom-right-radius: 8px;
-    transition: 0.7s;
-    transition-delay: ${({ isLoading, delay }) =>
-      !isLoading ? '0.1s' : `${delay + 0.4}s`};
-    transition-timing-function: ease-in-out;
-  }
+  width: 100%;
 `;
 
 export const TitleInfo = styled.p`
@@ -181,6 +165,27 @@ export const WrapperVideo = styled.div<Props>`
   }
 `;
 
-export const WrapperSubTitle = styled.div`
+export const WrapperSubTitle = styled.div<WrapperSubTitleProps>`
   width: 100%;
+  max-height: ${({ isLoading }) => (isLoading ? ' 24.8px' : '400px')};
+  transition: 1s;
+  overflow: hidden;
+  position: relative;
+  overflow-y: scroll;
+  &:after {
+    content: '';
+    width: 100%;
+    left: 0;
+    top: 0;
+    position: absolute;
+    background: ${Colors.BLUE};
+    height: 100%;
+    transform: ${({ isLoading }) => !isLoading && 'translate(-100%, 0)'};
+    border-top-right-radius: 8px;
+    border-bottom-right-radius: 8px;
+    transition: 0.7s;
+    transition-delay: ${({ isLoading, delay }) =>
+      !isLoading ? `${delay + 0.4}s` : `${delay + 0.4}s`};
+    transition-timing-function: ease-in-out;
+  }
 `;

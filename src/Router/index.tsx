@@ -19,7 +19,7 @@ const Router = () => (
           element={<Main />}
         />
         <Route
-          path="/course/id"
+          path="/course/:id"
           element={<CourseId />}
         />
       </Route>

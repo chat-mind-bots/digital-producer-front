@@ -6,6 +6,7 @@ export const WrapperContent = styled.div`
   border-radius: 24px;
   width: 100%;
   padding: 32px;
+  box-sizing: border-box;
 `;
 
 export const Title = styled.p`
