@@ -1,27 +1,29 @@
-import React, { useState } from 'react';
-import Input from 'Components/UI-KIT/Input';
-import Search from 'Components/UI-KIT/Search';
+import React from 'react';
+import WrapperContent from 'Components/WrapperContent';
+import AddBlock from 'Components/UI-KIT/AddBlock';
+import NewsBanner from 'Components/UI-KIT/NewsBanner';
+import CourseCard from 'Components/UI-KIT/CourseCard';
+import Insights from 'Components/UI-KIT/Insights';
+import * as ST from './styled';
 
-const Main = () => {
-  const [inputValue, setInputValue] = useState<string>('');
-  const [searchValue, setSearchValue] = useState<string>('');
-
-  return (
-    <>
-      <Input
-        value={inputValue}
-        setValue={setInputValue}
-        placeholder={'Введите имя'}
-        isError={true}
-        errorText={'ошибка'}
-      />
-      <Search
-        value={searchValue}
-        setValue={setSearchValue}
-        placeholder={'Поиск'}
-      />
-    </>
-  );
-};
+const Main = () => (
+  <ST.Main>
+    <NewsBanner />
+    <ST.WrapperMain>
+      <Insights />
+      <WrapperContent header={'Рекомендованные курсы'}>
+        <ST.Wrapper>
+          <CourseCard />
+          <CourseCard />
+          <CourseCard />
+          <CourseCard />
+        </ST.Wrapper>
+      </WrapperContent>
+    </ST.WrapperMain>
+    <ST.WrapperAddBlock>
+      <AddBlock />
+    </ST.WrapperAddBlock>
+  </ST.Main>
+);
 
 export default Main;

@@ -8,6 +8,7 @@ export const NewsBanner = styled.div`
   max-width: 1103px;
   width: 100%;
   overflow: hidden;
+  height: 100%;
 `;
 
 export const Title = styled.p`

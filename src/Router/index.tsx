@@ -1,37 +1,38 @@
-import { BrowserRouter, Route, Routes } from 'react-router-dom';
-import Main from 'Pages/Main';
-import Courses from 'Pages/Courses';
+import { Route, Routes } from 'react-router-dom';
 import CourseId from 'Pages/CourseId';
 import Auth from 'Pages/Auth';
+import Updates from 'Pages/Updates';
 import PrivateRouteAnother from 'Router/PrivateRoute/PrivateRouteAnother';
-import PrivateRouteAuth from 'Router/PrivateRoute/PrivateRouteAuth';
+import NavBarData from 'Constants/NavBar';
 
-const Router = () => (
-  <BrowserRouter>
-    <Routes>
-      <Route element={<PrivateRouteAnother />}>
+export const RouterCabinet = () => (
+  <Routes>
+    <Route element={<PrivateRouteAnother />}>
+      {NavBarData.map((item) => (
         <Route
-          path="/courses"
-          element={<Courses />}
+          path={item.url}
+          element={item.element}
+          key={`Route-main-page-${item.id}`}
         />
-        <Route
-          path="/main"
-          element={<Main />}
-        />
-        <Route
-          path="/course/:id"
-          element={<CourseId />}
-        />
-      </Route>
+      ))}
 
-      <Route element={<PrivateRouteAuth />}>
-        <Route
-          path="/auth"
-          element={<Auth />}
-        />
-      </Route>
-    </Routes>
-  </BrowserRouter>
+      <Route
+        path="/news/:id"
+        element={<Updates />}
+      />
+      <Route
+        path="/course/:id"
+        element={<CourseId />}
+      />
+    </Route>
+  </Routes>
 );
 
-export default Router;
+export const RouterNoAuth = () => (
+  <Routes>
+    <Route
+      path="/auth"
+      element={<Auth />}
+    />
+  </Routes>
+);
