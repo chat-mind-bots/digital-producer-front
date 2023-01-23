@@ -4,7 +4,7 @@
 body{
     width: 100vw;
     overflow-x:hidden;
-    background: blue;
+    background: #FCFCFC;
 }
 input{
     padding: 0;

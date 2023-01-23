@@ -4,7 +4,7 @@ import * as ST from './styled';
 
 export type FocusType = boolean;
 
-type SearchProps = {
+export type SearchProps = {
   value: string;
   setValue: Dispatch<string>;
   placeholder: string;

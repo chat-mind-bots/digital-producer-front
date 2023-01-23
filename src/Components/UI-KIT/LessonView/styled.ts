@@ -171,7 +171,7 @@ export const WrapperSubTitle = styled.div<WrapperSubTitleProps>`
   transition: 1s;
   overflow: hidden;
   position: relative;
-  overflow-y: scroll;
+  overflow-y: auto;
   &:after {
     content: '';
     width: 100%;

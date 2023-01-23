@@ -1,7 +1,7 @@
 import React, { FC } from 'react';
 import * as ST from './styled';
 
-type NavBarProps = {
+export type NavBarProps = {
   arrayNav: NavBarType[];
 };
 

@@ -138,11 +138,9 @@ const CourseId = () => {
       setAccordion(arrayAccordion);
     })();
   }, [state]);
-
   const handleClickAccordion = ({ moduleId, itemId }: HandleClickType) => {
     setLoading(true);
     const delay = 3000;
-
     setTimeout(() => {
       setState({
         module: moduleId,

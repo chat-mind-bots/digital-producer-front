@@ -1,6 +1,7 @@
 import React, { Suspense } from 'react';
 import ReactDOM from 'react-dom/client';
 import Router from 'Router';
+import Cabinet from 'Layout/Cabinet';
 import '18n.ts';
 import 'index.css';
 
@@ -11,7 +12,9 @@ const root = ReactDOM.createRoot(
 root.render(
   <React.StrictMode>
     <Suspense fallback={<div>...loading</div>}>
-      <Router />
+      <Cabinet>
+        <Router />
+      </Cabinet>
     </Suspense>
   </React.StrictMode>
 );

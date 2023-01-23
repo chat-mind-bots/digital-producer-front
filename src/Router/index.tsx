@@ -3,8 +3,8 @@ import Main from 'Pages/Main';
 import Courses from 'Pages/Courses';
 import CourseId from 'Pages/CourseId';
 import Auth from 'Pages/Auth';
-import PrivateRouteAnother from './PrivateRoute/PrivateRouteAnother';
-import PrivateRouteAuth from './PrivateRoute/PrivateRouteAuth';
+import PrivateRouteAnother from 'Router/PrivateRoute/PrivateRouteAnother';
+import PrivateRouteAuth from 'Router/PrivateRoute/PrivateRouteAuth';
 
 const Router = () => (
   <BrowserRouter>
@@ -23,6 +23,7 @@ const Router = () => (
           element={<CourseId />}
         />
       </Route>
+
       <Route element={<PrivateRouteAuth />}>
         <Route
           path="/auth"

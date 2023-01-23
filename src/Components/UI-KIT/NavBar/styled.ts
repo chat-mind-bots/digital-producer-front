@@ -5,7 +5,9 @@ type Props = {
   isActive: boolean;
 };
 
-export const NavBar = styled.div``;
+export const NavBar = styled.div`
+  width: 100%;
+`;
 
 export const Name = styled.p<Props>`
   font-weight: 600;

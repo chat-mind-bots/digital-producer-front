@@ -12,7 +12,7 @@ export const Accordion = styled.div`
   box-sizing: border-box;
   padding: 24px 18px 20px;
   height: max-content;
-  top: 0;
+  top: 116px;
   position: sticky;
 `;
 

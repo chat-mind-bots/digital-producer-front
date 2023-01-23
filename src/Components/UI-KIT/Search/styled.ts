@@ -7,11 +7,16 @@ type Props = {
   value: string;
 };
 
-export const Search = styled.div``;
+export const Search = styled.div`
+  width: 100%;
+`;
 
 export const SearchList = styled.div``;
 
 export const SearchWrapper = styled.div<Props>`
+  box-sizing: border-box;
+  max-width: 440px;
+  width: 100%;
   color: ${({ isFocus }) => (isFocus ? Colors.BLUE : Colors.GREY1)};
   position: relative;
   background: ${Colors.WHITE4};
@@ -23,7 +28,7 @@ export const SearchWrapper = styled.div<Props>`
     position: absolute;
     pointer-events: none;
     top: 50%;
-    left: 5px;
+    left: 27px;
     transform: translate(0, -50%);
     & path {
       fill: ${({ isFocus }) => isFocus && Colors.BLUE};
@@ -38,7 +43,7 @@ export const SearchElement = styled.input<Props>`
   line-height: 20px;
   width: 100%;
   border: none;
-  padding: 20px 16px 20px 35px;
+  padding: 20px 16px 20px 68px;
   background: transparent;
   color: ${Colors.BLACK1};
 `;
