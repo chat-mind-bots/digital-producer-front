@@ -6,6 +6,7 @@ export const CourseCard = styled.div`
   border-radius: 20px;
   background: ${Colors.WHITE};
   max-width: 700px;
+  width: 100%;
   display: flex;
   box-sizing: border-box;
   gap: 32px;

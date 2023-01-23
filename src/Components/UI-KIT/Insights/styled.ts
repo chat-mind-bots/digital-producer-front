@@ -11,6 +11,7 @@ export const Insights = styled.div`
   border-radius: 24px;
   background: ${Colors.BLUE1};
   padding: 26px 24px 24px;
+  box-sizing: border-box;
 `;
 
 export const Title = styled.p`

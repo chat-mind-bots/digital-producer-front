@@ -6,6 +6,7 @@ export const AddBlock = styled.div`
   border-radius: 24px;
   background: ${Colors.WHITE};
   max-width: 258px;
+  border: 1px solid ${Colors.WHITE2};
 `;
 
 export const Title = styled.p`

@@ -1,31 +1,33 @@
 import React from 'react';
 import { BreadCrumbsArrayType } from 'Components/UI-KIT/BreadCrumbs';
 import WrapperContent from 'Components/WrapperContent';
-import CourseCard from 'Components/UI-KIT/CourseCard';
 import AddBlock from 'Components/UI-KIT/AddBlock';
+import NewsCard from 'Components/UI-KIT/NewsCard';
 import * as ST from './styled';
 
 const defaultBreadCrumbs: BreadCrumbsArrayType[] = [
   { id: 1, name: 'Главная', url: '/Main' },
-  { id: 2, name: 'Мои курсы', url: '/myCourses' },
+  { id: 2, name: 'Новости платформы', url: '/PlatformNews' },
 ];
 
-const Courses = () => (
-  <ST.Courses>
-    <ST.WrapperCourses>
+const News = () => (
+  <ST.News>
+    <ST.WrapperNews>
       <WrapperContent header={[...defaultBreadCrumbs]}>
         <ST.Wrapper>
-          <CourseCard />
-          <CourseCard />
-          <CourseCard />
-          <CourseCard />
+          <NewsCard />
+          <NewsCard />
+          <NewsCard />
+          <NewsCard />
+          <NewsCard />
+          <NewsCard />
         </ST.Wrapper>
       </WrapperContent>
-    </ST.WrapperCourses>
+    </ST.WrapperNews>
     <ST.WrapperAddBlock>
       <AddBlock />
     </ST.WrapperAddBlock>
-  </ST.Courses>
+  </ST.News>
 );
 
-export default Courses;
+export default News;

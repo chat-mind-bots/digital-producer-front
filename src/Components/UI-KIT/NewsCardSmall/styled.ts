@@ -1,8 +1,9 @@
 import styled from 'styled-components';
 import Colors from 'Colors';
 
-export const NewsCard = styled.div`
+export const NewsCardSmall = styled.div`
   background: ${Colors.WHITE};
+
   border-radius: 24px;
   padding: 18px 18px 24px;
   border: 2px solid ${Colors.TRANSPARENT};
@@ -47,12 +48,4 @@ export const Description = styled.p`
   line-height: 150%;
   color: ${Colors.GREY1};
   margin-top: 10px;
-`;
-
-export const WrapperTime = styled.div`
-  margin-top: 20px;
-`;
-
-export const WrapperDate = styled.div`
-  margin-top: 12px;
 `;
