@@ -1,6 +1,6 @@
-import MainComponent from 'Pages/Main';
-import CoursesComponent from 'Pages/Courses';
-import NewsComponent from 'Pages/News';
+import MainComponent from 'Pages/Cabinet/Main';
+import CoursesComponent from 'Pages/Cabinet/Courses';
+import NewsComponent from 'Pages/Cabinet/News';
 import { ReactComponent as Main } from 'Icons/NavBar/Main.svg';
 import { ReactComponent as MyCourses } from 'Icons/NavBar/MyCourses.svg';
 import { ReactComponent as News } from 'Icons/NavBar/News.svg';

@@ -1,14 +1,16 @@
-import styled from 'styled-components';
 import { ErrorType, FocusType } from './index';
+import styled from 'styled-components';
 import Colors from 'Colors';
 
 type Props = {
   isFocus: FocusType;
   value: string;
-  isError: ErrorType;
+  isError?: ErrorType;
 };
 
-export const Input = styled.div``;
+export const Input = styled.div`
+  width: 100%;
+`;
 
 export const InputElement = styled.input<Props>`
   font-weight: 600;

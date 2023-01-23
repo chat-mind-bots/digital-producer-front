@@ -1,5 +1,4 @@
 import { Dispatch, FC, useState } from 'react';
-import { ReactComponent as IconMail } from 'Icons/InputIcons/IconMail.svg';
 import { ReactComponent as IconError } from 'Icons/InputIcons/IconError.svg';
 import * as ST from './styled';
 
@@ -11,8 +10,9 @@ type InputProps = {
   value: string;
   setValue: Dispatch<string>;
   placeholder: string;
-  isError: ErrorType;
-  errorText: string;
+  isError?: ErrorType;
+  errorText?: string;
+  icon?: JSX.Element;
 };
 
 const Input: FC<InputProps> = ({
@@ -21,6 +21,7 @@ const Input: FC<InputProps> = ({
   placeholder,
   isError,
   errorText,
+  icon,
 }) => {
   const [focus, setFocus] = useState<FocusType>(false);
 
@@ -31,7 +32,7 @@ const Input: FC<InputProps> = ({
         value={value}
         isError={isError}
       >
-        <IconMail />
+        {icon}
         <ST.InputElement
           placeholder={placeholder}
           onFocus={() => setFocus(true)}
@@ -44,10 +45,12 @@ const Input: FC<InputProps> = ({
           }}
         />
       </ST.InputWrapper>
-      <ST.ErrorText>
-        <IconError />
-        {errorText}
-      </ST.ErrorText>
+      {isError && (
+        <ST.ErrorText>
+          <IconError />
+          {errorText}
+        </ST.ErrorText>
+      )}
     </ST.Input>
   );
 };
