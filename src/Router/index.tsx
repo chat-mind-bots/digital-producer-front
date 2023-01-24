@@ -5,6 +5,7 @@ import PrivateRouteAnother from 'Router/PrivateRoute/PrivateRouteAnother';
 import LogIn from 'Pages/Main/LogIn';
 import Registration from 'Pages/Main/Registration';
 import Home from 'Pages/Main/Home';
+import Test from 'Pages/Cabinet/Test';
 import Main from 'Layout/Main';
 import Cabinet from 'Layout/Cabinet';
 import NavBarData from 'Constants/NavBar';
@@ -32,6 +33,20 @@ export const RouterCabinet = () => (
         element={
           <Cabinet>
             <CourseId />
+          </Cabinet>
+        }
+      />
+      <Route
+        path="/test/:id"
+        element={
+          <Cabinet>
+            <Test
+              description={
+                'Хронические интоксикации - "потайной" краеугольный камень в\n' +
+                'фундаменте болезней цивилизации. Полисистемная детоксификация, как\n' +
+                'универсальный и высокоэффективный терапевтический инструмент".'
+              }
+            />
           </Cabinet>
         }
       />
