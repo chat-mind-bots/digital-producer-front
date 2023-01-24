@@ -1,20 +1,31 @@
+import { FC } from 'react';
 import { ReactComponent as IconForCourseCard } from 'Icons/IconForCourseCard.svg';
 import LevelDifficulty from 'Components/UI-KIT/Atoms/LevelDificulty';
 import * as ST from './styled';
 
-const CourseCard = () => (
+type CourseCardProps = {
+  nameTag: string;
+  title: string;
+  description: string;
+  levelDifficulty: 1 | 2 | 3;
+};
+
+const CourseCard: FC<CourseCardProps> = ({
+  nameTag,
+  title,
+  description,
+  levelDifficulty,
+}) => (
   <ST.CourseCard>
     <IconForCourseCard />
     <ST.MainWrapper>
       <ST.Tags>
-        <ST.Tag>дизайн</ST.Tag>
-        <ST.Tag>дизайн</ST.Tag>
-        <ST.Tag>дизайн</ST.Tag>
+        <ST.Tag>{nameTag}</ST.Tag>
       </ST.Tags>
-      <ST.Title>Название курса</ST.Title>
-      <ST.Description>Подробное описание курса</ST.Description>
+      <ST.Title>{title}</ST.Title>
+      <ST.Description>{description}</ST.Description>
       <ST.WrapperLevel>
-        <LevelDifficulty count={2} />
+        <LevelDifficulty count={levelDifficulty} />
       </ST.WrapperLevel>
     </ST.MainWrapper>
   </ST.CourseCard>

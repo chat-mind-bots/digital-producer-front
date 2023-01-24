@@ -11,7 +11,11 @@ const LeftBar = () => (
       <ST.Sections>Разделы платформы</ST.Sections>
       <NavBar arrayNav={NavBarData} />
     </ST.WrapperInfo>
-    <BlockAllCoursesPlatform />
+    <BlockAllCoursesPlatform
+      textButton={'Курсы платформы'}
+      urlButton={''}
+      styleButton={''}
+    />
   </ST.LeftBar>
 );
 

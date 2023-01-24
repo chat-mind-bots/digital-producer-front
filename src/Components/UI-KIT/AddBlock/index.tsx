@@ -1,23 +1,32 @@
-import React from 'react';
-import { useTranslation } from 'react-i18next';
+import React, { FC } from 'react';
 import { ReactComponent as IconForAddBlock } from 'Icons/IconForAddBlock.svg';
 import Button from 'Components/UI-KIT/Atoms/Button';
 import Colors from 'Colors';
 import * as ST from './styled';
 
-const AddBlock = () => {
-  const { t } = useTranslation();
+type AddBlockProps = {
+  title: string;
+  description: string;
+  urlButton: string;
+  textButton: string;
+  styleButton: string;
+};
 
+const AddBlock: FC<AddBlockProps> = ({
+  title,
+  description,
+  textButton,
+  urlButton,
+  styleButton,
+}) => {
   return (
     <ST.AddBlock>
       <IconForAddBlock />
-      <ST.Title>{t('Components.UIKIT.AddBlock.Title')}</ST.Title>
-      <ST.Description>
-        {t('Components.UIKIT.AddBlock.Description')}
-      </ST.Description>
+      <ST.Title>{title}</ST.Title>
+      <ST.Description>{description}</ST.Description>
       <ST.WrapperButton>
         <Button
-          title={t('Components.UIKIT.AddBlock.Button')}
+          title={textButton}
           padding={'11px 28px'}
           fontSize={'14px'}
           lineHeight={'20px'}

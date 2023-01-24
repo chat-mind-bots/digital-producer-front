@@ -1,15 +1,21 @@
+import { FC } from 'react';
 import { ReactComponent as ArrowDown } from 'Icons/ArrowDown.svg';
 import { ReactComponent as IconAvatar } from 'Icons/IconAvatar.svg';
 import * as ST from './styled';
 
-const AuthBlock = () => (
+type AuthBlockProps = {
+  name: string;
+  mail: string;
+};
+
+const AuthBlock: FC<AuthBlockProps> = ({ name, mail }) => (
   <ST.AuthBlock>
     <ST.WrapperAvatar>
       <IconAvatar />
     </ST.WrapperAvatar>
     <ST.WrapperInfo>
-      <ST.Name>Adilet</ST.Name>
-      <ST.Mail>adilet@gmail.com</ST.Mail>
+      <ST.Name>{name}</ST.Name>
+      <ST.Mail>{mail}</ST.Mail>
     </ST.WrapperInfo>
     <ST.WrapperArrowDown>
       <ArrowDown />

@@ -1,17 +1,30 @@
+import { FC } from 'react';
 import Colors from 'Colors';
 import Button from 'Components/UI-KIT/Atoms/Button';
 import * as ST from './styled';
 
-const NewsBanner = () => (
+type NewsBannerProps = {
+  title: string;
+  description: string;
+  urlButton: string;
+  textButton: string;
+  styleButton: string;
+};
+
+const NewsBanner: FC<NewsBannerProps> = ({
+  title,
+  description,
+  textButton,
+  styleButton,
+  urlButton,
+}) => (
   <ST.NewsBanner>
     <ST.WrapperInfo>
-      <ST.Title>Новости платформы</ST.Title>
-      <ST.Description>
-        Самые последние и актуальные новости и обновления платформы
-      </ST.Description>
+      <ST.Title>{title}</ST.Title>
+      <ST.Description>{description}</ST.Description>
       <ST.WrapperButton>
         <Button
-          title={'Читать статью'}
+          title={textButton}
           padding={'13px 23px'}
           fontSize={'14px'}
           lineHeight={'20px'}
