@@ -1,14 +1,25 @@
+import { FC } from 'react';
 import { ReactComponent as IconForNavBar } from 'Icons/IconForNavBar.svg';
 import Colors from 'Colors';
 import Button from 'Components/UI-KIT/Atoms/Button';
 import * as ST from './styled';
 
-const BlockAllCoursesPlatform = () => (
+type BlockAllCoursesPlatformProps = {
+  urlButton: string;
+  textButton: string;
+  styleButton: string;
+};
+
+const BlockAllCoursesPlatform: FC<BlockAllCoursesPlatformProps> = ({
+  textButton,
+  urlButton,
+  styleButton,
+}) => (
   <ST.ComponentForNavBar>
     <IconForNavBar />
     <ST.WrapperButton>
       <Button
-        title={'Курсы платформы'}
+        title={textButton}
         padding={'11px 23px'}
         fontSize={'14px'}
         lineHeight={'20px'}

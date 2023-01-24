@@ -2,7 +2,7 @@ import { ReactComponent as IconForInsight1 } from 'Icons/IconForInsight1.svg';
 import { ReactComponent as IconForInsight2 } from 'Icons/IconForInsight2.svg';
 import { ReactComponent as IconForInsight3 } from 'Icons/IconForInsight3.svg';
 import { ReactComponent as IconForInsight4 } from 'Icons/IconForInsight4.svg';
-import { useState } from 'react';
+import { FC, useState } from 'react';
 import Button from 'Components/UI-KIT/Atoms/Button';
 import Colors from 'Colors';
 import * as ST from './styled';
@@ -50,7 +50,19 @@ const dataInsights = [
   },
 ];
 
-const Insights = () => {
+type InsightsProps = {
+  title: string;
+  urlButton: string;
+  textButton: string;
+  styleButton: string;
+};
+
+const Insights: FC<InsightsProps> = ({
+  title,
+  textButton,
+  urlButton,
+  styleButton,
+}) => {
   const [numberPosition, setNumberPosition] = useState<NumberPositionType>(1);
   const currentObject = dataInsights.filter(
     (item) => item.id === numberPosition
@@ -58,7 +70,7 @@ const Insights = () => {
 
   return (
     <ST.Insights>
-      <ST.Title>Новости и инсайты из сферы инфопродуктов</ST.Title>
+      <ST.Title>{title}</ST.Title>
       <ST.WrapperInfo>
         <ST.WrapperContent>
           <ST.WrapperInfoContent>
@@ -74,7 +86,7 @@ const Insights = () => {
           </ST.WrapperInfoContent>
           <ST.WrapperButton>
             <Button
-              title={'Читать статью'}
+              title={textButton}
               padding={'11px 28px'}
               fontSize={'14px'}
               lineHeight={'20px'}
