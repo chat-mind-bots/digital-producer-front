@@ -20,46 +20,29 @@ const Main: FC<MainProps> = ({ children, isRegistration }) => (
     </ST.Image>
     <ST.Wrapper>
       <ST.Header>
-        <ST.WrapperLogo>
+        <ST.Logo>
           <Link to={'/'}>
             <Logo isMax={true} />
           </Link>
-        </ST.WrapperLogo>
+        </ST.Logo>
         <ST.WrapperButton>
-          {isRegistration ? (
-            <Link to={'/registration'}>
-              <Button
-                title={'Регистрация'}
-                padding={'10px 14px'}
-                fontSize={'16px'}
-                lineHeight={'20px'}
-                fontWeight={'600'}
-                background={Colors.TRANSPARENT}
-                color={Colors.BLACK1}
-                backgroundAnimation={Colors.BLACK1}
-                colorHover={Colors.WHITE}
-                width={'max-content'}
-              />
-            </Link>
-          ) : (
-            <Link to={'/logIn'}>
-              <Button
-                title={'Уже есть аккаунт'}
-                padding={'10px 14px'}
-                fontSize={'16px'}
-                lineHeight={'20px'}
-                fontWeight={'600'}
-                background={Colors.TRANSPARENT}
-                color={Colors.BLACK1}
-                backgroundAnimation={Colors.BLACK1}
-                colorHover={Colors.WHITE}
-                width={'max-content'}
-              />
-            </Link>
-          )}
+          <Link to={isRegistration ? '/registration' : '/logIn'}>
+            <Button
+              title={isRegistration ? 'Регистрация' : 'Уже есть аккаунт'}
+              padding={'10px 14px'}
+              fontSize={'16px'}
+              lineHeight={'20px'}
+              fontWeight={'600'}
+              background={Colors.TRANSPARENT}
+              color={Colors.BLACK1}
+              backgroundAnimation={Colors.BLACK1}
+              colorHover={Colors.WHITE}
+              width={'max-content'}
+            />
+          </Link>
         </ST.WrapperButton>
       </ST.Header>
-      <ST.WrapperContent>{children}</ST.WrapperContent>
+      <ST.Content>{children}</ST.Content>
       <ST.Footer>
         <ST.Name>Пользовательское соглашение</ST.Name>
         <ST.Name>Политика конфидециальности</ST.Name>

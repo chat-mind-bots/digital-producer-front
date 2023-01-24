@@ -38,7 +38,7 @@ export const Name = styled.div`
   color: ${Colors.GREY1};
 `;
 
-export const WrapperContent = styled.div`
+export const Content = styled.div`
   padding-right: 56px;
 `;
 
@@ -55,4 +55,4 @@ export const WrapperButton = styled.div`
   width: max-content;
 `;
 
-export const WrapperLogo = styled.div``;
+export const Logo = styled.div``;

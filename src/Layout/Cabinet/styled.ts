@@ -9,7 +9,7 @@ export const Cabinet = styled.div`
   height: 100%;
 `;
 
-export const WrapperContent = styled.div`
+export const Content = styled.div`
   position: absolute;
   width: calc(100% - 337px);
   left: 297px;
