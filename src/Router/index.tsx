@@ -1,8 +1,12 @@
 import { Route, Routes } from 'react-router-dom';
-import CourseId from 'Pages/CourseId';
-import Auth from 'Pages/Auth';
-import Updates from 'Pages/Updates';
+import CourseId from 'Pages/Cabinet/CourseId';
+import News from 'Pages/Cabinet/NewsId';
 import PrivateRouteAnother from 'Router/PrivateRoute/PrivateRouteAnother';
+import LogIn from 'Pages/Main/LogIn';
+import Registration from 'Pages/Main/Registration';
+import Home from 'Pages/Main/Home';
+import Main from 'Layout/Main';
+import Cabinet from 'Layout/Cabinet';
 import NavBarData from 'Constants/NavBar';
 
 export const RouterCabinet = () => (
@@ -11,18 +15,25 @@ export const RouterCabinet = () => (
       {NavBarData.map((item) => (
         <Route
           path={item.url}
-          element={item.element}
+          element={<Cabinet>{item.element}</Cabinet>}
           key={`Route-main-page-${item.id}`}
         />
       ))}
-
       <Route
         path="/news/:id"
-        element={<Updates />}
+        element={
+          <Cabinet>
+            <News />
+          </Cabinet>
+        }
       />
       <Route
         path="/course/:id"
-        element={<CourseId />}
+        element={
+          <Cabinet>
+            <CourseId />
+          </Cabinet>
+        }
       />
     </Route>
   </Routes>
@@ -31,8 +42,28 @@ export const RouterCabinet = () => (
 export const RouterNoAuth = () => (
   <Routes>
     <Route
-      path="/auth"
-      element={<Auth />}
+      path="/logIn"
+      element={
+        <Main isRegistration={true}>
+          <LogIn />
+        </Main>
+      }
+    />
+    <Route
+      path="/registration"
+      element={
+        <Main isRegistration={false}>
+          <Registration />
+        </Main>
+      }
+    />
+    <Route
+      path="/"
+      element={
+        <Main isRegistration={true}>
+          <Home />
+        </Main>
+      }
     />
   </Routes>
 );
