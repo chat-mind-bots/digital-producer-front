@@ -15,7 +15,7 @@ const Cabinet: FC<CabinetProps> = ({ children }) => {
       </ST.Cabinet>
       <ST.Wrapper>
         <Header />
-        <ST.WrapperContent>{children}</ST.WrapperContent>
+        <ST.Content>{children}</ST.Content>
       </ST.Wrapper>
     </>
   );
