@@ -2,8 +2,7 @@ import Colors from 'Colors';
 import styled from 'styled-components';
 
 type ItemProps = {
-  isLast?: boolean;
-  isHover?: boolean;
+  isLast: boolean;
 };
 
 export const BreadCrumbs = styled.div`
@@ -18,11 +17,13 @@ export const Item = styled.p<ItemProps>`
   font-size: 16px;
   line-height: 22px;
   color: ${({ isLast }) => (isLast ? Colors.BLUE : Colors.GREY4)};
-  cursor: ${({ isLast, isHover }) => isHover && !isLast && 'pointer'};
-`;
-
-export const Items = styled.div`
-  display: flex;
-  align-items: center;
-  gap: 12px;
+  cursor: ${({ isLast }) => !isLast && 'pointer'};
+  &:hover {
+    color: ${Colors.BLUE};
+  }
+  &:after {
+    content: ${({ isLast }) => !isLast && '"/"'};
+    margin-left: 12px;
+    color: ${Colors.GREY4} !important;
+  }
 `;

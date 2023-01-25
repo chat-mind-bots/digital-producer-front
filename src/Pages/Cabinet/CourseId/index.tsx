@@ -89,8 +89,8 @@ const data: CourseIdType = {
 };
 
 const defaultBreadCrumbs: BreadCrumbsArrayType[] = [
-  { id: 1, name: 'Главная', url: '/Main' },
-  { id: 2, name: 'Мои курсы', url: '/myCourses' },
+  { id: 1, name: 'Главная', url: '/main' },
+  { id: 2, name: 'Мои курсы', url: '/courses' },
 ];
 
 const CourseId = () => {
@@ -102,11 +102,11 @@ const CourseId = () => {
   const [accordion, setAccordion] = useState<AccordionType[]>();
   const [loading, setLoading] = useState<boolean>(false);
   const breadCrumbs: BreadCrumbsArrayType[] = [
-    { id: 3, name: data.name, url: '/Main' },
+    { id: 3, name: data.name, url: '/course/1' },
     {
       id: 4,
       name: currentLesson ? currentLesson.name : '',
-      url: '/Main',
+      url: '/main',
     },
   ];
 
