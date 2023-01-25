@@ -159,24 +159,22 @@ const CourseId = () => {
       <ST.WrapperInfo>
         <WrapperContent header={[...defaultBreadCrumbs, ...breadCrumbs]}>
           <ST.Content>
-            <ST.CourseId>
-              {currentLesson && (
-                <>
-                  <LessonView
-                    name={currentLesson.name}
-                    video={currentLesson.video}
-                    levelDifficulty={currentLesson.levelDifficulty}
-                    description={currentLesson.description}
-                    studentsLength={data.studentsLength}
-                    language={data.language}
-                    otherNotes={data.otherNotes}
-                    lessonsLength={data.lessonsLength}
-                    modulesLength={data.modulesLength}
-                    isLoading={loading}
-                  />
-                </>
-              )}
-            </ST.CourseId>
+            {currentLesson && (
+              <>
+                <LessonView
+                  name={currentLesson.name}
+                  video={currentLesson.video}
+                  levelDifficulty={currentLesson.levelDifficulty}
+                  description={currentLesson.description}
+                  studentsLength={data.studentsLength}
+                  language={data.language}
+                  otherNotes={data.otherNotes}
+                  lessonsLength={data.lessonsLength}
+                  modulesLength={data.modulesLength}
+                  isLoading={loading}
+                />
+              </>
+            )}
           </ST.Content>
         </WrapperContent>
         <WrapperContent header={'Лекторы'}>
@@ -206,22 +204,10 @@ const CourseId = () => {
               levelDifficulty={2}
               time={'Время для прохождения: 2 часа'}
               url={'/test/:1'}
-              needCount={70}
-              maxCount={100}
-              count={30}
-              status={true}
-            />
-
-            <TestCard
-              description={'Тест прохождение iq по Шнитке Валилию Петровичу'}
-              title={'iQ Тест'}
-              levelDifficulty={1}
-              time={'Время для прохождения: 2 часа'}
-              url={'/test/:1'}
-              needCount={70}
-              maxCount={100}
-              count={30}
-              status={true}
+              minCountForSuccess={70}
+              countQuestions={100}
+              currentResult={30}
+              status={false}
             />
           </ST.Content>
         </WrapperContent>
