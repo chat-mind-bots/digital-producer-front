@@ -23,7 +23,7 @@ const News = () => (
               'Встретитесь со своими глубинными страхами, пробьете свой финансовый потолок и научитесь получать ответы'
             }
             date={'18 января 2021'}
-            timeRead={'1 мин'}
+            timeRead={'Время чтения: 1 мин'}
             image={<IconForPlatformNewsCard />}
             url={'/news/1'}
             tagsColors={false}
@@ -42,7 +42,7 @@ const News = () => (
               'Встретитесь со своими глубинными страхами, пробьете свой финансовый потолок и научитесь получать ответы'
             }
             date={'18 января 2021'}
-            timeRead={'1 мин'}
+            timeRead={'Время чтения: 1 мин'}
             image={<IconForPlatformNewsCard />}
             url={'/news/1'}
             tagsColors={false}
@@ -61,7 +61,7 @@ const News = () => (
               'Встретитесь со своими глубинными страхами, пробьете свой финансовый потолок и научитесь получать ответы'
             }
             date={'18 января 2021'}
-            timeRead={'1 мин'}
+            timeRead={'Время чтения: 1 мин'}
             image={<IconForPlatformNewsCard />}
             url={'/news/1'}
             tagsColors={false}
@@ -80,7 +80,7 @@ const News = () => (
               'Встретитесь со своими глубинными страхами, пробьете свой финансовый потолок и научитесь получать ответы'
             }
             date={'18 января 2021'}
-            timeRead={'1 мин'}
+            timeRead={'Время чтения: 1 мин'}
             image={<IconForPlatformNewsCard />}
             url={'/news/1'}
             tagsColors={false}
@@ -99,7 +99,7 @@ const News = () => (
               'Встретитесь со своими глубинными страхами, пробьете свой финансовый потолок и научитесь получать ответы'
             }
             date={'18 января 2021'}
-            timeRead={'1 мин'}
+            timeRead={'Время чтения: 1 мин'}
             image={<IconForPlatformNewsCard />}
             url={'/news/1'}
             tagsColors={false}
@@ -118,7 +118,7 @@ const News = () => (
               'Встретитесь со своими глубинными страхами, пробьете свой финансовый потолок и научитесь получать ответы'
             }
             date={'18 января 2021'}
-            timeRead={'1 мин'}
+            timeRead={'Время чтения: 1 мин'}
             image={<IconForPlatformNewsCard />}
             url={'/news/1'}
             tagsColors={false}
