@@ -4,12 +4,12 @@ import * as ST from './styled';
 type LectorProps = {
   name: string;
   description: string;
-  svg: JSX.Element;
+  img: JSX.Element;
 };
 
-const Lector: FC<LectorProps> = ({ name, description, svg }) => (
+const Lector: FC<LectorProps> = ({ name, description, img }) => (
   <ST.Lector>
-    {svg}
+    {img}
     <ST.Name>{name}</ST.Name>
     <ST.Description>{description}</ST.Description>
   </ST.Lector>
