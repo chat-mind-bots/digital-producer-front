@@ -9,8 +9,9 @@ import Test from 'Pages/Cabinet/Test';
 import Main from 'Layout/Main';
 import Cabinet from 'Layout/Cabinet';
 import NavBarData from 'Constants/NavBar';
-import Lector from 'Components/UI-KIT/Lector';
+import LectorCard from 'Components/UI-KIT/LectorCard';
 import { ReactComponent as IconForNewsView } from 'Icons/IconForNewsView.svg';
+import TestCard from 'Components/UI-KIT/TestCard';
 
 export const RouterCabinet = () => (
   <Routes>
@@ -42,10 +43,26 @@ export const RouterCabinet = () => (
         path="/lector/:id"
         element={
           <Cabinet>
-            <Lector
+            <LectorCard
               name={'Жульен Николаевич А'}
               description={'Самый лучший на планете'}
               img={<IconForNewsView />}
+            />
+          </Cabinet>
+        }
+      />
+      <Route
+        path="/testCard"
+        element={
+          <Cabinet>
+            <TestCard
+              title={'Выбор и анализ ниши'}
+              description={
+                'Встретитесь со своими глубинными страхами, пробьете свой финансовый потолок и научитесь получать ответы'
+              }
+              levelDifficulty={2}
+              time={'10 часов'}
+              date={'29 февраля 2093'}
             />
           </Cabinet>
         }
