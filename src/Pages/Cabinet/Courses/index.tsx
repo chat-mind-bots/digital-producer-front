@@ -3,6 +3,7 @@ import { BreadCrumbsArrayType } from 'Components/UI-KIT/BreadCrumbs';
 import WrapperContent from 'Components/WrapperContent';
 import CourseCard from 'Components/UI-KIT/CourseCard';
 import AddBlock from 'Components/UI-KIT/AddBlock';
+import Colors from 'Colors';
 import * as ST from './styled';
 
 const defaultBreadCrumbs: BreadCrumbsArrayType[] = [
@@ -16,28 +17,64 @@ const Courses = () => (
       <WrapperContent header={[...defaultBreadCrumbs]}>
         <ST.Wrapper>
           <CourseCard
-            nameTag={'дизайн'}
+            url={'/course/1'}
             title={'Название курса'}
             description={'Подробное описание курса'}
             levelDifficulty={2}
+            tagsColors={false}
+            tags={[
+              {
+                id: 1,
+                name: 'Дизайн',
+                background: Colors.WHITE3,
+                color: Colors.GREY1,
+              },
+            ]}
           />
           <CourseCard
-            nameTag={'дизайн'}
+            url={'/course/1'}
             title={'Название курса'}
             description={'Подробное описание курса'}
-            levelDifficulty={3}
+            levelDifficulty={2}
+            tagsColors={false}
+            tags={[
+              {
+                id: 1,
+                name: 'Дизайн',
+                background: Colors.WHITE3,
+                color: Colors.GREY1,
+              },
+            ]}
           />
           <CourseCard
-            nameTag={'дизайн'}
+            url={'/course/1'}
             title={'Название курса'}
             description={'Подробное описание курса'}
-            levelDifficulty={1}
+            levelDifficulty={2}
+            tagsColors={false}
+            tags={[
+              {
+                id: 1,
+                name: 'Дизайн',
+                background: Colors.WHITE3,
+                color: Colors.GREY1,
+              },
+            ]}
           />
           <CourseCard
-            nameTag={'дизайн'}
+            url={'/course/1'}
             title={'Название курса'}
             description={'Подробное описание курса'}
-            levelDifficulty={3}
+            levelDifficulty={2}
+            tagsColors={false}
+            tags={[
+              {
+                id: 1,
+                name: 'Дизайн',
+                background: Colors.WHITE3,
+                color: Colors.GREY1,
+              },
+            ]}
           />
         </ST.Wrapper>
       </WrapperContent>
