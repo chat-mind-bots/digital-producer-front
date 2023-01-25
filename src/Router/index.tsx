@@ -45,7 +45,7 @@ export const RouterCabinet = () => (
             <Lector
               name={'Жульен Николаевич А'}
               description={'Самый лучший на планете'}
-              svg={<IconForNewsView />}
+              img={<IconForNewsView />}
             />
           </Cabinet>
         }
