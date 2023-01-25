@@ -4,6 +4,7 @@ import WrapperContent from 'Components/WrapperContent';
 import AddBlock from 'Components/UI-KIT/AddBlock';
 import NewsView from 'Components/UI-KIT/NewsView';
 import ReadMoreCard from 'Components/UI-KIT/ReadMoreCard';
+import Colors from 'Colors';
 import * as ST from './styled';
 
 const defaultBreadCrumbs: BreadCrumbsArrayType[] = [
@@ -75,7 +76,7 @@ const News = () => (
               '        <br />\n' +
               '        EdTech is the new Fintech...'
             }
-            time={'1 мин'}
+            time={'Время чтения: 1 мин'}
             date={'18 января 2021'}
           />
         </ST.Wrapper>
@@ -83,46 +84,100 @@ const News = () => (
       <WrapperContent header={'Читать также'}>
         <ST.Wrapper>
           <ReadMoreCard
-            nameTag={'обновления'}
-            title={'Выбор и анализ ниши'}
+            name={'Выбор и анализ ниши'}
             description={
               'Встретитесь со своими глубинными страхами, пробьете свой финансовый потолок и научитесь получать ответы'
             }
+            url={'/news/1'}
+            tagsColors={false}
+            tags={[
+              {
+                id: 1,
+                name: 'обновления',
+                background: Colors.WHITE3,
+                color: Colors.GREY1,
+              },
+            ]}
           />
           <ReadMoreCard
-            nameTag={'обновления'}
-            title={'Выбор и анализ ниши'}
+            name={'Выбор и анализ ниши'}
             description={
               'Встретитесь со своими глубинными страхами, пробьете свой финансовый потолок и научитесь получать ответы'
             }
+            url={'/news/1'}
+            tagsColors={false}
+            tags={[
+              {
+                id: 1,
+                name: 'обновления',
+                background: Colors.WHITE3,
+                color: Colors.GREY1,
+              },
+            ]}
           />
           <ReadMoreCard
-            nameTag={'обновления'}
-            title={'Выбор и анализ ниши'}
+            name={'Выбор и анализ ниши'}
             description={
               'Встретитесь со своими глубинными страхами, пробьете свой финансовый потолок и научитесь получать ответы'
             }
+            url={'/news/1'}
+            tagsColors={false}
+            tags={[
+              {
+                id: 1,
+                name: 'обновления',
+                background: Colors.WHITE3,
+                color: Colors.GREY1,
+              },
+            ]}
           />
           <ReadMoreCard
-            nameTag={'обновления'}
-            title={'Выбор и анализ ниши'}
+            name={'Выбор и анализ ниши'}
             description={
               'Встретитесь со своими глубинными страхами, пробьете свой финансовый потолок и научитесь получать ответы'
             }
+            url={'/news/2'}
+            tagsColors={false}
+            tags={[
+              {
+                id: 1,
+                name: 'обновления',
+                background: Colors.WHITE3,
+                color: Colors.GREY1,
+              },
+            ]}
           />
           <ReadMoreCard
-            nameTag={'обновления'}
-            title={'Выбор и анализ ниши'}
+            name={'Выбор и анализ ниши'}
             description={
               'Встретитесь со своими глубинными страхами, пробьете свой финансовый потолок и научитесь получать ответы'
             }
+            url={'/news/2'}
+            tagsColors={false}
+            tags={[
+              {
+                id: 1,
+                name: 'обновления',
+                background: Colors.WHITE3,
+                color: Colors.GREY1,
+              },
+            ]}
           />
           <ReadMoreCard
-            nameTag={'обновления'}
-            title={'Выбор и анализ ниши'}
+            name={'Выбор и анализ ниши'}
             description={
               'Встретитесь со своими глубинными страхами, пробьете свой финансовый потолок и научитесь получать ответы'
             }
+            url={'/news/2'}
+            tagsColors={false}
+            tags={[
+              {
+                id: 1,
+                name: 'обновления',
+                background: Colors.WHITE3,
+                color: Colors.GREY1,
+              },
+            ]}
           />
         </ST.Wrapper>
       </WrapperContent>
