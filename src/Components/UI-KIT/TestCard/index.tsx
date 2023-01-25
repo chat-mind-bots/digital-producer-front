@@ -13,9 +13,9 @@ type TestCardProps = {
   time: string;
   url: string;
   status: boolean;
-  count: number;
-  maxCount: number;
-  needCount: number;
+  currentResult: number;
+  countQuestions: number;
+  minCountForSuccess: number;
 };
 
 const TestCard: FC<TestCardProps> = ({
@@ -23,9 +23,9 @@ const TestCard: FC<TestCardProps> = ({
   title,
   levelDifficulty,
   time,
-  needCount,
-  maxCount,
-  count,
+  minCountForSuccess,
+  countQuestions,
+  currentResult,
   status,
   url,
 }) => (
@@ -37,11 +37,11 @@ const TestCard: FC<TestCardProps> = ({
       <Time value={time} />
       <ST.Info>
         <StatusFalse />
-        Максимум:{count}/{maxCount}
+        Максимум:{currentResult}/{countQuestions}
       </ST.Info>
       <ST.Info>
         <StatusFalse />
-        Для зачета:{needCount}/{maxCount}
+        Для зачета:{minCountForSuccess}/{countQuestions}
       </ST.Info>
       {status ? (
         <ST.Info>
