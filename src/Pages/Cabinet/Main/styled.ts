@@ -9,7 +9,10 @@ export const Main = styled.div`
 export const Wrapper = styled.div`
   display: flex;
   flex-wrap: wrap;
-  gap: 20px;
+  gap: 22px;
+  & > a {
+    width: 100%;
+  }
 `;
 
 export const WrapperContent = styled.div`

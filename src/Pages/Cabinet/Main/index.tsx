@@ -4,6 +4,7 @@ import AddBlock from 'Components/UI-KIT/AddBlock';
 import NewsBanner from 'Components/UI-KIT/NewsBanner';
 import CourseCard from 'Components/UI-KIT/CourseCard';
 import Insights from 'Components/UI-KIT/Insights';
+import Colors from 'Colors';
 import * as ST from './styled';
 
 const Main = () => (
@@ -27,28 +28,49 @@ const Main = () => (
       <WrapperContent header={'Рекомендованные курсы'}>
         <ST.Wrapper>
           <CourseCard
-            nameTag={'дизайн'}
+            url={'/course/1'}
             title={'Название курса'}
             description={'Подробное описание курса'}
             levelDifficulty={2}
+            tagsColors={true}
+            tags={[
+              {
+                id: 1,
+                name: 'Дизайн',
+                background: Colors.ORANGE,
+                color: Colors.WHITE,
+              },
+            ]}
           />
           <CourseCard
-            nameTag={'дизайн'}
+            url={'/course/1'}
             title={'Название курса'}
             description={'Подробное описание курса'}
             levelDifficulty={2}
+            tagsColors={true}
+            tags={[
+              {
+                id: 1,
+                name: 'Дизайн',
+                background: Colors.BLUE1,
+                color: Colors.WHITE,
+              },
+            ]}
           />
           <CourseCard
-            nameTag={'дизайн'}
+            url={'/course/1'}
             title={'Название курса'}
             description={'Подробное описание курса'}
             levelDifficulty={2}
-          />
-          <CourseCard
-            nameTag={'дизайн'}
-            title={'Название курса'}
-            description={'Подробное описание курса'}
-            levelDifficulty={2}
+            tagsColors={true}
+            tags={[
+              {
+                id: 1,
+                name: 'Дизайн',
+                background: Colors.RED,
+                color: Colors.WHITE,
+              },
+            ]}
           />
         </ST.Wrapper>
       </WrapperContent>

@@ -1,6 +1,11 @@
 import styled from 'styled-components';
 import Colors from 'Colors';
 
+type TagProps = {
+  background: string;
+  color: string;
+};
+
 export const CourseCard = styled.div`
   padding: 19px;
   border-radius: 20px;
@@ -10,6 +15,11 @@ export const CourseCard = styled.div`
   display: flex;
   box-sizing: border-box;
   gap: 32px;
+  border: 2px solid ${Colors.TRANSPARENT};
+  cursor: pointer;
+  &:hover {
+    border: 2px solid ${Colors.WHITE2};
+  }
 `;
 
 export const MainWrapper = styled.div``;
@@ -20,7 +30,7 @@ export const Tags = styled.div`
   margin-top: 12px;
 `;
 
-export const Tag = styled.p`
+export const Tag = styled.p<TagProps>`
   border-radius: 6px;
   font-weight: 600;
   font-size: 10px;
@@ -28,8 +38,8 @@ export const Tag = styled.p`
   line-height: 20px;
   text-align: center;
   letter-spacing: 1px;
-  background: ${Colors.SKYBLUE};
-  color: ${Colors.BLUE};
+  background: ${({ background }) => background};
+  color: ${({ color }) => color};
   text-transform: uppercase;
 `;
 

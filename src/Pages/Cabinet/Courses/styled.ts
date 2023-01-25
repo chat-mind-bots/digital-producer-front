@@ -8,7 +8,10 @@ export const Courses = styled.div`
 export const Wrapper = styled.div`
   display: flex;
   flex-wrap: wrap;
-  gap: 28px;
+  gap: 22px;
+  & > a {
+    width: 100%;
+  }
 `;
 
 export const WrapperCourses = styled.div`
