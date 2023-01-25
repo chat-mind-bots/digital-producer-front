@@ -6,8 +6,8 @@ import AddBlock from 'Components/UI-KIT/AddBlock';
 import * as ST from './styled';
 
 const defaultBreadCrumbs: BreadCrumbsArrayType[] = [
-  { id: 1, name: 'Главная', url: '/Main' },
-  { id: 2, name: 'Мои курсы', url: '/myCourses' },
+  { id: 1, name: 'Главная', url: '/main' },
+  { id: 2, name: 'Мои курсы', url: '/courses' },
 ];
 
 const Courses = () => (

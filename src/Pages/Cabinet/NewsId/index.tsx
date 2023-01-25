@@ -8,14 +8,18 @@ import * as ST from './styled';
 
 const defaultBreadCrumbs: BreadCrumbsArrayType[] = [
   { id: 1, name: 'Главная', url: '/Main' },
-  { id: 2, name: 'Новости платформы', url: '/PlatformNews' },
-  { id: 11, name: 'Обновления', url: '/Updates' },
+  { id: 2, name: 'Новости платформы', url: '/news' },
 ];
 
 const News = () => (
   <ST.News>
     <ST.WrapperNews>
-      <WrapperContent header={[...defaultBreadCrumbs]}>
+      <WrapperContent
+        header={[
+          ...defaultBreadCrumbs,
+          { id: 11, name: 'Обновления', url: '/Updates' },
+        ]}
+      >
         <ST.Wrapper>
           <NewsView
             nameTag={'обновления'}

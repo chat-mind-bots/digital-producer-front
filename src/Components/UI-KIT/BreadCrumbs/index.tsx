@@ -1,5 +1,6 @@
 import React, { FC } from 'react';
 import * as ST from './styled';
+import { Link } from 'react-router-dom';
 
 type BreadCrumbsProps = {
   array: BreadCrumbsArrayType[];
@@ -11,29 +12,23 @@ export type BreadCrumbsArrayType = {
   url: string;
 };
 
-const DefaultsValues = {
-  HoverActive: true,
-  HoverDisable: false,
-};
-
 const BreadCrumbs: FC<BreadCrumbsProps> = ({ array }) => {
   const lengthArray = array.length - 1;
 
   return (
     <ST.BreadCrumbs>
-      {array.map((item, index) => (
-        <ST.Items key={`Breadcrumbs-item-${item.id}`}>
-          <ST.Item
-            isLast={index === lengthArray}
-            isHover={DefaultsValues.HoverActive}
+      {array.map((item, index) =>
+        index !== lengthArray ? (
+          <Link
+            to={item.url}
+            key={`Breadcrumbs-item-${item.id}`}
           >
-            {item.name}
-          </ST.Item>
-          {index !== lengthArray && (
-            <ST.Item isHover={DefaultsValues.HoverDisable}>/</ST.Item>
-          )}
-        </ST.Items>
-      ))}
+            <ST.Item isLast={index === lengthArray}>{item.name}</ST.Item>
+          </Link>
+        ) : (
+          <ST.Item isLast={index === lengthArray}>{item.name}</ST.Item>
+        )
+      )}
     </ST.BreadCrumbs>
   );
 };

@@ -6,8 +6,8 @@ import NewsCard from 'Components/UI-KIT/NewsCard';
 import * as ST from './styled';
 
 const defaultBreadCrumbs: BreadCrumbsArrayType[] = [
-  { id: 1, name: 'Главная', url: '/Main' },
-  { id: 2, name: 'Новости платформы', url: '/PlatformNews' },
+  { id: 1, name: 'Главная', url: '/main' },
+  { id: 2, name: 'Новости платформы', url: '/news' },
 ];
 
 const News = () => (
