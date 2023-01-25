@@ -9,8 +9,6 @@ import Test from 'Pages/Cabinet/Test';
 import Main from 'Layout/Main';
 import Cabinet from 'Layout/Cabinet';
 import NavBarData from 'Constants/NavBar';
-import Lector from 'Components/UI-KIT/Lector';
-import { ReactComponent as IconForNewsView } from 'Icons/IconForNewsView.svg';
 
 export const RouterCabinet = () => (
   <Routes>
@@ -35,18 +33,6 @@ export const RouterCabinet = () => (
         element={
           <Cabinet>
             <CourseId />
-          </Cabinet>
-        }
-      />
-      <Route
-        path="/lector/:id"
-        element={
-          <Cabinet>
-            <Lector
-              name={'Жульен Николаевич А'}
-              description={'Самый лучший на планете'}
-              img={<IconForNewsView />}
-            />
           </Cabinet>
         }
       />
