@@ -1,9 +1,13 @@
 import styled from 'styled-components';
 import Colors from 'Colors';
 
+type TagProps = {
+  background: string;
+  color: string;
+};
+
 export const ReadMoreCard = styled.div`
   background: ${Colors.WHITE};
-
   border-radius: 24px;
   padding: 18px 18px 24px;
   border: 2px solid ${Colors.TRANSPARENT};
@@ -18,23 +22,22 @@ export const Tags = styled.div`
   gap: 10px;
   display: flex;
   align-items: center;
-  margin-top: 14px;
 `;
 
-export const Tag = styled.p`
+export const Tag = styled.p<TagProps>`
   font-family: 'Vela Sans';
   font-weight: 700;
   font-size: 10px;
   line-height: 16px;
   letter-spacing: 1px;
   text-transform: uppercase;
-  color: ${Colors.GREY4};
-  background: ${Colors.WHITE3};
+  background: ${({ background }) => background};
+  color: ${({ color }) => color};
   border-radius: 3px;
   padding: 3px 8px;
 `;
 
-export const Title = styled.p`
+export const Name = styled.p`
   font-weight: 700;
   font-size: 20px;
   line-height: 140%;
