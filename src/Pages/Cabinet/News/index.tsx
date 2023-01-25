@@ -3,6 +3,8 @@ import { BreadCrumbsArrayType } from 'Components/UI-KIT/BreadCrumbs';
 import WrapperContent from 'Components/WrapperContent';
 import AddBlock from 'Components/UI-KIT/AddBlock';
 import NewsCard from 'Components/UI-KIT/NewsCard';
+import { ReactComponent as IconForPlatformNewsCard } from 'Icons/IconForPlatformNewsCard.svg';
+import Colors from 'Colors';
 import * as ST from './styled';
 
 const defaultBreadCrumbs: BreadCrumbsArrayType[] = [
@@ -16,58 +18,118 @@ const News = () => (
       <WrapperContent header={[...defaultBreadCrumbs]}>
         <ST.Wrapper>
           <NewsCard
-            nameTag={'обновления'}
-            title={'Выбор и анализ ниши'}
+            name={'Выбор и анализ ниши'}
             description={
               'Встретитесь со своими глубинными страхами, пробьете свой финансовый потолок и научитесь получать ответы'
             }
             date={'18 января 2021'}
-            time={'1 мин'}
+            timeRead={'1 мин'}
+            image={<IconForPlatformNewsCard />}
+            url={'/news/1'}
+            tagsColors={false}
+            tags={[
+              {
+                id: 1,
+                name: 'обновления',
+                background: Colors.WHITE3,
+                color: Colors.GREY1,
+              },
+            ]}
           />
           <NewsCard
-            nameTag={'Новое'}
-            title={'Выбор и анализ ниши'}
+            name={'Выбор и анализ ниши'}
             description={
               'Встретитесь со своими глубинными страхами, пробьете свой финансовый потолок и научитесь получать ответы'
             }
             date={'18 января 2021'}
-            time={'1 мин'}
+            timeRead={'1 мин'}
+            image={<IconForPlatformNewsCard />}
+            url={'/news/1'}
+            tagsColors={false}
+            tags={[
+              {
+                id: 1,
+                name: 'обновления',
+                background: Colors.WHITE3,
+                color: Colors.GREY1,
+              },
+            ]}
           />
           <NewsCard
-            nameTag={'обновления'}
-            title={'Выбор и анализ ниши'}
+            name={'Выбор и анализ ниши'}
             description={
               'Встретитесь со своими глубинными страхами, пробьете свой финансовый потолок и научитесь получать ответы'
             }
             date={'18 января 2021'}
-            time={'1 мин'}
+            timeRead={'1 мин'}
+            image={<IconForPlatformNewsCard />}
+            url={'/news/1'}
+            tagsColors={false}
+            tags={[
+              {
+                id: 1,
+                name: 'обновления',
+                background: Colors.WHITE3,
+                color: Colors.GREY1,
+              },
+            ]}
           />
           <NewsCard
-            nameTag={'обновления'}
-            title={'Выбор и анализ ниши'}
+            name={'Выбор и анализ ниши'}
             description={
               'Встретитесь со своими глубинными страхами, пробьете свой финансовый потолок и научитесь получать ответы'
             }
             date={'18 января 2021'}
-            time={'1 мин'}
+            timeRead={'1 мин'}
+            image={<IconForPlatformNewsCard />}
+            url={'/news/1'}
+            tagsColors={false}
+            tags={[
+              {
+                id: 1,
+                name: 'обновления',
+                background: Colors.WHITE3,
+                color: Colors.GREY1,
+              },
+            ]}
           />
           <NewsCard
-            nameTag={'обновления'}
-            title={'Выбор и анализ ниши'}
+            name={'Выбор и анализ ниши'}
             description={
               'Встретитесь со своими глубинными страхами, пробьете свой финансовый потолок и научитесь получать ответы'
             }
             date={'18 января 2021'}
-            time={'1 мин'}
+            timeRead={'1 мин'}
+            image={<IconForPlatformNewsCard />}
+            url={'/news/1'}
+            tagsColors={false}
+            tags={[
+              {
+                id: 1,
+                name: 'обновления',
+                background: Colors.WHITE3,
+                color: Colors.GREY1,
+              },
+            ]}
           />
           <NewsCard
-            nameTag={'обновления'}
-            title={'Выбор и анализ ниши'}
+            name={'Выбор и анализ ниши'}
             description={
               'Встретитесь со своими глубинными страхами, пробьете свой финансовый потолок и научитесь получать ответы'
             }
             date={'18 января 2021'}
-            time={'1 мин'}
+            timeRead={'1 мин'}
+            image={<IconForPlatformNewsCard />}
+            url={'/news/1'}
+            tagsColors={false}
+            tags={[
+              {
+                id: 1,
+                name: 'обновления',
+                background: Colors.WHITE3,
+                color: Colors.GREY1,
+              },
+            ]}
           />
         </ST.Wrapper>
       </WrapperContent>

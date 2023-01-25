@@ -4,7 +4,7 @@ import Date from 'Components/UI-KIT/Atoms/Date';
 import Time from 'Components/UI-KIT/Atoms/Time';
 import * as ST from './styled';
 
-type NewsCardSmallProps = {
+type NewsViewProps = {
   nameTag: string;
   title: string;
   text: string;
@@ -12,13 +12,7 @@ type NewsCardSmallProps = {
   date: string;
 };
 
-const NewsView: FC<NewsCardSmallProps> = ({
-  nameTag,
-  title,
-  text,
-  time,
-  date,
-}) => (
+const NewsView: FC<NewsViewProps> = ({ nameTag, title, text, time, date }) => (
   <ST.NewsView>
     <IconForNewsView />
     <ST.WrapperInfo>

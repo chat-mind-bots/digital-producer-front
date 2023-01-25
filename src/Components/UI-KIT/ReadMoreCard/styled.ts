@@ -1,7 +1,7 @@
 import styled from 'styled-components';
 import Colors from 'Colors';
 
-export const NewsCardSmall = styled.div`
+export const ReadMoreCard = styled.div`
   background: ${Colors.WHITE};
 
   border-radius: 24px;
