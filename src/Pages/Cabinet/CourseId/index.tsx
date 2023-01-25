@@ -8,6 +8,10 @@ import WrapperContent from 'Components/WrapperContent';
 import { BreadCrumbsArrayType } from 'Components/UI-KIT/BreadCrumbs';
 import { CourseIdType, LessonType } from 'Types/Course/CourseId';
 import * as ST from './styled';
+import LectorCard from 'Components/UI-KIT/LectorCard';
+import TestCard from 'Components/UI-KIT/TestCard';
+import DocumentCard from 'Components/UI-KIT/DocumentCard';
+import { ReactComponent as IconForPlatformNewsCard } from 'Icons/IconForPlatformNewsCard.svg';
 
 const data: CourseIdType = {
   id: 1,
@@ -23,8 +27,8 @@ const data: CourseIdType = {
   language: 'Русский',
   status: 200,
   otherNotes: [
-    { id: 1, name: 'string', value: 'string' },
-    { id: 2, name: 'string', value: 'string' },
+    { id: 1, name: 'Язык', value: 'Русский' },
+    { id: 2, name: 'Язык', value: 'Русский' },
   ],
   modules: [
     {
@@ -151,30 +155,98 @@ const CourseId = () => {
   };
 
   return (
-    <WrapperContent header={[...defaultBreadCrumbs, ...breadCrumbs]}>
-      <ST.CourseId>
-        {currentLesson && accordion && (
-          <>
-            <LessonView
-              name={currentLesson.name}
-              video={currentLesson.video}
-              levelDifficulty={currentLesson.levelDifficulty}
-              description={currentLesson.description}
-              studentsLength={data.studentsLength}
-              language={data.language}
-              otherNotes={data.otherNotes}
-              lessonsLength={data.lessonsLength}
-              modulesLength={data.modulesLength}
-              isLoading={loading}
+    <ST.Wrapper>
+      <ST.WrapperInfo>
+        <WrapperContent header={[...defaultBreadCrumbs, ...breadCrumbs]}>
+          <ST.Content>
+            <ST.CourseId>
+              {currentLesson && (
+                <>
+                  <LessonView
+                    name={currentLesson.name}
+                    video={currentLesson.video}
+                    levelDifficulty={currentLesson.levelDifficulty}
+                    description={currentLesson.description}
+                    studentsLength={data.studentsLength}
+                    language={data.language}
+                    otherNotes={data.otherNotes}
+                    lessonsLength={data.lessonsLength}
+                    modulesLength={data.modulesLength}
+                    isLoading={loading}
+                  />
+                </>
+              )}
+            </ST.CourseId>
+          </ST.Content>
+        </WrapperContent>
+        <WrapperContent header={'Лекторы'}>
+          <ST.Content>
+            <LectorCard
+              name={'Станислав Евгеньевич Ж'}
+              description={'Самый лушчий'}
+              img={<IconForPlatformNewsCard />}
             />
-            <Accordion
-              array={accordion}
-              handleClick={handleClickAccordion}
+            <LectorCard
+              name={'Станислав Евгеньевич Ж'}
+              description={'Самый лушчий'}
+              img={<IconForPlatformNewsCard />}
             />
-          </>
-        )}
-      </ST.CourseId>
-    </WrapperContent>
+            <LectorCard
+              name={'Станислав Евгеньевич Ж'}
+              description={'Самый лушчий'}
+              img={<IconForPlatformNewsCard />}
+            />
+          </ST.Content>
+        </WrapperContent>
+        <WrapperContent header={'Тесты'}>
+          <ST.Content>
+            <TestCard
+              description={'Тест прохождение iq по Шнитке Валилию Петровичу'}
+              title={'iQ Тест'}
+              levelDifficulty={2}
+              time={'Время для прохождения: 2 часа'}
+              url={'/test/:1'}
+              needCount={70}
+              maxCount={100}
+              count={30}
+              status={true}
+            />
+
+            <TestCard
+              description={'Тест прохождение iq по Шнитке Валилию Петровичу'}
+              title={'iQ Тест'}
+              levelDifficulty={1}
+              time={'Время для прохождения: 2 часа'}
+              url={'/test/:1'}
+              needCount={70}
+              maxCount={100}
+              count={30}
+              status={true}
+            />
+          </ST.Content>
+        </WrapperContent>
+        <WrapperContent header={'Документы'}>
+          <ST.Content>
+            <DocumentCard
+              name={'Модуль 2 урок 2'}
+              description={'Тест прохождение iq по Шнитке Валилию Петровичу'}
+              url={'/document/1'}
+            />
+            <DocumentCard
+              name={'Модуль 2 урок 2'}
+              description={'Тест прохождение iq по Шнитке Валилию Петровичу'}
+              url={'/document/2'}
+            />
+          </ST.Content>
+        </WrapperContent>
+      </ST.WrapperInfo>
+      {accordion && (
+        <Accordion
+          array={accordion}
+          handleClick={handleClickAccordion}
+        />
+      )}
+    </ST.Wrapper>
   );
 };
 

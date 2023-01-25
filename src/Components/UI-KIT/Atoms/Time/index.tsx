@@ -9,7 +9,7 @@ type TimeProps = {
 const Time: FC<TimeProps> = ({ value }) => (
   <ST.Time>
     <Clock />
-    Время чтения: {value}
+    {value}
   </ST.Time>
 );
 

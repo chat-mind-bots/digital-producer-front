@@ -11,7 +11,6 @@ export const Cabinet = styled.div`
 
 export const Content = styled.div`
   position: absolute;
-  width: calc(100% - 337px);
   left: 297px;
   top: 129px;
   z-index: 3;

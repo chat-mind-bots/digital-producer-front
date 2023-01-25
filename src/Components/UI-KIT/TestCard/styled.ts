@@ -8,7 +8,7 @@ export const TestCard = styled.div`
   padding: 18px;
   border-radius: 16px;
   background: ${Colors.WHITE};
-  max-width: 340px;
+  max-width: 328px;
   box-sizing: border-box;
   background: ${Colors.WHITE};
   border: 2px solid ${Colors.TRANSPARENT};
@@ -31,4 +31,16 @@ export const Description = styled.p`
   font-size: 14px;
   line-height: 150%;
   color: ${Colors.GREY1};
+`;
+
+export const Info = styled.p`
+  font-family: 'Vela Sans';
+  font-weight: 700;
+  font-size: 12px;
+  line-height: 120%;
+  color: ${Colors.GREY2};
+  width: 100%;
+  align-items: center;
+  display: flex;
+  gap: 8px;
 `;

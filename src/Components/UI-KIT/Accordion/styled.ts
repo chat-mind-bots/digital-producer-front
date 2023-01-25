@@ -12,8 +12,9 @@ export const Accordion = styled.div`
   box-sizing: border-box;
   padding: 24px 18px 20px;
   height: max-content;
-  top: 116px;
+  top: 129px;
   position: sticky;
+  border: 2px solid ${Colors.WHITE2};
 `;
 
 export const Title = styled.p`

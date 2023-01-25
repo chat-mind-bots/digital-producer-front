@@ -4,7 +4,7 @@ import Colors from 'Colors';
 export const DocumentCard = styled.div`
   padding: 18px;
   border-radius: 16px;
-  max-width: 340px;
+  max-width: 328px;
   box-sizing: border-box;
   background: ${Colors.WHITE};
   border: 2px solid ${Colors.TRANSPARENT};

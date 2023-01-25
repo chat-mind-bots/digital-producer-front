@@ -8,12 +8,13 @@ export const LectorCard = styled.div`
   background: ${Colors.WHITE};
   border-radius: 24px;
   padding: 18px 18px 24px;
-  max-width: 340px;
+  max-width: 328px;
   box-sizing: border-box;
   & svg {
     height: max-content;
   }
 `;
+
 export const Name = styled.p`
   font-family: 'Vela Sans';
   font-weight: 700;
