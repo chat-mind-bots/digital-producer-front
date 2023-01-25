@@ -3,7 +3,7 @@ import { BreadCrumbsArrayType } from 'Components/UI-KIT/BreadCrumbs';
 import WrapperContent from 'Components/WrapperContent';
 import AddBlock from 'Components/UI-KIT/AddBlock';
 import NewsView from 'Components/UI-KIT/NewsView';
-import NewsCardSmall from 'Components/UI-KIT/NewsCardSmall';
+import ReadMoreCard from 'Components/UI-KIT/ReadMoreCard';
 import * as ST from './styled';
 
 const defaultBreadCrumbs: BreadCrumbsArrayType[] = [
@@ -82,42 +82,42 @@ const News = () => (
       </WrapperContent>
       <WrapperContent header={'Читать также'}>
         <ST.Wrapper>
-          <NewsCardSmall
+          <ReadMoreCard
             nameTag={'обновления'}
             title={'Выбор и анализ ниши'}
             description={
               'Встретитесь со своими глубинными страхами, пробьете свой финансовый потолок и научитесь получать ответы'
             }
           />
-          <NewsCardSmall
+          <ReadMoreCard
             nameTag={'обновления'}
             title={'Выбор и анализ ниши'}
             description={
               'Встретитесь со своими глубинными страхами, пробьете свой финансовый потолок и научитесь получать ответы'
             }
           />
-          <NewsCardSmall
+          <ReadMoreCard
             nameTag={'обновления'}
             title={'Выбор и анализ ниши'}
             description={
               'Встретитесь со своими глубинными страхами, пробьете свой финансовый потолок и научитесь получать ответы'
             }
           />
-          <NewsCardSmall
+          <ReadMoreCard
             nameTag={'обновления'}
             title={'Выбор и анализ ниши'}
             description={
               'Встретитесь со своими глубинными страхами, пробьете свой финансовый потолок и научитесь получать ответы'
             }
           />
-          <NewsCardSmall
+          <ReadMoreCard
             nameTag={'обновления'}
             title={'Выбор и анализ ниши'}
             description={
               'Встретитесь со своими глубинными страхами, пробьете свой финансовый потолок и научитесь получать ответы'
             }
           />
-          <NewsCardSmall
+          <ReadMoreCard
             nameTag={'обновления'}
             title={'Выбор и анализ ниши'}
             description={

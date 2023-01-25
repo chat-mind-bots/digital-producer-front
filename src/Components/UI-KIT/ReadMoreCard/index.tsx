@@ -1,24 +1,24 @@
 import { FC } from 'react';
 import * as ST from './styled';
 
-type NewsCardSmallProps = {
+type ReadMoreCardProps = {
   nameTag: string;
   title: string;
   description: string;
 };
 
-const NewsCardSmall: FC<NewsCardSmallProps> = ({
+const ReadMoreCard: FC<ReadMoreCardProps> = ({
   nameTag,
   title,
   description,
 }) => (
-  <ST.NewsCardSmall>
+  <ST.ReadMoreCard>
     <ST.Tags>
       <ST.Tag>{nameTag}</ST.Tag>
     </ST.Tags>
     <ST.Title>{title}</ST.Title>
     <ST.Description>{description}</ST.Description>
-  </ST.NewsCardSmall>
+  </ST.ReadMoreCard>
 );
 
-export default NewsCardSmall;
+export default ReadMoreCard;

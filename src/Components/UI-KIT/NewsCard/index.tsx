@@ -1,38 +1,62 @@
 import { FC } from 'react';
-import { ReactComponent as IconForPlatformNewsCard } from 'Icons/IconForPlatformNewsCard.svg';
+import { Link } from 'react-router-dom';
 import Date from 'Components/UI-KIT/Atoms/Date';
 import Time from 'Components/UI-KIT/Atoms/Time';
+import Colors from 'Colors';
 import * as ST from './styled';
 
 type NewsCardProps = {
-  nameTag: string;
-  title: string;
+  name: string;
   description: string;
-  time: string;
+  timeRead: string;
   date: string;
+  tags: TagType[];
+  tagsColors: boolean;
+  image: JSX.Element;
+  url: string;
 };
 
+export interface TagType {
+  id: number;
+  name: string;
+  background: string;
+  color: string;
+}
+
 const NewsCard: FC<NewsCardProps> = ({
-  nameTag,
-  title,
+  name,
   description,
-  time,
+  timeRead,
   date,
+  tags,
+  tagsColors,
+  image,
+  url,
 }) => (
-  <ST.NewsCard>
-    <IconForPlatformNewsCard />
-    <ST.Tags>
-      <ST.Tag>{nameTag}</ST.Tag>
-    </ST.Tags>
-    <ST.Title>{title}</ST.Title>
-    <ST.Description>{description}</ST.Description>
-    <ST.WrapperTime>
-      <Time value={time} />
-    </ST.WrapperTime>
-    <ST.WrapperDate>
-      <Date value={date} />
-    </ST.WrapperDate>
-  </ST.NewsCard>
+  <Link to={url}>
+    <ST.NewsCard>
+      {image}
+      <ST.Tags>
+        {tags.map((tag) => (
+          <ST.Tag
+            key={`NewsCard-tag-${tag.id}`}
+            background={tagsColors ? tag.background : Colors.WHITE3}
+            color={tagsColors ? tag.color : Colors.GREY4}
+          >
+            {tag.name}
+          </ST.Tag>
+        ))}
+      </ST.Tags>
+      <ST.Title>{name}</ST.Title>
+      <ST.Description>{description}</ST.Description>
+      <ST.WrapperTime>
+        <Time value={timeRead} />
+      </ST.WrapperTime>
+      <ST.WrapperDate>
+        <Date value={date} />
+      </ST.WrapperDate>
+    </ST.NewsCard>
+  </Link>
 );
 
 export default NewsCard;
