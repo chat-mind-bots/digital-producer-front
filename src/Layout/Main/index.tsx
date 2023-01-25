@@ -21,9 +21,7 @@ const Main: FC<MainProps> = ({ children, isRegistration }) => (
     <ST.Wrapper>
       <ST.Header>
         <ST.Logo>
-          <Link to={'/'}>
-            <Logo isMax={true} />
-          </Link>
+          <Logo isMax={true} />
         </ST.Logo>
         <ST.WrapperButton>
           <Link to={isRegistration ? '/registration' : '/logIn'}>
@@ -44,8 +42,12 @@ const Main: FC<MainProps> = ({ children, isRegistration }) => (
       </ST.Header>
       <ST.Content>{children}</ST.Content>
       <ST.Footer>
-        <ST.Name>Пользовательское соглашение</ST.Name>
-        <ST.Name>Политика конфидециальности</ST.Name>
+        <Link to={'/document/1'}>
+          <ST.Name>Пользовательское соглашение</ST.Name>
+        </Link>
+        <Link to={'/document/2'}>
+          <ST.Name>Политика конфидециальности</ST.Name>
+        </Link>
       </ST.Footer>
     </ST.Wrapper>
   </ST.Main>

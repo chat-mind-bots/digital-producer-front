@@ -1,3 +1,4 @@
+import { Link } from 'react-router-dom';
 import Button from 'Components/UI-KIT/Atoms/Button';
 import Colors from 'Colors';
 import * as ST from './styled';
@@ -9,18 +10,20 @@ const Home = () => (
       Самые последние и актуальные новости и обновления платформы
     </ST.Info>
     <ST.Buttons>
-      <Button
-        title={'Попробовать бесплатно'}
-        padding={'18px 24px'}
-        fontSize={'16px'}
-        lineHeight={'20px'}
-        fontWeight={'600'}
-        background={Colors.BLUE}
-        color={Colors.WHITE}
-        backgroundAnimation={Colors.BLUE_DARK}
-        colorHover={Colors.WHITE}
-        width={'max-content'}
-      />
+      <Link to={'/main'}>
+        <Button
+          title={'Попробовать бесплатно'}
+          padding={'18px 24px'}
+          fontSize={'16px'}
+          lineHeight={'20px'}
+          fontWeight={'600'}
+          background={Colors.BLUE}
+          color={Colors.WHITE}
+          backgroundAnimation={Colors.BLUE_DARK}
+          colorHover={Colors.WHITE}
+          width={'max-content'}
+        />
+      </Link>
       <Button
         title={'О платформе'}
         padding={'18px 24px'}
