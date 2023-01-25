@@ -1,10 +1,9 @@
 import styled from 'styled-components';
 import Colors from 'Colors';
 
-export const TestCard = styled.div`
+export const DocumentCard = styled.div`
   padding: 18px;
   border-radius: 16px;
-  background: ${Colors.WHITE};
   max-width: 340px;
   box-sizing: border-box;
   background: ${Colors.WHITE};
@@ -15,23 +14,26 @@ export const TestCard = styled.div`
   }
 `;
 
-export const Title = styled.p`
+export const Name = styled.p`
   font-family: 'Vela Sans';
+  font-style: normal;
   font-weight: 700;
   font-size: 20px;
   line-height: 140%;
   color: ${Colors.BLACK1};
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+  align-items: center;
+  & svg {
+    transform: rotate(-90deg);
+  }
 `;
 
 export const Description = styled.p`
+  margin-top: 10px;
   font-weight: 400;
   font-size: 14px;
   line-height: 150%;
   color: ${Colors.GREY1};
-`;
-
-export const Wrapper = styled.div`
-  display: flex;
-  flex-wrap: wrap;
-  gap: 12px;
 `;
