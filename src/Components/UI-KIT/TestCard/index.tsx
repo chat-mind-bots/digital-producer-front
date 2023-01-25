@@ -22,17 +22,15 @@ const TestCard: FC<TestCardProps> = ({
   date,
   url,
 }) => (
-  <ST.TestCard>
-    <Link to={url}>
-      <ST.Wrapper>
-        <ST.Title>{title}</ST.Title>
-        <ST.Description>{description}</ST.Description>
-        <LevelDifficulty count={levelDifficulty} />
-        <Time value={time} />
-        <Date value={date} />
-      </ST.Wrapper>
-    </Link>
-  </ST.TestCard>
+  <Link to={url}>
+    <ST.TestCard>
+      <ST.Title>{title}</ST.Title>
+      <ST.Description>{description}</ST.Description>
+      <LevelDifficulty count={levelDifficulty} />
+      <Time value={time} />
+      <Date value={date} />
+    </ST.TestCard>
+  </Link>
 );
 
 export default TestCard;

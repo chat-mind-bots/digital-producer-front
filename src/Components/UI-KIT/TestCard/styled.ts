@@ -2,6 +2,9 @@ import styled from 'styled-components';
 import Colors from 'Colors';
 
 export const TestCard = styled.div`
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
   padding: 18px;
   border-radius: 16px;
   background: ${Colors.WHITE};
@@ -28,10 +31,4 @@ export const Description = styled.p`
   font-size: 14px;
   line-height: 150%;
   color: ${Colors.GREY1};
-`;
-
-export const Wrapper = styled.div`
-  display: flex;
-  flex-wrap: wrap;
-  gap: 12px;
 `;

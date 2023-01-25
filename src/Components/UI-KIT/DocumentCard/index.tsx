@@ -10,15 +10,15 @@ type DocumentCardProps = {
 };
 
 const DocumentCard: FC<DocumentCardProps> = ({ name, description, url }) => (
-  <ST.DocumentCard>
-    <Link to={url}>
+  <Link to={url}>
+    <ST.DocumentCard>
       <ST.Name>
         {name}
         <ArrowDown />
       </ST.Name>
       <ST.Description>{description}</ST.Description>
-    </Link>
-  </ST.DocumentCard>
+    </ST.DocumentCard>
+  </Link>
 );
 
 export default DocumentCard;
