@@ -25,14 +25,27 @@ export const Description = styled.p`
   border-radius: 20px;
 `;
 
-export const WrapperQuestions = styled.div``;
+export const WrapperQuestions = styled.div<{ isActive: boolean }>`
+  overflow: hidden;
+  max-height: ${({ isActive }) => (isActive ? '1000px' : '0')};
+  transition: 1s;
+`;
 
 export const WrapperButton = styled.div`
-  margin-top: 28px;
   width: 100%;
   background: ${Colors.WHITE3};
   display: flex;
   justify-content: center;
+  gap: 28px;
+  max-width: 432.41px;
+  margin: 28px auto auto auto;
+  & > button,
+  a {
+    width: 50%;
+  }
+  & > a > button {
+    width: 100%;
+  }
 `;
 
 export const ListTitle = styled.p`

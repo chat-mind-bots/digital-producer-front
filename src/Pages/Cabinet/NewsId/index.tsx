@@ -23,8 +23,7 @@ const News = () => (
       >
         <ST.Wrapper>
           <NewsView
-            nameTag={'обновления'}
-            title={'«Вирусная» игра сыграна'}
+            name={'«Вирусная» игра сыграна'}
             text={
               'Онлайн-образования на стыке пандемии.\n' +
               '        <br />\n' +
@@ -78,6 +77,15 @@ const News = () => (
             }
             time={'Время чтения: 1 мин'}
             date={'18 января 2021'}
+            tagsColors={false}
+            tags={[
+              {
+                id: 1,
+                name: 'обновления',
+                background: Colors.WHITE3,
+                color: Colors.GREY1,
+              },
+            ]}
           />
         </ST.Wrapper>
       </WrapperContent>

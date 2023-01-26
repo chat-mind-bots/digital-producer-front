@@ -32,13 +32,6 @@ export const WrapperInfo = styled.div`
   height: 382px;
 `;
 
-export const Tags = styled.div`
-  display: flex;
-  gap: 12px;
-  align-items: center;
-  height: max-content;
-`;
-
 export const Name = styled.p`
   font-family: 'Vela Sans';
   font-style: normal;
@@ -56,20 +49,6 @@ export const Description = styled.p`
   line-height: 22px;
   color: ${Colors.GREY1};
   margin-top: 14px;
-`;
-
-export const Tag = styled.p`
-  align-items: flex-start;
-  padding: 3px 12px;
-  gap: 10px;
-  border-radius: 6px;
-  background: ${Colors.SKYBLUE};
-  color: ${Colors.BLUE};
-  text-transform: uppercase;
-  letter-spacing: 1px;
-  font-weight: 600;
-  font-size: 10px;
-  line-height: 20px;
 `;
 
 export const WrapperContent = styled.div`

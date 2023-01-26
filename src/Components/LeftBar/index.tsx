@@ -13,7 +13,7 @@ const LeftBar = () => (
     </ST.WrapperInfo>
     <BlockAllCoursesPlatform
       textButton={'Курсы платформы'}
-      urlButton={''}
+      urlButton={'/metaCourses'}
       styleButton={''}
     />
   </ST.LeftBar>
