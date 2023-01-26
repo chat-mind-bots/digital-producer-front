@@ -2,19 +2,22 @@ import { FC, useEffect, useState } from 'react';
 import * as ST from './styled';
 
 type LevelDifficultyProps = {
-  count: LevelDifficultyType;
+  data: LevelDifficultyType;
 };
 
-export type LevelDifficultyType = 1 | 2 | 3;
+export type LevelDifficultyType = {
+  curren: number;
+  max: number;
+};
 
-const LevelDifficulty: FC<LevelDifficultyProps> = ({ count }) => (
+const LevelDifficulty: FC<LevelDifficultyProps> = ({ data }) => (
   <ST.LevelDifficulty>
     <ST.Title>уровень сложности:</ST.Title>
     <ST.Items>
-      {new Array(3).fill(undefined).map((item, index) => (
+      {new Array(data.max).fill(undefined).map((item, index) => (
         <ST.Item
           key={`Item-Level-Difficulty-${index}`}
-          isActive={index < count}
+          isActive={index < data.curren}
         />
       ))}
     </ST.Items>
@@ -22,23 +25,20 @@ const LevelDifficulty: FC<LevelDifficultyProps> = ({ count }) => (
 );
 
 export const LoadingLevelDifficulty = () => {
-  const [count, setCount] = useState<LevelDifficultyType>(1);
+  const [count, setCount] = useState<number>(1);
   const maxCount = 3;
   const minCount = 0;
   const delay = 500;
 
   useEffect(() => {
     const timerId = setInterval(
-      () =>
-        setCount(
-          (count === maxCount ? minCount : count + 1) as LevelDifficultyType
-        ),
+      () => setCount((count === maxCount ? minCount : count + 1) as number),
       delay
     );
     return () => clearInterval(timerId);
   });
 
-  return <LevelDifficulty count={count} />;
+  return <LevelDifficulty data={{ curren: count, max: 3 }} />;
 };
 
 export default LevelDifficulty;

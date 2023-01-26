@@ -1,14 +1,16 @@
 import { FC } from 'react';
 import { Link } from 'react-router-dom';
 import { ReactComponent as IconForCourseCard } from 'Icons/IconForCourseCard.svg';
-import LevelDifficulty from 'Components/UI-KIT/Atoms/LevelDificulty';
+import LevelDifficulty, {
+  LevelDifficultyType,
+} from 'Components/UI-KIT/Atoms/LevelDificulty';
 import Tags, { TagType } from 'Components/UI-KIT/Atoms/Tags';
 import * as ST from './styled';
 
 type CourseCardProps = {
   title: string;
   description: string;
-  levelDifficulty: 1 | 2 | 3;
+  levelDifficulty: LevelDifficultyType;
   url: string;
   tagsColors: boolean;
   tags: TagType[];
@@ -33,7 +35,7 @@ const CourseCard: FC<CourseCardProps> = ({
         <ST.Title>{title}</ST.Title>
         <ST.Description>{description}</ST.Description>
         <ST.WrapperLevel>
-          <LevelDifficulty count={levelDifficulty} />
+          <LevelDifficulty data={levelDifficulty} />
         </ST.WrapperLevel>
       </ST.MainWrapper>
     </ST.CourseCard>

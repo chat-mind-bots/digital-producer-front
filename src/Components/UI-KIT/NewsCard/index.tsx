@@ -1,18 +1,14 @@
-import { FC } from 'react';
+import React, { FC } from 'react';
 import { Link } from 'react-router-dom';
+import { ListType } from 'Types/News';
+import { ReactComponent as IconForPlatformNewsCard } from 'Icons/IconForPlatformNewsCard.svg';
 import Date from 'Components/UI-KIT/Atoms/Date';
 import Time from 'Components/UI-KIT/Atoms/Time';
-import Tags, { TagType } from 'Components/UI-KIT/Atoms/Tags';
+import Tags from 'Components/UI-KIT/Atoms/Tags';
 import * as ST from './styled';
 
-type NewsCardProps = {
-  name: string;
-  description: string;
-  timeRead: string;
-  date: string;
-  tags: TagType[];
+type NewsCardProps = ListType & {
   tagsColors: boolean;
-  image: JSX.Element;
   url: string;
 };
 
@@ -28,7 +24,7 @@ const NewsCard: FC<NewsCardProps> = ({
 }) => (
   <Link to={url}>
     <ST.NewsCard>
-      {image}
+      <IconForPlatformNewsCard />
       <Tags
         tags={tags}
         tagsColors={tagsColors}

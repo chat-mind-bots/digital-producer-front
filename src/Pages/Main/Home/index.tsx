@@ -1,16 +1,17 @@
 import { Link } from 'react-router-dom';
 import Button from 'Components/UI-KIT/Atoms/Button';
+import RoutesList from 'Router/routesList';
 import Colors from 'Colors';
 import * as ST from './styled';
 
 const Home = () => (
   <ST.Home>
     <ST.Title>Платформа для создания и продажи онлайн-курсов</ST.Title>
-    <ST.Info>
+    <ST.Description>
       Самые последние и актуальные новости и обновления платформы
-    </ST.Info>
+    </ST.Description>
     <ST.Buttons>
-      <Link to={'/main'}>
+      <Link to={RoutesList.MAIN}>
         <Button
           title={'Попробовать бесплатно'}
           padding={'18px 24px'}

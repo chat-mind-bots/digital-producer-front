@@ -1,5 +1,6 @@
 import { FC } from 'react';
 import { Link } from 'react-router-dom';
+import RoutesList from 'Router/routesList';
 import Logo from 'Components/UI-KIT/Logo';
 import Button from 'Components/UI-KIT/Atoms/Button';
 import Colors from 'Colors';
@@ -24,7 +25,9 @@ const Main: FC<MainProps> = ({ children, isRegistration }) => (
           <Logo isMax={true} />
         </ST.Logo>
         <ST.WrapperButton>
-          <Link to={isRegistration ? '/registration' : '/logIn'}>
+          <Link
+            to={isRegistration ? RoutesList.REGISTRATION : RoutesList.LOGIN}
+          >
             <Button
               title={isRegistration ? 'Регистрация' : 'Уже есть аккаунт'}
               padding={'10px 14px'}
@@ -42,10 +45,10 @@ const Main: FC<MainProps> = ({ children, isRegistration }) => (
       </ST.Header>
       <ST.Content>{children}</ST.Content>
       <ST.Footer>
-        <Link to={'/document/1'}>
+        <Link to={RoutesList.DOCUMENT_ID}>
           <ST.Name>Пользовательское соглашение</ST.Name>
         </Link>
-        <Link to={'/document/2'}>
+        <Link to={RoutesList.DOCUMENT_ID}>
           <ST.Name>Политика конфидециальности</ST.Name>
         </Link>
       </ST.Footer>

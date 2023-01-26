@@ -56,3 +56,7 @@ export const Inputs = styled.div`
   flex-wrap: wrap;
   gap: 28px;
 `;
+
+export const LoginHere = styled.span`
+  color: ${Colors.BLUE};
+`;

@@ -1,4 +1,4 @@
-import { ReactComponent as IconForInsight1 } from '../../Icons/IconForInsight1.svg';
+import { ReactComponent as IconForInsight1 } from '../Icons/IconForInsight1.svg';
 
 // ПРИМЕР: Создайте свой курс
 // URL: /BannerNews

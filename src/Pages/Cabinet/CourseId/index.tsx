@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { FC, useEffect, useState } from 'react';
 import Accordion, {
   AccordionType,
   HandleClickType,
@@ -6,94 +6,40 @@ import Accordion, {
 import LessonView from 'Components/UI-KIT/LessonView';
 import WrapperContent from 'Components/WrapperContent';
 import { BreadCrumbsArrayType } from 'Components/UI-KIT/BreadCrumbs';
-import { CourseIdType, LessonType } from 'Types/Course/CourseId';
-import * as ST from './styled';
 import LectorCard from 'Components/UI-KIT/LectorCard';
 import TestCard from 'Components/UI-KIT/TestCard';
 import DocumentCard from 'Components/UI-KIT/DocumentCard';
 import { ReactComponent as IconForPlatformNewsCard } from 'Icons/IconForPlatformNewsCard.svg';
-
-const data: CourseIdType = {
-  id: 1,
-  name: '«Вирусная» игра сыграна',
-  description: 'Описание курса ',
-  video: '/',
-  price: 2500,
-  discount: 0,
-  oldPrice: 2500,
-  studentsLength: 25,
-  modulesLength: 13,
-  lessonsLength: 23,
-  language: 'Русский',
-  status: 200,
-  otherNotes: [
-    { id: 1, name: 'Язык', value: 'Русский' },
-    { id: 2, name: 'Язык', value: 'Русский' },
-  ],
-  modules: [
-    {
-      id: 1,
-      name: 'Мышление успешного человека',
-      lessons: [
-        {
-          id: 1,
-          name: 'Работа со страхами',
-          description:
-            '  Задача организации, в особенности же консультация с широким активом\n' +
-            '        требуют определения и уточнения системы обучения кадров, соответствует\n' +
-            '        насущным потребностям. Повседневная практика показывает, что сложившаяся\n' +
-            '        структура организации требуют от нас анализа дальнейших направлений\n' +
-            '        развития.',
-          video: 'string',
-          levelDifficulty: 1,
-        },
-        {
-          id: 2,
-          name: 'Синдром самозванца',
-          description:
-            '  Задача организации, в особенности же консультация с широким активом\n' +
-            '        требуют определения и уточнения системы обучения кадров, соответствует\n',
-          video: 'string',
-          levelDifficulty: 2,
-        },
-      ],
-    },
-    {
-      id: 2,
-      name: 'Мышление успешного человека',
-      lessons: [
-        {
-          id: 3,
-          name: 'Работа со страхами',
-          description:
-            '  Задача организации, в особенности же консультация с широким активом\n' +
-            '        требуют определения и уточнения системы обучения кадров, соответствует\n' +
-            '        насущным потребностям. Повседневная практика показывает, что сложившаяся\n' +
-            '        структура организации требуют от нас анализа дальнейших направлений\n' +
-            '        развития.',
-          video: 'string',
-          levelDifficulty: 3,
-        },
-        {
-          id: 4,
-          name: 'Практика "контроль над мыслями',
-          description:
-            '  Задача организации, в особенности же консультация с широким активом\n' +
-            '        требуют определения и уточнения системы обучения кадров, соответствует\n',
-          video: 'string',
-          levelDifficulty: 1,
-        },
-      ],
-    },
-  ],
-};
+import RoutesList from 'Router/routesList';
+import { CourseIdType, LessonType } from 'Types/CourseId';
+import * as ST from './styled';
 
 const defaultBreadCrumbs: BreadCrumbsArrayType[] = [
-  { id: 1, name: 'Главная', url: '/main' },
-  { id: 2, name: 'Мои курсы', url: '/courses' },
+  { id: 1, name: 'Главная', url: RoutesList.MAIN },
+  { id: 2, name: 'Мои курсы', url: RoutesList.COURSES },
 ];
 
-const CourseId = () => {
+const CourseId: FC<CourseIdType> = ({
+  id,
+  name,
+  description,
+  image,
+  video,
+  studentsLength,
+  modulesLength,
+  lessonsLength,
+  isFree,
+  language,
+  status,
+  paymentLink,
+  lecturers,
+  price,
+  levelDifficulty,
+  tags,
+  otherNotes,
+  modules,
+  documents,
+}) => {
   const [state, setState] = useState({
     module: 1,
     lesson: 1,
@@ -102,18 +48,18 @@ const CourseId = () => {
   const [accordion, setAccordion] = useState<AccordionType[]>();
   const [loading, setLoading] = useState<boolean>(false);
   const breadCrumbs: BreadCrumbsArrayType[] = [
-    { id: 3, name: data.name, url: '/course/1' },
+    { id: 3, name: name, url: `${RoutesList.COURSE_ID}${id}` },
     {
       id: 4,
       name: currentLesson ? currentLesson.name : '',
-      url: '/main',
+      url: RoutesList.MAIN,
     },
   ];
 
   useEffect(() => {
     (() => {
       let currentLesson: LessonType | undefined = undefined;
-      data.modules.forEach((module) => {
+      modules.forEach((module) => {
         if (module.id === state.module) {
           module.lessons.forEach((lesson) => {
             if (lesson.id === state.lesson) {
@@ -125,7 +71,7 @@ const CourseId = () => {
       currentLesson && setCurrentLesson(currentLesson);
     })();
     (() => {
-      const arrayAccordion: AccordionType[] = data.modules.map((module) => {
+      const arrayAccordion: AccordionType[] = modules.map((module) => {
         return {
           id: module.id,
           name: module.name,
@@ -162,16 +108,28 @@ const CourseId = () => {
             {currentLesson && (
               <>
                 <LessonView
-                  name={currentLesson.name}
-                  video={currentLesson.video}
-                  levelDifficulty={currentLesson.levelDifficulty}
-                  description={currentLesson.description}
-                  studentsLength={data.studentsLength}
-                  language={data.language}
-                  otherNotes={data.otherNotes}
-                  lessonsLength={data.lessonsLength}
-                  modulesLength={data.modulesLength}
+                  id={currentLesson.id}
+                  name={currentLesson ? currentLesson.name : name}
+                  video={currentLesson ? currentLesson.video : video}
+                  levelDifficulty={
+                    currentLesson
+                      ? currentLesson.levelDifficulty
+                      : levelDifficulty
+                  }
+                  description={
+                    currentLesson ? currentLesson.description : description
+                  }
+                  studentsLength={studentsLength}
+                  language={language}
+                  otherNotes={otherNotes}
+                  lessonsLength={lessonsLength}
+                  modulesLength={modulesLength}
                   isLoading={loading}
+                  image={currentLesson ? currentLesson.image : image}
+                  documents={
+                    currentLesson ? currentLesson.documents : documents
+                  }
+                  tests={currentLesson.tests}
                 />
               </>
             )}
@@ -179,50 +137,51 @@ const CourseId = () => {
         </WrapperContent>
         <WrapperContent header={'Лекторы'}>
           <ST.Content>
-            <LectorCard
-              name={'Станислав Евгеньевич Ж'}
-              description={'Самый лушчий'}
-              img={<IconForPlatformNewsCard />}
-            />
-            <LectorCard
-              name={'Станислав Евгеньевич Ж'}
-              description={'Самый лушчий'}
-              img={<IconForPlatformNewsCard />}
-            />
-            <LectorCard
-              name={'Станислав Евгеньевич Ж'}
-              description={'Самый лушчий'}
-              img={<IconForPlatformNewsCard />}
-            />
+            {lecturers.map((lecture) => (
+              <LectorCard
+                name={lecture.name}
+                description={lecture.description}
+                img={<IconForPlatformNewsCard />}
+              />
+            ))}
           </ST.Content>
         </WrapperContent>
-        <WrapperContent header={'Тесты'}>
-          <ST.Content>
-            <TestCard
-              description={'Тест прохождение iq по Шнитке Валилию Петровичу'}
-              title={'iQ Тест'}
-              levelDifficulty={2}
-              time={'Время для прохождения: 2 часа'}
-              url={'/test/:1'}
-              minCountForSuccess={70}
-              countQuestions={100}
-              currentResult={30}
-              status={false}
-            />
-          </ST.Content>
-        </WrapperContent>
+        {currentLesson?.tests && (
+          <WrapperContent header={'Тесты'}>
+            <ST.Content>
+              {currentLesson?.tests.map((test) => (
+                <TestCard
+                  id={test.id}
+                  description={test.description}
+                  name={test.name}
+                  levelDifficulty={test.levelDifficulty}
+                  transitTime={test.transitTime}
+                  minCountForSuccess={test.minCountForSuccess}
+                  countQuestions={test.countQuestions}
+                  currentResult={test.currentResult}
+                  status={test.status}
+                />
+              ))}
+            </ST.Content>
+          </WrapperContent>
+        )}
         <WrapperContent header={'Документы'}>
           <ST.Content>
-            <DocumentCard
-              name={'Модуль 2 урок 2'}
-              description={'Тест прохождение iq по Шнитке Валилию Петровичу'}
-              url={'/document/1'}
-            />
-            <DocumentCard
-              name={'Модуль 2 урок 2'}
-              description={'Тест прохождение iq по Шнитке Валилию Петровичу'}
-              url={'/document/2'}
-            />
+            {documents
+              ? documents.map((document) => (
+                  <DocumentCard
+                    name={document.name}
+                    description={document.description}
+                    url={document.url}
+                  />
+                ))
+              : currentLesson?.documents.map((document) => (
+                  <DocumentCard
+                    name={document.name}
+                    description={document.description}
+                    url={document.url}
+                  />
+                ))}
           </ST.Content>
         </WrapperContent>
       </ST.WrapperInfo>

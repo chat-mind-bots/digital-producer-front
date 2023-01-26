@@ -1,10 +1,10 @@
-import { ReactComponent as IconForInsight1 } from '../../Icons/IconForInsight1.svg';
+import { ReactComponent as IconForInsight1 } from '../Icons/IconForInsight1.svg';
 
 // ПРИМЕР: Любой спсок где есть курсы (Рекомендованные курсы || Мои курсы || Бесплатные курсы || Курсы для новичковв и тд )
 // URL: /course?type=('recommended'|'my')
 // METHOD: GET
 // AUTH: TRUE
-const Courses = {
+export const CoursesData: CoursesType = {
   count: 0,
   pageCount: 0,
   currentPage: 0,
@@ -31,14 +31,14 @@ const Courses = {
   },
 };
 
-export interface RootObject {
+export interface CoursesType {
   count: number;
   pageCount: number;
   currentPage: number;
-  data: Data;
+  data: DataCourse;
 }
 
-export interface Data {
+export interface DataCourse {
   title: string;
   tagsColors: boolean;
   list: Course[];

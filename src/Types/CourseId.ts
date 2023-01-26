@@ -1,10 +1,10 @@
-import { ReactComponent as IconForInsight1 } from '../../Icons/IconForInsight1.svg';
+import { ReactComponent as IconForInsight1 } from '../Icons/IconForInsight1.svg';
 
 // ПРИМЕР: Курс по ID
 // URL: /course/ID
 // METHOD: GET
 // AUTH: TRUE
-const CourseId: RootObject = {
+export const CourseIdData: CourseIdType = {
   id: 1,
   name: 'Продажа и мышление',
   description: 'Научитесь продавать и запускать инфопродукты в Инстаграм',
@@ -48,7 +48,7 @@ const CourseId: RootObject = {
     { id: 1, name: 'string', value: 'string' },
     { id: 2, name: 'string', value: 'string' },
   ],
-  document: [
+  documents: [
     {
       id: 1,
       name: 'Документ 1',
@@ -82,7 +82,7 @@ const CourseId: RootObject = {
             curren: 2,
             max: 3,
           },
-          document: [
+          documents: [
             {
               id: 1,
               name: 'Документ 1',
@@ -118,7 +118,7 @@ const CourseId: RootObject = {
   ],
 };
 
-export interface RootObject {
+export interface CourseIdType {
   id: number;
   name: string;
   description: string;
@@ -137,7 +137,7 @@ export interface RootObject {
   tags: Tag[];
   otherNotes: OtherNote[];
   modules: Module[];
-  document: Document[];
+  documents: Document[];
 }
 
 export interface Lecturer {
@@ -173,7 +173,7 @@ export interface OtherNote {
 export interface Module {
   id: number;
   name: string;
-  lessons: Lesson[];
+  lessons: LessonType[];
 }
 
 export interface Document {
@@ -188,18 +188,18 @@ export interface LevelDifficulty {
   max: number;
 }
 
-export interface Lesson {
+export interface LessonType {
   id: number;
   name: string;
   description: string;
   image: string;
   video: string;
   levelDifficulty: LevelDifficulty;
-  document: Document[];
-  tests: Test[];
+  documents: Document[];
+  tests: TestType[];
 }
 
-export interface Test {
+export interface TestType {
   id: number;
   name: string;
   description: string;

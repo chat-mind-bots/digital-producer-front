@@ -1,10 +1,10 @@
-import { ReactComponent as IconForInsight1 } from '../../Icons/IconForInsight1.svg';
+import { ReactComponent as IconForInsight1 } from '../Icons/IconForInsight1.svg';
 
 // ПРИМЕР: Любой спсок где есть новости (Рекомендованные новости || Новости плтформы  и тд )
 // URL: /news
 // METHOD: GET
 // AUTH: TRUE
-const News = {
+export const NewsData: NewsType = {
   count: 0,
   pageCount: 0,
   currentPage: 0,
@@ -28,7 +28,7 @@ const News = {
   },
 };
 
-export interface RootObject {
+export interface NewsType {
   count: number;
   pageCount: number;
   currentPage: number;
@@ -38,10 +38,10 @@ export interface RootObject {
 export interface Data {
   title: string;
   tagsColors: boolean;
-  list: List[];
+  list: ListType[];
 }
 
-export interface List {
+export interface ListType {
   id: number;
   name: string;
   description: string;

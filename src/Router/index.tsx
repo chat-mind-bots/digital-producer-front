@@ -1,6 +1,5 @@
 import { Route, Routes } from 'react-router-dom';
 import CourseId from 'Pages/Cabinet/CourseId';
-import News from 'Pages/Cabinet/NewsId';
 import PrivateRouteAnother from 'Router/PrivateRoute/PrivateRouteAnother';
 import LogIn from 'Pages/Main/LogIn';
 import Registration from 'Pages/Main/Registration';
@@ -8,7 +7,12 @@ import Home from 'Pages/Main/Home';
 import Test from 'Pages/Cabinet/Test';
 import Main from 'Layout/Main';
 import Cabinet from 'Layout/Cabinet';
+import NewsId from 'Pages/Cabinet/NewsId';
 import NavBarData from 'Constants/NavBar';
+import RoutesList from 'Router/routesList';
+import { NewsIdData } from 'Types/NewsId';
+import { CourseIdData } from 'Types/CourseId';
+import { TestIdData } from 'Types/TestId';
 
 export const RouterCabinet = () => (
   <Routes>
@@ -21,32 +25,26 @@ export const RouterCabinet = () => (
         />
       ))}
       <Route
-        path="/news/:id"
+        path={`${RoutesList.NEWS_ID}:id`}
         element={
           <Cabinet>
-            <News />
+            <NewsId {...NewsIdData} />
           </Cabinet>
         }
       />
       <Route
-        path="/course/:id"
+        path={`${RoutesList.COURSE_ID}:id`}
         element={
           <Cabinet>
-            <CourseId />
+            <CourseId {...CourseIdData} />
           </Cabinet>
         }
       />
       <Route
-        path="/test/:id"
+        path={`${RoutesList.TEST_ID}id`}
         element={
           <Cabinet>
-            <Test
-              description={
-                'Хронические интоксикации - "потайной" краеугольный камень в\n' +
-                'фундаменте болезней цивилизации. Полисистемная детоксификация, как\n' +
-                'универсальный и высокоэффективный терапевтический инструмент".'
-              }
-            />
+            <Test {...TestIdData} />
           </Cabinet>
         }
       />
@@ -57,7 +55,7 @@ export const RouterCabinet = () => (
 export const RouterNoAuth = () => (
   <Routes>
     <Route
-      path="/logIn"
+      path={RoutesList.LOGIN}
       element={
         <Main isRegistration={true}>
           <LogIn />
@@ -65,7 +63,7 @@ export const RouterNoAuth = () => (
       }
     />
     <Route
-      path="/registration"
+      path={RoutesList.REGISTRATION}
       element={
         <Main isRegistration={false}>
           <Registration />

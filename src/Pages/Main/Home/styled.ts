@@ -11,7 +11,7 @@ export const Title = styled.p`
   color: ${Colors.BLACK1};
 `;
 
-export const Info = styled.p`
+export const Description = styled.p`
   font-weight: 400;
   font-size: 22px;
   line-height: 34px;
