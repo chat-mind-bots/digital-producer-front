@@ -1,11 +1,6 @@
 import styled from 'styled-components';
 import Colors from 'Colors';
 
-type TagProps = {
-  background: string;
-  color: string;
-};
-
 export const CourseCard = styled.div`
   padding: 19px;
   border-radius: 20px;
@@ -23,25 +18,6 @@ export const CourseCard = styled.div`
 `;
 
 export const MainWrapper = styled.div``;
-
-export const Tags = styled.div`
-  display: flex;
-  gap: 10px;
-  margin-top: 12px;
-`;
-
-export const Tag = styled.p<TagProps>`
-  border-radius: 6px;
-  font-weight: 600;
-  font-size: 10px;
-  padding: 3px 12px;
-  line-height: 20px;
-  text-align: center;
-  letter-spacing: 1px;
-  background: ${({ background }) => background};
-  color: ${({ color }) => color};
-  text-transform: uppercase;
-`;
 
 export const Title = styled.p`
   font-family: 'Vela Sans';

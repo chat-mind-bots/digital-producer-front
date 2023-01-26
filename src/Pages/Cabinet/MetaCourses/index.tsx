@@ -8,11 +8,11 @@ import * as ST from './styled';
 
 const defaultBreadCrumbs: BreadCrumbsArrayType[] = [
   { id: 1, name: 'Главная', url: '/main' },
-  { id: 2, name: 'Мои курсы', url: '/courses' },
+  { id: 2, name: 'Курсы Meta', url: '/metaCourses' },
 ];
 
-const Courses = () => (
-  <ST.Courses>
+const MetaCourses = () => (
+  <ST.MetaCourses>
     <ST.WrapperCourses>
       <WrapperContent header={[...defaultBreadCrumbs]}>
         <ST.Wrapper>
@@ -26,8 +26,38 @@ const Courses = () => (
               {
                 id: 1,
                 name: 'Дизайн',
-                background: Colors.SKYBLUE,
-                color: Colors.BLUE,
+                background: Colors.RED,
+                color: Colors.WHITE,
+              },
+            ]}
+          />
+          <CourseCard
+            url={'/course/1'}
+            title={'Название курса'}
+            description={'Подробное описание курса'}
+            levelDifficulty={2}
+            tagsColors={true}
+            tags={[
+              {
+                id: 1,
+                name: 'Дизайн',
+                background: Colors.BLUE,
+                color: Colors.WHITE,
+              },
+            ]}
+          />
+          <CourseCard
+            url={'/course/1'}
+            title={'Название курса'}
+            description={'Подробное описание курса'}
+            levelDifficulty={2}
+            tagsColors={true}
+            tags={[
+              {
+                id: 1,
+                name: 'Дизайн',
+                background: Colors.ORANGE,
+                color: Colors.WHITE,
               },
             ]}
           />
@@ -42,37 +72,7 @@ const Courses = () => (
                 id: 1,
                 name: 'Дизайн',
                 background: Colors.SKYBLUE,
-                color: Colors.BLUE,
-              },
-            ]}
-          />
-          <CourseCard
-            url={'/course/1'}
-            title={'Название курса'}
-            description={'Подробное описание курса'}
-            levelDifficulty={2}
-            tagsColors={true}
-            tags={[
-              {
-                id: 1,
-                name: 'Дизайн',
-                background: Colors.SKYBLUE,
-                color: Colors.BLUE,
-              },
-            ]}
-          />
-          <CourseCard
-            url={'/course/1'}
-            title={'Название курса'}
-            description={'Подробное описание курса'}
-            levelDifficulty={2}
-            tagsColors={true}
-            tags={[
-              {
-                id: 1,
-                name: 'Дизайн',
-                background: Colors.SKYBLUE,
-                color: Colors.BLUE,
+                color: Colors.BLACK1,
               },
             ]}
           />
@@ -90,7 +90,7 @@ const Courses = () => (
         styleButton={''}
       />
     </ST.WrapperAddBlock>
-  </ST.Courses>
+  </ST.MetaCourses>
 );
 
-export default Courses;
+export default MetaCourses;

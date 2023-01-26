@@ -1,4 +1,6 @@
-import { FC } from 'react';
+import React, { FC, useState } from 'react';
+import { Link } from 'react-router-dom';
+import toast, { Toaster } from 'react-hot-toast';
 import BlockRulesTest from 'Components/UI-KIT/BlockRulesTest';
 import WrapperContent from 'Components/WrapperContent';
 import Questions, { QuestionData } from 'Components/UI-KIT/Questions';
@@ -10,41 +12,67 @@ type TestProps = {
   description: string;
 };
 
-const Test: FC<TestProps> = ({ description }) => (
-  <ST.Test>
-    <WrapperContent header={'Тест 31'}>
-      <>
-        <ST.Info>
-          <ST.Description>{description}</ST.Description>
-          <BlockRulesTest
-            array={[
-              { id: 1, rule: 'Тест состоит из 100 вопросов' },
-              { id: 2, rule: 'Тест состоит из 100 вопросов' },
-              { id: 3, rule: 'Тест состоит из 100 вопросов' },
-            ]}
-          />
-        </ST.Info>
-        <ST.WrapperQuestions>
-          <ST.ListTitle>Вопросы:</ST.ListTitle>
-          <Questions arrayQuestion={QuestionData} />
-        </ST.WrapperQuestions>
-        <ST.WrapperButton>
-          <Button
-            title={'Отправить'}
-            padding={'14px 100px'}
-            fontSize={'14px'}
-            lineHeight={'20px'}
-            fontWeight={'600'}
-            background={Colors.BLUE}
-            color={Colors.WHITE}
-            backgroundAnimation={Colors.BLUE_DARK}
-            colorHover={Colors.WHITE}
-            width={'max-content'}
-          />
-        </ST.WrapperButton>
-      </>
-    </WrapperContent>
-  </ST.Test>
-);
+const Test: FC<TestProps> = ({ description }) => {
+  const [state, setState] = useState<boolean>(false);
+
+  return (
+    <ST.Test>
+      <WrapperContent header={'Тест 31'}>
+        <>
+          <ST.Info>
+            <ST.Description>{description}</ST.Description>
+            <BlockRulesTest
+              array={[
+                { id: 1, rule: 'Тест состоит из 100 вопросов' },
+                { id: 2, rule: 'Тест состоит из 100 вопросов' },
+                { id: 3, rule: 'Тест состоит из 100 вопросов' },
+              ]}
+            />
+          </ST.Info>
+          <ST.WrapperQuestions isActive={state}>
+            <ST.ListTitle>Вопросы:</ST.ListTitle>
+            <Questions arrayQuestion={QuestionData} />
+          </ST.WrapperQuestions>
+          <ST.WrapperButton>
+            <Link to={'/course/1'}>
+              <Button
+                title={'Вернуться к тесту'}
+                padding={'11px 0'}
+                fontSize={'14px'}
+                lineHeight={'20px'}
+                fontWeight={'600'}
+                background={Colors.TRANSPARENT}
+                color={Colors.BLACK1}
+                backgroundAnimation={Colors.BLACK1}
+                colorHover={Colors.WHITE}
+                border={`2px solid ${Colors.BLACK1}`}
+                width={'max-content'}
+              />
+            </Link>
+            <Button
+              title={!state ? 'Начать тест' : 'Отправить тест'}
+              padding={'11px 0'}
+              fontSize={'14px'}
+              lineHeight={'20px'}
+              fontWeight={'600'}
+              background={Colors.BLUE}
+              color={Colors.WHITE}
+              backgroundAnimation={Colors.BLUE_DARK}
+              colorHover={Colors.WHITE}
+              width={'max-content'}
+              onClick={() =>
+                !state ? setState(true) : toast.success('Тест отправлен')
+              }
+            />
+          </ST.WrapperButton>
+        </>
+      </WrapperContent>
+      <Toaster
+        position="bottom-left"
+        reverseOrder={false}
+      />
+    </ST.Test>
+  );
+};
 
 export default Test;

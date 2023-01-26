@@ -2,17 +2,26 @@ import { FC } from 'react';
 import { ReactComponent as IconForNewsView } from 'Icons/IconForNewsView.svg';
 import Date from 'Components/UI-KIT/Atoms/Date';
 import Time from 'Components/UI-KIT/Atoms/Time';
+import Tags, { TagType } from 'Components/UI-KIT/Atoms/Tags';
 import * as ST from './styled';
 
 type NewsViewProps = {
-  nameTag: string;
-  title: string;
+  name: string;
   text: string;
   time: string;
   date: string;
+  tags: TagType[];
+  tagsColors: boolean;
 };
 
-const NewsView: FC<NewsViewProps> = ({ nameTag, title, text, time, date }) => (
+const NewsView: FC<NewsViewProps> = ({
+  name,
+  text,
+  time,
+  date,
+  tags,
+  tagsColors,
+}) => (
   <ST.NewsView>
     <IconForNewsView />
     <ST.WrapperInfo>
@@ -20,10 +29,11 @@ const NewsView: FC<NewsViewProps> = ({ nameTag, title, text, time, date }) => (
         <Time value={time} />
         <Date value={date} />
       </ST.WrapperDateInfo>
-      <ST.Tags>
-        <ST.Tag>{nameTag}</ST.Tag>
-      </ST.Tags>
-      <ST.Title>{title}</ST.Title>
+      <Tags
+        tags={tags}
+        tagsColors={tagsColors}
+      />
+      <ST.Title>{name}</ST.Title>
       <ST.WrapperText dangerouslySetInnerHTML={{ __html: text }} />
     </ST.WrapperInfo>
   </ST.NewsView>

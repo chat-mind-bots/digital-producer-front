@@ -1,9 +1,10 @@
+import { FC, useState } from 'react';
 import { ReactComponent as IconForInsight1 } from 'Icons/IconForInsight1.svg';
 import { ReactComponent as IconForInsight2 } from 'Icons/IconForInsight2.svg';
 import { ReactComponent as IconForInsight3 } from 'Icons/IconForInsight3.svg';
 import { ReactComponent as IconForInsight4 } from 'Icons/IconForInsight4.svg';
-import { FC, useState } from 'react';
 import Button from 'Components/UI-KIT/Atoms/Button';
+import Tags from 'Components/UI-KIT/Atoms/Tags';
 import Colors from 'Colors';
 import * as ST from './styled';
 
@@ -13,8 +14,13 @@ const dataInsights = [
   {
     id: 1,
     tags: [
-      { id: 0, name: 'финансы' },
-      { id: 1, name: 'дизайн' },
+      {
+        id: 0,
+        name: 'финансы',
+        background: Colors.SKYBLUE,
+        color: Colors.BLUE,
+      },
+      { id: 1, name: 'дизайн', background: Colors.SKYBLUE, color: Colors.BLUE },
     ],
     title: 'Как распределить % между продюсером и экспертом?',
     description:
@@ -23,7 +29,9 @@ const dataInsights = [
   },
   {
     id: 2,
-    tags: [{ id: 1, name: 'Шрифты' }],
+    tags: [
+      { id: 1, name: 'Шрифты', background: Colors.SKYBLUE, color: Colors.BLUE },
+    ],
     title: 'Что нужно для создании дизайн концепции?',
     description:
       'Дизайн-коцепция - визуальный набросок того как будет или должен выглядеть логотип...',
@@ -31,7 +39,14 @@ const dataInsights = [
   },
   {
     id: 3,
-    tags: [{ id: 2, name: 'Маркетинг' }],
+    tags: [
+      {
+        id: 2,
+        name: 'Маркетинг',
+        background: Colors.SKYBLUE,
+        color: Colors.BLUE,
+      },
+    ],
     title: 'Что такое customer journey map?',
     description:
       'Читайте, что такое customer journey, почему его важно учитывать и как составить карту клиентского пути',
@@ -40,8 +55,13 @@ const dataInsights = [
   {
     id: 4,
     tags: [
-      { id: 1, name: 'дизайн' },
-      { id: 2, name: 'Маркетинг' },
+      { id: 1, name: 'дизайн', background: Colors.SKYBLUE, color: Colors.BLUE },
+      {
+        id: 2,
+        name: 'Маркетинг',
+        background: Colors.SKYBLUE,
+        color: Colors.BLUE,
+      },
     ],
     title: 'Кто такой Product Manager и чем он занимается?',
     description:
@@ -74,11 +94,10 @@ const Insights: FC<InsightsProps> = ({
       <ST.WrapperInfo>
         <ST.WrapperContent>
           <ST.WrapperInfoContent>
-            <ST.Tags>
-              {currentObject.tags.map((tag) => (
-                <ST.Tag key={`TagItem-${tag.id}`}>{tag.name}</ST.Tag>
-              ))}
-            </ST.Tags>
+            <Tags
+              tags={currentObject.tags}
+              tagsColors={true}
+            />
             <ST.WrapperText>
               <ST.Name>{currentObject.title}</ST.Name>
               <ST.Description>{currentObject.description}</ST.Description>

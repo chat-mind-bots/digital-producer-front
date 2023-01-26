@@ -16,6 +16,7 @@ export type ButtonOtherStyles = {
   backgroundAnimation: string;
   colorHover: string;
   border?: string;
+  onClick?: () => void;
 };
 
 const Button: FC<ButtonProps> = ({
@@ -30,6 +31,7 @@ const Button: FC<ButtonProps> = ({
   backgroundAnimation,
   colorHover,
   border,
+  onClick,
 }) => (
   <ST.Button
     width={width}
@@ -42,6 +44,7 @@ const Button: FC<ButtonProps> = ({
     backgroundAnimation={backgroundAnimation}
     colorHover={colorHover}
     border={border}
+    onClick={onClick}
   >
     {title}
     <ST.AnimationWrapper background={background}>
