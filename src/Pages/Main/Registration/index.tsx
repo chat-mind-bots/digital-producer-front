@@ -1,4 +1,6 @@
 import { useState } from 'react';
+import { Link } from 'react-router-dom';
+import RoutesList from 'Router/routesList';
 import Button from 'Components/UI-KIT/Atoms/Button';
 import Input from 'Components/UI-KIT/Input';
 import Colors from 'Colors';
@@ -55,7 +57,12 @@ const Registration = () => {
           Нажимая кнопку «Зарегистрироваться», Вы принимаете условия
           Пользовательского соглашения.
         </ST.Agreement>
-        <ST.SignIn>Уже зарегистрированы? Войти тут</ST.SignIn>
+        <ST.SignIn>
+          Уже зарегистрированы?{' '}
+          <Link to={RoutesList.LOGIN}>
+            <ST.LoginHere>Войти тут</ST.LoginHere>{' '}
+          </Link>
+        </ST.SignIn>
       </ST.FooterContent>
     </ST.Registration>
   );

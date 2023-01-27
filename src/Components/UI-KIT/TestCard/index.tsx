@@ -4,37 +4,27 @@ import LevelDifficulty from 'Components/UI-KIT/Atoms/LevelDificulty';
 import { Link } from 'react-router-dom';
 import { ReactComponent as StatusFalse } from 'Icons/StatusFalse.svg';
 import { ReactComponent as StatusTrue } from 'Icons/StatusTrue.svg';
+import { TestType } from 'Types/CourseId';
+import RoutesList from 'Router/routesList';
 import * as ST from './styled';
 
-type TestCardProps = {
-  description: string;
-  title: string;
-  levelDifficulty: 1 | 2 | 3;
-  time: string;
-  url: string;
-  status: boolean;
-  currentResult: number;
-  countQuestions: number;
-  minCountForSuccess: number;
-};
-
-const TestCard: FC<TestCardProps> = ({
+const TestCard: FC<TestType> = ({
+  id,
+  name,
   description,
-  title,
-  levelDifficulty,
-  time,
-  minCountForSuccess,
-  countQuestions,
-  currentResult,
   status,
-  url,
+  countQuestions,
+  minCountForSuccess,
+  currentResult,
+  transitTime,
+  levelDifficulty,
 }) => (
-  <Link to={url}>
+  <Link to={`${RoutesList.TEST_ID}${id}`}>
     <ST.TestCard>
-      <ST.Title>{title}</ST.Title>
+      <ST.Title>{name}</ST.Title>
       <ST.Description>{description}</ST.Description>
-      <LevelDifficulty count={levelDifficulty} />
-      <Time value={time} />
+      <LevelDifficulty data={levelDifficulty} />
+      <Time value={`Время для прохождения: ${transitTime} часа`} />
       <ST.Info>
         <StatusFalse />
         Максимум:{currentResult}/{countQuestions}

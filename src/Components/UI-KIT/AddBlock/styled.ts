@@ -7,6 +7,9 @@ export const AddBlock = styled.div`
   background: ${Colors.WHITE};
   max-width: 258px;
   border: 1px solid ${Colors.WHITE2};
+  position: sticky;
+  top: 129px;
+  height: max-content;
 `;
 
 export const Title = styled.p`

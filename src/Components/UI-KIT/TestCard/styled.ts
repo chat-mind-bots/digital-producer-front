@@ -24,6 +24,7 @@ export const Title = styled.p`
   font-size: 20px;
   line-height: 140%;
   color: ${Colors.BLACK1};
+  width: 100%;
 `;
 
 export const Description = styled.p`
@@ -31,6 +32,7 @@ export const Description = styled.p`
   font-size: 14px;
   line-height: 150%;
   color: ${Colors.GREY1};
+  width: 100%;
 `;
 
 export const Info = styled.p`

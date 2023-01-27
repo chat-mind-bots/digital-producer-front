@@ -1,4 +1,4 @@
-import { ReactComponent as IconForInsight1 } from '../../Icons/IconForInsight1.svg';
+import { ReactComponent as IconForInsight1 } from '../Icons/IconForInsight1.svg';
 
 // ПРИМЕР: Инсайты из сферы инфопродуктов
 // URL: /bannerCarousel
@@ -25,8 +25,6 @@ const BannerCarousel = {
     },
   ],
 };
-
-styleButton: 'primary' || 'secondary';
 
 export interface RootObject {
   name: string;

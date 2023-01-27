@@ -1,4 +1,4 @@
-import { ReactComponent as IconForInsight1 } from '../../Icons/IconForInsight1.svg';
+import { ReactComponent as IconForInsight1 } from '../Icons/IconForInsight1.svg';
 
 // ПРИМЕР: Поиск
 // URL: /search?type=('test'|'news')&value='string'

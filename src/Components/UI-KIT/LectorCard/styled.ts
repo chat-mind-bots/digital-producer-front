@@ -19,6 +19,7 @@ export const Name = styled.p`
   font-family: 'Vela Sans';
   font-weight: 700;
   font-size: 20px;
+  width: 100%;
   line-height: 140%;
   color: ${Colors.BLACK1};
 `;

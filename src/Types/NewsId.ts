@@ -1,10 +1,10 @@
-import { ReactComponent as IconForInsight1 } from '../../Icons/IconForInsight1.svg';
+import { ReactComponent as IconForInsight1 } from '../Icons/IconForInsight1.svg';
 
 // ПРИМЕР: Новость по ID
 // URL: /news/ID
 // METHOD: GET
 // AUTH: TRUE
-const NewsId: RootObject = {
+export const NewsIdData: NewsIdType = {
   id: 1,
   name: 'Продажа и мышление',
   description: 'Научитесь продавать и запускать инфопродукты в Инстаграм',
@@ -29,7 +29,7 @@ const NewsId: RootObject = {
   ],
 };
 
-export interface RootObject {
+export interface NewsIdType {
   id: number;
   name: string;
   description: string;

@@ -3,12 +3,13 @@ import { BreadCrumbsArrayType } from 'Components/UI-KIT/BreadCrumbs';
 import WrapperContent from 'Components/WrapperContent';
 import CourseCard from 'Components/UI-KIT/CourseCard';
 import AddBlock from 'Components/UI-KIT/AddBlock';
-import Colors from 'Colors';
+import RoutesList from 'Router/routesList';
+import { CoursesData } from 'Types/Course';
 import * as ST from './styled';
 
 const defaultBreadCrumbs: BreadCrumbsArrayType[] = [
-  { id: 1, name: 'Главная', url: '/main' },
-  { id: 2, name: 'Курсы Meta', url: '/metaCourses' },
+  { id: 1, name: 'Главная', url: RoutesList.MAIN },
+  { id: 2, name: 'Курсы Meta', url: RoutesList.META_COURSES },
 ];
 
 const MetaCourses = () => (
@@ -16,80 +17,29 @@ const MetaCourses = () => (
     <ST.WrapperCourses>
       <WrapperContent header={[...defaultBreadCrumbs]}>
         <ST.Wrapper>
-          <CourseCard
-            url={'/course/1'}
-            title={'Название курса'}
-            description={'Подробное описание курса'}
-            levelDifficulty={2}
-            tagsColors={true}
-            tags={[
-              {
-                id: 1,
-                name: 'Дизайн',
-                background: Colors.RED,
-                color: Colors.WHITE,
-              },
-            ]}
-          />
-          <CourseCard
-            url={'/course/1'}
-            title={'Название курса'}
-            description={'Подробное описание курса'}
-            levelDifficulty={2}
-            tagsColors={true}
-            tags={[
-              {
-                id: 1,
-                name: 'Дизайн',
-                background: Colors.BLUE,
-                color: Colors.WHITE,
-              },
-            ]}
-          />
-          <CourseCard
-            url={'/course/1'}
-            title={'Название курса'}
-            description={'Подробное описание курса'}
-            levelDifficulty={2}
-            tagsColors={true}
-            tags={[
-              {
-                id: 1,
-                name: 'Дизайн',
-                background: Colors.ORANGE,
-                color: Colors.WHITE,
-              },
-            ]}
-          />
-          <CourseCard
-            url={'/course/1'}
-            title={'Название курса'}
-            description={'Подробное описание курса'}
-            levelDifficulty={2}
-            tagsColors={true}
-            tags={[
-              {
-                id: 1,
-                name: 'Дизайн',
-                background: Colors.SKYBLUE,
-                color: Colors.BLACK1,
-              },
-            ]}
-          />
+          {CoursesData.data.list.map((course) => (
+            <CourseCard
+              key={`MetaCourses-CourseCard-${course.id}`}
+              url={`${RoutesList.COURSE_ID}${course.id}`}
+              title={course.name}
+              description={course.description}
+              levelDifficulty={course.levelDifficulty}
+              tagsColors={CoursesData.data.tagsColors}
+              tags={course.tags}
+            />
+          ))}
         </ST.Wrapper>
       </WrapperContent>
     </ST.WrapperCourses>
-    <ST.WrapperAddBlock>
-      <AddBlock
-        title={'Создайте свой курс'}
-        description={
-          'Станьте продюсером своего курса и проводите уроки на платформе'
-        }
-        textButton={'Создать курс'}
-        urlButton={''}
-        styleButton={''}
-      />
-    </ST.WrapperAddBlock>
+    <AddBlock
+      title={'Создайте свой курс'}
+      description={
+        'Станьте продюсером своего курса и проводите уроки на платформе'
+      }
+      textButton={'Создать курс'}
+      urlButton={''}
+      styleButton={''}
+    />
   </ST.MetaCourses>
 );
 

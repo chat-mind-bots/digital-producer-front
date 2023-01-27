@@ -3,38 +3,42 @@ import { Link } from 'react-router-dom';
 import toast, { Toaster } from 'react-hot-toast';
 import BlockRulesTest from 'Components/UI-KIT/BlockRulesTest';
 import WrapperContent from 'Components/WrapperContent';
-import Questions, { QuestionData } from 'Components/UI-KIT/Questions';
+import Questions from 'Components/UI-KIT/Questions';
 import Button from 'Components/UI-KIT/Atoms/Button';
+import { TestIdType } from 'Types/TestId';
+import RoutesList from 'Router/routesList';
 import Colors from 'Colors';
 import * as ST from './styled';
 
-type TestProps = {
-  description: string;
-};
-
-const Test: FC<TestProps> = ({ description }) => {
+const Test: FC<TestIdType> = ({
+  id,
+  name,
+  description,
+  status,
+  countQuestions,
+  minCountForSuccess,
+  currentResult,
+  transitTime,
+  levelDifficulty,
+  rules,
+  questions,
+}) => {
   const [state, setState] = useState<boolean>(false);
 
   return (
     <ST.Test>
-      <WrapperContent header={'Тест 31'}>
+      <WrapperContent header={name}>
         <>
           <ST.Info>
             <ST.Description>{description}</ST.Description>
-            <BlockRulesTest
-              array={[
-                { id: 1, rule: 'Тест состоит из 100 вопросов' },
-                { id: 2, rule: 'Тест состоит из 100 вопросов' },
-                { id: 3, rule: 'Тест состоит из 100 вопросов' },
-              ]}
-            />
+            <BlockRulesTest array={rules} />
           </ST.Info>
           <ST.WrapperQuestions isActive={state}>
             <ST.ListTitle>Вопросы:</ST.ListTitle>
-            <Questions arrayQuestion={QuestionData} />
+            <Questions arrayQuestion={questions} />
           </ST.WrapperQuestions>
           <ST.WrapperButton>
-            <Link to={'/course/1'}>
+            <Link to={RoutesList.COURSES}>
               <Button
                 title={'Вернуться к тесту'}
                 padding={'11px 0'}

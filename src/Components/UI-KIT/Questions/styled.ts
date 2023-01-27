@@ -21,7 +21,7 @@ export const Question = styled.div`
   border-radius: 20px;
 `;
 
-export const AnswerWrapper = styled.p`
+export const AnswerWrapper = styled.div`
   display: flex;
   align-items: center;
   gap: 18px;

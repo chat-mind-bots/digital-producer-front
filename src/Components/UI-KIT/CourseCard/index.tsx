@@ -1,14 +1,16 @@
 import { FC } from 'react';
 import { Link } from 'react-router-dom';
 import { ReactComponent as IconForCourseCard } from 'Icons/IconForCourseCard.svg';
-import LevelDifficulty from 'Components/UI-KIT/Atoms/LevelDificulty';
+import LevelDifficulty, {
+  LevelDifficultyType,
+} from 'Components/UI-KIT/Atoms/LevelDificulty';
 import Tags, { TagType } from 'Components/UI-KIT/Atoms/Tags';
 import * as ST from './styled';
 
 type CourseCardProps = {
   title: string;
   description: string;
-  levelDifficulty: 1 | 2 | 3;
+  levelDifficulty: LevelDifficultyType;
   url: string;
   tagsColors: boolean;
   tags: TagType[];
@@ -22,22 +24,26 @@ const CourseCard: FC<CourseCardProps> = ({
   tags,
   tagsColors,
 }) => (
-  <Link to={url}>
-    <ST.CourseCard>
-      <IconForCourseCard />
-      <ST.MainWrapper>
-        <Tags
-          tags={tags}
-          tagsColors={tagsColors}
-        />
-        <ST.Title>{title}</ST.Title>
-        <ST.Description>{description}</ST.Description>
-        <ST.WrapperLevel>
-          <LevelDifficulty count={levelDifficulty} />
-        </ST.WrapperLevel>
-      </ST.MainWrapper>
-    </ST.CourseCard>
-  </Link>
+  <ST.CourseCard>
+    <Link to={url}>
+      <ST.Wrapper>
+        <ST.Image>
+          <IconForCourseCard />
+        </ST.Image>
+        <ST.MainWrapper>
+          <Tags
+            tags={tags}
+            tagsColors={tagsColors}
+          />
+          <ST.Title>{title}</ST.Title>
+          <ST.Description>{description}</ST.Description>
+          <ST.WrapperLevel>
+            <LevelDifficulty data={levelDifficulty} />
+          </ST.WrapperLevel>
+        </ST.MainWrapper>
+      </ST.Wrapper>
+    </Link>
+  </ST.CourseCard>
 );
 
 export default CourseCard;

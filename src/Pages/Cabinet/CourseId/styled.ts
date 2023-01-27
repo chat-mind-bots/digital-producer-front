@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 
-export const Wrapper = styled.div`
+export const CourseID = styled.div`
   display: flex;
   gap: 40px;
 `;
