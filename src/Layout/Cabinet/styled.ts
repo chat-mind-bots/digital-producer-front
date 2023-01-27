@@ -14,6 +14,7 @@ export const Content = styled.div`
   left: 297px;
   top: 129px;
   z-index: 3;
+  width: calc(100% - 337px);
 `;
 
 export const Wrapper = styled.div``;

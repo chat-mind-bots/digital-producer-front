@@ -19,6 +19,7 @@ const News: FC<NewsType> = ({ count, pageCount, currentPage, data }) => (
         <ST.Wrapper>
           {data.list.map((newsItem) => (
             <NewsCard
+              key={`News-NewsCard-${newsItem.id}`}
               id={newsItem.id}
               name={newsItem.name}
               description={newsItem.description}
@@ -33,18 +34,15 @@ const News: FC<NewsType> = ({ count, pageCount, currentPage, data }) => (
         </ST.Wrapper>
       </WrapperContent>
     </ST.WrapperNews>
-
-    <ST.WrapperAddBlock>
-      <AddBlock
-        title={'Создайте свой курс'}
-        description={
-          'Станьте продюсером своего курса и проводите уроки на платформе'
-        }
-        textButton={'Создать курс'}
-        urlButton={''}
-        styleButton={''}
-      />
-    </ST.WrapperAddBlock>
+    <AddBlock
+      title={'Создайте свой курс'}
+      description={
+        'Станьте продюсером своего курса и проводите уроки на платформе'
+      }
+      textButton={'Создать курс'}
+      urlButton={''}
+      styleButton={''}
+    />
   </ST.News>
 );
 

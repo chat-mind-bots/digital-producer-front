@@ -101,7 +101,7 @@ const CourseId: FC<CourseIdType> = ({
   };
 
   return (
-    <ST.Wrapper>
+    <ST.CourseID>
       <ST.WrapperInfo>
         <WrapperContent header={[...defaultBreadCrumbs, ...breadCrumbs]}>
           <ST.Content>
@@ -139,6 +139,7 @@ const CourseId: FC<CourseIdType> = ({
           <ST.Content>
             {lecturers.map((lecture) => (
               <LectorCard
+                key={`CourseId-LectorCard-${lecture.id}`}
                 name={lecture.name}
                 description={lecture.description}
                 img={<IconForPlatformNewsCard />}
@@ -151,6 +152,7 @@ const CourseId: FC<CourseIdType> = ({
             <ST.Content>
               {currentLesson?.tests.map((test) => (
                 <TestCard
+                  key={`CourseId-TestCard-${test.id}`}
                   id={test.id}
                   description={test.description}
                   name={test.name}
@@ -170,6 +172,7 @@ const CourseId: FC<CourseIdType> = ({
             {documents
               ? documents.map((document) => (
                   <DocumentCard
+                    key={`CourseId-DocumentCard-${document.id}`}
                     name={document.name}
                     description={document.description}
                     url={document.url}
@@ -177,6 +180,7 @@ const CourseId: FC<CourseIdType> = ({
                 ))
               : currentLesson?.documents.map((document) => (
                   <DocumentCard
+                    key={`CourseId-DocumentCard-currentLesson-${document.id}`}
                     name={document.name}
                     description={document.description}
                     url={document.url}
@@ -191,7 +195,7 @@ const CourseId: FC<CourseIdType> = ({
           handleClick={handleClickAccordion}
         />
       )}
-    </ST.Wrapper>
+    </ST.CourseID>
   );
 };
 

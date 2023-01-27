@@ -18,9 +18,3 @@ export const WrapperNews = styled.div`
   display: flex;
   flex-wrap: wrap;
 `;
-
-export const WrapperAddBlock = styled.div`
-  position: sticky;
-  top: 129px;
-  height: max-content;
-`;

@@ -1,6 +1,6 @@
 import React, { FC } from 'react';
-import * as ST from './styled';
 import { Link } from 'react-router-dom';
+import * as ST from './styled';
 
 type BreadCrumbsProps = {
   array: BreadCrumbsArrayType[];
@@ -26,7 +26,12 @@ const BreadCrumbs: FC<BreadCrumbsProps> = ({ array }) => {
             <ST.Item isLast={index === lengthArray}>{item.name}</ST.Item>
           </Link>
         ) : (
-          <ST.Item isLast={index === lengthArray}>{item.name}</ST.Item>
+          <ST.Item
+            key={`Breadcrumbs-item-${item.id}`}
+            isLast={index === lengthArray}
+          >
+            {item.name}
+          </ST.Item>
         )
       )}
     </ST.BreadCrumbs>

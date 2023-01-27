@@ -38,7 +38,6 @@ const Test: FC<TestIdType> = ({
             <Questions arrayQuestion={questions} />
           </ST.WrapperQuestions>
           <ST.WrapperButton>
-            {/* TODO: Написать функцию назад*/}
             <Link to={RoutesList.COURSES}>
               <Button
                 title={'Вернуться к тесту'}

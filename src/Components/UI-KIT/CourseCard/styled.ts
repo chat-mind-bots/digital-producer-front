@@ -2,22 +2,13 @@ import styled from 'styled-components';
 import Colors from 'Colors';
 
 export const CourseCard = styled.div`
-  padding: 19px;
-  border-radius: 20px;
-  background: ${Colors.WHITE};
   max-width: 700px;
   width: 100%;
-  display: flex;
-  box-sizing: border-box;
-  gap: 32px;
-  border: 2px solid ${Colors.TRANSPARENT};
-  cursor: pointer;
-  &:hover {
-    border: 2px solid ${Colors.WHITE2};
-  }
 `;
 
-export const MainWrapper = styled.div``;
+export const MainWrapper = styled.div`
+  margin-top: -2px;
+`;
 
 export const Title = styled.p`
   font-family: 'Vela Sans';
@@ -38,4 +29,24 @@ export const Description = styled.p`
 
 export const WrapperLevel = styled.div`
   margin-top: 12px;
+`;
+
+export const Wrapper = styled.div`
+  background: ${Colors.WHITE};
+  padding: 19px;
+  display: flex;
+  box-sizing: border-box;
+  gap: 32px;
+  cursor: pointer;
+  border-radius: 20px;
+  border: 2px solid ${Colors.TRANSPARENT};
+  &:hover {
+    border: 2px solid ${Colors.WHITE2};
+  }
+`;
+
+export const Image = styled.div`
+  min-width: 220px;
+  border-radius: 16px;
+  overflow: hidden;
 `;

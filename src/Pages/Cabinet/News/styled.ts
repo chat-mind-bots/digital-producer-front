@@ -15,9 +15,3 @@ export const WrapperNews = styled.div`
   width: 100%;
   max-width: 764px;
 `;
-
-export const WrapperAddBlock = styled.div`
-  position: sticky;
-  top: 129px;
-  height: max-content;
-`;

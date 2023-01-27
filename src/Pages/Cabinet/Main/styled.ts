@@ -10,21 +10,12 @@ export const Wrapper = styled.div`
   display: flex;
   flex-wrap: wrap;
   gap: 22px;
-  & > a {
-    width: 100%;
-  }
 `;
 
 export const WrapperContent = styled.div`
   display: flex;
   gap: 45px;
   width: 100%;
-`;
-
-export const WrapperAddBlock = styled.div`
-  position: sticky;
-  top: 129px;
-  height: max-content;
 `;
 
 export const WrapperMain = styled.div`

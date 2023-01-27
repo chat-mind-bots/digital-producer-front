@@ -41,7 +41,7 @@ export const RouterCabinet = () => (
         }
       />
       <Route
-        path={`${RoutesList.TEST_ID}id`}
+        path={`${RoutesList.TEST_ID}:id`}
         element={
           <Cabinet>
             <Test {...TestIdData} />

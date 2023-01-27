@@ -25,7 +25,7 @@ export const CourseIdData: CourseIdType = {
       description: 'Мастер над монетой',
     },
     {
-      id: 1,
+      id: 2,
       name: 'Марина',
       image: '',
       description: 'Мастер чила ',
@@ -56,7 +56,7 @@ export const CourseIdData: CourseIdType = {
       url: '',
     },
     {
-      id: 1,
+      id: 2,
       name: 'Документ 2',
       description: 'Описание дока ',
       url: '',
@@ -90,7 +90,7 @@ export const CourseIdData: CourseIdType = {
               url: '',
             },
             {
-              id: 1,
+              id: 2,
               name: 'Документ 2',
               description: 'Описание дока ',
               url: '',
@@ -99,6 +99,20 @@ export const CourseIdData: CourseIdType = {
           tests: [
             {
               id: 1,
+              name: 'Название курса',
+              description: 'Описание курса',
+              status: 200,
+              countQuestions: 100,
+              minCountForSuccess: 60,
+              currentResult: 65,
+              transitTime: 60,
+              levelDifficulty: {
+                curren: 2,
+                max: 3,
+              },
+            },
+            {
+              id: 2,
               name: 'Название курса',
               description: 'Описание курса',
               status: 200,

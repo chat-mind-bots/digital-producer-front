@@ -24,22 +24,26 @@ const CourseCard: FC<CourseCardProps> = ({
   tags,
   tagsColors,
 }) => (
-  <Link to={url}>
-    <ST.CourseCard>
-      <IconForCourseCard />
-      <ST.MainWrapper>
-        <Tags
-          tags={tags}
-          tagsColors={tagsColors}
-        />
-        <ST.Title>{title}</ST.Title>
-        <ST.Description>{description}</ST.Description>
-        <ST.WrapperLevel>
-          <LevelDifficulty data={levelDifficulty} />
-        </ST.WrapperLevel>
-      </ST.MainWrapper>
-    </ST.CourseCard>
-  </Link>
+  <ST.CourseCard>
+    <Link to={url}>
+      <ST.Wrapper>
+        <ST.Image>
+          <IconForCourseCard />
+        </ST.Image>
+        <ST.MainWrapper>
+          <Tags
+            tags={tags}
+            tagsColors={tagsColors}
+          />
+          <ST.Title>{title}</ST.Title>
+          <ST.Description>{description}</ST.Description>
+          <ST.WrapperLevel>
+            <LevelDifficulty data={levelDifficulty} />
+          </ST.WrapperLevel>
+        </ST.MainWrapper>
+      </ST.Wrapper>
+    </Link>
+  </ST.CourseCard>
 );
 
 export default CourseCard;

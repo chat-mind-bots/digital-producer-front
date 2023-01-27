@@ -58,17 +58,15 @@ const NewsId: FC<NewsIdType> = ({
         </ST.Wrapper>
       </WrapperContent>
     </ST.WrapperNews>
-    <ST.WrapperAddBlock>
-      <AddBlock
-        title={'Создайте свой курс'}
-        description={
-          'Станьте продюсером своего курса и проводите уроки на платформе'
-        }
-        textButton={'Создать курс'}
-        urlButton={''}
-        styleButton={''}
-      />
-    </ST.WrapperAddBlock>
+    <AddBlock
+      title={'Создайте свой курс'}
+      description={
+        'Станьте продюсером своего курса и проводите уроки на платформе'
+      }
+      textButton={'Создать курс'}
+      urlButton={''}
+      styleButton={''}
+    />
   </ST.News>
 );
 

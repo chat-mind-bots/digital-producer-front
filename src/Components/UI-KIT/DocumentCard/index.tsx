@@ -1,6 +1,6 @@
 import { FC } from 'react';
-import { ReactComponent as ArrowDown } from 'Icons/ArrowDown.svg';
 import { Link } from 'react-router-dom';
+import { ReactComponent as ArrowDown } from 'Icons/ArrowDown.svg';
 import * as ST from './styled';
 
 type DocumentCardProps = {
@@ -10,15 +10,17 @@ type DocumentCardProps = {
 };
 
 const DocumentCard: FC<DocumentCardProps> = ({ name, description, url }) => (
-  <Link to={url}>
-    <ST.DocumentCard>
-      <ST.Name>
-        {name}
-        <ArrowDown />
-      </ST.Name>
-      <ST.Description>{description}</ST.Description>
-    </ST.DocumentCard>
-  </Link>
+  <ST.DocumentCard>
+    <Link to={url}>
+      <ST.Wrapper>
+        <ST.Name>
+          {name}
+          <ArrowDown />
+        </ST.Name>
+        <ST.Description>{description}</ST.Description>
+      </ST.Wrapper>
+    </Link>
+  </ST.DocumentCard>
 );
 
 export default DocumentCard;

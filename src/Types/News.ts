@@ -24,6 +24,30 @@ export const NewsData: NewsType = {
           { id: 1, name: 'дизайн', background: 'blue', color: 'white' },
         ],
       },
+      {
+        id: 2,
+        name: 'Продажа и мышление',
+        description: 'Научитесь продавать и запускать инфопродукты в Инстаграм',
+        timeRead: '20',
+        date: '',
+        image: './',
+        tags: [
+          { id: 0, name: 'финансы', background: 'red', color: 'white' },
+          { id: 1, name: 'дизайн', background: 'blue', color: 'white' },
+        ],
+      },
+      {
+        id: 3,
+        name: 'Продажа и мышление',
+        description: 'Научитесь продавать и запускать инфопродукты в Инстаграм',
+        timeRead: '20',
+        date: '',
+        image: './',
+        tags: [
+          { id: 0, name: 'финансы', background: 'red', color: 'white' },
+          { id: 1, name: 'дизайн', background: 'blue', color: 'white' },
+        ],
+      },
     ],
   },
 };

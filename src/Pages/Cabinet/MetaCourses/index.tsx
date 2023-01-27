@@ -19,6 +19,7 @@ const MetaCourses = () => (
         <ST.Wrapper>
           {CoursesData.data.list.map((course) => (
             <CourseCard
+              key={`MetaCourses-CourseCard-${course.id}`}
               url={`${RoutesList.COURSE_ID}${course.id}`}
               title={course.name}
               description={course.description}
@@ -30,17 +31,15 @@ const MetaCourses = () => (
         </ST.Wrapper>
       </WrapperContent>
     </ST.WrapperCourses>
-    <ST.WrapperAddBlock>
-      <AddBlock
-        title={'Создайте свой курс'}
-        description={
-          'Станьте продюсером своего курса и проводите уроки на платформе'
-        }
-        textButton={'Создать курс'}
-        urlButton={''}
-        styleButton={''}
-      />
-    </ST.WrapperAddBlock>
+    <AddBlock
+      title={'Создайте свой курс'}
+      description={
+        'Станьте продюсером своего курса и проводите уроки на платформе'
+      }
+      textButton={'Создать курс'}
+      urlButton={''}
+      styleButton={''}
+    />
   </ST.MetaCourses>
 );
 
