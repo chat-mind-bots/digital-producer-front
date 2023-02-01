@@ -86,3 +86,8 @@ export const WrapperItems = styled.div<Props>`
   max-height: ${({ isActive }) => (isActive ? '400px' : 0)};
   transition: 1s;
 `;
+
+export const WrapperButtonAddLesson = styled.div`
+  margin-top: 8px;
+  width: 100%;
+`;

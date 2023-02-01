@@ -14,6 +14,24 @@ export const NewsCard = styled.div`
   }
 `;
 
+export const NewsCardAdmin = styled.div`
+  font-size: 100px;
+  color: ${Colors.WHITE};
+  background: ${Colors.BLUE};
+  border-radius: 24px;
+  width: 340px;
+  height: 448px;
+  box-sizing: border-box;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 2px solid ${Colors.TRANSPARENT};
+  cursor: pointer;
+  &:hover {
+    border: 2px solid ${Colors.WHITE2};
+  }
+`;
+
 export const Title = styled.p`
   font-weight: 700;
   font-size: 20px;

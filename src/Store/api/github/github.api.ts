@@ -8,7 +8,6 @@ export const githubApi = createApi({
   }),
   refetchOnFocus: true,
   endpoints: (build) => ({
-    //  GET мгновенный вызов
     searchUsers: build.query<IUser[], string>({
       query: (search: string) => ({
         url: `search/users`,
@@ -17,17 +16,13 @@ export const githubApi = createApi({
           per_page: 10,
         },
       }),
-      transformResponse: (response: ServerResponse<IUser>) => {
-        return {} as IUser[];
-      },
+      transformResponse: (response: ServerResponse<IUser>) => response.items,
     }),
-    //  GET при вызове функции
     getUserRepos: build.query<IRepo[], string>({
       query: (username: string) => ({
         url: `users/${username}/repos`,
       }),
     }),
-    //  POST PUT DELETE
     createUser: build.mutation<any, void>({
       query: () => ``,
     }),

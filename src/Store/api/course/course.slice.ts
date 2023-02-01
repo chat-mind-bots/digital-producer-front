@@ -1,4 +1,5 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
+import { CoursesType } from 'Types/Course';
 
 const LS_FAV_KEY = 'rfk';
 
@@ -10,20 +11,20 @@ const initialState: GithubState = {
   favourites: JSON.parse(localStorage.getItem(LS_FAV_KEY) ?? '[]'),
 };
 
-export const githubSlice = createSlice({
-  name: 'github',
+export const courseSlice = createSlice({
+  name: 'course',
   initialState,
   reducers: {
-    addFavourite(state, action: PayloadAction<string>) {
+    addCourse(state, action: PayloadAction<CoursesType>) {
       state.favourites.push('ударить по ' + action.payload);
       localStorage.setItem(LS_FAV_KEY, JSON.stringify(state.favourites));
     },
-    removeFavourite(state, action: PayloadAction<string>) {
+    removeCourse(state, action: PayloadAction<string>) {
       state.favourites = state.favourites.filter((f) => f !== action.payload);
       localStorage.setItem(LS_FAV_KEY, JSON.stringify(state.favourites));
     },
   },
 });
 
-export const githubActions = githubSlice.actions;
-export const githubReducer = githubSlice.reducer;
+export const courseActions = courseSlice.actions;
+export const courseReducer = courseSlice.reducer;

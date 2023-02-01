@@ -7,8 +7,6 @@ import { ReactComponent as MyCourses } from 'Icons/NavBar/MyCourses.svg';
 import { ReactComponent as News } from 'Icons/NavBar/News.svg';
 import { ReactComponent as MetaCourses } from 'Icons/NavBar/MetaCourses.svg';
 import RoutesList from 'Router/routesList';
-import { CoursesData } from 'Types/Course';
-import { NewsData } from 'Types/News';
 
 export type NavBarType = {
   id: number;
@@ -34,7 +32,7 @@ const NavBarData: NavBarType[] = [
     count: 0,
     url: RoutesList.COURSES,
     svg: <MyCourses />,
-    element: <CoursesComponent {...CoursesData} />,
+    element: <CoursesComponent />,
   },
   {
     id: 3,
@@ -42,7 +40,7 @@ const NavBarData: NavBarType[] = [
     count: 0,
     url: RoutesList.NEWS,
     svg: <News />,
-    element: <NewsComponent {...NewsData} />,
+    element: <NewsComponent />,
   },
   {
     id: 4,

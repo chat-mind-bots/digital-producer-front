@@ -27,6 +27,9 @@ export const Title = styled.p<Props>`
   width: max-content;
   position: relative;
   overflow: hidden;
+  display: flex;
+  align-items: center;
+  gap: 8px;
   &:after {
     content: '';
     width: 100%;
@@ -46,6 +49,35 @@ export const Title = styled.p<Props>`
 
 export const WrapperLevelDifficulty = styled.div`
   margin-top: 18px;
+`;
+
+export const WrapperStatuses = styled.span`
+  display: flex;
+  gap: 10px;
+`;
+
+type StatusProps = {
+  isActive: boolean;
+};
+export const Status = styled.span<StatusProps>`
+  cursor: pointer;
+  font-size: 37px;
+
+  & svg path {
+    fill: ${({ isActive }) => isActive && Colors.BLUE} !important;
+    stroke: ${({ isActive }) => isActive && Colors.BLUE} !important;
+  }
+  & svg rect {
+    stroke: ${({ isActive }) => isActive && Colors.BLUE} !important;
+  }
+
+  &:hover svg path {
+    fill: ${Colors.BLUE} !important;
+    stroke: ${Colors.BLUE} !important;
+  }
+  &:hover svg rect {
+    stroke: ${Colors.BLUE} !important;
+  }
 `;
 
 export const WrapperInfo = styled.div`
@@ -188,4 +220,8 @@ export const WrapperSubTitle = styled.div<WrapperSubTitleProps>`
       !isLoading ? `${delay + 0.4}s` : `${delay + 0.4}s`};
     transition-timing-function: ease-in-out;
   }
+`;
+
+export const WrapperButton = styled.div`
+  width: 100%;
 `;

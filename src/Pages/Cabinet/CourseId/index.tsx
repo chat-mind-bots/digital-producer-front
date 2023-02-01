@@ -1,17 +1,19 @@
 import React, { FC, useEffect, useState } from 'react';
-import Accordion, {
+import { useGetCourseIdQuery } from 'Store/api/course/course.api';
+import RoutesList from 'Router/routesList';
+import WrapperContent from 'Components/WrapperContent';
+import {
   AccordionType,
   HandleClickType,
-} from 'Components/UI-KIT/Accordion';
+} from 'Components/UI-KIT/Accordion/type';
 import LessonView from 'Components/UI-KIT/LessonView';
-import WrapperContent from 'Components/WrapperContent';
-import { BreadCrumbsArrayType } from 'Components/UI-KIT/BreadCrumbs';
+import Accordion from 'Components/UI-KIT/Accordion';
 import LectorCard from 'Components/UI-KIT/LectorCard';
 import TestCard from 'Components/UI-KIT/TestCard';
 import DocumentCard from 'Components/UI-KIT/DocumentCard';
-import { ReactComponent as IconForPlatformNewsCard } from 'Icons/IconForPlatformNewsCard.svg';
-import RoutesList from 'Router/routesList';
+import { BreadCrumbsArrayType } from 'Components/UI-KIT/BreadCrumbs';
 import { CourseIdType, LessonType } from 'Types/CourseId';
+import { ReactComponent as IconForPlatformNewsCard } from 'Icons/IconForPlatformNewsCard.svg';
 import * as ST from './styled';
 
 const defaultBreadCrumbs: BreadCrumbsArrayType[] = [
@@ -19,7 +21,14 @@ const defaultBreadCrumbs: BreadCrumbsArrayType[] = [
   { id: 2, name: 'Мои курсы', url: RoutesList.COURSES },
 ];
 
-const CourseId: FC<CourseIdType> = ({
+const CourseId = () => {
+  const result = useGetCourseIdQuery(1);
+  const { data, isError, isLoading } = result;
+
+  return <>{data && <CourseIdView {...data} />}</>;
+};
+
+const CourseIdView: FC<CourseIdType> = ({
   id,
   name,
   description,
@@ -29,6 +38,7 @@ const CourseId: FC<CourseIdType> = ({
   modulesLength,
   lessonsLength,
   isFree,
+  isBought,
   language,
   status,
   paymentLink,
@@ -162,6 +172,7 @@ const CourseId: FC<CourseIdType> = ({
                   countQuestions={test.countQuestions}
                   currentResult={test.currentResult}
                   status={test.status}
+                  url={`${RoutesList.TEST_ID}${id}`}
                 />
               ))}
             </ST.Content>

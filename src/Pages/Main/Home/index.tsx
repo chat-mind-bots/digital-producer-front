@@ -25,19 +25,36 @@ const Home = () => (
           width={'max-content'}
         />
       </Link>
-      <Button
-        title={'О платформе'}
-        padding={'18px 24px'}
-        fontSize={'16px'}
-        lineHeight={'20px'}
-        fontWeight={'600'}
-        background={Colors.TRANSPARENT}
-        color={Colors.BLACK1}
-        backgroundAnimation={Colors.BLACK1}
-        colorHover={Colors.WHITE}
-        border={`2px solid ${Colors.BLACK1}`}
-        width={'max-content'}
-      />
+      <Link to={RoutesList.PRODUCER_MAIN}>
+        <Button
+          title={'Как продюсер'}
+          padding={'18px 24px'}
+          fontSize={'16px'}
+          lineHeight={'20px'}
+          fontWeight={'600'}
+          background={Colors.TRANSPARENT}
+          color={Colors.BLACK1}
+          backgroundAnimation={Colors.BLACK1}
+          colorHover={Colors.WHITE}
+          border={`2px solid ${Colors.BLACK1}`}
+          width={'max-content'}
+        />
+      </Link>
+      <Link to={RoutesList.ADMIN_MAIN}>
+        <Button
+          title={'Как админ'}
+          padding={'18px 24px'}
+          fontSize={'16px'}
+          lineHeight={'20px'}
+          fontWeight={'600'}
+          background={Colors.TRANSPARENT}
+          color={Colors.BLACK1}
+          backgroundAnimation={Colors.BLACK1}
+          colorHover={Colors.WHITE}
+          border={`2px solid ${Colors.BLACK1}`}
+          width={'max-content'}
+        />
+      </Link>
     </ST.Buttons>
   </ST.Home>
 );

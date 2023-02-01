@@ -13,6 +13,10 @@ type InputProps = {
   isError?: ErrorType;
   errorText?: string;
   icon?: JSX.Element;
+  padding: string;
+  fontSize: string;
+  fontWeight: string;
+  borderSize: string;
 };
 
 const Input: FC<InputProps> = ({
@@ -22,6 +26,10 @@ const Input: FC<InputProps> = ({
   isError,
   errorText,
   icon,
+  padding,
+  fontSize,
+  fontWeight,
+  borderSize,
 }) => {
   const [focus, setFocus] = useState<FocusType>(false);
 
@@ -31,6 +39,7 @@ const Input: FC<InputProps> = ({
         isFocus={focus}
         value={value}
         isError={isError}
+        borderSize={borderSize}
       >
         {icon}
         <ST.InputElement
@@ -43,6 +52,9 @@ const Input: FC<InputProps> = ({
           onChange={(e) => {
             setValue(e.target.value);
           }}
+          padding={padding}
+          fontSize={fontSize}
+          fontWeight={fontWeight}
         />
       </ST.InputWrapper>
       {isError && (

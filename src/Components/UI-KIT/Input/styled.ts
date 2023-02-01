@@ -2,25 +2,35 @@ import { ErrorType, FocusType } from './index';
 import styled from 'styled-components';
 import Colors from 'Colors';
 
-type Props = {
+type InputWrapperProps = {
   isFocus: FocusType;
   value: string;
   isError?: ErrorType;
+  borderSize: string;
+};
+
+type InputElementProps = {
+  isFocus: FocusType;
+  value: string;
+  isError?: ErrorType;
+  padding: string;
+  fontSize: string;
+  fontWeight: string;
 };
 
 export const Input = styled.div`
   width: 100%;
 `;
 
-export const InputElement = styled.input<Props>`
-  font-weight: 600;
-  font-size: 16px;
+export const InputElement = styled.input<InputElementProps>`
+  font-weight: ${({ fontWeight }) => fontWeight};
+  font-size: ${({ fontSize }) => fontSize};
   line-height: 20px;
   color: ${({ isFocus, isError }) =>
     isFocus ? Colors.BLACK1 : isError ? Colors.RED : Colors.GREY1};
   width: 100%;
   border: none;
-  padding: 18px 18px 18px 37px;
+  padding: ${({ padding }) => padding};
   background: ${Colors.TRANSPARENT};
   transition: 0.5s;
   &::placeholder {
@@ -28,11 +38,11 @@ export const InputElement = styled.input<Props>`
   }
 `;
 
-export const InputWrapper = styled.div<Props>`
+export const InputWrapper = styled.div<InputWrapperProps>`
   background: ${Colors.WHITE4};
   position: relative;
   border-radius: 12px;
-  border: 2px solid
+  border: ${({ borderSize }) => borderSize} solid
     ${({ isFocus, value, isError }) =>
       isFocus
         ? Colors.BLUE

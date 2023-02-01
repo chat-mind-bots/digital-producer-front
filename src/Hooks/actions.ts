@@ -1,9 +1,13 @@
 import { useDispatch } from 'react-redux';
 import { bindActionCreators } from '@reduxjs/toolkit';
-import { githubActions } from 'Store/api/github/github.slice';
+import { courseActions } from 'Store/api/course/course.slice';
+import { testActions } from 'Store/api/test/test.slice';
+import { newsActions } from 'Store/api/news/news.slice';
 
 const actions = {
-  ...githubActions,
+  ...courseActions,
+  ...newsActions,
+  ...testActions,
 };
 
 export const useActions = () => {

@@ -1,14 +1,17 @@
 import { FC } from 'react';
+import { Link } from 'react-router-dom';
 import Time from 'Components/UI-KIT/Atoms/Time';
 import LevelDifficulty from 'Components/UI-KIT/Atoms/LevelDificulty';
-import { Link } from 'react-router-dom';
 import { ReactComponent as StatusFalse } from 'Icons/StatusFalse.svg';
 import { ReactComponent as StatusTrue } from 'Icons/StatusTrue.svg';
 import { TestType } from 'Types/CourseId';
-import RoutesList from 'Router/routesList';
 import * as ST from './styled';
 
-const TestCard: FC<TestType> = ({
+type TestCardProps = TestType & {
+  url: string;
+};
+
+const TestCard: FC<TestCardProps> = ({
   id,
   name,
   description,
@@ -18,8 +21,9 @@ const TestCard: FC<TestType> = ({
   currentResult,
   transitTime,
   levelDifficulty,
+  url,
 }) => (
-  <Link to={`${RoutesList.TEST_ID}${id}`}>
+  <Link to={url}>
     <ST.TestCard>
       <ST.Title>{name}</ST.Title>
       <ST.Description>{description}</ST.Description>
