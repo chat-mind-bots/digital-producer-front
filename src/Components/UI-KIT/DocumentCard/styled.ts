@@ -9,6 +9,24 @@ export const DocumentCard = styled.div`
   background: ${Colors.WHITE};
 `;
 
+export const DocumentCardProducer = styled.div`
+  font-size: 100px;
+  color: ${Colors.WHITE};
+  background: ${Colors.BLUE};
+  border-radius: 24px;
+  width: 328px;
+  height: 99px;
+  box-sizing: border-box;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 2px solid ${Colors.TRANSPARENT};
+  cursor: pointer;
+  &:hover {
+    border: 2px solid ${Colors.WHITE2};
+  }
+`;
+
 export const Name = styled.p`
   font-family: 'Vela Sans';
   font-style: normal;

@@ -1,26 +1,7 @@
 import { FC, useState } from 'react';
 import { ReactComponent as ArrowDown } from 'Icons/ArrowDown.svg';
+import { AccordionProps } from './type';
 import * as ST from './styled';
-
-type AccordionProps = {
-  array: AccordionType[];
-  handleClick: (props: HandleClickType) => void;
-};
-
-export type AccordionType = {
-  id: number;
-  name: string;
-  items: {
-    id: number;
-    name: string;
-    isActive: boolean;
-  }[];
-};
-
-export type HandleClickType = {
-  moduleId: number;
-  itemId: number;
-};
 
 const Accordion: FC<AccordionProps> = ({ array, handleClick }) => {
   const [open, setOpen] = useState<number>();

@@ -18,6 +18,24 @@ export const TestCard = styled.div`
   }
 `;
 
+export const TestCardProducer = styled.div`
+  font-size: 100px;
+  color: ${Colors.WHITE};
+  background: ${Colors.BLUE};
+  border-radius: 16px;
+  width: 328px;
+  height: 277px;
+  box-sizing: border-box;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 2px solid ${Colors.TRANSPARENT};
+  cursor: pointer;
+  &:hover {
+    border: 2px solid ${Colors.WHITE2};
+  }
+`;
+
 export const Title = styled.p`
   font-family: 'Vela Sans';
   font-weight: 700;

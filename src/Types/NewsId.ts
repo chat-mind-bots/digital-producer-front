@@ -1,40 +1,14 @@
-import { ReactComponent as IconForInsight1 } from '../Icons/IconForInsight1.svg';
-
 // ПРИМЕР: Новость по ID
 // URL: /news/ID
 // METHOD: GET
 // AUTH: TRUE
-export const NewsIdData: NewsIdType = {
-  id: 1,
-  name: 'Продажа и мышление',
-  description: 'Научитесь продавать и запускать инфопродукты в Инстаграм',
-  timeRead: '20',
-  data: '',
-  image: './',
-  tagsColors: true,
-  tags: [
-    { id: 0, name: 'финансы', background: 'red', color: 'white' },
-    { id: 1, name: 'дизайн', background: 'blue', color: 'white' },
-  ],
-  readAlsoList: [
-    {
-      id: 1,
-      name: 'Продажа и мышление',
-      description: 'Научитесь продавать и запускать инфопродукты в Инстаграм',
-      tags: [
-        { id: 0, name: 'финансы', background: 'red', color: 'white' },
-        { id: 1, name: 'дизайн', background: 'blue', color: 'white' },
-      ],
-    },
-  ],
-};
 
 export interface NewsIdType {
   id: number;
   name: string;
   description: string;
   timeRead: string;
-  data: string;
+  date: string;
   image: string;
   tagsColors: boolean;
   tags: Tag[];

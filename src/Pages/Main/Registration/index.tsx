@@ -21,6 +21,10 @@ const Registration = () => {
             placeholder={'Введите имя'}
             value={name}
             setValue={setName}
+            padding={'18px 18px 18px 37px'}
+            fontSize={'16px'}
+            fontWeight={'600'}
+            borderSize={'2px'}
           />
         </ST.InputWrapper>
         <ST.InputWrapper>
@@ -29,6 +33,10 @@ const Registration = () => {
             placeholder={'Введите почту'}
             value={mail}
             setValue={setMail}
+            padding={'18px 18px 18px 37px'}
+            fontSize={'16px'}
+            fontWeight={'600'}
+            borderSize={'2px'}
           />
         </ST.InputWrapper>
         <ST.InputWrapper>
@@ -37,6 +45,10 @@ const Registration = () => {
             placeholder={'Введите пароль'}
             value={pass}
             setValue={setPass}
+            padding={'18px 18px 18px 37px'}
+            fontSize={'16px'}
+            fontWeight={'600'}
+            borderSize={'2px'}
           />
         </ST.InputWrapper>
       </ST.Inputs>
