@@ -1,4 +1,5 @@
 import styled from 'styled-components';
+import BreakPoints from 'BreakPoints';
 
 export const News = styled.div`
   display: flex;
@@ -17,4 +18,7 @@ export const WrapperNews = styled.div`
   gap: 40px;
   display: flex;
   flex-wrap: wrap;
+  @media (max-width: ${BreakPoints.TABLET}px) {
+    max-width: 100%;
+  }
 `;

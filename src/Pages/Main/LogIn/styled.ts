@@ -1,9 +1,7 @@
 import styled from 'styled-components';
 import Colors from 'Colors';
 
-export const LogIn = styled.div`
-  max-width: 364px;
-`;
+export const LogIn = styled.div``;
 
 export const Title = styled.div`
   font-family: 'Vela Sans';

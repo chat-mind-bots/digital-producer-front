@@ -1,4 +1,5 @@
 import Colors from 'Colors';
+import BreakPoints from 'BreakPoints';
 import styled from 'styled-components';
 
 export const AddBlock = styled.div`
@@ -10,6 +11,9 @@ export const AddBlock = styled.div`
   position: sticky;
   top: 129px;
   height: max-content;
+  @media (max-width: ${BreakPoints.TABLET}px) {
+    display: none;
+  }
 `;
 
 export const Title = styled.p`

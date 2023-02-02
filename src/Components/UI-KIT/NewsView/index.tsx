@@ -23,7 +23,9 @@ const NewsView: FC<NewsViewProps> = ({
   tagsColors,
 }) => (
   <ST.NewsView>
-    <IconForNewsView />
+    <ST.WrapperIcon>
+      <IconForNewsView />
+    </ST.WrapperIcon>
     <ST.WrapperInfo>
       <ST.WrapperDateInfo>
         <Time value={time} />

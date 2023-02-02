@@ -1,4 +1,5 @@
 import styled from 'styled-components';
+import BreakPoints from 'BreakPoints';
 import Colors from 'Colors';
 
 export const AuthBlock = styled.div`
@@ -28,7 +29,11 @@ export const Mail = styled.p`
 
 export const WrapperAvatar = styled.div``;
 
-export const WrapperInfo = styled.div``;
+export const WrapperInfo = styled.div`
+  @media (max-width: ${BreakPoints.MOBILE}px) {
+    display: none;
+  }
+`;
 
 export const WrapperArrowDown = styled.div`
   cursor: pointer;

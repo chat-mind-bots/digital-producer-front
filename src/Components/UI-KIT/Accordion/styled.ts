@@ -1,4 +1,5 @@
 import styled from 'styled-components';
+import BreakPoints from 'BreakPoints';
 import Colors from 'Colors';
 
 type Props = {
@@ -15,6 +16,11 @@ export const Accordion = styled.div`
   top: 129px;
   position: sticky;
   border: 2px solid ${Colors.WHITE2};
+  @media (max-width: ${BreakPoints.TABLET}px) {
+    position: fixed;
+    right: 30px;
+    z-index: 9;
+  }
 `;
 
 export const Title = styled.p`

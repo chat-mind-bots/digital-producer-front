@@ -1,4 +1,5 @@
 import styled from 'styled-components';
+import BreakPoints from 'BreakPoints';
 import Colors from 'Colors';
 
 export const WrapperContent = styled.div`
@@ -7,6 +8,9 @@ export const WrapperContent = styled.div`
   width: 100%;
   padding: 32px;
   box-sizing: border-box;
+  @media (max-width: ${BreakPoints.MOBILE}px) {
+    padding: 12px;
+  }
 `;
 
 export const Title = styled.p`

@@ -1,7 +1,7 @@
 import styled from 'styled-components';
 import Colors from 'Colors';
 
-export const Date = styled.p`
+export const Date = styled.div`
   font-family: 'Vela Sans';
   font-weight: 700;
   font-size: 12px;
@@ -11,3 +11,5 @@ export const Date = styled.p`
   align-items: center;
   gap: 8px;
 `;
+
+export const Value = styled.p``;
