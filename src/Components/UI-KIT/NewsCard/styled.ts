@@ -1,4 +1,5 @@
 import styled from 'styled-components';
+import BreakPoints from 'BreakPoints';
 import Colors from 'Colors';
 
 export const NewsCard = styled.div`
@@ -11,6 +12,12 @@ export const NewsCard = styled.div`
   cursor: pointer;
   &:hover {
     border: 2px solid ${Colors.WHITE2};
+  }
+  // TODO: иконки в courseId
+  & svg {
+    @media (max-width: ${BreakPoints.MOBILE}px) {
+      display: none;
+    }
   }
 `;
 

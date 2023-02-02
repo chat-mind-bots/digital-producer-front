@@ -1,4 +1,5 @@
 import styled from 'styled-components';
+import BreakPoints from 'BreakPoints';
 import Colors from 'Colors';
 
 type Props = {
@@ -56,5 +57,9 @@ export const Wrapper = styled.div<Props>`
       transition: 0.5s;
       stroke: ${({ isActive }) => !isActive && Colors.BLUE};
     }
+  }
+  @media (max-width: ${BreakPoints.MOBILE}px) {
+    padding: 8px 8px;
+    max-width: 170px;
   }
 `;

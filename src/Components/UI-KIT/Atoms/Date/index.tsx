@@ -9,7 +9,7 @@ type DateProps = {
 const Date: FC<DateProps> = ({ value }) => (
   <ST.Date>
     <Calendar />
-    Дата: {value}
+    <ST.Value>Дата: {value}</ST.Value>
   </ST.Date>
 );
 

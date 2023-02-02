@@ -1,7 +1,7 @@
 import styled from 'styled-components';
 import Colors from 'Colors';
 
-export const Time = styled.p`
+export const Time = styled.div`
   font-family: 'Vela Sans';
   font-weight: 700;
   font-size: 12px;
@@ -10,4 +10,10 @@ export const Time = styled.p`
   display: flex;
   align-items: center;
   gap: 8px;
+  width: 100%;
+  & svg {
+    width: 20px;
+  }
 `;
+
+export const Value = styled.p``;

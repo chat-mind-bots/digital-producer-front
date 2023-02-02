@@ -1,4 +1,5 @@
 import styled from 'styled-components';
+import BreakPoints from 'BreakPoints';
 import Colors from 'Colors';
 
 type Props = {
@@ -193,6 +194,12 @@ export const WrapperVideo = styled.div<Props>`
     &:after {
       animation: spiner 1s infinite cubic-bezier(0.53, 0.21, 0.57, 0.85),
         colors 3s infinite cubic-bezier(0.45, -0.03, 1, 0.77);
+    }
+  }
+  // TODO: иконки в courseId
+  & svg {
+    @media (max-width: ${BreakPoints.MOBILE}px) {
+      display: none;
     }
   }
 `;

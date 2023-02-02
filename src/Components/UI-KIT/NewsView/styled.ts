@@ -1,18 +1,27 @@
 import styled from 'styled-components';
+import BreakPoints from 'BreakPoints';
 import Colors from 'Colors';
 
 export const NewsView = styled.div`
   padding: 18px;
   border-radius: 16px;
   background: ${Colors.WHITE};
-  max-width: 700px;
+  width: 100%;
   box-sizing: border-box;
 `;
 
+export const WrapperIcon = styled.div`
+  @media (max-width: ${BreakPoints.TABLET}px) {
+    & svg {
+      width: 100%;
+    }
+  }
+`;
 export const WrapperInfo = styled.div``;
 
 export const WrapperDateInfo = styled.div`
   display: flex;
+  flex-wrap: wrap;
   gap: 14px;
   align-items: center;
   margin-top: 20px;

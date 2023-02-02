@@ -1,7 +1,9 @@
 import styled from 'styled-components';
+import BreakPoints from 'BreakPoints';
 import Colors from 'Colors';
 
 export const LectorCard = styled.div`
+  width: 100%;
   display: flex;
   flex-wrap: wrap;
   gap: 10px;
@@ -12,6 +14,12 @@ export const LectorCard = styled.div`
   box-sizing: border-box;
   & svg {
     height: max-content;
+  }
+  // TODO: изменить после создания хуков
+  & svg {
+    @media (max-width: ${BreakPoints.MOBILE}px) {
+      display: none;
+    }
   }
 `;
 

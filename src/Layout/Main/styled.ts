@@ -1,4 +1,5 @@
 import styled from 'styled-components';
+import BreakPoints from 'BreakPoints';
 import Colors from 'Colors';
 
 export const Main = styled.div`
@@ -14,15 +15,16 @@ export const Wrapper = styled.div`
   box-sizing: border-box;
   display: flex;
   flex-wrap: wrap;
+  @media (max-width: ${BreakPoints.MOBILE}px) {
+    padding: 20px 20px 10px 20px;
+  }
 `;
 
 export const Header = styled.div`
+  width: 100%;
   display: flex;
-  gap: 130px;
+  flex-wrap: wrap;
   justify-content: space-between;
-  & button {
-    height: max-content;
-  }
 `;
 
 export const Footer = styled.div`
@@ -38,9 +40,7 @@ export const Name = styled.div`
   color: ${Colors.GREY1};
 `;
 
-export const Content = styled.div`
-  padding-right: 56px;
-`;
+export const Content = styled.div``;
 
 export const Image = styled.div`
   flex: 1;
@@ -48,6 +48,9 @@ export const Image = styled.div`
   & > img {
     width: 100%;
     height: 100%;
+  }
+  @media (max-width: ${BreakPoints.MOBILE}px) {
+    display: none;
   }
 `;
 

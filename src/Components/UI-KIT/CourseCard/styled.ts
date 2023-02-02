@@ -1,8 +1,8 @@
 import styled from 'styled-components';
+import BreakPoints from 'BreakPoints';
 import Colors from 'Colors';
 
 export const CourseCard = styled.div`
-  max-width: 700px;
   width: 100%;
 `;
 
@@ -67,4 +67,8 @@ export const Image = styled.div`
   min-width: 220px;
   border-radius: 16px;
   overflow: hidden;
+  // TODO: иконки в courseId
+  @media (max-width: ${BreakPoints.MOBILE}px) {
+    display: none;
+  }
 `;

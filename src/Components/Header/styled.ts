@@ -1,4 +1,5 @@
 import styled from 'styled-components';
+import BreakPoints from 'BreakPoints';
 import Colors from 'Colors';
 
 export const Header = styled.div`
@@ -14,4 +15,7 @@ export const Header = styled.div`
   top: 0;
   left: 256px;
   width: calc(100% - 256px);
+  @media (max-width: ${BreakPoints.MOBILE}px) {
+    display: none;
+  }
 `;

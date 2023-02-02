@@ -1,4 +1,5 @@
 import styled from 'styled-components';
+import BreakPoints from 'BreakPoints';
 import Colors from 'Colors';
 
 export const LeftBar = styled.div`
@@ -12,6 +13,9 @@ export const LeftBar = styled.div`
   box-sizing: border-box;
   height: 100%;
   z-index: 10;
+  @media (max-width: ${BreakPoints.MOBILE}px) {
+    display: none;
+  }
 `;
 
 export const WrapperInfo = styled.div`
