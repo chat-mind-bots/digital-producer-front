@@ -38,5 +38,4 @@ const ParseToken = () => {
 
 	return <></>;
 };
-
 export default ParseToken;
