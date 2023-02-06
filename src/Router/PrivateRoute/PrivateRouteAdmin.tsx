@@ -9,6 +9,7 @@ const LazyCabinet = lazy(() => import("Layout/Cabinet/Admin"));
 
 const PrivateRouteAdmin = () => {
 	const token = checkAuth();
+
 	return token ? (
 		<Suspense fallback={<Loader />}>
 			<LazyCabinet />

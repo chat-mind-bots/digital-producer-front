@@ -3,11 +3,12 @@ import {
 	localStorageService,
 } from "Utils/local-storage.service";
 
-const checkAuth = (): string | null | undefined => {
+const checkAuth = (): boolean => {
 	const token = localStorageService(LocalStorageMethodEnum.GET, {
 		key: "auth",
 	});
-	return token;
+
+	return !!token;
 };
 
 export default checkAuth;

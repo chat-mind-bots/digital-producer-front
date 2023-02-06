@@ -25,17 +25,17 @@ const ParseToken = () => {
 	};
 
 	useEffect(() => {
-		if (status === QueryStatus.fulfilled) {
-			setLogin(data ?? initialAuthState);
-		}
+		status === QueryStatus.fulfilled && setLogin(data ?? initialAuthState);
 	}, [status]);
+
 	useEffect(() => {
-		if (auth.id) {
+		auth.id &&
 			navigate(
 				routeBuilder(getUrlByRoleService(getMainRoleService(auth.role)))
 			);
-		}
 	}, [auth.id]);
+
 	return <></>;
 };
+
 export default ParseToken;

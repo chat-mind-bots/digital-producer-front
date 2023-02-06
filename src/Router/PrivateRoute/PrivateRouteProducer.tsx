@@ -9,6 +9,7 @@ const LazyCabinet = lazy(() => import("Layout/Cabinet/Producer"));
 
 const PrivateRouteProducer = () => {
 	const token = checkAuth();
+
 	return token ? (
 		<Suspense fallback={<Loader />}>
 			<LazyCabinet />
