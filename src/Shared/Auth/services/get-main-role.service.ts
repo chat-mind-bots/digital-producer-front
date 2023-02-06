@@ -9,9 +9,8 @@ export const getMainRoleService = (roles: UserRoleEnum[]): UserRoleEnum => {
   };
 
   return roles.reduce((highestRole, currentRole) => {
-    if (rolePriorities[currentRole] > rolePriorities[highestRole]) {
-      return currentRole;
-    }
-    return highestRole;
+    return rolePriorities[currentRole] > rolePriorities[highestRole]
+      ? currentRole
+      : highestRole;
   }, UserRoleEnum.USER);
 };

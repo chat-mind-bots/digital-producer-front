@@ -17,7 +17,6 @@ root.render(
   <React.StrictMode>
     <Provider store={store}>
       <RouterProvider router={router} />
-      {/*<CreateCourse />*/}
     </Provider>
   </React.StrictMode>
 );
