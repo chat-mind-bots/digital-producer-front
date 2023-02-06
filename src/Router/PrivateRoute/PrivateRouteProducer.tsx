@@ -5,7 +5,7 @@ import Loader from 'Components/UI-KIT/Loader';
 import { routeBuilder } from 'Router/services/route-builder';
 import RoutesList from 'Router/routesList';
 
-const LazyCabinet = lazy(() => import('Layout/Cabinet'));
+const LazyCabinet = lazy(() => import('Layout/Cabinet/Producer'));
 
 const PrivateRouteProducer = () => {
   const token = checkAuth();
