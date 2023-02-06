@@ -1,41 +1,41 @@
-import { ErrorType, FocusType } from './index';
-import styled from 'styled-components';
-import Colors from 'Colors';
+import { ErrorType, FocusType } from "./index";
+import styled from "styled-components";
+import Colors from "Colors";
 
 type InputWrapperProps = {
-  isFocus: FocusType;
-  value: string;
-  isError?: ErrorType;
-  borderSize: string;
+	isFocus: FocusType;
+	value: string;
+	isError?: ErrorType;
+	borderSize: string;
 };
 
 type InputElementProps = {
-  isFocus: FocusType;
-  value: string;
-  isError?: ErrorType;
-  padding: string;
-  fontSize: string;
-  fontWeight: string;
+	isFocus: FocusType;
+	value: string;
+	isError?: ErrorType;
+	padding: string;
+	fontSize: string;
+	fontWeight: string;
 };
 
 export const Input = styled.div`
-  width: 100%;
+	width: 100%;
 `;
 
 export const InputElement = styled.input<InputElementProps>`
-  font-weight: ${({ fontWeight }) => fontWeight};
-  font-size: ${({ fontSize }) => fontSize};
-  line-height: 20px;
-  color: ${({ isFocus, isError }) =>
-    isFocus ? Colors.BLACK1 : isError ? Colors.RED : Colors.GREY1};
-  width: 100%;
-  border: none;
-  padding: ${({ padding }) => padding};
-  background: ${Colors.TRANSPARENT};
-  transition: 0.5s;
-  &::placeholder {
-    color: ${({ isError }) => (isError ? Colors.RED : Colors.GREY1)};
-  }
+	font-weight: ${({ fontWeight }) => fontWeight};
+	font-size: ${({ fontSize }) => fontSize};
+	line-height: 20px;
+	color: ${({ isFocus, isError }) =>
+		isFocus ? Colors.BLACK1 : isError ? Colors.RED : Colors.GREY1};
+	width: 100%;
+	border: none;
+	padding: ${({ padding }) => padding};
+	background: ${Colors.TRANSPARENT};
+	transition: 0.5s;
+	&::placeholder {
+		color: ${({ isError }) => (isError ? Colors.RED : Colors.GREY1)};
+	}
 `;
 
 export const InputWrapper = styled.div<InputWrapperProps>`
@@ -44,13 +44,13 @@ export const InputWrapper = styled.div<InputWrapperProps>`
   border-radius: 12px;
   border: ${({ borderSize }) => borderSize} solid
     ${({ isFocus, value, isError }) =>
-      isFocus
-        ? Colors.BLUE
-        : isError
-        ? Colors.RED
-        : value.length
-        ? Colors.GREY1
-        : Colors.RGBA_GREY};
+			isFocus
+				? Colors.BLUE
+				: isError
+				? Colors.RED
+				: value.length
+				? Colors.GREY1
+				: Colors.RGBA_GREY};
   transition: 0.7s;
   & svg {
     position: absolute;
@@ -60,26 +60,26 @@ export const InputWrapper = styled.div<InputWrapperProps>`
     transform: translate(0, -50%);
     & path{
       fill: ${({ isFocus, value, isError }) =>
-        isFocus
-          ? Colors.BLUE
-          : isError
-          ? Colors.RED
-          : value.length
-          ? Colors.GREY1
-          : Colors.RGBA_GREY}; 
+				isFocus
+					? Colors.BLUE
+					: isError
+					? Colors.RED
+					: value.length
+					? Colors.GREY1
+					: Colors.RGBA_GREY}; 
       transition: 0.5s;
     }}}
 `;
 
 export const ErrorText = styled.p`
-  font-weight: 400;
-  font-size: 14px;
-  line-height: 22px;
-  color: ${Colors.RED};
-  display: flex;
-  align-items: center;
-  gap: 10px;
-  padding-left: 9px;
-  margin-top: 10px;
-  padding-bottom: 10px;
+	font-weight: 400;
+	font-size: 14px;
+	line-height: 22px;
+	color: ${Colors.RED};
+	display: flex;
+	align-items: center;
+	gap: 10px;
+	padding-left: 9px;
+	margin-top: 10px;
+	padding-bottom: 10px;
 `;
