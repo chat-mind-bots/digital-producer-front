@@ -1,7 +1,9 @@
 import React from "react";
-import { Languages } from "18n";
 import { useTranslation } from "react-i18next";
 import toast, { Toaster } from "react-hot-toast";
+
+import { Languages } from "18n";
+
 import * as ST from "./styled";
 
 const LanguageBar = () => {

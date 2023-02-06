@@ -1,8 +1,9 @@
 import React, { useEffect } from "react";
 import { useNavigate, useParams } from "react-router-dom";
+import { QueryStatus } from "@reduxjs/toolkit/query";
+
 import { useGetUserInfoQuery } from "Shared/Auth/redux/auth.api";
 import { useAppDispatch, useAppSelector } from "Hooks/redux";
-import { QueryStatus } from "@reduxjs/toolkit/query";
 import {
 	authActions,
 	IAuthUserState,

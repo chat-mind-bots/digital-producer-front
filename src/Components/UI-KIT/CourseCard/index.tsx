@@ -1,10 +1,12 @@
 import React, { FC } from "react";
 import { Link } from "react-router-dom";
+
 import { ReactComponent as IconForCourseCard } from "Icons/IconForCourseCard.svg";
 import LevelDifficulty, {
 	LevelDifficultyType,
 } from "Components/UI-KIT/Atoms/LevelDificulty";
 import Tags, { TagType } from "Components/UI-KIT/Atoms/Tags";
+
 import * as ST from "./styled";
 
 type CourseCardProps = {

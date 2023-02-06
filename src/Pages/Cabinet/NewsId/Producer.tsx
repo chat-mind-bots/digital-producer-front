@@ -1,4 +1,5 @@
 import React from "react";
+
 import { BreadCrumbsArrayType } from "Components/UI-KIT/BreadCrumbs";
 import WrapperContent from "Components/WrapperContent";
 import NewsView from "Components/UI-KIT/NewsView";
@@ -7,8 +8,9 @@ import AddBlock from "Components/UI-KIT/AddBlock";
 import RoutesList from "Router/routesList";
 import { useGetNewsIdQuery } from "Store/api/news/news.api";
 import WrapperRequest from "Components/WrapperRequest";
-import * as ST from "./styled";
 import { routeBuilderWithReplace } from "Router/services/route-builder";
+
+import * as ST from "./styled";
 
 const defaultBreadCrumbs: BreadCrumbsArrayType[] = [
 	{ id: 1, name: "Главная", url: RoutesList.USER },

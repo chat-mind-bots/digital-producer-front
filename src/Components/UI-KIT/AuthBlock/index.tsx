@@ -1,6 +1,8 @@
 import React, { FC } from "react";
+
 import { ReactComponent as ArrowDown } from "Icons/ArrowDown.svg";
 import { ReactComponent as IconAvatar } from "Icons/IconAvatar.svg";
+
 import * as ST from "./styled";
 
 type AuthBlockProps = {

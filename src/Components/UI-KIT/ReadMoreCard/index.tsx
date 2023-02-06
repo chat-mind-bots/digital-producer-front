@@ -1,6 +1,8 @@
 import React, { FC } from "react";
 import { Link } from "react-router-dom";
+
 import Tags, { TagType } from "Components/UI-KIT/Atoms/Tags";
+
 import * as ST from "./styled";
 
 type ReadMoreCardProps = {

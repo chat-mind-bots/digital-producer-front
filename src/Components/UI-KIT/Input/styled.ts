@@ -1,6 +1,8 @@
-import { ErrorType, FocusType } from "./index";
 import styled from "styled-components";
+
 import Colors from "Colors";
+
+import { ErrorType, FocusType } from "./index";
 
 type InputWrapperProps = {
 	isFocus: FocusType;

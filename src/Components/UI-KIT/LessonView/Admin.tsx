@@ -1,4 +1,5 @@
 import React, { FC } from "react";
+
 import { ReactComponent as IconForLessonCard } from "Icons/IconForLessonCard.svg";
 import { ReactComponent as StatusFalse } from "Icons/StatusFalse.svg";
 import { ReactComponent as StatusTrue } from "Icons/StatusTrue.svg";
@@ -7,6 +8,7 @@ import LevelDifficulty, {
 	LoadingLevelDifficulty,
 } from "Components/UI-KIT/Atoms/LevelDificulty";
 import { LessonType, OtherNote } from "Types/CourseId";
+
 import * as ST from "./styled";
 
 type LessonViewProps = LessonType & {

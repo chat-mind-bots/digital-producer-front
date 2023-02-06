@@ -37,6 +37,26 @@ module.exports = {
 		"import/no-unresolved": [2, { caseSensitive: false }],
 		"no-unused-vars": "off",
 		"@typescript-eslint/no-unused-vars": ["error"],
+		"import/order": [
+			"error",
+			{
+				groups: [
+					"builtin",
+					"external",
+					"internal",
+					["parent", "sibling", "index"],
+				],
+				"newlines-between": "always",
+				pathGroups: [
+					{
+						pattern: "*.css",
+						group: "internal",
+						position: "after",
+					},
+				],
+				pathGroupsExcludedImportTypes: ["builtin"],
+			},
+		],
 	},
 	settings: {
 		"import/parsers": {

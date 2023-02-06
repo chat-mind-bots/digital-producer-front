@@ -1,5 +1,7 @@
 import React, { Dispatch, FC, useState } from "react";
+
 import { ReactComponent as IconError } from "Icons/InputIcons/IconError.svg";
+
 import * as ST from "./styled";
 
 export type FocusType = boolean;

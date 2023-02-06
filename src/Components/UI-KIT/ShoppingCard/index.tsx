@@ -1,8 +1,10 @@
 import React, { FC } from "react";
+
 import { ReactComponent as IconForAddBlock } from "Icons/IconForAddBlock.svg";
 import Button from "Components/UI-KIT/Atoms/Button";
 import { Price } from "Types/CourseId";
 import Colors from "Colors";
+
 import * as ST from "./styled";
 
 type ShoppingCardProps = {

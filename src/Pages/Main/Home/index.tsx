@@ -1,10 +1,12 @@
 import React from "react";
 import { Link } from "react-router-dom";
+
 import Button from "Components/UI-KIT/Atoms/Button";
 import RoutesList from "Router/routesList";
 import Colors from "Colors";
-import * as ST from "./styled";
 import { routeBuilder } from "Router/services/route-builder";
+
+import * as ST from "./styled";
 
 const Home = () => (
 	<ST.Home>

@@ -1,6 +1,8 @@
 import React, { FC } from "react";
+
 import Colors from "Colors";
 import Button from "Components/UI-KIT/Atoms/Button";
+
 import * as ST from "./styled";
 
 type NewsBannerProps = {

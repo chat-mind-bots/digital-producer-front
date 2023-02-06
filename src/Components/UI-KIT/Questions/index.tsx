@@ -1,7 +1,9 @@
 import React, { FC } from "react";
+
 import Radio from "Components/UI-KIT/Atoms/Radio";
-import * as ST from "./styled";
 import { QuestionsType } from "Types/TestId";
+
+import * as ST from "./styled";
 
 export type QuestionProps = {
 	arrayQuestion: QuestionsType[];

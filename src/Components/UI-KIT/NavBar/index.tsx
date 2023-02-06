@@ -1,6 +1,8 @@
 import React, { FC } from "react";
-import { NavBarType } from "Constants/NavBar";
 import { Link, useLocation } from "react-router-dom";
+
+import { NavBarType } from "Constants/NavBar";
+
 import * as ST from "./styled";
 
 export type NavBarProps = {

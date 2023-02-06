@@ -1,6 +1,8 @@
 import React, { useState } from "react";
+
 import Search from "Components/UI-KIT/Search";
 import AuthBlock from "Components/UI-KIT/AuthBlock";
+
 import * as ST from "./styled";
 
 const Header = () => {

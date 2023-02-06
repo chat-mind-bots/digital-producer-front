@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+
 import { BreadCrumbsArrayType } from "Components/UI-KIT/BreadCrumbs";
 import WrapperContent from "Components/WrapperContent";
 import CourseCard from "Components/UI-KIT/CourseCard";
@@ -9,8 +10,9 @@ import WrapperRequest from "Components/WrapperRequest";
 import CourseCardProducer from "Components/UI-KIT/CourseCard/Producer";
 import CreateCourse from "Components/ModalWindows/CreateCourse";
 import Modal from "Components/ModalWindows/WrappersModalWindows/Classic";
-import * as ST from "./styled";
 import { routeBuilderWithReplace } from "Router/services/route-builder";
+
+import * as ST from "./styled";
 
 const defaultBreadCrumbs: BreadCrumbsArrayType[] = [
 	{ id: 1, name: "Главная", url: RoutesList.USER },

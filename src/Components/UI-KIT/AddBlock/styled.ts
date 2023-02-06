@@ -1,6 +1,7 @@
+import styled from "styled-components";
+
 import Colors from "Colors";
 import BreakPoints from "BreakPoints";
-import styled from "styled-components";
 
 export const AddBlock = styled.div`
 	padding: 20px 20px 32px;

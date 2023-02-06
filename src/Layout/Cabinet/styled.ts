@@ -1,4 +1,5 @@
 import styled from "styled-components";
+
 import BreakPoints from "BreakPoints";
 
 export const Cabinet = styled.div`

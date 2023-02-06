@@ -1,9 +1,11 @@
 import React from "react";
+
 import Logo from "Components/UI-KIT/Logo";
 import NavBar from "Components/UI-KIT/NavBar";
 import BlockAllCoursesPlatform from "Components/UI-KIT/BlockAllCoursesPlatform";
 import NavBarData from "Constants/NavBar";
 import RoutesList from "Router/routesList";
+
 import * as ST from "./styled";
 
 const LeftBar = () => (

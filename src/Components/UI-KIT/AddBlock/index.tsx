@@ -1,7 +1,9 @@
 import React, { FC } from "react";
+
 import { ReactComponent as IconForAddBlock } from "Icons/IconForAddBlock.svg";
 import Button from "Components/UI-KIT/Atoms/Button";
 import Colors from "Colors";
+
 import * as ST from "./styled";
 
 type AddBlockProps = {

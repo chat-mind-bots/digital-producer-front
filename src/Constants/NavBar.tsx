@@ -1,4 +1,5 @@
 import React from "react";
+
 import MainComponent from "Pages/Cabinet/Main";
 import CoursesComponent from "Pages/Cabinet/Courses";
 import NewsComponent from "Pages/Cabinet/News";

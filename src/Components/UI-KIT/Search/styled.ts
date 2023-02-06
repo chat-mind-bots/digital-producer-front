@@ -1,6 +1,8 @@
-import { FocusType } from "./index";
 import styled from "styled-components";
+
 import Colors from "Colors";
+
+import { FocusType } from "./index";
 
 type Props = {
 	isFocus: FocusType;

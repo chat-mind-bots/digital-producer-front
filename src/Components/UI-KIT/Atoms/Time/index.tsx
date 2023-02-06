@@ -1,5 +1,7 @@
 import React, { FC } from "react";
+
 import { ReactComponent as Clock } from "Icons/Clock.svg";
+
 import * as ST from "./styled";
 
 type TimeProps = {

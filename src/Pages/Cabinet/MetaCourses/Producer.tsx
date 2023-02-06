@@ -1,4 +1,5 @@
 import React from "react";
+
 import { useGetCoursesQuery } from "Store/api/course/course.api";
 import { BreadCrumbsArrayType } from "Components/UI-KIT/BreadCrumbs";
 import RoutesList from "Router/routesList";
@@ -6,8 +7,9 @@ import WrapperContent from "Components/WrapperContent";
 import CourseCard from "Components/UI-KIT/CourseCard";
 import AddBlock from "Components/UI-KIT/AddBlock";
 import WrapperRequest from "Components/WrapperRequest";
-import * as ST from "./styled";
 import { routeBuilderWithReplace } from "Router/services/route-builder";
+
+import * as ST from "./styled";
 
 const defaultBreadCrumbs: BreadCrumbsArrayType[] = [
 	{ id: 1, name: "Главная", url: RoutesList.USER },

@@ -1,6 +1,8 @@
 import { createApi, fetchBaseQuery } from "@reduxjs/toolkit/query/react";
+
 import { CoursesType } from "Types/Course";
 import { CourseIdType } from "Types/CourseId";
+
 import { CourseIdData, CoursesData } from "./moks";
 
 export const courseApi = createApi({

@@ -1,6 +1,8 @@
 import React, { useState } from "react";
+
 import { ReactComponent as ModalWindowAddFileIcon } from "Icons/ModalWindowAddFileIcon.svg";
 import Input from "Components/UI-KIT/Input";
+
 import * as ST from "./styled";
 
 const EditLesson = () => {

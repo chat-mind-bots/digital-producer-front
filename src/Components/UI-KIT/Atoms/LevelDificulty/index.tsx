@@ -1,4 +1,5 @@
 import React, { FC, useEffect, useState } from "react";
+
 import * as ST from "./styled";
 
 type LevelDifficultyProps = {

@@ -1,4 +1,5 @@
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
+
 import { UserRoleEnum } from "Shared/Auth/types/role.enum";
 import { IPhotos } from "Shared/Auth/types/user-photos.type";
 import {

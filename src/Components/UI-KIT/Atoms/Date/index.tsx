@@ -1,5 +1,7 @@
 import React, { FC } from "react";
+
 import { ReactComponent as Calendar } from "Icons/Calendar.svg";
+
 import * as ST from "./styled";
 
 type DateProps = {

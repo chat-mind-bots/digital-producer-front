@@ -1,5 +1,7 @@
 import React, { FC } from "react";
+
 import Colors from "Colors";
+
 import * as ST from "./styled";
 
 type NewsCardProps = {

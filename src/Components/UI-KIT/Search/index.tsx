@@ -1,5 +1,7 @@
 import React, { Dispatch, FC, useState } from "react";
+
 import { ReactComponent as IconSearch } from "Icons/IconSearch.svg";
+
 import * as ST from "./styled";
 
 export type FocusType = boolean;

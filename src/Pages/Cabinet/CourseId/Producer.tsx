@@ -1,4 +1,5 @@
 import React, { FC, useEffect, useState } from "react";
+
 import LessonView from "Components/UI-KIT/LessonView/Producer";
 import WrapperContent from "Components/WrapperContent";
 import { BreadCrumbsArrayType } from "Components/UI-KIT/BreadCrumbs";
@@ -25,8 +26,9 @@ import AddLesson from "Components/ModalWindows/AddLesson";
 import AddModule from "Components/ModalWindows/AddModule";
 import AddTest from "Components/ModalWindows/AddTest";
 import Modal from "Components/ModalWindows/WrappersModalWindows/Classic";
-import * as ST from "./styled";
 import { routeBuilderWithReplace } from "Router/services/route-builder";
+
+import * as ST from "./styled";
 
 const defaultBreadCrumbs: BreadCrumbsArrayType[] = [
 	{ id: 1, name: "Главная", url: RoutesList.USER },

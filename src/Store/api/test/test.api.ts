@@ -1,6 +1,8 @@
 import { createApi, fetchBaseQuery } from "@reduxjs/toolkit/query/react";
-import { TestIdData } from "./moks";
+
 import { TestIdType } from "Types/TestId";
+
+import { TestIdData } from "./moks";
 
 export const testApi = createApi({
 	reducerPath: "test/api",

@@ -1,4 +1,5 @@
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
+
 import { CoursesType } from "Types/Course";
 
 const LS_FAV_KEY = "rfk";

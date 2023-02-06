@@ -1,9 +1,11 @@
 import React, { FC } from "react";
 import { Link } from "react-router-dom";
+
 import RoutesList from "Router/routesList";
 import Logo from "Components/UI-KIT/Logo";
 import Button from "Components/UI-KIT/Atoms/Button";
 import Colors from "Colors";
+
 import * as ST from "./styled";
 
 type MainProps = {

@@ -1,6 +1,8 @@
 import React, { FC } from "react";
 import { Link } from "react-router-dom";
+
 import { ReactComponent as ArrowDown } from "Icons/ArrowDown.svg";
+
 import * as ST from "./styled";
 
 type DocumentCardProps = {

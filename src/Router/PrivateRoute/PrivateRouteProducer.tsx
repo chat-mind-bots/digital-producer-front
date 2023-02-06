@@ -1,5 +1,6 @@
 import React, { lazy, Suspense } from "react";
 import { Navigate } from "react-router-dom";
+
 import checkAuth from "Utils/CheckAuth";
 import Loader from "Components/UI-KIT/Loader";
 import { routeBuilder } from "Router/services/route-builder";

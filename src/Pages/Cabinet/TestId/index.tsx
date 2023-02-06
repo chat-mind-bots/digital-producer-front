@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import toast, { Toaster } from "react-hot-toast";
+
 import BlockRulesTest from "Components/UI-KIT/BlockRulesTest";
 import WrapperContent from "Components/WrapperContent";
 import Questions from "Components/UI-KIT/Questions";
@@ -9,6 +10,7 @@ import RoutesList from "Router/routesList";
 import { useGetTestIdQuery } from "Store/api/test/test.api";
 import WrapperRequest from "Components/WrapperRequest";
 import Colors from "Colors";
+
 import * as ST from "./styled";
 
 const TestId = () => {

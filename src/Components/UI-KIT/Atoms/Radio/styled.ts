@@ -1,6 +1,8 @@
 import styled from "styled-components";
-import { RadioProps } from "./index";
+
 import Colors from "Colors";
+
+import { RadioProps } from "./index";
 
 export const Radio = styled.p<RadioProps>`
   min-width: 20px;

@@ -1,8 +1,10 @@
 import React, { useState } from "react";
+
 import { ReactComponent as ModalWindowAddFileIcon } from "Icons/ModalWindowAddFileIcon.svg";
 import Button from "Components/UI-KIT/Atoms/Button";
 import Input from "Components/UI-KIT/Input";
 import Colors from "Colors";
+
 import * as ST from "./styled";
 
 const CreateCourse = () => {

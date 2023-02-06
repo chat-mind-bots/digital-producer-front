@@ -1,5 +1,6 @@
-import * as ST from "./styled";
 import React, { FC } from "react";
+
+import * as ST from "./styled";
 
 type TestCardProps = {
 	onClick: () => void;

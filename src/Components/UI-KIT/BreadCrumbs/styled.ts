@@ -1,5 +1,6 @@
-import Colors from "Colors";
 import styled from "styled-components";
+
+import Colors from "Colors";
 
 type ItemProps = {
 	isLast: boolean;

@@ -1,8 +1,10 @@
 import React, { FC } from "react";
 import { Link } from "react-router-dom";
+
 import { ReactComponent as IconForNavBar } from "Icons/IconForNavBar.svg";
 import Colors from "Colors";
 import Button from "Components/UI-KIT/Atoms/Button";
+
 import * as ST from "./styled";
 
 type BlockAllCoursesPlatformProps = {

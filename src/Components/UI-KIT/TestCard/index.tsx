@@ -1,10 +1,12 @@
 import React, { FC } from "react";
 import { Link } from "react-router-dom";
+
 import Time from "Components/UI-KIT/Atoms/Time";
 import LevelDifficulty from "Components/UI-KIT/Atoms/LevelDificulty";
 import { ReactComponent as StatusFalse } from "Icons/StatusFalse.svg";
 import { ReactComponent as StatusTrue } from "Icons/StatusTrue.svg";
 import { TestType } from "Types/CourseId";
+
 import * as ST from "./styled";
 
 type TestCardProps = TestType & {

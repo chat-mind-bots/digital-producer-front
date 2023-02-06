@@ -1,8 +1,10 @@
 import React, { FC, useState } from "react";
+
 import { ReactComponent as ArrowDown } from "Icons/ArrowDown.svg";
 import Button from "Components/UI-KIT/Atoms/Button";
-import { AccordionProps } from "./type";
 import Colors from "Colors";
+
+import { AccordionProps } from "./type";
 import * as ST from "./styled";
 
 const Accordion: FC<AccordionProps> = ({

@@ -1,5 +1,6 @@
-import Colors from "Colors";
 import styled from "styled-components";
+
+import Colors from "Colors";
 
 export const ShoppingCard = styled.div`
 	padding: 20px 20px 32px;

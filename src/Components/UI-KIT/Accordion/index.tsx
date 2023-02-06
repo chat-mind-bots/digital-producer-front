@@ -1,5 +1,7 @@
 import React, { FC, useState } from "react";
+
 import { ReactComponent as ArrowDown } from "Icons/ArrowDown.svg";
+
 import { AccordionProps } from "./type";
 import * as ST from "./styled";
 

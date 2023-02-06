@@ -1,4 +1,5 @@
 import { createApi, fetchBaseQuery } from "@reduxjs/toolkit/query/react";
+
 import { IAuthUserDTO } from "Shared/Auth/types/user-dto.type";
 import { userFromDtoService } from "Shared/Auth/services/data/user-from-dto.service";
 import { IAuthUserState } from "Shared/Auth/redux/auth.slice";
