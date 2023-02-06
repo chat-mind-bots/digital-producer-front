@@ -8,9 +8,10 @@ import RoutesList from 'Router/routesList';
 import { useGetNewsIdQuery } from 'Store/api/news/news.api';
 import WrapperRequest from 'Components/WrapperRequest';
 import * as ST from './styled';
+import { routeBuilderWithReplace } from 'Router/services/route-builder';
 
 const defaultBreadCrumbs: BreadCrumbsArrayType[] = [
-  { id: 1, name: 'Главная', url: RoutesList.MAIN },
+  { id: 1, name: 'Главная', url: RoutesList.USER },
   { id: 2, name: 'Новости платформы', url: RoutesList.NEWS },
 ];
 
@@ -55,7 +56,11 @@ const NewsId = () => {
                       key={`News-readMoreCard-item-${readMoreCardItem.id}`}
                       name={readMoreCardItem.name}
                       description={readMoreCardItem.description}
-                      url={`${RoutesList.PRODUCER_NEWS_ID}${readMoreCardItem.id}`}
+                      url={routeBuilderWithReplace(
+                        [RoutesList.PRODUCER, RoutesList.NEWS_ID],
+                        'id',
+                        readMoreCardItem.id
+                      )}
                       tagsColors={data.tagsColors}
                       tags={readMoreCardItem.tags}
                     />

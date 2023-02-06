@@ -1,37 +1,22 @@
-import React, { Suspense } from 'react';
+import React from 'react';
 import ReactDOM from 'react-dom/client';
 import { createBrowserRouter, RouterProvider } from 'react-router-dom';
 import { Provider } from 'react-redux';
 import { store } from 'Store';
-import Loader from './Components/UI-KIT/Loader';
-import {
-  RoutersCabinetProducer,
-  RoutersCabinetUser,
-  RoutersNoAuth,
-  RoutersCabinetAdmin,
-} from './Router';
+import { Router } from 'Router';
 import '18n.ts';
 import 'index.css';
-import 'style.css';
 
 const root = ReactDOM.createRoot(
   document.getElementById('root') as HTMLElement
 );
 
-const router = createBrowserRouter([
-  ...RoutersNoAuth,
-  ...RoutersCabinetUser,
-  ...RoutersCabinetProducer,
-  ...RoutersCabinetAdmin,
-]);
+const router = createBrowserRouter(Router);
 
 root.render(
   <React.StrictMode>
     <Provider store={store}>
-      <Suspense fallback={<Loader />}>
-        <RouterProvider router={router} />
-        {/*<CreateCourse />*/}
-      </Suspense>
+      <RouterProvider router={router} />
     </Provider>
   </React.StrictMode>
 );

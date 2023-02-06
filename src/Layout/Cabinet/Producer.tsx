@@ -2,12 +2,9 @@ import { FC } from 'react';
 import Header from 'Components/Header';
 import LeftBar from 'Components/LeftBar/Producer';
 import * as ST from './styled';
+import { Outlet } from 'react-router-dom';
 
-type CabinetProps = {
-  children: JSX.Element;
-};
-
-const Cabinet: FC<CabinetProps> = ({ children }) => {
+const Cabinet: FC = () => {
   return (
     <>
       <ST.Cabinet>
@@ -15,7 +12,9 @@ const Cabinet: FC<CabinetProps> = ({ children }) => {
       </ST.Cabinet>
       <ST.Wrapper>
         <Header />
-        <ST.Content>{children}</ST.Content>
+        <ST.Content>
+          <Outlet />
+        </ST.Content>
       </ST.Wrapper>
     </>
   );

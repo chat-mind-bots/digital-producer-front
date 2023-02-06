@@ -8,9 +8,10 @@ import { useGetCoursesQuery } from 'Store/api/course/course.api';
 import { CoursesType } from 'Types/Course';
 import WrapperRequest from 'Components/WrapperRequest';
 import * as ST from './styled';
+import { routeBuilderWithReplace } from 'Router/services/route-builder';
 
 const defaultBreadCrumbs: BreadCrumbsArrayType[] = [
-  { id: 1, name: 'Главная', url: RoutesList.MAIN },
+  { id: 1, name: 'Главная', url: RoutesList.USER },
   { id: 2, name: 'Мои курсы', url: RoutesList.COURSES },
 ];
 
@@ -37,7 +38,11 @@ const Courses = () => {
                   currentData.list.map((course) => (
                     <CourseCard
                       key={`Courses-CourseCard-${course.id}`}
-                      url={`${RoutesList.COURSE_ID}${course.id}`}
+                      url={routeBuilderWithReplace(
+                        [RoutesList.USER, RoutesList.NEWS_ID],
+                        'id',
+                        course.id
+                      )}
                       title={course.name}
                       description={course.description}
                       levelDifficulty={course.levelDifficulty}
