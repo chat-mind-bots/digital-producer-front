@@ -36,6 +36,7 @@ export const LoadingLevelDifficulty = () => {
 			() => setCount((count === maxCount ? minCount : count + 1) as number),
 			delay
 		);
+
 		return () => clearInterval(timerId);
 	});
 

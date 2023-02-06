@@ -6,6 +6,7 @@ export const userFromDtoService = (
 	token: string
 ): IAuthUserState => {
 	const { _id, tg_id, first_name, ...other } = dto;
+
 	return {
 		...other,
 		token,

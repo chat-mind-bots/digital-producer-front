@@ -36,6 +36,7 @@ export const authSlice = createSlice({
 				key: "auth",
 				data: action.payload.token,
 			});
+
 			return {
 				...state,
 				...action.payload,

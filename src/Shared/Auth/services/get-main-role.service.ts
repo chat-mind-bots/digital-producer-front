@@ -12,6 +12,7 @@ export const getMainRoleService = (roles: UserRoleEnum[]): UserRoleEnum => {
 		if (rolePriorities[currentRole] > rolePriorities[highestRole]) {
 			return currentRole;
 		}
+
 		return highestRole;
 	}, UserRoleEnum.USER);
 };

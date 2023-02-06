@@ -57,6 +57,14 @@ module.exports = {
 				pathGroupsExcludedImportTypes: ["builtin"],
 			},
 		],
+		"padding-line-between-statements": [
+			"error",
+			{
+				blankLine: "always",
+				prev: "*",
+				next: "return",
+			},
+		],
 	},
 	settings: {
 		"import/parsers": {

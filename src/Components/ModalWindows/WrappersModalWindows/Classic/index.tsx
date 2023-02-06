@@ -43,6 +43,7 @@ const Modal: FC<ModalProps> = ({ children, isOpen, handleClose, title }) => {
 		const closeOnEscapeKey = (e: KeyboardEvent) =>
 			e.key === "Escape" && handleClose();
 		document.body.addEventListener("keydown", closeOnEscapeKey);
+
 		return () => {
 			document.body.removeEventListener("keydown", closeOnEscapeKey);
 		};
