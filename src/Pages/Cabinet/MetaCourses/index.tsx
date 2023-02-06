@@ -9,7 +9,7 @@ import WrapperRequest from 'Components/WrapperRequest';
 import * as ST from './styled';
 
 const defaultBreadCrumbs: BreadCrumbsArrayType[] = [
-  { id: 1, name: 'Главная', url: RoutesList.MAIN },
+  { id: 1, name: 'Главная', url: RoutesList.USER },
   { id: 2, name: 'Курсы Meta', url: RoutesList.META_COURSES },
 ];
 

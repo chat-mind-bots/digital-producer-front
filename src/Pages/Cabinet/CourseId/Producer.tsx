@@ -26,9 +26,10 @@ import AddModule from 'Components/ModalWindows/AddModule';
 import AddTest from 'Components/ModalWindows/AddTest';
 import Modal from 'Components/ModalWindows/WrappersModalWindows/Classic';
 import * as ST from './styled';
+import { routeBuilderWithReplace } from 'Router/services/route-builder';
 
 const defaultBreadCrumbs: BreadCrumbsArrayType[] = [
-  { id: 1, name: 'Главная', url: RoutesList.MAIN },
+  { id: 1, name: 'Главная', url: RoutesList.USER },
   { id: 2, name: 'Мои курсы', url: RoutesList.COURSES },
 ];
 
@@ -73,7 +74,7 @@ const CourseIdView: FC<CourseIdType> = ({
     {
       id: 4,
       name: currentLesson ? currentLesson.name : '',
-      url: RoutesList.MAIN,
+      url: RoutesList.USER,
     },
   ];
 
@@ -195,7 +196,11 @@ const CourseIdView: FC<CourseIdType> = ({
                   countQuestions={test.countQuestions}
                   currentResult={test.currentResult}
                   status={test.status}
-                  url={`${RoutesList.PRODUCER_TEST_ID}${id}`}
+                  url={routeBuilderWithReplace(
+                    [RoutesList.PRODUCER, RoutesList.TEST_ID],
+                    'id',
+                    id
+                  )}
                 />
               ))}
             </ST.Content>

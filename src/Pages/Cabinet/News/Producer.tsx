@@ -7,9 +7,10 @@ import NewsCard from 'Components/UI-KIT/NewsCard';
 import RoutesList from 'Router/routesList';
 import WrapperRequest from 'Components/WrapperRequest';
 import * as ST from './styled';
+import { routeBuilderWithReplace } from 'Router/services/route-builder';
 
 const defaultBreadCrumbs: BreadCrumbsArrayType[] = [
-  { id: 1, name: 'Главная', url: RoutesList.MAIN },
+  { id: 1, name: 'Главная', url: RoutesList.USER },
   { id: 2, name: 'Новости платформы', url: RoutesList.NEWS },
 ];
 
@@ -37,7 +38,11 @@ const News = () => {
                       date={newsItem.date}
                       timeRead={`Время чтения: ${newsItem.timeRead} мин`}
                       image={''}
-                      url={`${RoutesList.PRODUCER_NEWS_ID}${newsItem.id}`}
+                      url={routeBuilderWithReplace(
+                        [RoutesList.PRODUCER, RoutesList.NEWS_ID],
+                        'id',
+                        newsItem.id
+                      )}
                       tagsColors={data.tagsColors}
                       tags={newsItem.tags}
                     />

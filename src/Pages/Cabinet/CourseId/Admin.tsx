@@ -16,9 +16,10 @@ import { ReactComponent as IconForPlatformNewsCard } from 'Icons/IconForPlatform
 import StudentsTable from 'Components/UI-KIT/StudentsTable';
 import { CourseIdType, LessonType } from 'Types/CourseId';
 import * as ST from './styled';
+import { routeBuilderWithReplace } from 'Router/services/route-builder';
 
 const defaultBreadCrumbs: BreadCrumbsArrayType[] = [
-  { id: 1, name: 'Главная', url: RoutesList.MAIN },
+  { id: 1, name: 'Главная', url: RoutesList.USER },
   { id: 2, name: 'Мои курсы', url: RoutesList.COURSES },
 ];
 
@@ -63,7 +64,7 @@ const CourseIdView: FC<CourseIdType> = ({
     {
       id: 4,
       name: currentLesson ? currentLesson.name : '',
-      url: RoutesList.MAIN,
+      url: RoutesList.USER,
     },
   ];
 
@@ -173,7 +174,11 @@ const CourseIdView: FC<CourseIdType> = ({
                   countQuestions={test.countQuestions}
                   currentResult={test.currentResult}
                   status={test.status}
-                  url={`${RoutesList.ADMIN_TEST_ID}${id}`}
+                  url={routeBuilderWithReplace(
+                    [RoutesList.ADMIN, RoutesList.TEST_ID],
+                    'id',
+                    id
+                  )}
                 />
               ))}
             </ST.Content>

@@ -7,6 +7,7 @@ import { ReactComponent as MyCourses } from 'Icons/NavBar/MyCourses.svg';
 import { ReactComponent as News } from 'Icons/NavBar/News.svg';
 import { ReactComponent as MetaCourses } from 'Icons/NavBar/MetaCourses.svg';
 import RoutesList from 'Router/routesList';
+import { routeBuilder } from 'Router/services/route-builder';
 
 export type NavBarType = {
   id: number;
@@ -22,7 +23,7 @@ const NavBarData: NavBarType[] = [
     id: 1,
     name: 'Главная',
     count: 10,
-    url: RoutesList.MAIN,
+    url: routeBuilder(RoutesList.USER),
     svg: <Main />,
     element: <MainComponent />,
   },
@@ -30,7 +31,7 @@ const NavBarData: NavBarType[] = [
     id: 2,
     name: 'Мои курсы',
     count: 0,
-    url: RoutesList.COURSES,
+    url: routeBuilder([RoutesList.USER, RoutesList.COURSES]),
     svg: <MyCourses />,
     element: <CoursesComponent />,
   },
@@ -38,7 +39,7 @@ const NavBarData: NavBarType[] = [
     id: 3,
     name: 'Новости',
     count: 0,
-    url: RoutesList.NEWS,
+    url: routeBuilder([RoutesList.USER, RoutesList.NEWS]),
     svg: <News />,
     element: <NewsComponent />,
   },
@@ -46,7 +47,7 @@ const NavBarData: NavBarType[] = [
     id: 4,
     name: 'Курсы meta',
     count: 0,
-    url: RoutesList.META_COURSES,
+    url: routeBuilder([RoutesList.USER, RoutesList.META_COURSES]),
     svg: <MetaCourses />,
     element: <MetaCoursesComponent />,
   },

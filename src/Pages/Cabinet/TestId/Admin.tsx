@@ -10,6 +10,7 @@ import { useGetTestIdQuery } from 'Store/api/test/test.api';
 import WrapperRequest from 'Components/WrapperRequest';
 import Colors from 'Colors';
 import * as ST from './styled';
+import { routeBuilderWithReplace } from 'Router/services/route-builder';
 
 const TestId = () => {
   const [state, setState] = useState<boolean>(false);
@@ -36,7 +37,13 @@ const TestId = () => {
                   <Questions arrayQuestion={data.questions} />
                 </ST.WrapperQuestions>
                 <ST.WrapperButton>
-                  <Link to={`${RoutesList.ADMIN_COURSE_ID}1`}>
+                  <Link
+                    to={routeBuilderWithReplace(
+                      [RoutesList.ADMIN, RoutesList.COURSE_ID],
+                      'id',
+                      1
+                    )}
+                  >
                     <Button
                       title={'Вернуться к курсу'}
                       padding={'11px 0'}

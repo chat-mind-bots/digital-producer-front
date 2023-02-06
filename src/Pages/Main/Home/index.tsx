@@ -3,6 +3,7 @@ import Button from 'Components/UI-KIT/Atoms/Button';
 import RoutesList from 'Router/routesList';
 import Colors from 'Colors';
 import * as ST from './styled';
+import { routeBuilder } from 'Router/services/route-builder';
 
 const Home = () => (
   <ST.Home>
@@ -11,7 +12,7 @@ const Home = () => (
       Самые последние и актуальные новости и обновления платформы
     </ST.Description>
     <ST.Buttons>
-      <Link to={RoutesList.MAIN}>
+      <Link to={RoutesList.USER}>
         <Button
           title={'Попробовать бесплатно'}
           padding={'18px 24px'}
@@ -25,7 +26,7 @@ const Home = () => (
           width={'max-content'}
         />
       </Link>
-      <Link to={RoutesList.PRODUCER_MAIN}>
+      <Link to={routeBuilder(RoutesList.PRODUCER)}>
         <Button
           title={'Как продюсер'}
           padding={'18px 24px'}
@@ -40,7 +41,7 @@ const Home = () => (
           width={'max-content'}
         />
       </Link>
-      <Link to={RoutesList.ADMIN_MAIN}>
+      <Link to={routeBuilder(RoutesList.ADMIN)}>
         <Button
           title={'Как админ'}
           padding={'18px 24px'}

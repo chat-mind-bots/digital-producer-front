@@ -10,9 +10,10 @@ import CourseCardProducer from 'Components/UI-KIT/CourseCard/Producer';
 import CreateCourse from 'Components/ModalWindows/CreateCourse';
 import Modal from 'Components/ModalWindows/WrappersModalWindows/Classic';
 import * as ST from './styled';
+import { routeBuilderWithReplace } from 'Router/services/route-builder';
 
 const defaultBreadCrumbs: BreadCrumbsArrayType[] = [
-  { id: 1, name: 'Главная', url: RoutesList.MAIN },
+  { id: 1, name: 'Главная', url: RoutesList.USER },
   { id: 2, name: 'Мои курсы', url: RoutesList.COURSES },
 ];
 
@@ -36,7 +37,11 @@ const Courses = () => {
                   data.list.map((course) => (
                     <CourseCard
                       key={`Courses-CourseCard-${course.id}`}
-                      url={`${RoutesList.PRODUCER_COURSE_ID}${course.id}`}
+                      url={routeBuilderWithReplace(
+                        [RoutesList.PRODUCER, RoutesList.COURSE_ID],
+                        'id',
+                        course.id
+                      )}
                       title={course.name}
                       description={course.description}
                       levelDifficulty={course.levelDifficulty}

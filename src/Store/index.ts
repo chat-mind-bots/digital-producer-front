@@ -6,8 +6,13 @@ import { newsApi } from './api/news/news.api';
 import { newsReducer } from './api/news/news.slice';
 import { testApi } from './api/test/test.api';
 import { testReducer } from './api/test/test.slice';
+import { authApi } from 'Shared/Auth/redux/auth.api';
+import { authReducer } from 'Shared/Auth/redux/auth.slice';
 
 const allMySliceReducersReducer = combineReducers({
+  [authApi.reducerPath]: authApi.reducer,
+  auth: authReducer,
+
   [courseApi.reducerPath]: courseApi.reducer,
   course: courseReducer,
 
@@ -22,6 +27,7 @@ export const store = configureStore({
   reducer: allMySliceReducersReducer,
   middleware: (getDefaultMiddleware) =>
     getDefaultMiddleware().concat(
+      authApi.middleware,
       courseApi.middleware,
       newsApi.middleware,
       testApi.middleware
@@ -31,3 +37,4 @@ export const store = configureStore({
 setupListeners(store.dispatch);
 
 export type RootState = ReturnType<typeof store.getState>;
+export type AppDispatch = typeof store.dispatch;
