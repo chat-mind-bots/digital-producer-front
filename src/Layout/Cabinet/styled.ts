@@ -1,26 +1,27 @@
-import styled from 'styled-components';
-import BreakPoints from 'BreakPoints';
+import styled from "styled-components";
+
+import BreakPoints from "BreakPoints";
 
 export const Cabinet = styled.div`
-  display: flex;
-  position: fixed;
-  width: 100%;
-  top: 0;
-  left: 0;
-  height: 100%;
+	display: flex;
+	position: fixed;
+	width: 100%;
+	top: 0;
+	left: 0;
+	height: 100%;
 `;
 
 export const Content = styled.div`
-  position: absolute;
-  left: 297px;
-  top: 129px;
-  z-index: 3;
-  width: calc(100% - 337px);
-  @media (max-width: ${BreakPoints.MOBILE}px) {
-    left: 0;
-    top: 0;
-    width: 100%;
-  }
+	position: absolute;
+	left: 297px;
+	top: 129px;
+	z-index: 3;
+	width: calc(100% - 337px);
+	@media (max-width: ${BreakPoints.MOBILE}px) {
+		left: 0;
+		top: 0;
+		width: 100%;
+	}
 `;
 
 export const Wrapper = styled.div``;

@@ -1,12 +1,13 @@
-import { FC } from 'react';
-import * as ST from './styled';
+import React, { FC } from "react";
+
+import * as ST from "./styled";
 
 type DocumentCardProps = {
-  onClick: () => void;
+	onClick: () => void;
 };
 
 const DocumentCard: FC<DocumentCardProps> = ({ onClick }) => (
-  <ST.DocumentCardProducer onClick={onClick}>+</ST.DocumentCardProducer>
+	<ST.DocumentCardProducer onClick={onClick}>+</ST.DocumentCardProducer>
 );
 
 export default DocumentCard;

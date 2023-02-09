@@ -1,61 +1,62 @@
-import styled from 'styled-components';
-import Colors from 'Colors';
+import styled from "styled-components";
+
+import Colors from "Colors";
 
 export const DocumentCard = styled.div`
-  border-radius: 16px;
-  max-width: 328px;
-  width: 100%;
-  box-sizing: border-box;
-  background: ${Colors.WHITE};
+	border-radius: 16px;
+	max-width: 328px;
+	width: 100%;
+	box-sizing: border-box;
+	background: ${Colors.WHITE};
 `;
 
 export const DocumentCardProducer = styled.div`
-  font-size: 100px;
-  color: ${Colors.WHITE};
-  background: ${Colors.BLUE};
-  border-radius: 24px;
-  width: 328px;
-  height: 99px;
-  box-sizing: border-box;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  border: 2px solid ${Colors.TRANSPARENT};
-  cursor: pointer;
-  &:hover {
-    border: 2px solid ${Colors.WHITE2};
-  }
+	font-size: 100px;
+	color: ${Colors.WHITE};
+	background: ${Colors.BLUE};
+	border-radius: 24px;
+	width: 328px;
+	height: 99px;
+	box-sizing: border-box;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	border: 2px solid ${Colors.TRANSPARENT};
+	cursor: pointer;
+	&:hover {
+		border: 2px solid ${Colors.WHITE2};
+	}
 `;
 
 export const Name = styled.p`
-  font-family: 'Vela Sans';
-  font-style: normal;
-  font-weight: 700;
-  font-size: 20px;
-  line-height: 140%;
-  color: ${Colors.BLACK1};
-  display: flex;
-  justify-content: space-between;
-  width: 100%;
-  align-items: center;
-  & svg {
-    transform: rotate(-90deg);
-  }
+	font-family: "Vela Sans";
+	font-style: normal;
+	font-weight: 700;
+	font-size: 20px;
+	line-height: 140%;
+	color: ${Colors.BLACK1};
+	display: flex;
+	justify-content: space-between;
+	width: 100%;
+	align-items: center;
+	& svg {
+		transform: rotate(-90deg);
+	}
 `;
 
 export const Description = styled.p`
-  margin-top: 10px;
-  font-weight: 400;
-  font-size: 14px;
-  line-height: 150%;
-  color: ${Colors.GREY1};
+	margin-top: 10px;
+	font-weight: 400;
+	font-size: 14px;
+	line-height: 150%;
+	color: ${Colors.GREY1};
 `;
 
 export const Wrapper = styled.div`
-  padding: 18px;
-  border: 2px solid ${Colors.TRANSPARENT};
-  cursor: pointer;
-  &:hover {
-    border: 2px solid ${Colors.WHITE2};
-  }
+	padding: 18px;
+	border: 2px solid ${Colors.TRANSPARENT};
+	cursor: pointer;
+	&:hover {
+		border: 2px solid ${Colors.WHITE2};
+	}
 `;

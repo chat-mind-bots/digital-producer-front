@@ -1,12 +1,12 @@
-import { createPortal } from 'react-dom';
+import { createPortal } from "react-dom";
 
 type PortalProps = {
-  children: JSX.Element;
+	children: JSX.Element;
 };
 const Portal = ({ children }: PortalProps) => {
-  const wrapperElement = document.getElementsByTagName('body')[0];
+	const wrapperElement = document.getElementsByTagName("body")[0];
 
-  return createPortal(children, wrapperElement);
+	return createPortal(children, wrapperElement);
 };
 
 export default Portal;

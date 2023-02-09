@@ -1,4 +1,4 @@
 export interface IPhotos {
-  small: string;
-  big: string;
+	small: string;
+	big: string;
 }
