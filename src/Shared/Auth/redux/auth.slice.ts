@@ -6,6 +6,8 @@ import {
 	LocalStorageMethodEnum,
 	localStorageService,
 } from "Utils/local-storage.service";
+import RequestStatusesType from "Types/RequestStatusesType";
+import RequestStatuses from "RequestStatuses";
 
 export interface IAuthUserState {
 	token?: string;
@@ -16,6 +18,7 @@ export interface IAuthUserState {
 	type?: string;
 	role: UserRoleEnum[];
 	photos?: IPhotos;
+	statusCode?: RequestStatusesType;
 }
 
 export const initialAuthState: IAuthUserState = {
@@ -25,6 +28,7 @@ export const initialAuthState: IAuthUserState = {
 	firstName: "",
 	type: "",
 	username: "",
+	statusCode: RequestStatuses.PENDING,
 };
 
 export const authSlice = createSlice({

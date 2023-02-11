@@ -1,14 +1,15 @@
 import React from "react";
-import ReactDOM from "react-dom/client";
+import * as ReactDOMClient from "react-dom/client";
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import { Provider } from "react-redux";
 
 import { store } from "Store";
 import { Router } from "Router";
+
 import "18n.ts";
 import "index.css";
 
-const root = ReactDOM.createRoot(
+const root = ReactDOMClient.createRoot(
 	document.getElementById("root") as HTMLElement
 );
 

@@ -1,4 +1,6 @@
 enum RoutesList {
+	NOT_FOUND = "*",
+	MAIN = "/",
 	HOME = "",
 	// USELESS TODO need remove
 	LOGIN = "/login",

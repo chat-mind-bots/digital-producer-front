@@ -11,6 +11,7 @@ import MetaCoursesCabinet from "Pages/Cabinet/MetaCourses";
 import NewsIdCabinet from "Pages/Cabinet/NewsId";
 import CourseIdCabinet from "Pages/Cabinet/CourseId";
 import TestIdCabinet from "Pages/Cabinet/TestId";
+import NotFound from "Pages/NotFound";
 
 export const RoutesUser: RouteObject[] = [
 	{
@@ -51,6 +52,11 @@ export const RoutesUser: RouteObject[] = [
 			{
 				path: RoutesList.TEST_ID,
 				element: <TestIdCabinet />,
+				errorElement: <Err />,
+			},
+			{
+				path: RoutesList.NOT_FOUND,
+				element: <NotFound />,
 				errorElement: <Err />,
 			},
 		],

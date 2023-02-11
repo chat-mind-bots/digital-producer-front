@@ -11,6 +11,7 @@ import NewsIdCabinetProducer from "Pages/Cabinet/NewsId/Producer";
 import CourseIdCabinetProducer from "Pages/Cabinet/CourseId/Producer";
 import TestIdCabinetProducer from "Pages/Cabinet/TestId/Producer";
 import PrivateRouteAdmin from "Router/PrivateRoute/PrivateRouteAdmin";
+import NotFound from "Pages/NotFound";
 
 export const RoutesAdmin: RouteObject[] = [
 	{
@@ -51,6 +52,11 @@ export const RoutesAdmin: RouteObject[] = [
 			{
 				path: RoutesList.TEST_ID,
 				element: <TestIdCabinetProducer />,
+				errorElement: <Err />,
+			},
+			{
+				path: RoutesList.NOT_FOUND,
+				element: <NotFound />,
 				errorElement: <Err />,
 			},
 		],

@@ -15,10 +15,7 @@ const Header = () => {
 				setValue={setSearchValue}
 				placeholder={"Поиск"}
 			/>
-			<AuthBlock
-				name={"Adilet"}
-				mail={"adilet@gmail.com"}
-			/>
+			<AuthBlock />
 		</ST.Header>
 	);
 };
