@@ -1,5 +1,6 @@
 import { createApi, fetchBaseQuery } from "@reduxjs/toolkit/query/react";
 
+import { setStatusToDtoService } from "Shared/services/set-status-to-dto.service";
 import { IAuthUserDTO } from "Shared/Auth/types/user-dto.type";
 import { userFromDtoService } from "Shared/Auth/services/data/user-from-dto.service";
 import { IAuthUserState } from "Shared/Auth/redux/auth.slice";
@@ -25,13 +26,8 @@ export const authApi = createApi({
 					return result;
 				},
 			}),
-			transformResponse: (response: IAuthUserDTO, meta, arg: string) => {
-				if (meta && meta.response) {
-					response.statusCode = meta.response.status;
-				}
-
-				return userFromDtoService(response, arg);
-			},
+			transformResponse: (response: IAuthUserDTO, meta, arg: string) =>
+				setStatusToDtoService(userFromDtoService(response, arg), meta),
 		}),
 	}),
 });
