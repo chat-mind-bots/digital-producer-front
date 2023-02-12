@@ -70,10 +70,14 @@ export const Mail = styled.p`
 `;
 
 export const WrapperAvatar = styled.div`
-	& > img {
+	position: relative;
+	& > object {
 		width: 40px;
 		height: 40px;
 		border-radius: 50%;
+		position: absolute;
+		top: 0;
+		left: 0;
 	}
 `;
 

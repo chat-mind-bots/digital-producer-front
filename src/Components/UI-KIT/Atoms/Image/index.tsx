@@ -7,10 +7,17 @@ type ImageProps = {
 };
 
 const Image: FC<ImageProps> = ({ src }) => (
-	<ST.Image
-		src={src}
-		alt={"Image"}
-	/>
+	<>
+		<ST.Object
+			data={src}
+			type="image/png"
+		>
+			<ST.Image
+				src={" /transparent.png "}
+				alt={"Image"}
+			/>
+		</ST.Object>
+	</>
 );
 
 export default Image;
