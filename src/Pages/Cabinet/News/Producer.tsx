@@ -3,11 +3,13 @@ import React from "react";
 import { useGetNewsQuery } from "Store/api/news/news.api";
 import { BreadCrumbsArrayType } from "Components/UI-KIT/BreadCrumbs";
 import WrapperContent from "Components/WrapperContent";
-import AddBlock from "Components/UI-KIT/AddBlock";
 import NewsCard from "Components/UI-KIT/NewsCard";
 import RoutesList from "Router/routesList";
 import WrapperRequest from "Components/WrapperRequest";
 import { routeBuilderWithReplace } from "Router/services/route-builder";
+import { BannerEnum } from "Shared/Banner/types/banner.enum";
+import { UserRoleEnum } from "Shared/Auth/types/role.enum";
+import Banner from "Components/UI-KIT/Banner";
 
 import * as ST from "./styled";
 
@@ -54,14 +56,9 @@ const News = () => {
 					</ST.Wrapper>
 				</WrapperContent>
 			</ST.WrapperNews>
-			<AddBlock
-				title={"Создайте свой курс"}
-				description={
-					"Станьте продюсером своего курса и проводите уроки на платформе"
-				}
-				textButton={"Создать курс"}
-				urlButton={""}
-				styleButton={""}
+			<Banner
+				role={UserRoleEnum.PRODUCER}
+				type={BannerEnum.BANNER_RIGHT}
 			/>
 		</ST.News>
 	);

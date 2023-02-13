@@ -5,9 +5,11 @@ import { BreadCrumbsArrayType } from "Components/UI-KIT/BreadCrumbs";
 import RoutesList from "Router/routesList";
 import WrapperContent from "Components/WrapperContent";
 import CourseCard from "Components/UI-KIT/CourseCard";
-import AddBlock from "Components/UI-KIT/AddBlock";
 import WrapperRequest from "Components/WrapperRequest";
 import { routeBuilderWithReplace } from "Router/services/route-builder";
+import Banner from "Components/UI-KIT/Banner";
+import { UserRoleEnum } from "Shared/Auth/types/role.enum";
+import { BannerEnum } from "Shared/Banner/types/banner.enum";
 
 import * as ST from "./styled";
 
@@ -17,8 +19,8 @@ const defaultBreadCrumbs: BreadCrumbsArrayType[] = [
 ];
 
 const MetaCourses = () => {
-	const ptops = useGetCoursesQuery("metaCourses");
-	const { data, isError, isLoading } = ptops;
+	const result = useGetCoursesQuery("metaCourses");
+	const { data, isError, isLoading } = result;
 
 	return (
 		<ST.MetaCourses>
@@ -51,14 +53,9 @@ const MetaCourses = () => {
 					</ST.Wrapper>
 				</WrapperContent>
 			</ST.WrapperCourses>
-			<AddBlock
-				title={"Создайте свой курс"}
-				description={
-					"Станьте продюсером своего курса и проводите уроки на платформе"
-				}
-				textButton={"Создать курс"}
-				urlButton={""}
-				styleButton={""}
+			<Banner
+				role={UserRoleEnum.ADMIN}
+				type={BannerEnum.BANNER_RIGHT}
 			/>
 		</ST.MetaCourses>
 	);

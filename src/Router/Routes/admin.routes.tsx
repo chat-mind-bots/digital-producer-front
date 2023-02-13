@@ -3,13 +3,13 @@ import { RouteObject } from "react-router-dom";
 
 import RoutesList from "Router/routesList";
 import Err from "Pages/Err";
-import MainCabinetProducer from "Pages/Cabinet/Main/Producer";
-import CoursesCabinetProducer from "Pages/Cabinet/Courses/Producer";
-import NewsCabinetProducer from "Pages/Cabinet/News/Producer";
-import MetaCoursesCabinetProducer from "Pages/Cabinet/MetaCourses/Producer";
-import NewsIdCabinetProducer from "Pages/Cabinet/NewsId/Producer";
-import CourseIdCabinetProducer from "Pages/Cabinet/CourseId/Producer";
-import TestIdCabinetProducer from "Pages/Cabinet/TestId/Producer";
+import MainCabinetAdmin from "Pages/Cabinet/Main/Admin";
+import CoursesCabinetAdmin from "Pages/Cabinet/Courses/Admin";
+import NewsCabinetAdmin from "Pages/Cabinet/News/Admin";
+import MetaCoursesCabinetAdmin from "Pages/Cabinet/MetaCourses/Admin";
+import NewsIdCabinetAdmin from "Pages/Cabinet/NewsId/Admin";
+import CourseIdCabinetAdmin from "Pages/Cabinet/CourseId/Admin";
+import TestIdCabinetAdmin from "Pages/Cabinet/TestId/Admin";
 import NotFound from "Pages/NotFound";
 import { UserRoleEnum } from "Shared/Auth/types/role.enum";
 import LazyCabinet from "Layout";
@@ -17,42 +17,42 @@ import LazyCabinet from "Layout";
 export const RoutesAdmin: RouteObject[] = [
 	{
 		path: RoutesList.ADMIN,
-		element: <LazyCabinet role={UserRoleEnum.PRODUCER} />,
+		element: <LazyCabinet role={UserRoleEnum.ADMIN} />,
 		errorElement: <Err />,
 		children: [
 			{
 				index: true,
-				element: <MainCabinetProducer />,
+				element: <MainCabinetAdmin />,
 				errorElement: <Err />,
 			},
 			{
 				path: RoutesList.COURSES,
-				element: <CoursesCabinetProducer />,
+				element: <CoursesCabinetAdmin />,
 				errorElement: <Err />,
 			},
 			{
 				path: RoutesList.NEWS,
-				element: <NewsCabinetProducer />,
+				element: <NewsCabinetAdmin />,
 				errorElement: <Err />,
 			},
 			{
 				path: RoutesList.META_COURSES,
-				element: <MetaCoursesCabinetProducer />,
+				element: <MetaCoursesCabinetAdmin />,
 				errorElement: <Err />,
 			},
 			{
 				path: RoutesList.NEWS_ID,
-				element: <NewsIdCabinetProducer />,
+				element: <NewsIdCabinetAdmin />,
 				errorElement: <Err />,
 			},
 			{
 				path: RoutesList.COURSE_ID,
-				element: <CourseIdCabinetProducer />,
+				element: <CourseIdCabinetAdmin />,
 				errorElement: <Err />,
 			},
 			{
 				path: RoutesList.TEST_ID,
-				element: <TestIdCabinetProducer />,
+				element: <TestIdCabinetAdmin />,
 				errorElement: <Err />,
 			},
 			{

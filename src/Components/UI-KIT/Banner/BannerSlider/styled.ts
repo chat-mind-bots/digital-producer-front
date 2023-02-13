@@ -15,6 +15,13 @@ export const Insights = styled.div`
 	box-sizing: border-box;
 `;
 
+export const InsightsLoader = styled.div`
+	position: relative;
+	height: 100%;
+	width: 100%;
+	display: flex;
+`;
+
 export const Title = styled.p`
 	font-weight: 600;
 	font-size: 18px;
@@ -89,6 +96,17 @@ export const WrapperButton = styled.div`
 
 export const WrapperInfoContent = styled.div``;
 
-export const IconWrapper = styled.div`
-	width: max-content;
+export const ImageWrapper = styled.div`
+	width: 380px;
+	height: 382px;
+	position: relative;
+	border-radius: 16px;
+	overflow: hidden;
+	& > object {
+		position: absolute;
+		left: 0;
+		top: 0;
+		height: 100%;
+		width: 100%;
+	}
 `;

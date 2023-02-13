@@ -3,6 +3,8 @@ import { setupListeners } from "@reduxjs/toolkit/query";
 
 import { authApi } from "Shared/Auth/redux/auth.api";
 import { authReducer } from "Shared/Auth/redux/auth.slice";
+import { bannerApi } from "Shared/Banner/redux/banner.api";
+import { bannerReducer } from "Shared/Banner/redux/banner.slice";
 
 import { courseApi } from "./api/course/course.api";
 import { courseReducer } from "./api/course/course.slice";
@@ -14,6 +16,9 @@ import { testReducer } from "./api/test/test.slice";
 const allMySliceReducersReducer = combineReducers({
 	[authApi.reducerPath]: authApi.reducer,
 	auth: authReducer,
+
+	[bannerApi.reducerPath]: bannerApi.reducer,
+	banner: bannerReducer,
 
 	[courseApi.reducerPath]: courseApi.reducer,
 	course: courseReducer,
@@ -30,6 +35,7 @@ export const store = configureStore({
 	middleware: (getDefaultMiddleware) =>
 		getDefaultMiddleware().concat(
 			authApi.middleware,
+			bannerApi.middleware,
 			courseApi.middleware,
 			newsApi.middleware,
 			testApi.middleware

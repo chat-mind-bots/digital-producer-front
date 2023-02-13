@@ -7,14 +7,38 @@ export const AddBlock = styled.div`
 	padding: 20px 20px 32px;
 	border-radius: 24px;
 	background: ${Colors.WHITE};
-	max-width: 258px;
+	max-width: 300px;
 	border: 1px solid ${Colors.WHITE2};
 	position: sticky;
 	top: 129px;
-	height: max-content;
+	width: 300px;
+	height: 468px;
+	box-sizing: border-box;
 	@media (max-width: ${BreakPoints.TABLET}px) {
 		display: none;
 	}
+`;
+
+export const ImageWrapper = styled.div`
+	width: 258px;
+	height: 248px;
+	position: relative;
+	border-radius: 13px;
+	overflow: hidden;
+	& > object {
+		position: absolute;
+		left: 0;
+		top: 0;
+		height: 100%;
+		width: 100%;
+	}
+`;
+
+export const AddBlockLoader = styled.div`
+	position: relative;
+	height: 100%;
+	width: 100%;
+	display: flex;
 `;
 
 export const Title = styled.p`

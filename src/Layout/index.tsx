@@ -1,11 +1,15 @@
-import React, { FC, lazy, Suspense } from "react";
+import React, { FC } from "react";
 
-import Loader from "Components/UI-KIT/Loader";
+// import Loader from "Components/UI-KIT/Loader";
 import { UserRoleEnum } from "Shared/Auth/types/role.enum";
 
-const LazyCabinetUser = lazy(() => import("Layout/Cabinet"));
-const LazyCabinetAdmin = lazy(() => import("Layout/Cabinet/Admin"));
-const LazyCabinetProducer = lazy(() => import("Layout/Cabinet/Producer"));
+import LazyCabinetUser from "./Cabinet";
+import LazyCabinetProducer from "./Cabinet/Producer";
+import LazyCabinetAdmin from "./Cabinet/Admin";
+
+// const LazyCabinetUser = lazy(() => import("Layout/Cabinet"));
+// const LazyCabinetAdmin = lazy(() => import("Layout/Cabinet/Admin"));
+// const LazyCabinetProducer = lazy(() => import("Layout/Cabinet/Producer"));
 
 type Props = {
 	role: UserRoleEnum;
@@ -13,9 +17,9 @@ type Props = {
 
 const LazyCabinet: FC<Props> = ({ role }) => {
 	return (
-		<Suspense fallback={<Loader />}>
-			<SwitchCabinet role={role} />
-		</Suspense>
+		// <Suspense fallback={<Loader />}>
+		<SwitchCabinet role={role} />
+		// </Suspense>
 	);
 };
 

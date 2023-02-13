@@ -10,6 +10,14 @@ export const NewsBanner = styled.div`
 	width: 100%;
 	overflow: hidden;
 	height: 100%;
+	min-height: 254px;
+`;
+
+export const NewsBannerLoader = styled.div`
+	position: relative;
+	height: 100%;
+	width: 100%;
+	display: flex;
 `;
 
 export const Title = styled.p`
@@ -40,7 +48,17 @@ export const WrapperButton = styled.div`
 	margin-top: 24px;
 `;
 
-export const Image = styled.div`
-	background: red;
+export const ImageWrapper = styled.div`
 	width: 100%;
+	position: relative;
+	& > svg {
+		height: 100%;
+	}
+	& > object {
+		position: absolute;
+		left: 0;
+		top: 0;
+		height: 100%;
+		width: 100%;
+	}
 `;
