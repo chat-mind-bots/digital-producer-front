@@ -1,5 +1,5 @@
 import React, { FC } from "react";
-import { Link } from "react-router-dom";
+import { Link, Outlet } from "react-router-dom";
 
 import RoutesList from "Router/routesList";
 import Logo from "Components/UI-KIT/Logo";
@@ -9,17 +9,16 @@ import Colors from "Colors";
 import * as ST from "./styled";
 
 type MainProps = {
-	children: JSX.Element;
 	isRegistration?: boolean;
 };
 
-const Main: FC<MainProps> = ({ children, isRegistration }) => (
+const Main: FC<MainProps> = ({ isRegistration }) => (
 	<ST.Main>
 		<ST.Image>
-			<img
-				src={"/mainPage.svg"}
-				alt="Заставка сайта"
-			/>
+			{/*<img*/}
+			{/*	src={"/mainPage.svg"}*/}
+			{/*	alt="Заставка сайта"*/}
+			{/*/>*/}
 		</ST.Image>
 		<ST.Wrapper>
 			<ST.Header>
@@ -27,25 +26,30 @@ const Main: FC<MainProps> = ({ children, isRegistration }) => (
 					<Logo isMax={true} />
 				</ST.Logo>
 				<ST.WrapperButton>
-					<Link
-						to={isRegistration ? RoutesList.REGISTRATION : RoutesList.LOGIN}
-					>
-						<Button
-							title={isRegistration ? "Регистрация" : "Уже есть аккаунт"}
-							padding={"10px 14px"}
-							fontSize={"16px"}
-							lineHeight={"20px"}
-							fontWeight={"600"}
-							background={Colors.TRANSPARENT}
-							color={Colors.BLACK1}
-							backgroundAnimation={Colors.BLACK1}
-							colorHover={Colors.WHITE}
-							width={"max-content"}
-						/>
-					</Link>
+					{/*<Link*/}
+					{/*	to={isRegistration ? RoutesList.REGISTRATION : RoutesList.LOGIN}*/}
+					{/*>*/}
+					<Button
+						title={isRegistration ? "Регистрация" : "Войти"}
+						padding={"10px 14px"}
+						fontSize={"16px"}
+						lineHeight={"20px"}
+						fontWeight={"600"}
+						background={Colors.TRANSPARENT}
+						color={Colors.BLACK1}
+						backgroundAnimation={Colors.BLACK1}
+						colorHover={Colors.WHITE}
+						width={"max-content"}
+						onClick={() =>
+							window.open(" https://t.me/SvyatoslavZhilin3312281_bot")
+						}
+					/>
+					{/*</Link>*/}
 				</ST.WrapperButton>
 			</ST.Header>
-			<ST.Content>{children}</ST.Content>
+			<ST.Content>
+				<Outlet />
+			</ST.Content>
 			<ST.Footer>
 				<Link to={RoutesList.DOCUMENT_ID}>
 					<ST.Name>Пользовательское соглашение</ST.Name>

@@ -18,6 +18,8 @@ enum Colors {
 	WHITE4 = "#F7F8F9",
 	RED = "#EB8080",
 	WHITE5 = "#EDF3FC",
+	PINK = "#ee7aae",
+	GREEN = "green",
 	RGBA_LIGHTBLUE = "rgba(255, 255, 255, 0.3)",
 	RGBA_GREY = "rgba(128, 129, 145, 0.3)",
 	TRANSPARENT = "transparent",

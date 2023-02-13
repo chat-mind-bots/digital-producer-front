@@ -4,11 +4,13 @@ import { BreadCrumbsArrayType } from "Components/UI-KIT/BreadCrumbs";
 import WrapperContent from "Components/WrapperContent";
 import NewsView from "Components/UI-KIT/NewsView";
 import ReadMoreCard from "Components/UI-KIT/ReadMoreCard";
-import AddBlock from "Components/UI-KIT/AddBlock";
 import RoutesList from "Router/routesList";
 import { useGetNewsIdQuery } from "Store/api/news/news.api";
 import WrapperRequest from "Components/WrapperRequest";
 import { routeBuilderWithReplace } from "Router/services/route-builder";
+import Banner from "Components/UI-KIT/Banner";
+import { UserRoleEnum } from "Shared/Auth/types/role.enum";
+import { BannerEnum } from "Shared/Banner/types/banner.enum";
 
 import * as ST from "./styled";
 
@@ -72,14 +74,9 @@ const NewsId = () => {
 					</ST.Wrapper>
 				</WrapperContent>
 			</ST.WrapperNews>
-			<AddBlock
-				title={"Создайте свой курс"}
-				description={
-					"Станьте продюсером своего курса и проводите уроки на платформе"
-				}
-				textButton={"Создать курс"}
-				urlButton={""}
-				styleButton={""}
+			<Banner
+				role={UserRoleEnum.PRODUCER}
+				type={BannerEnum.BANNER_RIGHT}
 			/>
 		</ST.News>
 	);

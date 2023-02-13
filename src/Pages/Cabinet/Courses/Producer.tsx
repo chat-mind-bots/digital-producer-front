@@ -3,7 +3,6 @@ import React, { useState } from "react";
 import { BreadCrumbsArrayType } from "Components/UI-KIT/BreadCrumbs";
 import WrapperContent from "Components/WrapperContent";
 import CourseCard from "Components/UI-KIT/CourseCard";
-import AddBlock from "Components/UI-KIT/AddBlock";
 import RoutesList from "Router/routesList";
 import { useGetCoursesQuery } from "Store/api/course/course.api";
 import WrapperRequest from "Components/WrapperRequest";
@@ -11,6 +10,9 @@ import CourseCardProducer from "Components/UI-KIT/CourseCard/Producer";
 import CreateCourse from "Components/ModalWindows/CreateCourse";
 import Modal from "Components/ModalWindows/WrappersModalWindows/Classic";
 import { routeBuilderWithReplace } from "Router/services/route-builder";
+import { BannerEnum } from "Shared/Banner/types/banner.enum";
+import { UserRoleEnum } from "Shared/Auth/types/role.enum";
+import Banner from "Components/UI-KIT/Banner";
 
 import * as ST from "./styled";
 
@@ -56,14 +58,9 @@ const Courses = () => {
 					</ST.Wrapper>
 				</WrapperContent>
 			</ST.WrapperCourses>
-			<AddBlock
-				title={"Создайте свой курс"}
-				description={
-					"Станьте продюсером своего курса и проводите уроки на платформе"
-				}
-				textButton={"Создать курс"}
-				urlButton={""}
-				styleButton={""}
+			<Banner
+				role={UserRoleEnum.PRODUCER}
+				type={BannerEnum.BANNER_RIGHT}
 			/>
 			{/*MODAL WINDOW_______________________*/}
 			<Modal

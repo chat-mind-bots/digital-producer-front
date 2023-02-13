@@ -5,7 +5,7 @@ import * as ST from "./styled";
 const Main = () => (
 	<ST.Main>
 		Страница продюсера
-		{/*<NewsBanner*/}
+		{/*<BannerTop*/}
 		{/*  title={'Новости платформы'}*/}
 		{/*  description={*/}
 		{/*    'Самые последние и актуальные новости и обновления платформы'*/}
@@ -15,7 +15,7 @@ const Main = () => (
 		{/*  styleButton={''}*/}
 		{/*/>*/}
 		{/*<ST.WrapperMain>*/}
-		{/*  <Insights*/}
+		{/*  <BannerSlider*/}
 		{/*    title={'Новости и инсайты из сферы инфопродуктов'}*/}
 		{/*    textButton={'Читать статью'}*/}
 		{/*    urlButton={''}*/}
@@ -37,7 +37,7 @@ const Main = () => (
 		{/*    </ST.Wrapper>*/}
 		{/*  </WrapperContent>*/}
 		{/*</ST.WrapperMain>*/}
-		{/*<AddBlock*/}
+		{/*<BannerRight*/}
 		{/*  title={'Создайте свой курс'}*/}
 		{/*  description={*/}
 		{/*    'Станьте продюсером своего курса и проводите уроки на платформе'*/}

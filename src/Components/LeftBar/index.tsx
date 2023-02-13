@@ -2,9 +2,10 @@ import React from "react";
 
 import Logo from "Components/UI-KIT/Logo";
 import NavBar from "Components/UI-KIT/NavBar";
-import BlockAllCoursesPlatform from "Components/UI-KIT/BlockAllCoursesPlatform";
 import NavBarData from "Constants/NavBar";
-import RoutesList from "Router/routesList";
+import { BannerEnum } from "Shared/Banner/types/banner.enum";
+import { UserRoleEnum } from "Shared/Auth/types/role.enum";
+import Banner from "Components/UI-KIT/Banner";
 
 import * as ST from "./styled";
 
@@ -15,10 +16,9 @@ const LeftBar = () => (
 			<ST.Sections>Разделы платформы</ST.Sections>
 			<NavBar arrayNav={NavBarData} />
 		</ST.WrapperInfo>
-		<BlockAllCoursesPlatform
-			textButton={"Курсы платформы"}
-			urlButton={RoutesList.META_COURSES}
-			styleButton={""}
+		<Banner
+			role={UserRoleEnum.USER}
+			type={BannerEnum.BANNER_LEFT}
 		/>
 	</ST.LeftBar>
 );
