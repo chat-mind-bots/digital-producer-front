@@ -12,7 +12,7 @@ export interface IBannerDTO {
 	name: string;
 	description: string;
 	image: string;
-	third_party_source: string;
+	is_third_party_source: boolean;
 	tags: ITag[];
 	createdAt: string;
 	updatedAt: string;
