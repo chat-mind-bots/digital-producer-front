@@ -14,7 +14,7 @@ export interface IBannerState {
 	name: string;
 	description: string;
 	image: string;
-	thirdPartySource: string;
+	isThirdPartySource: boolean;
 	tags: ITag[];
 	createdAt: string;
 	updatedAt: string;
@@ -32,7 +32,7 @@ export const initialAuthState: IBannerState = {
 	name: "",
 	description: "",
 	image: "",
-	thirdPartySource: "",
+	isThirdPartySource: false,
 	tags: [
 		{
 			id: 0,

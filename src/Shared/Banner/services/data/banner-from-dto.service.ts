@@ -8,7 +8,7 @@ export const bannerFromDtoService = (dto: IBannerDTO[]): IBannerState[] => {
 			url_button,
 			text_button,
 			style_button,
-			third_party_source,
+			is_third_party_source,
 			...other
 		} = item;
 
@@ -18,7 +18,7 @@ export const bannerFromDtoService = (dto: IBannerDTO[]): IBannerState[] => {
 			urlButton: url_button,
 			textButton: text_button,
 			styleButton: style_button,
-			thirdPartySource: third_party_source,
+			isThirdPartySource: is_third_party_source,
 		};
 	});
 };
