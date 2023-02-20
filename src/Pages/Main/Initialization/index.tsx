@@ -3,13 +3,12 @@ import { useTranslation } from "react-i18next";
 
 import Loader from "Components/UI-KIT/Loader";
 import { useAppSelector } from "Hooks/redux";
-import ErrType from "Types/RequestStatusesType";
-import ErrStatuses from "RequestStatuses";
+import RequestStatuses from "RequestStatuses";
 
 import * as ST from "./styled";
 
 type SwitchStatusProps = {
-	status?: ErrType;
+	status?: RequestStatuses;
 };
 
 const Initialization = () => {
@@ -26,18 +25,18 @@ const SwitchStatus: FC<SwitchStatusProps> = ({ status }) => {
 	const { t } = useTranslation();
 
 	switch (status) {
-		case ErrStatuses.UNAUTHORIZED:
+		case RequestStatuses.UNAUTHORIZED:
 			return (
 				<ST.Title isErr={true}>{t("Components.STATUS_TOKEN.ERR")}</ST.Title>
 			);
-		case ErrStatuses.PENDING:
+		case RequestStatuses.PENDING:
 			return (
 				<>
 					<Loader />
 					<ST.Title>{t("Components.STATUS_TOKEN.PENDING")}</ST.Title>
 				</>
 			);
-		case ErrStatuses.SUCCESS:
+		case RequestStatuses.SUCCESS_201:
 			return (
 				<ST.Title isCorrect={true}>
 					{t("Components.STATUS_TOKEN.CORRECT")}

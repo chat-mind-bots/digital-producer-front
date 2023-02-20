@@ -13,6 +13,8 @@ enum RoutesList {
 	NEWS_ID = "news/:id",
 	COURSE_ID = "course/:id",
 	TEST_ID = "test/:id",
+	BANNERS = "banners",
+	TEXT_EDITOR = "textEditor",
 
 	// USER
 	USER = "user",

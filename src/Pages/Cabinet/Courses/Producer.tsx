@@ -7,7 +7,7 @@ import RoutesList from "Router/routesList";
 import { useGetCoursesQuery } from "Store/api/course/course.api";
 import WrapperRequest from "Components/WrapperRequest";
 import CourseCardProducer from "Components/UI-KIT/CourseCard/Producer";
-import CreateCourse from "Components/ModalWindows/CreateCourse";
+import CreateCourse from "Components/ModalWindows/Body/CreateCourse";
 import Modal from "Components/ModalWindows/WrappersModalWindows/Classic";
 import { routeBuilderWithReplace } from "Router/services/route-builder";
 import { BannerEnum } from "Shared/Banner/types/banner.enum";

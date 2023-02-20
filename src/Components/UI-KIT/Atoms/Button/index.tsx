@@ -2,11 +2,8 @@ import React, { FC } from "react";
 
 import * as ST from "./styled";
 
-type ButtonProps = ButtonOtherStyles & {
-	title: string;
-};
-
-export type ButtonOtherStyles = {
+export type ButtonProps = {
+	title?: string;
 	width: string;
 	padding: string;
 	fontSize: string;
@@ -18,7 +15,24 @@ export type ButtonOtherStyles = {
 	colorHover: string;
 	border?: string;
 	onClick?: () => void;
+	disabled?: boolean;
 };
+
+export enum ButtonEnum {
+	title = "title",
+	width = "width",
+	padding = "padding",
+	fontSize = "fontSize",
+	lineHeight = "lineHeight",
+	fontWeight = "fontWeight",
+	background = "background",
+	color = "color",
+	backgroundAnimation = "backgroundAnimation",
+	colorHover = "colorHover",
+	border = "border",
+	onClick = "onClick",
+	disabled = "disabled",
+}
 
 const Button: FC<ButtonProps> = ({
 	title,
@@ -33,6 +47,7 @@ const Button: FC<ButtonProps> = ({
 	colorHover,
 	border,
 	onClick,
+	disabled,
 }) => (
 	<ST.Button
 		width={width}
@@ -46,14 +61,31 @@ const Button: FC<ButtonProps> = ({
 		colorHover={colorHover}
 		border={border}
 		onClick={onClick}
+		disabled={disabled}
+		type="button"
 	>
 		{title}
-		<ST.AnimationWrapper background={background}>
+		<ST.AnimationWrapper
+			disabled={disabled}
+			background={background}
+		>
 			<ST.AnimationList>
-				<ST.AnimationListItem backgroundAnimation={backgroundAnimation} />
-				<ST.AnimationListItem backgroundAnimation={backgroundAnimation} />
-				<ST.AnimationListItem backgroundAnimation={backgroundAnimation} />
-				<ST.AnimationListItem backgroundAnimation={backgroundAnimation} />
+				<ST.AnimationListItem
+					disabled={disabled}
+					backgroundAnimation={backgroundAnimation}
+				/>
+				<ST.AnimationListItem
+					disabled={disabled}
+					backgroundAnimation={backgroundAnimation}
+				/>
+				<ST.AnimationListItem
+					disabled={disabled}
+					backgroundAnimation={backgroundAnimation}
+				/>
+				<ST.AnimationListItem
+					disabled={disabled}
+					backgroundAnimation={backgroundAnimation}
+				/>
 			</ST.AnimationList>
 		</ST.AnimationWrapper>
 	</ST.Button>

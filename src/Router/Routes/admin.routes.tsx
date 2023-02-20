@@ -10,6 +10,8 @@ import MetaCoursesCabinetAdmin from "Pages/Cabinet/MetaCourses/Admin";
 import NewsIdCabinetAdmin from "Pages/Cabinet/NewsId/Admin";
 import CourseIdCabinetAdmin from "Pages/Cabinet/CourseId/Admin";
 import TestIdCabinetAdmin from "Pages/Cabinet/TestId/Admin";
+import BannersCabinetAdmin from "Pages/Cabinet/Banners/Admin";
+import TextEditorCabinetAdmin from "Pages/Cabinet/TextEditor/Admin";
 import NotFound from "Pages/NotFound";
 import { UserRoleEnum } from "Shared/Auth/types/role.enum";
 import LazyCabinet from "Layout";
@@ -53,6 +55,16 @@ export const RoutesAdmin: RouteObject[] = [
 			{
 				path: RoutesList.TEST_ID,
 				element: <TestIdCabinetAdmin />,
+				errorElement: <Err />,
+			},
+			{
+				path: RoutesList.BANNERS,
+				element: <BannersCabinetAdmin />,
+				errorElement: <Err />,
+			},
+			{
+				path: RoutesList.TEXT_EDITOR,
+				element: <TextEditorCabinetAdmin />,
 				errorElement: <Err />,
 			},
 			{

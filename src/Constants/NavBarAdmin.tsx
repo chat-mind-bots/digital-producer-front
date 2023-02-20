@@ -4,6 +4,7 @@ import MainComponent from "Pages/Cabinet/Main";
 import CoursesComponent from "Pages/Cabinet/Courses";
 import NewsComponent from "Pages/Cabinet/News";
 import MetaCoursesComponent from "Pages/Cabinet/MetaCourses";
+import BannersComponent from "Pages/Cabinet/Banners/Admin";
 import { ReactComponent as Main } from "Icons/NavBar/Main.svg";
 import { ReactComponent as MyCourses } from "Icons/NavBar/MyCourses.svg";
 import { ReactComponent as News } from "Icons/NavBar/News.svg";
@@ -50,6 +51,23 @@ const NavBarDataAdmin: NavBarType[] = [
 		name: "Курсы meta",
 		count: 0,
 		url: routeBuilder([RoutesList.ADMIN, RoutesList.META_COURSES]),
+		svg: <MetaCourses />,
+		element: <BannersComponent />,
+	},
+	{
+		id: 5,
+		name: "Банеры",
+		count: 0,
+		url: routeBuilder([RoutesList.ADMIN, RoutesList.BANNERS]),
+		svg: <MetaCourses />,
+		element: <MetaCoursesComponent />,
+	},
+
+	{
+		id: 6,
+		name: "TextEditor",
+		count: 0,
+		url: routeBuilder([RoutesList.ADMIN, RoutesList.TEXT_EDITOR]),
 		svg: <MetaCourses />,
 		element: <MetaCoursesComponent />,
 	},

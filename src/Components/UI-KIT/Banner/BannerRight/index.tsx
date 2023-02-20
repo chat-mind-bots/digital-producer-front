@@ -1,11 +1,12 @@
 import React, { FC } from "react";
+import { Link } from "react-router-dom";
 
 import { ReactComponent as IconForAddBlock } from "Icons/IconForAddBlock.svg";
-import Button from "Components/UI-KIT/Atoms/Button";
-import Colors from "Colors";
 import BannerProps from "Components/UI-KIT/Banner//banner-props.type";
 import Loader from "Components/UI-KIT/Loader";
 import Image from "Components/UI-KIT/Atoms/Image";
+import openFileBlank from "Utils/openFileBlank";
+import ButtonSwitchStyle from "Components/ButtonSwitchStyle";
 
 import * as ST from "./styled";
 
@@ -22,18 +23,30 @@ const BannerRight: FC<BannerProps> = ({ result }) => {
 			<ST.Title>{data.name}</ST.Title>
 			<ST.Description>{data.description}</ST.Description>
 			<ST.WrapperButton>
-				<Button
-					title={data.textButton ?? ""}
-					padding={"11px 28px"}
-					fontSize={"14px"}
-					lineHeight={"20px"}
-					fontWeight={"600"}
-					background={Colors.BLUE}
-					color={Colors.WHITE}
-					backgroundAnimation={Colors.BLUE_DARK}
-					colorHover={Colors.WHITE}
-					width={"100%"}
-				/>
+				{data.isThirdPartySource ? (
+					<Link to={data.urlButton}>
+						<ButtonSwitchStyle
+							title={data.textButton ?? ""}
+							padding={"11px 28px"}
+							fontSize={"14px"}
+							lineHeight={"20px"}
+							fontWeight={"600"}
+							width={"100%"}
+							style={data.styleButton}
+						/>
+					</Link>
+				) : (
+					<ButtonSwitchStyle
+						title={data.textButton ?? ""}
+						padding={"11px 28px"}
+						fontSize={"14px"}
+						lineHeight={"20px"}
+						fontWeight={"600"}
+						width={"100%"}
+						style={data.styleButton}
+						onClick={() => openFileBlank(data.urlButton)}
+					/>
+				)}
 			</ST.WrapperButton>
 		</ST.AddBlock>
 	) : (

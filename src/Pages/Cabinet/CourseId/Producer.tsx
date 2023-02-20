@@ -18,13 +18,13 @@ import {
 } from "Components/UI-KIT/Accordion/type";
 import Accordion from "Components/UI-KIT/Accordion/Producer";
 import { useGetCourseIdQuery } from "Store/api/course/course.api";
-import EditLesson from "Components/ModalWindows/EditLesson";
+import EditLesson from "Components/ModalWindows/Body/EditLesson";
 import StudentsTable from "Components/UI-KIT/StudentsTable";
-import AddDocument from "Components/ModalWindows/AddDocument";
-import AddLector from "Components/ModalWindows/AddLector";
-import AddLesson from "Components/ModalWindows/AddLesson";
-import AddModule from "Components/ModalWindows/AddModule";
-import AddTest from "Components/ModalWindows/AddTest";
+import AddDocument from "Components/ModalWindows/Body/AddDocument";
+import AddLector from "Components/ModalWindows/Body/AddLector";
+import AddLesson from "Components/ModalWindows/Body/AddLesson";
+import AddModule from "Components/ModalWindows/Body/AddModule";
+import AddTest from "Components/ModalWindows/Body/AddTest";
 import Modal from "Components/ModalWindows/WrappersModalWindows/Classic";
 import { routeBuilderWithReplace } from "Router/services/route-builder";
 

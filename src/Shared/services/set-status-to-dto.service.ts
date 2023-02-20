@@ -12,3 +12,11 @@ export const setStatusToDtoService = <T extends StatusCodeType>(
 
 	return response;
 };
+
+export const removeStatusToDtoService = <T extends StatusCodeType>(
+	response: T
+): T => {
+	delete response.statusCode;
+
+	return response;
+};

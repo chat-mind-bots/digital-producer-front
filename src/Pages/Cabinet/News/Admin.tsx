@@ -8,7 +8,7 @@ import NewsCardAdmin from "Components/UI-KIT/NewsCard/Admin";
 import RoutesList from "Router/routesList";
 import WrapperRequest from "Components/WrapperRequest";
 import Modal from "Components/ModalWindows/WrappersModalWindows/Classic";
-import CreateNews from "Components/ModalWindows/CreateNews";
+import CreateNews from "Components/ModalWindows/Body/CreateNews";
 import { routeBuilderWithReplace } from "Router/services/route-builder";
 import Banner from "Components/UI-KIT/Banner";
 import { UserRoleEnum } from "Shared/Auth/types/role.enum";

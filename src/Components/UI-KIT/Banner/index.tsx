@@ -1,31 +1,27 @@
 import React, { FC } from "react";
 
-import { BannerApiQuery } from "Shared/Banner/redux/banner.api";
-import BannerRequest, {
-	BannerRequestType,
-} from "Shared/Banner/components/BannerRequest";
+import BannerGet from "Shared/Banner/components/BannerGet";
 import BannerRight from "Components/UI-KIT/Banner/BannerRight";
 import { BannerEnum } from "Shared/Banner/types/banner.enum";
 import BannerTop from "Components/UI-KIT/Banner/BannerTop";
 import BannerLeft from "Components/UI-KIT/Banner/BannerLeft";
 import BannerSlider from "Components/UI-KIT/Banner/BannerSlider";
-import BannerProps from "Components/UI-KIT/Banner/banner-props.type";
+import { IBannerEnum, IBannerState } from "Shared/Banner/redux/banner.slice";
 
-type BannerApiQueryProps = BannerApiQuery & BannerRequestType;
+import BannerResultType from "./banner-props.type";
 
-const Banner: FC<BannerApiQueryProps> = ({ role, type }) => (
-	<BannerRequest
+type Type = Pick<IBannerState, IBannerEnum.role | IBannerEnum.type>;
+
+const Banner: FC<Type> = ({ role, type }) => (
+	<BannerGet
 		role={role}
 		type={type}
 	>
 		<SwitchBanner type={type} />
-	</BannerRequest>
+	</BannerGet>
 );
 
-const SwitchBanner: FC<BannerRequestType & BannerProps> = ({
-	type,
-	result,
-}) => {
+const SwitchBanner: FC<Type & BannerResultType> = ({ type, result }) => {
 	switch (type) {
 		case BannerEnum.BANNER_RIGHT:
 			return <BannerRight result={result} />;

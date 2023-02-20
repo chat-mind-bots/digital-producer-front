@@ -6,6 +6,7 @@ import { userFromDtoService } from "Shared/Auth/services/data/user-from-dto.serv
 import { IAuthUserState } from "Shared/Auth/redux/auth.slice";
 import logout from "Utils/Logout";
 import RequestStatusesType from "Types/RequestStatusesType";
+import { HttpMethods } from "Shared/HttpMethods/methods-api.enum";
 
 export const authApi = createApi({
 	reducerPath: "auth/api",
@@ -16,7 +17,7 @@ export const authApi = createApi({
 		getUserInfo: build.query<IAuthUserState, string>({
 			query: (authToken: string) => ({
 				url: "/auth",
-				method: "post",
+				method: HttpMethods.POST,
 				headers: {
 					Authorization: `Bearer ${authToken}`,
 				},

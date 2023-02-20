@@ -20,7 +20,7 @@ const Tags: FC<NewsCardProps> = ({ tags, tagsColors }) => (
 	<ST.Tags>
 		{tags.map((tag) => (
 			<ST.Tag
-				key={`NewsCard-tag-${tag.id}`}
+				key={`NewsCard-tag-${tag.color}-${tag.id}`}
 				background={tagsColors ? tag.background : Colors.WHITE3}
 				color={tagsColors ? tag.color : Colors.GREY4}
 			>
