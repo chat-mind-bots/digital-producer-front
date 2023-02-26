@@ -26,12 +26,18 @@ export const Title = styled.p<Props>`
 	line-height: 140%;
 	color: ${Colors.BLACK1};
 	margin-top: 20px;
-	width: max-content;
+	width: 100%;
 	position: relative;
 	overflow: hidden;
 	display: flex;
 	align-items: center;
 	gap: 8px;
+	text-overflow: ellipsis;
+	overflow: hidden;
+	-webkit-line-clamp: 4;
+	display: -webkit-box;
+	word-wrap: break-word;
+	-webkit-box-orient: vertical;
 	&:after {
 		content: "";
 		width: 100%;
@@ -136,6 +142,7 @@ export const Loader = styled.div`
 `;
 
 export const WrapperVideo = styled.div<Props>`
+	height: 358px;
 	position: relative;
 	border-radius: 8px;
 	overflow: hidden;
@@ -212,6 +219,11 @@ export const WrapperSubTitle = styled.div<WrapperSubTitleProps>`
 	overflow: hidden;
 	position: relative;
 	overflow-y: auto;
+	text-overflow: ellipsis;
+	-webkit-line-clamp: 100000;
+	display: -webkit-box;
+	word-wrap: break-word;
+	-webkit-box-orient: vertical;
 	&:after {
 		content: "";
 		width: 100%;

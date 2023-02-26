@@ -44,12 +44,26 @@ export const Name = styled.p`
 	}
 `;
 
+export const NameCurrent = styled.span`
+	max-width: 260px;
+	text-overflow: ellipsis;
+	overflow: hidden;
+	-webkit-line-clamp: 1;
+	display: -webkit-box;
+	word-wrap: break-word;
+	-webkit-box-orient: vertical;
+`;
+
 export const Description = styled.p`
 	margin-top: 10px;
 	font-weight: 400;
 	font-size: 14px;
 	line-height: 150%;
 	color: ${Colors.GREY1};
+	-webkit-line-clamp: 10000;
+	display: -webkit-box;
+	word-wrap: break-word;
+	-webkit-box-orient: vertical;
 `;
 
 export const Wrapper = styled.div`

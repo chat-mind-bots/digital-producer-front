@@ -1,80 +1,82 @@
 import React, { FC, useState } from "react";
 
-import { ReactComponent as ArrowDown } from "Icons/ArrowDown.svg";
-import Button from "Components/UI-KIT/Atoms/Button";
-import Colors from "Colors";
-
 import { AccordionProps } from "./type";
 import * as ST from "./styled";
+import CourseResultType from "../Course/course-props.type";
+import { LessonCreate } from "../../../Shared/Lesson/components/LessonSet/create";
+import { LessonUpdate } from "../../../Shared/Lesson/components/LessonSet/update";
+import { ModuleCreate } from "../../../Shared/Module/components/ModuleSet/create";
+import { AddModuleToCourseApiProps } from "../../../Shared/Module/redux/module.api";
+import { ModuleUpdate } from "../../../Shared/Module/components/ModuleSet/update";
+import sortPosition from "../../../Utils/sortPosition";
 
-const Accordion: FC<AccordionProps> = ({
-	array,
-	handleClick,
-	onClickAddLesson,
-	onClickAddModule,
-}) => {
-	const [open, setOpen] = useState<number>();
+const Accordion: FC<
+	AccordionProps &
+		Pick<CourseResultType, "refetch"> &
+		Pick<AddModuleToCourseApiProps, "idCourse">
+> = ({ array, handleClick, refetch, idCourse }) => {
+	const [open, setOpen] = useState<string>();
 
 	return (
 		<ST.Accordion>
 			<ST.Title>Модули курса:</ST.Title>
 			<ST.Wrapper>
-				{array.map((module, indexModule) => (
-					<ST.WrapperModule key={`Accordion-module-${module.id}`}>
-						<ST.Name isActive={open === module.id}>
-							модуль {indexModule + 1}: {module.name}
-							<ArrowDown
-								onClick={() =>
-									setOpen(open === module.id ? undefined : module.id)
-								}
+				{sortPosition(array).map((module, indexModule) => (
+					<ST.WrapperItem key={`Accordion-module-${module.id}`}>
+						<ST.WrapperModule
+							onClick={() =>
+								setOpen(open === module.id ? undefined : module.id)
+							}
+						>
+							<ST.Name isActive={open === module.id}>
+								<ST.NameCurrent>
+									модуль {indexModule + 1}: {module.name}
+								</ST.NameCurrent>
+							</ST.Name>
+							<ST.WrapperItems isActive={open === module.id}>
+								{sortPosition(module.items).map((item, indexItem) => (
+									<ST.WrapperItem key={`Accordion-item-${item.id}`}>
+										<ST.Item
+											onClick={() =>
+												handleClick({
+													moduleId: module.id,
+													itemId: item.id,
+												})
+											}
+											isActive={item.isActive}
+										>
+											<ST.Number>{indexItem + 1}.</ST.Number>
+											<ST.NameCurrent>{item.name}</ST.NameCurrent>
+										</ST.Item>
+										<ST.UpdateButton>
+											<LessonUpdate
+												idLesson={item.id}
+												refetch={refetch}
+											/>
+										</ST.UpdateButton>
+									</ST.WrapperItem>
+								))}
+								<ST.WrapperButtonAddLesson>
+									<LessonCreate
+										idModule={module.id}
+										refetch={refetch}
+									/>
+								</ST.WrapperButtonAddLesson>
+							</ST.WrapperItems>
+						</ST.WrapperModule>
+
+						<ST.UpdateButtonModule>
+							<ModuleUpdate
+								idModule={module.id}
+								refetch={refetch}
 							/>
-						</ST.Name>
-						<ST.WrapperItems isActive={open === module.id}>
-							{module.items.map((item, indexItem) => (
-								<ST.Item
-									onClick={() =>
-										handleClick({ moduleId: module.id, itemId: item.id })
-									}
-									isActive={item.isActive}
-									key={`Accordion-item-${item.id}`}
-								>
-									<ST.Number>{indexItem + 1}.</ST.Number>
-									{item.name}
-								</ST.Item>
-							))}
-							<ST.WrapperButtonAddLesson>
-								<Button
-									title={"Добавить урок"}
-									padding={"10px 16px"}
-									fontSize={"16px"}
-									lineHeight={"20px"}
-									fontWeight={"600"}
-									background={Colors.TRANSPARENT}
-									color={Colors.GREY4}
-									backgroundAnimation={Colors.GREY4}
-									colorHover={Colors.WHITE}
-									border={`2px solid ${Colors.GREY4}`}
-									width={"100%"}
-									onClick={onClickAddLesson}
-								/>
-							</ST.WrapperButtonAddLesson>
-						</ST.WrapperItems>
-					</ST.WrapperModule>
+						</ST.UpdateButtonModule>
+					</ST.WrapperItem>
 				))}
 				<ST.WrapperButtonAddLesson>
-					<Button
-						title={"Добавить модуль"}
-						padding={"10px 16px"}
-						fontSize={"16px"}
-						lineHeight={"20px"}
-						fontWeight={"600"}
-						background={Colors.TRANSPARENT}
-						color={Colors.GREY4}
-						backgroundAnimation={Colors.GREY4}
-						colorHover={Colors.WHITE}
-						border={`2px solid ${Colors.GREY4}`}
-						width={"100%"}
-						onClick={onClickAddModule}
+					<ModuleCreate
+						idCourse={idCourse}
+						refetch={refetch}
 					/>
 				</ST.WrapperButtonAddLesson>
 			</ST.Wrapper>

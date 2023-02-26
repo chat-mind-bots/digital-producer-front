@@ -3,16 +3,17 @@ import React, { FC } from "react";
 import { ReactComponent as IconForNewsView } from "Icons/IconForNewsView.svg";
 import Date from "Components/UI-KIT/Atoms/Date";
 import Time from "Components/UI-KIT/Atoms/Time";
-import Tags, { TagType } from "Components/UI-KIT/Atoms/Tags";
+import Tags from "Components/UI-KIT/Atoms/Tags";
 
 import * as ST from "./styled";
+import { ITagState } from "../../../Shared/Tag/redux/tag.slice";
 
 type NewsViewProps = {
 	name: string;
 	text: string;
 	time: string;
 	date: string;
-	tags: TagType[];
+	tags: ITagState[];
 	tagsColors: boolean;
 };
 

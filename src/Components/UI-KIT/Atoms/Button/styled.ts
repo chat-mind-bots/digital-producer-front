@@ -20,7 +20,7 @@ export const AnimationListItem = styled.span<AnimationListItemProps>`
 	width: 25%;
 	height: 100%;
 	background: ${({ backgroundAnimation, disabled }) =>
-		disabled ? Colors.BLUE_DARK : backgroundAnimation};
+		disabled ? Colors.GREY5 : backgroundAnimation};
 	border-radius: 100%;
 	transform: translate3d(0, 150%, 0) scale(1.7);
 	transition: transform 0.45s;
@@ -46,7 +46,7 @@ export const AnimationListItem = styled.span<AnimationListItemProps>`
 `;
 
 export const Button = styled.button<ButtonProps>`
-	border: ${({ border }) => border};
+	border: ${({ border, disabled }) => !disabled && border};
 	font-weight: ${({ fontWeight }) => fontWeight};
 	font-size: ${({ fontSize }) => fontSize};
 	line-height: ${({ lineHeight }) => lineHeight};
@@ -110,7 +110,7 @@ export const AnimationWrapper = styled.span<AnimationWrapperProps>`
 	height: 100%;
 	border-radius: 7px;
 	background: ${({ background, disabled }) =>
-		disabled ? Colors.BLUE_DARK : background};
+		disabled ? Colors.GREY5 : background};
 `;
 
 export const AnimationList = styled.span`

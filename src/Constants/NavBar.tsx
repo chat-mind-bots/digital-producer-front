@@ -1,7 +1,7 @@
 import React from "react";
 
 import MainComponent from "Pages/Cabinet/Main";
-import CoursesComponent from "Pages/Cabinet/Courses";
+import CoursesComponent from "Pages/Cabinet/Courses/User";
 import NewsComponent from "Pages/Cabinet/News";
 import MetaCoursesComponent from "Pages/Cabinet/MetaCourses";
 import { ReactComponent as Main } from "Icons/NavBar/Main.svg";

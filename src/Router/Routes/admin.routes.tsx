@@ -4,7 +4,6 @@ import { RouteObject } from "react-router-dom";
 import RoutesList from "Router/routesList";
 import Err from "Pages/Err";
 import MainCabinetAdmin from "Pages/Cabinet/Main/Admin";
-import CoursesCabinetAdmin from "Pages/Cabinet/Courses/Admin";
 import NewsCabinetAdmin from "Pages/Cabinet/News/Admin";
 import MetaCoursesCabinetAdmin from "Pages/Cabinet/MetaCourses/Admin";
 import NewsIdCabinetAdmin from "Pages/Cabinet/NewsId/Admin";
@@ -16,6 +15,9 @@ import NotFound from "Pages/NotFound";
 import { UserRoleEnum } from "Shared/Auth/types/role.enum";
 import LazyCabinet from "Layout";
 
+import CategoriesCabinetAdmin from "../../Pages/Cabinet/Categories/Admin";
+import UsersCabinetAdmin from "../../Pages/Cabinet/Users/Admin";
+
 export const RoutesAdmin: RouteObject[] = [
 	{
 		path: RoutesList.ADMIN,
@@ -25,11 +27,6 @@ export const RoutesAdmin: RouteObject[] = [
 			{
 				index: true,
 				element: <MainCabinetAdmin />,
-				errorElement: <Err />,
-			},
-			{
-				path: RoutesList.COURSES,
-				element: <CoursesCabinetAdmin />,
 				errorElement: <Err />,
 			},
 			{
@@ -65,6 +62,16 @@ export const RoutesAdmin: RouteObject[] = [
 			{
 				path: RoutesList.TEXT_EDITOR,
 				element: <TextEditorCabinetAdmin />,
+				errorElement: <Err />,
+			},
+			{
+				path: RoutesList.CATEGORIES,
+				element: <CategoriesCabinetAdmin />,
+				errorElement: <Err />,
+			},
+			{
+				path: RoutesList.USERS,
+				element: <UsersCabinetAdmin />,
 				errorElement: <Err />,
 			},
 			{

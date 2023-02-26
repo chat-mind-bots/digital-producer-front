@@ -6,7 +6,6 @@ import {
 	LocalStorageMethodEnum,
 	localStorageService,
 } from "Utils/local-storage.service";
-import RequestStatusesType from "Types/RequestStatusesType";
 import RequestStatuses from "RequestStatuses";
 
 export interface IAuthUserState {
@@ -18,7 +17,7 @@ export interface IAuthUserState {
 	type?: string;
 	role: UserRoleEnum[];
 	photos?: IPhotos;
-	statusCode?: RequestStatusesType;
+	statusCode?: RequestStatuses;
 }
 
 export const initialAuthState: IAuthUserState = {

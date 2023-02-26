@@ -1,0 +1,145 @@
+import React, { FC, useCallback, useEffect, useState } from "react";
+import toast, { Toaster } from "react-hot-toast";
+import { QueryStatus } from "@reduxjs/toolkit/query";
+
+import ModalToaster from "Components/ModalWindows/WrappersModalWindows/ModalToaster";
+
+import Colors from "../../../../Colors";
+import Button from "../../../../Components/UI-KIT/Atoms/Button";
+import WindowFormik from "../../../../Components/ModalWindows/WrappersModalWindows/Formik";
+import LessonSettingsBodyWindow from "../../../../Components/ModalWindows/Body/LessonSettingsBodyWindow";
+import { ILessonState, initialLessonState } from "../../redux/lesson.slice";
+import {
+	AddLessonToModuleApiProps,
+	GetLessonApiProps,
+	useAddLessonToModuleMutation,
+	useCreateLessonMutation,
+} from "../../redux/lesson.api";
+import { useAppSelector } from "../../../../Hooks/redux";
+import RequestStatuses from "../../../../RequestStatuses";
+import CourseResultType from "../../../../Components/UI-KIT/Course/course-props.type";
+
+type LessonCreateProps = Pick<AddLessonToModuleApiProps, "idModule"> &
+	Pick<CourseResultType, "refetch">;
+
+export const LessonCreate: FC<LessonCreateProps> = ({ idModule, refetch }) => {
+	const auth = useAppSelector((state) => state.auth);
+	const queryAuth: GetLessonApiProps = {
+		authToken: auth.token ?? "",
+	};
+
+	const [open, setOpen] = useState<boolean>(false);
+
+	const [createLesson, resultCreateLesson] = useCreateLessonMutation();
+	const [addLessonToModule, resultAddLessonToModule] =
+		useAddLessonToModuleMutation();
+
+	const create = useCallback(
+		(res: ILessonState) =>
+			createLesson({
+				...queryAuth,
+				data: res,
+			}),
+		[createLesson]
+	);
+
+	useEffect(() => {
+		if (resultCreateLesson.status === QueryStatus.fulfilled) {
+			if (
+				resultCreateLesson.data?.statusCode === RequestStatuses.SUCCESS ||
+				resultCreateLesson.data?.statusCode === RequestStatuses.SUCCESS_201
+			) {
+				toast.success("Все гуд Курс создался");
+				const query: AddLessonToModuleApiProps = {
+					...queryAuth,
+					idLesson: resultCreateLesson.data.id as string,
+					idModule: idModule,
+				};
+				setOpen(false);
+				addLessonToModule(query);
+			} else {
+				resultCreateLesson.data?.message?.forEach((e) => {
+					toast.error(`Ошибка:${e}`);
+				});
+			}
+		}
+	}, [resultCreateLesson]);
+
+	useEffect(() => {
+		if (resultAddLessonToModule.status === QueryStatus.fulfilled) {
+			if (
+				resultAddLessonToModule.data?.statusCode === RequestStatuses.SUCCESS ||
+				resultAddLessonToModule.data?.statusCode === RequestStatuses.SUCCESS_201
+			) {
+				toast.success("Все гуд Курс привязался");
+				refetch && refetch();
+			} else {
+				resultCreateLesson.data?.message?.forEach((e) => {
+					toast.error(`Ошибка:${e}`);
+				});
+			}
+		}
+	}, [resultAddLessonToModule]);
+
+	return (
+		<>
+			<Button
+				title={"Добавить урок"}
+				padding={"10px 16px"}
+				fontSize={"16px"}
+				lineHeight={"20px"}
+				fontWeight={"600"}
+				background={Colors.TRANSPARENT}
+				color={Colors.GREY4}
+				backgroundAnimation={Colors.GREY4}
+				colorHover={Colors.WHITE}
+				border={`2px solid ${Colors.GREY4}`}
+				width={"100%"}
+				onClick={() => setOpen(true)}
+			/>
+
+			{/*MODAL WINDOW_______________________*/}
+
+			{open && (
+				<WindowFormik
+					handleClose={() => setOpen(false)}
+					isOpen={open}
+					title={"Созданние урока "}
+				>
+					<LessonSettingsBodyWindow
+						initialValues={initialLessonState}
+						sendData={async (data: ILessonState) => {
+							return create(data);
+						}}
+						handleClose={() => setOpen(false)}
+					/>
+				</WindowFormik>
+			)}
+
+			{/*<WindowFormik*/}
+			{/*	handleClose={() => setWindow(defaultWindow)}*/}
+			{/*	isOpen={window.state}*/}
+			{/*	title={`Создание ${window.type} : ${role}`}*/}
+			{/*>*/}
+			{/*	<LessonSettingsBodyWindow*/}
+			{/*		initialValues={initialBannerState}*/}
+			{/*		handleClose={() => setWindow(defaultWindow)}*/}
+			{/*		sendData={async (data: IBannerState) =>*/}
+			{/*			apiFunction(data, FuncEnum.CREATE)*/}
+			{/*		}*/}
+			{/*		role={role}*/}
+			{/*		type={window.type}*/}
+			{/*		remove={async (e: string) => apiFunction(e, FuncEnum.DELETE)}*/}
+			{/*	/>*/}
+			{/*</WindowFormik>*/}
+			{/*MODAL WINDOW_______________________*/}
+
+			<ModalToaster>
+				<Toaster
+					position="bottom-left"
+					reverseOrder={false}
+				/>
+			</ModalToaster>
+		</>
+	);
+};

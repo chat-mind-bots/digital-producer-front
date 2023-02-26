@@ -36,6 +36,7 @@ const BannerSet: FC<BannerSetProps> = ({ children }) => {
 	const [createBanner, resultCreateBanner] = useCreateBannerMutation();
 	const [deleteBanner, resultDeleteBanner] = useDeleteBannerMutation();
 
+	//TODO: сделать норм
 	const create = useCallback(
 		(res: IBannerState) =>
 			createBanner({

@@ -1,10 +1,11 @@
 import { createSlice } from "@reduxjs/toolkit";
 
 import RequestStatuses from "RequestStatuses";
-import { ITag } from "Shared/Types/tag.type";
 import { BannerEnum } from "Shared/Banner/types/banner.enum";
 import { UserRoleEnum } from "Shared/Auth/types/role.enum";
 import { ButtonSwitchStyleEnum } from "Components/ButtonSwitchStyle/button-switch-style.enum";
+
+import { ITagState } from "../../Tag/redux/tag.slice";
 
 export enum IBannerEnum {
 	id = "id",
@@ -37,7 +38,7 @@ export interface IBannerState {
 	[IBannerEnum.description]: string;
 	[IBannerEnum.image]: string;
 	[IBannerEnum.isThirdPartySource]: boolean;
-	[IBannerEnum.tags]: ITag[];
+	[IBannerEnum.tags]: ITagState[];
 	[IBannerEnum.createdAt]: string;
 	[IBannerEnum.updatedAt]: string;
 	[IBannerEnum.statusCode]?: RequestStatuses;
@@ -58,7 +59,7 @@ export const initialBannerState: IBannerState = {
 	[IBannerEnum.isThirdPartySource]: false,
 	[IBannerEnum.tags]: [
 		{
-			id: 0,
+			id: "0",
 			name: "",
 			background: "",
 			color: "",

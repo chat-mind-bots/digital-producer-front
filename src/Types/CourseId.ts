@@ -34,9 +34,9 @@ export interface Lecturer {
 }
 
 export interface Price {
-	now: number;
-	discount: number;
-	old: number;
+	now: string;
+	discount: string;
+	old: string;
 }
 
 export interface Tag {

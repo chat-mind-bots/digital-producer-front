@@ -1,12 +1,10 @@
 import React from "react";
 
 import MainComponent from "Pages/Cabinet/Main";
-import CoursesComponent from "Pages/Cabinet/Courses";
 import NewsComponent from "Pages/Cabinet/News";
 import MetaCoursesComponent from "Pages/Cabinet/MetaCourses";
 import BannersComponent from "Pages/Cabinet/Banners/Admin";
 import { ReactComponent as Main } from "Icons/NavBar/Main.svg";
-import { ReactComponent as MyCourses } from "Icons/NavBar/MyCourses.svg";
 import { ReactComponent as News } from "Icons/NavBar/News.svg";
 import { ReactComponent as MetaCourses } from "Icons/NavBar/MetaCourses.svg";
 import RoutesList from "Router/routesList";
@@ -29,14 +27,6 @@ const NavBarDataAdmin: NavBarType[] = [
 		url: routeBuilder(RoutesList.ADMIN),
 		svg: <Main />,
 		element: <MainComponent />,
-	},
-	{
-		id: 2,
-		name: "Мои курсы",
-		count: 0,
-		url: routeBuilder([RoutesList.ADMIN, RoutesList.COURSES]),
-		svg: <MyCourses />,
-		element: <CoursesComponent />,
 	},
 	{
 		id: 3,
@@ -68,6 +58,22 @@ const NavBarDataAdmin: NavBarType[] = [
 		name: "TextEditor",
 		count: 0,
 		url: routeBuilder([RoutesList.ADMIN, RoutesList.TEXT_EDITOR]),
+		svg: <MetaCourses />,
+		element: <MetaCoursesComponent />,
+	},
+	{
+		id: 7,
+		name: "Категории",
+		count: 0,
+		url: routeBuilder([RoutesList.ADMIN, RoutesList.CATEGORIES]),
+		svg: <MetaCourses />,
+		element: <MetaCoursesComponent />,
+	},
+	{
+		id: 8,
+		name: "Пользователи",
+		count: 0,
+		url: routeBuilder([RoutesList.ADMIN, RoutesList.USERS]),
 		svg: <MetaCourses />,
 		element: <MetaCoursesComponent />,
 	},

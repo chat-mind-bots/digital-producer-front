@@ -4,17 +4,18 @@ import { IBannerDTO } from "Shared/Banner/types/banner-dto.type";
 import {
 	removeStatusToDtoService,
 	setStatusToDtoService,
-} from "Shared/services/set-status-to-dto.service";
+} from "Shared/Http/services/set-status-to-dto.service";
 import {
 	bannerFromDtoServiceObject,
 	bannerFromDtoServiceArray,
-	bannerToDtoServiceObject,
 } from "Shared/Banner/services/data/banner-from-dto.service";
 import { IBannerEnum, IBannerState } from "Shared/Banner/redux/banner.slice";
 import logout from "Utils/Logout";
 import RequestStatusesType from "Types/RequestStatusesType";
 import ServerResponse from "Types/ServerResponse/pagination";
-import { HttpMethods } from "Shared/HttpMethods/methods-api.enum";
+import { HttpMethods } from "Shared/Http/enum/methods-api.enum";
+
+import { bannerToDtoServiceObject } from "../services/data/banner-to-dto.service";
 
 export interface BannerApiProps
 	extends Pick<IBannerState, IBannerEnum.role | IBannerEnum.type> {

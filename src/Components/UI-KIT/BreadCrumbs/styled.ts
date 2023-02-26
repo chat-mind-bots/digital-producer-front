@@ -19,11 +19,18 @@ export const Item = styled.p<ItemProps>`
 	line-height: 22px;
 	color: ${({ isLast }) => (isLast ? Colors.BLUE : Colors.GREY4)};
 	cursor: ${({ isLast }) => !isLast && "pointer"};
+	text-overflow: ellipsis;
+	overflow: hidden;
+	-webkit-line-clamp: 1;
+	display: -webkit-box;
+	word-wrap: break-word;
+	-webkit-box-orient: vertical;
+	max-width: 150px;
 	&:hover {
 		color: ${Colors.BLUE};
 	}
 	&:after {
-		content: ${({ isLast }) => !isLast && "\"/\""};
+		content: ${({ isLast }) => !isLast && "/"};
 		margin-left: 12px;
 		color: ${Colors.GREY4} !important;
 	}

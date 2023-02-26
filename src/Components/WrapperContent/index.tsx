@@ -6,7 +6,7 @@ import BreadCrumbs, {
 
 import * as ST from "./styled";
 
-type WrapperContentProps = {
+export type WrapperContentProps = {
 	header: string | BreadCrumbsArrayType[];
 	children: JSX.Element;
 };

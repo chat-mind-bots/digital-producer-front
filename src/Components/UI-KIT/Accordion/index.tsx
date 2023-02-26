@@ -6,7 +6,7 @@ import { AccordionProps } from "./type";
 import * as ST from "./styled";
 
 const Accordion: FC<AccordionProps> = ({ array, handleClick }) => {
-	const [open, setOpen] = useState<number>();
+	const [open, setOpen] = useState<string>();
 
 	return (
 		<ST.Accordion>
@@ -15,7 +15,10 @@ const Accordion: FC<AccordionProps> = ({ array, handleClick }) => {
 				{array.map((module, indexModule) => (
 					<ST.WrapperModule key={`Accordion-module-${module.id}`}>
 						<ST.Name isActive={open === module.id}>
-							модуль {indexModule + 1}: {module.name}
+							<ST.NameCurrent>
+								модуль {indexModule + 1}: {module.name}
+							</ST.NameCurrent>
+
 							<ArrowDown
 								onClick={() =>
 									setOpen(open === module.id ? undefined : module.id)
@@ -32,7 +35,7 @@ const Accordion: FC<AccordionProps> = ({ array, handleClick }) => {
 									key={`Accordion-item-${item.id}`}
 								>
 									<ST.Number>{indexItem + 1}.</ST.Number>
-									{item.name}
+									<ST.NameCurrent>{item.name}</ST.NameCurrent>
 								</ST.Item>
 							))}
 						</ST.WrapperItems>

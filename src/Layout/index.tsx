@@ -1,25 +1,30 @@
 import React, { FC } from "react";
+import { Navigate } from "react-router-dom";
 
-// import Loader from "Components/UI-KIT/Loader";
 import { UserRoleEnum } from "Shared/Auth/types/role.enum";
 
 import LazyCabinetUser from "./Cabinet";
 import LazyCabinetProducer from "./Cabinet/Producer";
 import LazyCabinetAdmin from "./Cabinet/Admin";
-
-// const LazyCabinetUser = lazy(() => import("Layout/Cabinet"));
-// const LazyCabinetAdmin = lazy(() => import("Layout/Cabinet/Admin"));
-// const LazyCabinetProducer = lazy(() => import("Layout/Cabinet/Producer"));
+import { useAppSelector } from "../Hooks/redux";
+import { routeBuilder } from "../Router/services/route-builder";
+import { getUrlByRoleService } from "../Shared/Auth/services/get-url-by-role.service";
+import { getMainRoleService } from "../Shared/Auth/services/get-main-role.service";
 
 type Props = {
 	role: UserRoleEnum;
 };
 
 const LazyCabinet: FC<Props> = ({ role }) => {
-	return (
-		// <Suspense fallback={<Loader />}>
+	const auth = useAppSelector((state) => state.auth);
+
+	return auth.role.includes(role) ? (
 		<SwitchCabinet role={role} />
-		// </Suspense>
+	) : (
+		<Navigate
+			to={routeBuilder(getUrlByRoleService(getMainRoleService(auth.role)))}
+			replace={true}
+		/>
 	);
 };
 

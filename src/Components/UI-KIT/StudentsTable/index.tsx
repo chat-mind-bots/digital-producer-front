@@ -1,10 +1,20 @@
-import React from "react";
+import React, { FC } from "react";
 
 import * as ST from "./styled";
+import { EnrollAnotherUserToCourse } from "../../../Shared/Courses/components/CourseSet/enrollAnotherUser";
+import { EnrollAnotherUserToCourseApiProps } from "../../../Shared/Courses/redux/course.api";
+import CourseResultType from "../Course/course-props.type";
 
-const StudentsTable = () => {
+const StudentsTable: FC<
+	Pick<EnrollAnotherUserToCourseApiProps, "idCourse"> &
+		Pick<CourseResultType, "refetch">
+> = ({ idCourse, refetch }) => {
 	return (
 		<ST.StudentsTable>
+			<EnrollAnotherUserToCourse
+				idCourse={idCourse}
+				refetch={refetch}
+			/>
 			<ST.Table>
 				<ST.Thead>
 					<ST.Tr>

@@ -1,12 +1,12 @@
 import { createApi, fetchBaseQuery } from "@reduxjs/toolkit/query/react";
 
-import { setStatusToDtoService } from "Shared/services/set-status-to-dto.service";
+import { setStatusToDtoService } from "Shared/Http/services/set-status-to-dto.service";
 import { IAuthUserDTO } from "Shared/Auth/types/user-dto.type";
 import { userFromDtoService } from "Shared/Auth/services/data/user-from-dto.service";
 import { IAuthUserState } from "Shared/Auth/redux/auth.slice";
 import logout from "Utils/Logout";
 import RequestStatusesType from "Types/RequestStatusesType";
-import { HttpMethods } from "Shared/HttpMethods/methods-api.enum";
+import { HttpMethods } from "Shared/Http/enum/methods-api.enum";
 
 export const authApi = createApi({
 	reducerPath: "auth/api",

@@ -1,4 +1,4 @@
-import { ITag } from "Shared/Types/tag.type";
+import { ITagDTO } from "Shared/Tag/Types/tag-dto.type";
 import { UserRoleEnum } from "Shared/Auth/types/role.enum";
 import { BannerEnum } from "Shared/Banner/types/banner.enum";
 import { ButtonSwitchStyleEnum } from "Components/ButtonSwitchStyle/button-switch-style.enum";
@@ -15,7 +15,7 @@ export interface IBannerDTO {
 	description: string;
 	image: string;
 	is_third_party_source: boolean;
-	tags: ITag[];
+	tags: ITagDTO[];
 	createdAt: string;
 	updatedAt: string;
 	error?: string;

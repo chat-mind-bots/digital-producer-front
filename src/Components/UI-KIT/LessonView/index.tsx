@@ -1,17 +1,26 @@
 import React, { FC } from "react";
 
-import { ReactComponent as IconForLessonCard } from "Icons/IconForLessonCard.svg";
 import LevelDifficulty, {
 	LoadingLevelDifficulty,
 } from "Components/UI-KIT/Atoms/LevelDificulty";
-import { LessonType, OtherNote } from "Types/CourseId";
+import { ICourseEnum, ICourseState } from "Shared/Courses/redux/course.slice";
 
 import * as ST from "./styled";
+import Image from "../Atoms/Image";
+import PlayVideo from "../Atoms/PlayVideo";
 
-type LessonViewProps = LessonType & {
+type LessonViewProps = Pick<
+	ICourseState,
+	| ICourseEnum.id
+	| ICourseEnum.name
+	| ICourseEnum.levelDifficulty
+	| ICourseEnum.description
+	| ICourseEnum.language
+	| ICourseEnum.notes
+	| ICourseEnum.image
+	| ICourseEnum.video
+> & {
 	studentsLength: number;
-	language: string;
-	otherNotes: OtherNote[];
 	lessonsLength: number;
 	modulesLength: number;
 	isLoading: boolean;
@@ -23,22 +32,29 @@ const LessonView: FC<LessonViewProps> = ({
 	description,
 	studentsLength,
 	language,
-	otherNotes,
+	notes,
 	lessonsLength,
 	modulesLength,
 	isLoading,
+	image,
 }) => (
 	<ST.LessonView>
 		<ST.WrapperVideo isLoading={isLoading}>
 			<ST.Loader />
-			<IconForLessonCard />
+			<Image src={image} />
+			<PlayVideo isOpen={!isLoading} />
 		</ST.WrapperVideo>
 		<ST.Title isLoading={isLoading}>{name}</ST.Title>
 		<ST.WrapperLevelDifficulty>
 			{isLoading ? (
 				<LoadingLevelDifficulty />
 			) : (
-				<LevelDifficulty data={levelDifficulty} />
+				<LevelDifficulty
+					data={{
+						curren: levelDifficulty,
+						max: 3,
+					}}
+				/>
 			)}
 		</ST.WrapperLevelDifficulty>
 		<ST.WrapperInfo>
@@ -47,7 +63,7 @@ const LessonView: FC<LessonViewProps> = ({
 				delay={0.1}
 				isLoading={isLoading}
 			>
-				<ST.SubTitleInfo>{description}</ST.SubTitleInfo>
+				<ST.SubTitleInfo dangerouslySetInnerHTML={{ __html: description }} />
 			</ST.WrapperSubTitle>
 			<ST.TitleInfo>Информация:</ST.TitleInfo>
 			<ST.WrapperSubTitle
@@ -75,17 +91,18 @@ const LessonView: FC<LessonViewProps> = ({
 				<ST.SubTitleInfo>Язык: {language}</ST.SubTitleInfo>
 			</ST.WrapperSubTitle>
 			<ST.TitleInfo>Заметки (доп. описание):</ST.TitleInfo>
-			{otherNotes.map((nete) => (
-				<ST.WrapperSubTitle
-					isLoading={isLoading}
-					key={`note-${nete.id}`}
-					delay={0.6}
-				>
-					<ST.SubTitleInfo>
-						{nete.name}: {nete.value}
-					</ST.SubTitleInfo>
-				</ST.WrapperSubTitle>
-			))}
+			{notes &&
+				notes.map((nete) => (
+					<ST.WrapperSubTitle
+						isLoading={isLoading}
+						key={`note-${1}`}
+						delay={0.6}
+					>
+						<ST.SubTitleInfo>
+							{nete.name}: {nete.value}
+						</ST.SubTitleInfo>
+					</ST.WrapperSubTitle>
+				))}
 		</ST.WrapperInfo>
 	</ST.LessonView>
 );

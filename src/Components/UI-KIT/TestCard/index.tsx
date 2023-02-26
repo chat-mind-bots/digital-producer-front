@@ -5,38 +5,39 @@ import Time from "Components/UI-KIT/Atoms/Time";
 import LevelDifficulty from "Components/UI-KIT/Atoms/LevelDificulty";
 import { ReactComponent as StatusFalse } from "Icons/StatusFalse.svg";
 import { ReactComponent as StatusTrue } from "Icons/StatusTrue.svg";
-import { TestType } from "Types/CourseId";
 
 import * as ST from "./styled";
+import { ITestState } from "../../../Shared/Test/redux/test.slice";
 
-type TestCardProps = TestType & {
-	url: string;
-};
-
-const TestCard: FC<TestCardProps> = ({
+const TestCard: FC<ITestState> = ({
+	// id,
 	name,
 	description,
-	status,
-	countQuestions,
-	minCountForSuccess,
-	currentResult,
-	transitTime,
-	levelDifficulty,
-	url,
+	// question,
+	// answers,
+	// rightAnswer,
+	// owner,
+	// createdAt,
+	// updatedAt,
 }) => (
-	<Link to={url}>
+	<Link to={"url"}>
 		<ST.TestCard>
 			<ST.Title>{name}</ST.Title>
 			<ST.Description>{description}</ST.Description>
-			<LevelDifficulty data={levelDifficulty} />
-			<Time value={`Время для прохождения: ${transitTime} часа`} />
+			<LevelDifficulty
+				data={{
+					curren: 2,
+					max: 3,
+				}}
+			/>
+			<Time value={`Время для прохождения: ${"@"} часа`} />
 			<ST.Info>
 				<StatusFalse />
-				Максимум:{currentResult}/{countQuestions}
+				Максимум:{"@"}/{"@"}
 			</ST.Info>
 			<ST.Info>
 				<StatusFalse />
-				Для зачета:{minCountForSuccess}/{countQuestions}
+				Для зачета:{"@"}/{"@"}
 			</ST.Info>
 			{status ? (
 				<ST.Info>

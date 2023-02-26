@@ -5,7 +5,7 @@ import * as ST from "./styled";
 type LectorCardProps = {
 	name: string;
 	description: string;
-	img: JSX.Element;
+	img?: string;
 };
 
 const LectorCard: FC<LectorCardProps> = ({ name, description, img }) => (

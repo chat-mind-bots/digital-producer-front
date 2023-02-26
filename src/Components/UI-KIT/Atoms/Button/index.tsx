@@ -14,7 +14,7 @@ export type ButtonProps = {
 	backgroundAnimation: string;
 	colorHover: string;
 	border?: string;
-	onClick?: () => void;
+	onClick?: (e: any) => void;
 	disabled?: boolean;
 };
 

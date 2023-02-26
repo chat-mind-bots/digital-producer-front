@@ -18,8 +18,8 @@ export const NewsData: ServerResponse<NewsType> = {
 				date: "",
 				image: "./",
 				tags: [
-					{ id: 0, name: "финансы", background: "red", color: "white" },
-					{ id: 1, name: "дизайн", background: "blue", color: "white" },
+					{ id: "0", name: "финансы", background: "red", color: "white" },
+					{ id: "1", name: "дизайн", background: "blue", color: "white" },
 				],
 			},
 			{
@@ -30,8 +30,8 @@ export const NewsData: ServerResponse<NewsType> = {
 				date: "",
 				image: "./",
 				tags: [
-					{ id: 0, name: "финансы", background: "red", color: "white" },
-					{ id: 1, name: "дизайн", background: "blue", color: "white" },
+					{ id: "0", name: "финансы", background: "red", color: "white" },
+					{ id: "1", name: "дизайн", background: "blue", color: "white" },
 				],
 			},
 			{
@@ -42,8 +42,8 @@ export const NewsData: ServerResponse<NewsType> = {
 				date: "",
 				image: "./",
 				tags: [
-					{ id: 0, name: "финансы", background: "red", color: "white" },
-					{ id: 1, name: "дизайн", background: "blue", color: "white" },
+					{ id: "0", name: "финансы", background: "red", color: "white" },
+					{ id: "1", name: "дизайн", background: "blue", color: "white" },
 				],
 			},
 		],
@@ -59,8 +59,8 @@ export const NewsIdData: NewsIdType = {
 	image: "./",
 	tagsColors: true,
 	tags: [
-		{ id: 0, name: "финансы", background: "red", color: "white" },
-		{ id: 1, name: "дизайн", background: "blue", color: "white" },
+		{ id: "0", name: "финансы", background: "red", color: "white" },
+		{ id: "1", name: "дизайн", background: "blue", color: "white" },
 	],
 	readAlsoList: [
 		{
@@ -68,8 +68,8 @@ export const NewsIdData: NewsIdType = {
 			name: "Продажа и мышление",
 			description: "Научитесь продавать и запускать инфопродукты в Инстаграм",
 			tags: [
-				{ id: 0, name: "финансы", background: "red", color: "white" },
-				{ id: 1, name: "дизайн", background: "blue", color: "white" },
+				{ id: "0", name: "финансы", background: "red", color: "white" },
+				{ id: "1", name: "дизайн", background: "blue", color: "white" },
 			],
 		},
 	],
