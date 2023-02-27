@@ -40,6 +40,11 @@ export const authSlice = createSlice({
 				data: action.payload.token,
 			});
 
+			localStorageService(LocalStorageMethodEnum.SET, {
+				key: "role",
+				data: JSON.stringify(action.payload.role),
+			});
+
 			return {
 				...state,
 				...action.payload,

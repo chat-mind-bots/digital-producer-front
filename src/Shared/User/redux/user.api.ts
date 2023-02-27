@@ -99,12 +99,9 @@ export const userApi = createApi({
 			},
 		}),
 
-		getUsersM: build.mutation<
-			ServerResponse<IAuthUserState[]>,
-			GetUserApiProps
-		>({
+		getUsersByName: build.mutation<IAuthUserState, GetUserApiProps>({
 			query: ({ authToken, q }) => ({
-				url: "/user",
+				url: "/user/by-username",
 				method: HttpMethods.GET,
 				headers: {
 					Authorization: `Bearer ${authToken}`,
@@ -124,16 +121,8 @@ export const userApi = createApi({
 				},
 			}),
 
-			transformResponse: (response: ServerResponse<IAuthUserDTO[]>, meta) => {
-				const { data, ...other } = response;
-
-				return setStatusToDtoService(
-					{
-						data: userFromDtoServiceArray(data),
-						...other,
-					},
-					meta
-				);
+			transformResponse: (response: IAuthUserDTO, meta) => {
+				return setStatusToDtoService(userFromDtoService(response, ""), meta);
 			},
 		}),
 	}),
@@ -141,6 +130,6 @@ export const userApi = createApi({
 
 export const {
 	useGetUsersQuery,
-	useGetUsersMMutation,
+	useGetUsersByNameMutation,
 	useUpgradeRoleMutation,
 } = userApi;

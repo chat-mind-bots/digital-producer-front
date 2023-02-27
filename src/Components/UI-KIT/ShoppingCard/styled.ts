@@ -26,6 +26,14 @@ export const Price = styled.p`
 	align-items: center;
 	gap: 10px;
 	letter-spacing: -1.8px;
+	text-overflow: ellipsis;
+	overflow: hidden;
+	-webkit-line-clamp: 1;
+	display: -webkit-box;
+	word-wrap: break-word;
+	-webkit-box-orient: vertical;
+	width: 100%;
+	display: flex;
 `;
 
 export const OldPrice = styled.span`
@@ -49,6 +57,12 @@ export const Title = styled.p`
 	color: ${Colors.BLACK1};
 	margin-top: 24px;
 	padding: 0 5px;
+	text-overflow: ellipsis;
+	overflow: hidden;
+	-webkit-line-clamp: 1;
+	display: -webkit-box;
+	word-wrap: break-word;
+	-webkit-box-orient: vertical;
 `;
 
 export const Description = styled.p`

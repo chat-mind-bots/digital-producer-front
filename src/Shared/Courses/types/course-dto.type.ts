@@ -4,6 +4,7 @@ import { ITagDTO } from "../../Tag/Types/tag-dto.type";
 import { IDocumentDTO } from "../../Document/types/document-dto.type";
 import { IOwnerDTO } from "../../Owner/types/owner-dto.type";
 import { IModuleDTO } from "../../Module/types/module-dto.type";
+import { CoursesStatuses } from "../redux/course.api";
 
 export interface ICourseDTO {
 	_id: string;
@@ -14,7 +15,7 @@ export interface ICourseDTO {
 	is_enrolled: boolean;
 	is_free: boolean;
 	language: string;
-	status: number;
+	status?: CoursesStatuses;
 	price?: IPriceState;
 	level_difficulty: number;
 	logic_number?: number;

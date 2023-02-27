@@ -1,6 +1,7 @@
 import React, { FC, useEffect } from "react";
 import { QueryStatus } from "@reduxjs/toolkit/query";
 import toast, { Toaster } from "react-hot-toast";
+import { Link } from "react-router-dom";
 
 import * as ST from "./styled";
 import { Role } from "./styled";
@@ -16,9 +17,8 @@ import { useAppSelector } from "../../../Hooks/redux";
 import CourseResultType from "../Course/course-props.type";
 import RequestStatuses from "../../../RequestStatuses";
 import ModalToaster from "../../ModalWindows/WrappersModalWindows/ModalToaster";
-
-// /user/beat-from-producer/63e65dd6c71c765f8ff188ea
-// /user/beat-from-producer/{id}
+import { routeBuilder } from "../../../Router/services/route-builder";
+import RoutesList from "../../../Router/routesList";
 
 const UsersTable: FC<UserApiPropsSet & Pick<CourseResultType, "refetch">> = ({
 	data,
@@ -54,6 +54,7 @@ const UsersTable: FC<UserApiPropsSet & Pick<CourseResultType, "refetch">> = ({
 							<ST.Td>Чат</ST.Td>
 							<ST.Td>Повышение</ST.Td>
 							<ST.Td>Понижение</ST.Td>
+							<ST.Td>Курсы</ST.Td>
 						</ST.Tr>
 					</ST.Thead>
 					<ST.Tbody>
@@ -141,6 +142,14 @@ const UsersTable: FC<UserApiPropsSet & Pick<CourseResultType, "refetch">> = ({
 									>
 										{roleDow ? "Понизить" : "-"}
 									</ST.ThOpen>
+									<Link
+										to={`${routeBuilder([
+											RoutesList.ADMIN,
+											RoutesList.COURSES_REVIEW,
+										])}?ownerId=${user.id}`}
+									>
+										<ST.ThOpen>открыть</ST.ThOpen>
+									</Link>
 								</ST.Tr>
 							);
 						})}

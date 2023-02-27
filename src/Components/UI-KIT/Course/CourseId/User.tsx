@@ -205,7 +205,6 @@ const CourseId: FC<ICourseState & Pick<CourseResultType, "refetch">> = ({
 						</ST.Content>
 					</WrapperContent>
 				)}
-
 				{currentLesson ? (
 					<>
 						<WrapperContent header={"Документы урока"}>
@@ -224,7 +223,7 @@ const CourseId: FC<ICourseState & Pick<CourseResultType, "refetch">> = ({
 					</>
 				) : (
 					documents &&
-					documents.length && (
+					!!documents.length && (
 						<>
 							<WrapperContent header={"Документы курса"}>
 								<ST.Content>
@@ -248,6 +247,7 @@ const CourseId: FC<ICourseState & Pick<CourseResultType, "refetch">> = ({
 					<Accordion
 						array={accordion}
 						handleClick={handleClickAccordion}
+						isOnClick={!loading}
 					/>
 				)
 			) : (

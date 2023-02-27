@@ -12,6 +12,10 @@ export const Wrapper = styled.div`
 	gap: 22px;
 `;
 
+export const WrapperCourses = styled.div`
+	width: 100%;
+`;
+
 export const WrapperContent = styled.div`
 	display: flex;
 	gap: 45px;

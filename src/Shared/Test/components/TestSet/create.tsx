@@ -66,8 +66,6 @@ export const TestCreate: FC<TestCreateProps> = ({ idLesson, refetch }) => {
 		if (resultAddTestToLesson.status === QueryStatus.fulfilled) {
 			toast.success("Все гуд тест привязался");
 			refetch && refetch();
-		} else {
-			toast.error("Ошибка");
 		}
 	}, [resultAddTestToLesson]);
 

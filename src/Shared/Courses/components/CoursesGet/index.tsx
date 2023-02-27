@@ -12,7 +12,11 @@ import { GetCoursesApiProps, useGetCoursesQuery } from "../../redux/course.api";
 import * as ST from "./styled";
 
 type CourseGetProps = Record<"children", React.ReactElement<BannerResultType>> &
-	Pick<GetCoursesApiProps, "subCategoryId" | "enrolledUserId" | "ownerId"> & {
+	Pick<
+		GetCoursesApiProps,
+		"subCategoryId" | "enrolledUserId" | "ownerId" | "status"
+	> &
+	Pick<GetCoursesApiProps, "sortBy"> & {
 		header: string;
 	};
 
@@ -22,6 +26,8 @@ const CoursesGet: FC<CourseGetProps> = ({
 	subCategoryId,
 	ownerId,
 	enrolledUserId,
+	status,
+	sortBy,
 }) => {
 	const auth = useAppSelector((state) => state.auth);
 	const query: GetCoursesApiProps = {
@@ -29,6 +35,8 @@ const CoursesGet: FC<CourseGetProps> = ({
 		subCategoryId: subCategoryId,
 		ownerId: ownerId,
 		enrolledUserId: enrolledUserId,
+		status: status,
+		sortBy: sortBy,
 	};
 	const { data, isError, isLoading, refetch } = useGetCoursesQuery(query);
 

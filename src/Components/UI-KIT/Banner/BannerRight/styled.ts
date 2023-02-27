@@ -12,7 +12,7 @@ export const AddBlock = styled.div`
 	position: sticky;
 	top: 129px;
 	width: 300px;
-	height: 468px;
+	height: max-content;
 	box-sizing: border-box;
 	@media (max-width: ${BreakPoints.TABLET}px) {
 		display: none;

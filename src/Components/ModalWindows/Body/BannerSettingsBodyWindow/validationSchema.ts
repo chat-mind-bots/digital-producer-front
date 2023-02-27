@@ -18,7 +18,7 @@ export const ValidationSchema = Yup.object().shape({
 	isThirdPartySource: Yup.bool().required(ErrText.FORMIK.REQUIRED),
 	tags: Yup.array().of(
 		Yup.object().shape({
-			id: Yup.number(),
+			id: Yup.string(),
 			name: Yup.string().required(ErrText.FORMIK.REQUIRED),
 			background: Yup.string().required(ErrText.FORMIK.REQUIRED),
 			color: Yup.string().required(ErrText.FORMIK.REQUIRED),

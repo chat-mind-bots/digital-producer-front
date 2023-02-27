@@ -13,8 +13,8 @@ import sortPosition from "../../../Utils/sortPosition";
 const Accordion: FC<
 	AccordionProps &
 		Pick<CourseResultType, "refetch"> &
-		Pick<AddModuleToCourseApiProps, "idCourse">
-> = ({ array, handleClick, refetch, idCourse }) => {
+		Pick<AddModuleToCourseApiProps, "idCourse"> & { isOnClick: boolean }
+> = ({ array, handleClick, refetch, idCourse, isOnClick }) => {
 	const [open, setOpen] = useState<string>();
 
 	return (
@@ -25,7 +25,7 @@ const Accordion: FC<
 					<ST.WrapperItem key={`Accordion-module-${module.id}`}>
 						<ST.WrapperModule
 							onClick={() =>
-								setOpen(open === module.id ? undefined : module.id)
+								isOnClick && setOpen(open === module.id ? undefined : module.id)
 							}
 						>
 							<ST.Name isActive={open === module.id}>
@@ -38,6 +38,7 @@ const Accordion: FC<
 									<ST.WrapperItem key={`Accordion-item-${item.id}`}>
 										<ST.Item
 											onClick={() =>
+												isOnClick &&
 												handleClick({
 													moduleId: module.id,
 													itemId: item.id,

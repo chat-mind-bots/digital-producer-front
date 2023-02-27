@@ -8,11 +8,11 @@ type CircleItemProps = {
 
 export const Insights = styled.div`
 	max-width: 760px;
-	width: 100%;
 	border-radius: 24px;
 	background: ${Colors.BLUE1};
 	padding: 26px 24px 24px;
 	box-sizing: border-box;
+	width: 760px;
 `;
 
 export const InsightsLoader = styled.div`

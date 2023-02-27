@@ -39,6 +39,12 @@ export const Name = styled.p`
 	justify-content: space-between;
 	width: 100%;
 	align-items: center;
+	text-overflow: ellipsis;
+	overflow: hidden;
+	-webkit-line-clamp: 1;
+	display: -webkit-box;
+	word-wrap: break-word;
+	-webkit-box-orient: vertical;
 	& svg {
 		transform: rotate(-90deg);
 	}

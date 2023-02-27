@@ -11,8 +11,9 @@ import { GetCoursesApiProps } from "../../../Shared/Courses/redux/course.api";
 
 type Type = Pick<
 	GetCoursesApiProps,
-	"subCategoryId" | "enrolledUserId" | "ownerId"
-> & { role: UserRoleEnum; header: string };
+	"subCategoryId" | "enrolledUserId" | "ownerId" | "status"
+> &
+	Pick<GetCoursesApiProps, "sortBy"> & { role: UserRoleEnum; header: string };
 
 const Courses: FC<Type> = ({
 	role,
@@ -20,6 +21,8 @@ const Courses: FC<Type> = ({
 	subCategoryId,
 	enrolledUserId,
 	ownerId,
+	status,
+	sortBy,
 }) => {
 	return (
 		<CoursesGet
@@ -27,6 +30,8 @@ const Courses: FC<Type> = ({
 			subCategoryId={subCategoryId}
 			enrolledUserId={enrolledUserId}
 			ownerId={ownerId}
+			status={status}
+			sortBy={sortBy}
 		>
 			<SwitchCourses
 				role={role}

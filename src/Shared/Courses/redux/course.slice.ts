@@ -7,6 +7,7 @@ import { INoteState } from "../../Note/redux/note.slice";
 import { IOwnerState } from "../../Owner/redux/owner.slice";
 import { IPriceState } from "../../Price/redux/price.slice";
 import { ITagState } from "../../Tag/redux/tag.slice";
+import { CoursesStatuses } from "./course.api";
 
 export enum ICourseEnum {
 	id = "id",
@@ -44,7 +45,7 @@ export interface ICourseState {
 	[ICourseEnum.isFree]: boolean;
 	[ICourseEnum.isEnrolled]: boolean;
 	[ICourseEnum.language]: string;
-	[ICourseEnum.status]: number;
+	[ICourseEnum.status]?: CoursesStatuses;
 	[ICourseEnum.price]?: IPriceState;
 	[ICourseEnum.levelDifficulty]: number;
 	[ICourseEnum.logicNumber]?: number;
@@ -71,7 +72,7 @@ export const initialCourseState: ICourseState = {
 	[ICourseEnum.isFree]: false,
 	[ICourseEnum.isEnrolled]: false,
 	[ICourseEnum.language]: "",
-	[ICourseEnum.status]: 202,
+	[ICourseEnum.status]: undefined,
 	[ICourseEnum.price]: undefined,
 	[ICourseEnum.levelDifficulty]: 2,
 	[ICourseEnum.logicNumber]: undefined,

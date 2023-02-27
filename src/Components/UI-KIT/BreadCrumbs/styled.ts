@@ -25,7 +25,7 @@ export const Item = styled.p<ItemProps>`
 	display: -webkit-box;
 	word-wrap: break-word;
 	-webkit-box-orient: vertical;
-	max-width: 150px;
+	max-width: 250px;
 	&:hover {
 		color: ${Colors.BLUE};
 	}

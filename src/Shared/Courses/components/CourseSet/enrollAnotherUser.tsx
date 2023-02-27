@@ -15,7 +15,7 @@ import { useGetCategoriesQuery } from "../../../Category/redux/category.api";
 import Loader from "../../../../Components/UI-KIT/Loader";
 import CourseResultType from "../../../../Components/UI-KIT/Course/course-props.type";
 import EnrollAnotherUserSettingsBodyWindow from "../../../../Components/ModalWindows/Body/EnrollAnotherUserSettingsBodyWindow";
-import { useGetUsersMMutation } from "../../../User/redux/user.api";
+import { useGetUsersByNameMutation } from "../../../User/redux/user.api";
 import StudentsCreate from "../../../../Components/UI-KIT/StudentsTable/create";
 
 export const EnrollAnotherUserToCourse: FC<
@@ -34,7 +34,7 @@ export const EnrollAnotherUserToCourse: FC<
 	const [enrollAnotherUserToCourse, resultEnrollAnotherUserToCourse] =
 		useEnrollAnotherUserToCourseMutation();
 
-	const [getUser, resultGetUser] = useGetUsersMMutation();
+	const [getUser, resultGetUser] = useGetUsersByNameMutation();
 
 	const getUsers = useCallback(
 		(nameUser: string) => {
@@ -60,15 +60,15 @@ export const EnrollAnotherUserToCourse: FC<
 				resultGetUser.data?.statusCode === RequestStatuses.SUCCESS ||
 				resultGetUser.data?.statusCode === RequestStatuses.SUCCESS_201
 			) {
-				if (resultGetUser.data.data.length === 1) {
+				if (resultGetUser.data) {
 					toast.success("Все гуд пользовватель найден");
 					setOpen(false);
-					enrollAnotherUser(resultGetUser.data.data[0].id);
+					enrollAnotherUser(resultGetUser.data.id);
 				} else {
 					toast.error("Ошибка: пользовватель не найден");
 				}
 			} else {
-				toast.error("Ошибка: с запросом ");
+				toast.error("Ошибка: пользовватель не найден");
 			}
 		}
 	}, [resultGetUser]);

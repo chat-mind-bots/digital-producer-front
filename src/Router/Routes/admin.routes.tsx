@@ -5,7 +5,7 @@ import RoutesList from "Router/routesList";
 import Err from "Pages/Err";
 import MainCabinetAdmin from "Pages/Cabinet/Main/Admin";
 import NewsCabinetAdmin from "Pages/Cabinet/News/Admin";
-import MetaCoursesCabinetAdmin from "Pages/Cabinet/MetaCourses/Admin";
+import ReviewCoursesCabinetAdmin from "Pages/Cabinet/ReviewCourses/Admin";
 import NewsIdCabinetAdmin from "Pages/Cabinet/NewsId/Admin";
 import CourseIdCabinetAdmin from "Pages/Cabinet/CourseId/Admin";
 import TestIdCabinetAdmin from "Pages/Cabinet/TestId/Admin";
@@ -35,8 +35,8 @@ export const RoutesAdmin: RouteObject[] = [
 				errorElement: <Err />,
 			},
 			{
-				path: RoutesList.META_COURSES,
-				element: <MetaCoursesCabinetAdmin />,
+				path: RoutesList.COURSES_REVIEW,
+				element: <ReviewCoursesCabinetAdmin />,
 				errorElement: <Err />,
 			},
 			{

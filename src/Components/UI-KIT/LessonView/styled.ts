@@ -67,12 +67,12 @@ export const WrapperStatuses = styled.span`
 type StatusProps = {
 	isActive: boolean;
 };
+
 export const Status = styled.span<StatusProps>`
 	cursor: pointer;
 	font-size: 37px;
 
 	& svg path {
-		fill: ${({ isActive }) => isActive && Colors.BLUE} !important;
 		stroke: ${({ isActive }) => isActive && Colors.BLUE} !important;
 	}
 	& svg rect {
@@ -80,11 +80,25 @@ export const Status = styled.span<StatusProps>`
 	}
 
 	&:hover svg path {
-		fill: ${Colors.BLUE} !important;
 		stroke: ${Colors.BLUE} !important;
 	}
 	&:hover svg rect {
 		stroke: ${Colors.BLUE} !important;
+	}
+	&:hover svg {
+		border-color: ${Colors.BLUE} !important;
+	}
+`;
+
+export const StatusDisables = styled.span<StatusProps>`
+	cursor: pointer;
+	font-size: 37px;
+
+	& svg path {
+		stroke: ${({ isActive }) => isActive && Colors.BLUE} !important;
+	}
+	& svg rect {
+		stroke: ${({ isActive }) => isActive && Colors.BLUE} !important;
 	}
 `;
 

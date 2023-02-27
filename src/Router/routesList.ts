@@ -9,6 +9,7 @@ enum RoutesList {
 	COURSES = "course",
 	NEWS = "news",
 	META_COURSES = "metaCourses",
+	COURSES_REVIEW = "reviewCourses",
 	DOCUMENT_ID = "document/:id",
 	NEWS_ID = "news/:id",
 	COURSE_ID = "course/:id",

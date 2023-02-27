@@ -44,7 +44,8 @@ const CourseId: FC<ICourseState & Pick<CourseResultType, "refetch">> = ({
 	// createdAt,
 	// updatedAt,
 	// statusCode,
-	//	refetch
+	refetch,
+	status,
 }) => {
 	const auth = useAppSelector((state) => state.auth);
 
@@ -147,6 +148,7 @@ const CourseId: FC<ICourseState & Pick<CourseResultType, "refetch">> = ({
 							<>
 								<LessonView
 									id={currentLesson.id}
+									idCourse={id}
 									name={currentLesson.name}
 									video={currentLesson.video}
 									levelDifficulty={levelDifficulty}
@@ -158,12 +160,15 @@ const CourseId: FC<ICourseState & Pick<CourseResultType, "refetch">> = ({
 									modulesLength={23}
 									isLoading={loading}
 									image={currentLesson.image}
+									status={status}
+									refetch={refetch}
 								/>
 							</>
 						) : (
 							<>
 								<LessonView
 									id={id}
+									idCourse={id}
 									name={name}
 									video={video}
 									levelDifficulty={levelDifficulty}
@@ -175,6 +180,8 @@ const CourseId: FC<ICourseState & Pick<CourseResultType, "refetch">> = ({
 									modulesLength={23}
 									isLoading={loading}
 									image={image}
+									status={status}
+									refetch={refetch}
 								/>
 							</>
 						)}
@@ -243,6 +250,7 @@ const CourseId: FC<ICourseState & Pick<CourseResultType, "refetch">> = ({
 				<Accordion
 					array={accordion}
 					handleClick={handleClickAccordion}
+					isOnClick={!loading}
 				/>
 			)}
 		</ST.CourseID>

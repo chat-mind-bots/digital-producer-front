@@ -11,6 +11,10 @@ import PlayVideo from "../Atoms/PlayVideo";
 import { ReactComponent as StatusFalse } from "../../../Icons/StatusFalse.svg";
 import { ReactComponent as StatusTrue } from "../../../Icons/StatusTrue.svg";
 import { ReactComponent as StatusWait } from "../../../Icons/StatusWait.svg";
+import { ReactComponent as Progress } from "../../../Icons/Progress.svg";
+import { CoursesStatuses } from "../../../Shared/Courses/redux/course.api";
+import { CourseSetStatus } from "../../../Shared/Courses/components/CourseSet/setStatus";
+import CourseResultType from "../Course/course-props.type";
 
 type LessonViewProps = Pick<
 	ICourseState,
@@ -22,12 +26,15 @@ type LessonViewProps = Pick<
 	| ICourseEnum.notes
 	| ICourseEnum.image
 	| ICourseEnum.video
-> & {
-	studentsLength: number;
-	lessonsLength: number;
-	modulesLength: number;
-	isLoading: boolean;
-};
+	| ICourseEnum.status
+> &
+	Pick<CourseResultType, "refetch"> & {
+		studentsLength: number;
+		lessonsLength: number;
+		modulesLength: number;
+		isLoading: boolean;
+		idCourse: string;
+	};
 
 const LessonView: FC<LessonViewProps> = ({
 	name,
@@ -40,6 +47,9 @@ const LessonView: FC<LessonViewProps> = ({
 	modulesLength,
 	isLoading,
 	image,
+	status,
+	idCourse,
+	refetch,
 }) => (
 	<ST.LessonView>
 		<ST.WrapperVideo isLoading={isLoading}>
@@ -50,15 +60,42 @@ const LessonView: FC<LessonViewProps> = ({
 		<ST.Title isLoading={isLoading}>
 			{name}
 			<ST.WrapperStatuses>
-				<ST.Status isActive={true}>
-					<StatusFalse />
-				</ST.Status>
-				<ST.Status isActive={false}>
-					<StatusTrue />
-				</ST.Status>
-				<ST.Status isActive={false}>
-					<StatusWait />
-				</ST.Status>
+				<CourseSetStatus
+					status={CoursesStatuses.NOT_ACTIVE}
+					idCourse={idCourse}
+					refetch={refetch}
+				>
+					<ST.Status isActive={status === CoursesStatuses.NOT_ACTIVE}>
+						<StatusFalse />
+					</ST.Status>
+				</CourseSetStatus>
+				<CourseSetStatus
+					status={CoursesStatuses.AVAILABLE}
+					idCourse={idCourse}
+					refetch={refetch}
+				>
+					<ST.Status isActive={status === CoursesStatuses.AVAILABLE}>
+						<StatusTrue />
+					</ST.Status>
+				</CourseSetStatus>
+				<CourseSetStatus
+					status={CoursesStatuses.IN_REVIEW}
+					idCourse={idCourse}
+					refetch={refetch}
+				>
+					<ST.Status isActive={status === CoursesStatuses.IN_REVIEW}>
+						<StatusWait />
+					</ST.Status>
+				</CourseSetStatus>
+				<CourseSetStatus
+					status={CoursesStatuses.IN_PROGRESS}
+					idCourse={idCourse}
+					refetch={refetch}
+				>
+					<ST.Status isActive={status === CoursesStatuses.IN_PROGRESS}>
+						<Progress />
+					</ST.Status>
+				</CourseSetStatus>
 			</ST.WrapperStatuses>
 		</ST.Title>
 		<ST.WrapperLevelDifficulty>

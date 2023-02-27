@@ -34,7 +34,7 @@ export const Description = styled.p`
 
 export const Buttons = styled.p`
 	display: flex;
-	gap: 15px;
+	gap: 10px;
 	margin-top: 48px;
 	flex-wrap: wrap;
 `;

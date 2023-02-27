@@ -38,9 +38,9 @@ const NavBarDataAdmin: NavBarType[] = [
 	},
 	{
 		id: 4,
-		name: "Курсы meta",
+		name: "Куры на проверке",
 		count: 0,
-		url: routeBuilder([RoutesList.ADMIN, RoutesList.META_COURSES]),
+		url: routeBuilder([RoutesList.ADMIN, RoutesList.COURSES_REVIEW]),
 		svg: <MetaCourses />,
 		element: <BannersComponent />,
 	},

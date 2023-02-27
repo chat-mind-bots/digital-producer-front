@@ -17,11 +17,25 @@ import { ICourseDTO } from "../types/course-dto.type";
 import { ICourseState } from "./course.slice";
 import { courseToDtoServiceObject } from "../services/data/course-to-dto.service";
 
+export enum CoursesStatuses {
+	IN_PROGRESS = "IN_PROGRESS",
+	IN_REVIEW = "IN_REVIEW",
+	APPROVED = "APPROVED",
+	NOT_ACTIVE = "NOT_ACTIVE",
+	AVAILABLE = "AVAILABLE",
+}
+
+export enum CoursesCreatedAt {
+	createdAt = "createdAt",
+}
+
 export interface GetCoursesApiProps {
 	authToken: string;
 	subCategoryId?: string[];
 	ownerId?: string[];
 	enrolledUserId?: string[];
+	status?: CoursesStatuses;
+	sortBy?: CoursesCreatedAt;
 }
 
 export interface GetCourseApiProps {
@@ -49,6 +63,12 @@ export interface UpdateCourseApiProps extends CourseApiPropsSet {
 	authToken: string;
 }
 
+export interface UpdateCourseStatusApiProps {
+	authToken: string;
+	status?: CoursesStatuses;
+	idCourse: string;
+}
+
 export interface CreateCourseApiProps extends CourseApiPropsSet {
 	authToken: string;
 }
@@ -65,7 +85,14 @@ export const courseApi = createApi({
 	endpoints: (build) => ({
 		getCourses: build.query<ServerResponse<ICourseState[]>, GetCoursesApiProps>(
 			{
-				query: ({ authToken, subCategoryId, ownerId, enrolledUserId }) => ({
+				query: ({
+					authToken,
+					subCategoryId,
+					ownerId,
+					enrolledUserId,
+					status,
+					sortBy,
+				}) => ({
 					url: "/course",
 					method: HttpMethods.GET,
 					headers: {
@@ -77,6 +104,9 @@ export const courseApi = createApi({
 						"sub-category-id": subCategoryId,
 						"owner-id": ownerId,
 						"enrolled-user-id": enrolledUserId,
+						"sort-by": sortBy,
+
+						status: status,
 					},
 					validateStatus: (response, result) => {
 						logout(response.status as RequestStatusesType);
@@ -244,6 +274,35 @@ export const courseApi = createApi({
 			},
 		}),
 
+		updateCourseStatus: build.mutation<
+			ICourseState,
+			UpdateCourseStatusApiProps
+		>({
+			query: ({ authToken, status, idCourse }) => ({
+				url: `/course/${idCourse}/update-course-status`,
+				method: HttpMethods.PATCH,
+				headers: {
+					Authorization: `Bearer ${authToken}`,
+				},
+				params: {
+					status: status,
+				},
+
+				validateStatus: (response, result) => {
+					logout(response.status as RequestStatusesType);
+
+					return result;
+				},
+			}),
+
+			transformResponse: (response: ICourseDTO, meta) => {
+				return setStatusToDtoService(
+					courseFromDtoServiceObject(response),
+					meta
+				);
+			},
+		}),
+
 		removeCourse: build.mutation<ICourseState, RemoveCourseApiProps>({
 			query: ({ authToken, id }) => ({
 				url: `/course/${id}`,
@@ -279,4 +338,5 @@ export const {
 	useRemoveCourseMutation,
 	useEnrollToCourseMutation,
 	useEnrollAnotherUserToCourseMutation,
+	useUpdateCourseStatusMutation,
 } = courseApi;

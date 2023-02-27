@@ -47,6 +47,7 @@ const CourseId: FC<ICourseState & Pick<CourseResultType, "refetch">> = ({
 	// createdAt,
 	// updatedAt,
 	// statusCode,
+	status,
 	refetch,
 }) => {
 	const auth = useAppSelector((state) => state.auth);
@@ -170,6 +171,8 @@ const CourseId: FC<ICourseState & Pick<CourseResultType, "refetch">> = ({
 									modulesLength={23}
 									isLoading={loading}
 									image={currentLesson.image}
+									refetch={refetch}
+									status={status}
 								/>
 							</>
 						) : (
@@ -189,6 +192,7 @@ const CourseId: FC<ICourseState & Pick<CourseResultType, "refetch">> = ({
 									image={image}
 									idCourse={id}
 									refetch={refetch}
+									status={status}
 								/>
 							</>
 						)}
@@ -209,7 +213,7 @@ const CourseId: FC<ICourseState & Pick<CourseResultType, "refetch">> = ({
 					</ST.Content>
 				</WrapperContent>
 
-				{currentLesson?.tests && (
+				{!!currentLesson?.tests && (
 					<WrapperContent header={"Тесты"}>
 						<ST.Content>
 							<TestCreate
@@ -285,6 +289,7 @@ const CourseId: FC<ICourseState & Pick<CourseResultType, "refetch">> = ({
 					handleClick={handleClickAccordion}
 					refetch={refetch}
 					idCourse={id}
+					isOnClick={!loading}
 				/>
 			)}
 
