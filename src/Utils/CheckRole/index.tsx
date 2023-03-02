@@ -5,9 +5,12 @@ import {
 
 const checkRole = (): string[] => {
 	return JSON.parse(
-		localStorageService(LocalStorageMethodEnum.GET, {
-			key: "role",
-		}) as string
+		localStorageService(
+			LocalStorageMethodEnum.GET,
+			{
+				key: "role",
+			} || {}
+		) as string
 	) as string[];
 };
 

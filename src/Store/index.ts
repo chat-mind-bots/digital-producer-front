@@ -19,6 +19,8 @@ import { subCategoryApi } from "Shared/SubCategory/redux/subCategory.api";
 import { subCategoryReducer } from "Shared/SubCategory/redux/subCategory.slice";
 import { userApi } from "Shared/User/redux/user.api";
 import { userReducer } from "Shared/User/redux/user.slice";
+import { newsApi } from "Shared/News/redux/news.api";
+import { newsReducer } from "Shared/News/redux/news.slice";
 
 const allMySliceReducersReducer = combineReducers({
 	[authApi.reducerPath]: authApi.reducer,
@@ -47,6 +49,9 @@ const allMySliceReducersReducer = combineReducers({
 
 	[userApi.reducerPath]: userApi.reducer,
 	user: userReducer,
+
+	[newsApi.reducerPath]: newsApi.reducer,
+	news: newsReducer,
 });
 
 export const store = configureStore({
@@ -61,7 +66,8 @@ export const store = configureStore({
 			categoryApi.middleware,
 			documentApi.middleware,
 			subCategoryApi.middleware,
-			userApi.middleware
+			userApi.middleware,
+			newsApi.middleware
 		),
 });
 
