@@ -63,9 +63,11 @@ const LessonView: FC<LessonViewProps> = ({
 			{name}
 
 			<ST.WrapperStatuses>
-				<ST.StatusDisables isActive={status === CoursesStatuses.AVAILABLE}>
-					<StatusTrue />
-				</ST.StatusDisables>
+				{!!status && (
+					<ST.StatusDisables isActive={status === CoursesStatuses.AVAILABLE}>
+						<StatusTrue />
+					</ST.StatusDisables>
+				)}
 
 				{idCourse && (
 					<CourseSetStatus

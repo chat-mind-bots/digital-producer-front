@@ -1,12 +1,8 @@
-import { IAnswersState } from "../../redux/test.slice";
-import { IAnswerDTO } from "../../types/test-dto.type";
+import { IAnswerState } from "../../redux/answer.slice";
+import { IAnswerDTO } from "../../types/answer-dto.type";
 
-export const answerFromDtoServiceObject = (dto: IAnswerDTO): IAnswersState => {
-	const {
-		_id,
-
-		...other
-	} = dto;
+export const answerFromDtoServiceObject = (dto: IAnswerDTO): IAnswerState => {
+	const { _id, ...other } = dto;
 
 	return {
 		...other,
@@ -16,13 +12,8 @@ export const answerFromDtoServiceObject = (dto: IAnswerDTO): IAnswersState => {
 
 export const answerFromDtoServiceArray = (
 	dto: IAnswerDTO[]
-): IAnswersState[] => {
+): IAnswerState[] => {
 	return dto.map((answer) => {
-		const { _id, ...other } = answer;
-
-		return {
-			...other,
-			id: _id,
-		};
+		return answerFromDtoServiceObject(answer);
 	});
 };

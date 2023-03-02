@@ -2,7 +2,6 @@ import React from "react";
 import { RouteObject } from "react-router-dom";
 
 import RoutesList from "Router/routesList";
-import Err from "Pages/Err";
 import MainCabinetAdmin from "Pages/Cabinet/Main/Admin";
 import NewsCabinetAdmin from "Pages/Cabinet/News/Admin";
 import ReviewCoursesCabinetAdmin from "Pages/Cabinet/ReviewCourses/Admin";
@@ -14,6 +13,7 @@ import TextEditorCabinetAdmin from "Pages/Cabinet/TextEditor/Admin";
 import NotFound from "Pages/NotFound";
 import { UserRoleEnum } from "Shared/Auth/types/role.enum";
 import LazyCabinet from "Layout";
+import Err from "Components/UI-KIT/Err";
 
 import CategoriesCabinetAdmin from "../../Pages/Cabinet/Categories/Admin";
 import UsersCabinetAdmin from "../../Pages/Cabinet/Users/Admin";

@@ -2,19 +2,15 @@ import { createSlice } from "@reduxjs/toolkit";
 
 import RequestStatuses from "RequestStatuses";
 
-import { IOwnerState } from "../../Owner/redux/owner.slice";
-import { IAnswersState } from "../../Answer/redux/test.slice";
+import { IQuestionState } from "../../Question/redux/question.slice";
 
 export enum ITestEnum {
 	id = "id",
 	name = "name",
 	description = "description",
-	question = "question",
-	answers = "answers",
-	rightAnswer = "rightAnswer",
-	owner = "owner",
-	createdAt = "createdAt",
-	updatedAt = "updatedAt",
+	duration = "duration",
+	lessonId = "lessonId",
+	questions = "questions",
 
 	message = "message",
 	statusCode = "statusCode",
@@ -24,12 +20,9 @@ export interface ITestState {
 	[ITestEnum.id]: string;
 	[ITestEnum.name]: string;
 	[ITestEnum.description]: string;
-	[ITestEnum.question]: string;
-	[ITestEnum.answers]?: IAnswersState[];
-	[ITestEnum.rightAnswer]: string;
-	[ITestEnum.owner]?: IOwnerState;
-	[ITestEnum.createdAt]?: string;
-	[ITestEnum.updatedAt]?: string;
+	[ITestEnum.duration]?: number;
+	[ITestEnum.lessonId]: string;
+	[ITestEnum.questions]: IQuestionState[];
 
 	[ITestEnum.message]?: string[];
 	[ITestEnum.statusCode]?: RequestStatuses;
@@ -39,12 +32,9 @@ export const initialTestState: ITestState = {
 	[ITestEnum.id]: "",
 	[ITestEnum.name]: "",
 	[ITestEnum.description]: "",
-	[ITestEnum.question]: "",
-	[ITestEnum.answers]: [],
-	[ITestEnum.rightAnswer]: "",
-	[ITestEnum.owner]: undefined,
-	[ITestEnum.createdAt]: "",
-	[ITestEnum.updatedAt]: "",
+	[ITestEnum.duration]: undefined,
+	[ITestEnum.lessonId]: "",
+	[ITestEnum.questions]: [],
 
 	[ITestEnum.statusCode]: RequestStatuses.PENDING,
 };

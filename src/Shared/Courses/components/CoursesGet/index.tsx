@@ -1,4 +1,4 @@
-import React, { FC, Children, cloneElement } from "react";
+import React, { FC, Children, cloneElement, useCallback } from "react";
 
 import { useAppSelector } from "Hooks/redux";
 import BannerResultType from "Components/UI-KIT/Banner/banner-props.type";
@@ -8,7 +8,11 @@ import RoutesList from "Router/routesList";
 import { BreadCrumbsArrayType } from "Components/UI-KIT/BreadCrumbs";
 import CoursesResultType from "Components/UI-KIT/Courses/courses-props.type";
 
-import { GetCoursesApiProps, useGetCoursesQuery } from "../../redux/course.api";
+import {
+	GetCoursesApiProps,
+	useGetCoursesQuery,
+	useGetSearchCoursesMutation,
+} from "../../redux/course.api";
 import * as ST from "./styled";
 
 type CourseGetProps = Record<"children", React.ReactElement<BannerResultType>> &
@@ -40,14 +44,26 @@ const CoursesGet: FC<CourseGetProps> = ({
 	};
 	const { data, isError, isLoading, refetch } = useGetCoursesQuery(query);
 
+	const [searchRequest, resultSearchRequest] = useGetSearchCoursesMutation();
+
 	const defaultBreadCrumbs: BreadCrumbsArrayType[] = [
 		{ id: 1, name: "Главная", url: RoutesList.USER },
 		{ id: 2, name: header, url: RoutesList.COURSES },
 	];
 
+	const search = useCallback(
+		(q: string) => {
+			searchRequest({ ...query, q });
+		},
+		[searchRequest]
+	);
+
 	return (
 		<ST.WrapperCourses>
-			<WrapperContent header={defaultBreadCrumbs}>
+			<WrapperContent
+				header={defaultBreadCrumbs}
+				search={search}
+			>
 				<ST.Wrapper>
 					<WrapperRequest
 						isError={isError}
@@ -56,7 +72,7 @@ const CoursesGet: FC<CourseGetProps> = ({
 						<>
 							{Children.toArray(children).map((child) =>
 								cloneElement(child as React.ReactElement<CoursesResultType>, {
-									result: data?.data,
+									result: resultSearchRequest.data?.data || data?.data,
 									refetch: refetch,
 								})
 							)}

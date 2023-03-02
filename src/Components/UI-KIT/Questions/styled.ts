@@ -64,3 +64,10 @@ export const Answer = styled.p`
 	line-height: 155%;
 	color: ${Colors.GREY1};
 `;
+
+export const WrapperSettings = styled.div`
+	font-weight: 500;
+	font-size: 15px;
+	line-height: 155%;
+	color: ${Colors.GREY1};
+`;

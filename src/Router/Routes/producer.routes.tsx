@@ -2,7 +2,6 @@ import React from "react";
 import { RouteObject } from "react-router-dom";
 
 import RoutesList from "Router/routesList";
-import Err from "Pages/Err";
 import MainCabinetProducer from "Pages/Cabinet/Main/Producer";
 import CoursesCabinetProducer from "Pages/Cabinet/Courses/Producer";
 import NewsCabinetProducer from "Pages/Cabinet/News/Producer";
@@ -12,6 +11,7 @@ import TestIdCabinetProducer from "Pages/Cabinet/TestId/Producer";
 import NotFound from "Pages/NotFound";
 import { UserRoleEnum } from "Shared/Auth/types/role.enum";
 import LazyCabinet from "Layout";
+import Err from "Components/UI-KIT/Err";
 
 export const RoutesProducer: RouteObject[] = [
 	{

@@ -1,40 +1,20 @@
 import { ITestDTO } from "../../types/test-dto.type";
 import { ITestState } from "../../redux/test.slice";
-import { OwnerFromDtoServiceObject } from "../../../Owner/services/data/owner-from-dto.service";
-import { answerFromDtoServiceArray } from "../../../Answer/services/data/answer-from-dto.service";
+import { QuestionFromDtoServiceArray } from "../../../Question/services/data/question-from-dto.service";
 
 export const TestFromDtoServiceObject = (dto: ITestDTO): ITestState => {
-	const {
-		_id,
-		question,
-		answers,
-		right_answer,
-		owner,
-
-		...other
-	} = dto;
+	const { _id, lesson_id, questions, ...other } = dto;
 
 	return {
 		...other,
 		id: _id,
-		question: question,
-		answers: answerFromDtoServiceArray(answers),
-		rightAnswer: right_answer,
-		owner: owner ? OwnerFromDtoServiceObject(owner) : undefined,
+		questions: questions ? QuestionFromDtoServiceArray(questions) : [],
+		lessonId: lesson_id,
 	};
 };
 
 export const TestFromDtoServiceArray = (dto: ITestDTO[]): ITestState[] => {
 	return dto.map((test) => {
-		const { _id, question, answers, right_answer, owner, ...other } = test;
-
-		return {
-			...other,
-			id: _id,
-			question: question,
-			answers: answerFromDtoServiceArray(answers),
-			rightAnswer: right_answer,
-			owner: owner ? OwnerFromDtoServiceObject(owner) : undefined,
-		};
+		return TestFromDtoServiceObject(test);
 	});
 };

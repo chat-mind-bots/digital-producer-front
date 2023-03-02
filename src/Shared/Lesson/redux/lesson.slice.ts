@@ -15,7 +15,7 @@ export enum ILessonEnum {
 	video = "video",
 	documents = "documents",
 	owner = "owner",
-	tests = "tests",
+	test = "test",
 	createdAt = "createdAt",
 	updatedAt = "updatedAt",
 
@@ -33,7 +33,7 @@ export interface ILessonState {
 	[ILessonEnum.video]: string;
 	[ILessonEnum.documents]?: IDocumentState[];
 	[ILessonEnum.owner]?: IOwnerState;
-	[ILessonEnum.tests]?: ITestState[];
+	[ILessonEnum.test]?: ITestState;
 	[ILessonEnum.createdAt]?: string;
 	[ILessonEnum.updatedAt]?: string;
 
@@ -51,7 +51,7 @@ export const initialLessonState: ILessonState = {
 	[ILessonEnum.video]: "",
 	[ILessonEnum.documents]: [],
 	[ILessonEnum.owner]: undefined,
-	[ILessonEnum.tests]: [],
+	[ILessonEnum.test]: undefined,
 	[ILessonEnum.createdAt]: "",
 	[ILessonEnum.updatedAt]: "",
 

@@ -24,7 +24,7 @@ export const TestCardProducer = styled.div`
 	color: ${Colors.WHITE};
 	background: ${Colors.BLUE};
 	border-radius: 16px;
-	width: 328px;
+	width: 100%;
 	height: 277px;
 	box-sizing: border-box;
 	display: flex;

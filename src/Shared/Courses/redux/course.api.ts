@@ -36,6 +36,7 @@ export interface GetCoursesApiProps {
 	enrolledUserId?: string[];
 	status?: CoursesStatuses;
 	sortBy?: CoursesCreatedAt;
+	q?: string;
 }
 
 export interface GetCourseApiProps {
@@ -77,11 +78,16 @@ export interface CourseApiPropsSet {
 	data: ICourseState;
 }
 
+enum TagTypesEnum {
+	COURSES = "COURSES",
+}
+
 export const courseApi = createApi({
 	reducerPath: "course/api",
 	baseQuery: fetchBaseQuery({
 		baseUrl: process.env.REACT_APP_API_URL,
 	}),
+	tagTypes: [TagTypesEnum.COURSES],
 	endpoints: (build) => ({
 		getCourses: build.query<ServerResponse<ICourseState[]>, GetCoursesApiProps>(
 			{
@@ -114,6 +120,7 @@ export const courseApi = createApi({
 						return result;
 					},
 				}),
+				providesTags: [TagTypesEnum.COURSES],
 				transformResponse: (response: ServerResponse<ICourseDTO[]>, meta) => {
 					const { data, ...other } = response;
 
@@ -127,6 +134,53 @@ export const courseApi = createApi({
 				},
 			}
 		),
+
+		getSearchCourses: build.mutation<
+			ServerResponse<ICourseState[]>,
+			GetCoursesApiProps
+		>({
+			query: ({
+				authToken,
+				subCategoryId,
+				ownerId,
+				enrolledUserId,
+				status,
+				sortBy,
+				q,
+			}) => ({
+				url: "/course",
+				method: HttpMethods.GET,
+				headers: {
+					Authorization: `Bearer ${authToken}`,
+				},
+				params: {
+					limit: 1115,
+					offset: 0,
+					"sub-category-id": subCategoryId,
+					"owner-id": ownerId,
+					"enrolled-user-id": enrolledUserId,
+					"sort-by": sortBy,
+					q: q,
+					status: status,
+				},
+				validateStatus: (response, result) => {
+					logout(response.status as RequestStatusesType);
+
+					return result;
+				},
+			}),
+			transformResponse: (response: ServerResponse<ICourseDTO[]>, meta) => {
+				const { data, ...other } = response;
+
+				return setStatusToDtoService(
+					{
+						data: courseFromDtoServiceArray(data),
+						...other,
+					},
+					meta
+				);
+			},
+		}),
 
 		getCourse: build.query<ICourseState, GetCourseApiProps>({
 			query: ({ authToken, idCourse }) => ({
@@ -188,6 +242,7 @@ export const courseApi = createApi({
 					return result;
 				},
 			}),
+			invalidatesTags: [TagTypesEnum.COURSES],
 
 			transformResponse: (response: ICourseDTO, meta) => {
 				return setStatusToDtoService(
@@ -210,6 +265,7 @@ export const courseApi = createApi({
 				params: {
 					"user-id": idUsers,
 				},
+				invalidatesTags: [TagTypesEnum.COURSES],
 
 				validateStatus: (response, result) => {
 					logout(response.status as RequestStatusesType);
@@ -265,6 +321,7 @@ export const courseApi = createApi({
 					return result;
 				},
 			}),
+			invalidatesTags: [TagTypesEnum.COURSES],
 
 			transformResponse: (response: ICourseDTO, meta) => {
 				return setStatusToDtoService(
@@ -294,6 +351,7 @@ export const courseApi = createApi({
 					return result;
 				},
 			}),
+			invalidatesTags: [TagTypesEnum.COURSES],
 
 			transformResponse: (response: ICourseDTO, meta) => {
 				return setStatusToDtoService(
@@ -317,6 +375,7 @@ export const courseApi = createApi({
 					return result;
 				},
 			}),
+			invalidatesTags: [TagTypesEnum.COURSES],
 
 			transformResponse: (response: ICourseDTO, meta) => {
 				return setStatusToDtoService(
@@ -339,4 +398,6 @@ export const {
 	useEnrollToCourseMutation,
 	useEnrollAnotherUserToCourseMutation,
 	useUpdateCourseStatusMutation,
+
+	useGetSearchCoursesMutation,
 } = courseApi;

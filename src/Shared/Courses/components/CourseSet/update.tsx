@@ -1,6 +1,7 @@
 import React, { FC, useCallback, useEffect, useState } from "react";
 import toast, { Toaster } from "react-hot-toast";
 import { QueryStatus } from "@reduxjs/toolkit/query";
+import { useNavigate } from "react-router-dom";
 
 import ModalToaster from "Components/ModalWindows/WrappersModalWindows/ModalToaster";
 
@@ -20,6 +21,8 @@ import { ICourseState } from "../../redux/course.slice";
 import { useGetCategoriesQuery } from "../../../Category/redux/category.api";
 import Colors from "../../../../Colors";
 import Button from "../../../../Components/UI-KIT/Atoms/Button";
+import { routeBuilder } from "../../../../Router/services/route-builder";
+import RoutesList from "../../../../Router/routesList";
 
 type LessonSetProps = Pick<CourseResultType, "refetch"> &
 	Pick<GetCourseApiProps, "idCourse">;
@@ -29,6 +32,7 @@ export const CourseUpdate: FC<LessonSetProps> = ({ idCourse, refetch }) => {
 	const queryAuth = {
 		authToken: auth.token ?? "",
 	};
+	const navigate = useNavigate();
 
 	const [getCourse, course] = useGetCourseMutMutation();
 
@@ -55,7 +59,7 @@ export const CourseUpdate: FC<LessonSetProps> = ({ idCourse, refetch }) => {
 				...queryAuth,
 				id,
 			}),
-		[updateCourse]
+		[removeCourse]
 	);
 
 	useEffect(() => {
@@ -82,8 +86,13 @@ export const CourseUpdate: FC<LessonSetProps> = ({ idCourse, refetch }) => {
 				resultRemoveCourse.data?.statusCode === RequestStatuses.SUCCESS_201
 			) {
 				toast.success("Все гуд Курс удален");
-				refetch && refetch();
+
 				setOpen(false);
+				setTimeout(
+					() =>
+						navigate(routeBuilder([RoutesList.PRODUCER, RoutesList.COURSES])),
+					1000
+				);
 			} else {
 				resultRemoveCourse.data?.message?.forEach((e) => {
 					toast.error(`Ошибка:${e}`);

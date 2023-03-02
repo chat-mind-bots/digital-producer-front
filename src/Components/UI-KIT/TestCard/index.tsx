@@ -10,9 +10,10 @@ import * as ST from "./styled";
 import { ITestState } from "../../../Shared/Test/redux/test.slice";
 
 const TestCard: FC<ITestState> = ({
-	// id,
+	id,
 	name,
 	description,
+	duration,
 	// question,
 	// answers,
 	// rightAnswer,
@@ -20,7 +21,7 @@ const TestCard: FC<ITestState> = ({
 	// createdAt,
 	// updatedAt,
 }) => (
-	<Link to={"url"}>
+	<Link to={`/user/test/${id}`}>
 		<ST.TestCard>
 			<ST.Title>{name}</ST.Title>
 			<ST.Description>{description}</ST.Description>
@@ -30,7 +31,7 @@ const TestCard: FC<ITestState> = ({
 					max: 3,
 				}}
 			/>
-			<Time value={`Время для прохождения: ${"@"} часа`} />
+			<Time value={`Время для прохождения: ${duration} мин.`} />
 			<ST.Info>
 				<StatusFalse />
 				Максимум:{"@"}/{"@"}

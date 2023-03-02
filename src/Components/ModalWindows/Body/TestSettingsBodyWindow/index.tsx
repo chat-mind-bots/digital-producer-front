@@ -99,6 +99,30 @@ const TestSettingsBodyWindow: FC<LessonSettingsBodyWindowProps> = ({
 									/>
 								</ST.WrapperInput>
 							</ST.Wrapper>
+							<ST.Wrapper>
+								<ST.Name>duration</ST.Name>
+								<ST.WrapperInput>
+									<Input
+										value={String(values?.duration || "")}
+										setValue={(str) => {
+											setFieldValue &&
+												setFieldValue("duration", Number(str) || 0);
+										}}
+										setFocus={(state) => setFieldTouched("duration", state)}
+										placeholder={"Введите заголовок "}
+										padding={"10px 14px"}
+										fontSize={"16px"}
+										fontWeight={"400"}
+										borderSize={"1px"}
+										errorText={
+											errors.duration && touched.duration
+												? errors.duration
+												: undefined
+										}
+										isError={!!errors.duration && touched.duration}
+									/>
+								</ST.WrapperInput>
+							</ST.Wrapper>
 						</ST.Content>
 						<ST.Footer>
 							{handleClose ? (

@@ -19,7 +19,7 @@ export interface CreateTestApiProps extends TestDataType {
 
 export interface GetTestApiProps {
 	authToken: string;
-	id?: string;
+	idTest?: string;
 }
 
 export interface UpdateTestApiProps extends TestDataType {
@@ -47,9 +47,29 @@ export const testApi = createApi({
 		baseUrl: process.env.REACT_APP_API_URL,
 	}),
 	endpoints: (build) => ({
-		getTest: build.mutation<ITestState, GetTestApiProps>({
-			query: ({ authToken, id }) => ({
-				url: `/test/${id}`,
+		getTest: build.query<ITestState, GetTestApiProps>({
+			query: ({ authToken, idTest }) => ({
+				url: `/test/${idTest}`,
+				method: HttpMethods.GET,
+				headers: {
+					Authorization: `Bearer ${authToken}`,
+				},
+
+				validateStatus: (response, result) => {
+					logout(response.status as RequestStatusesType);
+
+					return result;
+				},
+			}),
+
+			transformResponse: (response: ITestDTO, meta) => {
+				return setStatusToDtoService(TestFromDtoServiceObject(response), meta);
+			},
+		}),
+
+		getTestM: build.mutation<ITestState, GetTestApiProps>({
+			query: ({ authToken, idTest }) => ({
+				url: `/test/${idTest}`,
 				method: HttpMethods.GET,
 				headers: {
 					Authorization: `Bearer ${authToken}`,
@@ -155,9 +175,10 @@ export const testApi = createApi({
 });
 
 export const {
-	useGetTestMutation,
+	useGetTestQuery,
 	useCreateTestMutation,
 	useAddTestToLessonMutation,
 	useUpdateTestMutation,
 	useRemoveTestMutation,
+	useGetTestMMutation,
 } = testApi;

@@ -10,7 +10,6 @@ import RequestStatuses from "../../../../RequestStatuses";
 import CourseResultType from "../../../../Components/UI-KIT/Course/course-props.type";
 import {
 	AddTestToLessonApiProps,
-	useAddTestToLessonMutation,
 	useCreateTestMutation,
 } from "../../redux/test.api";
 import { initialTestState, ITestState } from "../../redux/test.slice";
@@ -29,13 +28,12 @@ export const TestCreate: FC<TestCreateProps> = ({ idLesson, refetch }) => {
 	const [open, setOpen] = useState<boolean>(false);
 
 	const [createTest, resultCreateTest] = useCreateTestMutation();
-	const [addTestToLesson, resultAddTestToLesson] = useAddTestToLessonMutation();
 
 	const create = useCallback(
 		(res: ITestState) =>
 			createTest({
 				...queryAuth,
-				data: res,
+				data: { ...res, lessonId: idLesson },
 			}),
 		[createTest]
 	);
@@ -46,14 +44,9 @@ export const TestCreate: FC<TestCreateProps> = ({ idLesson, refetch }) => {
 				resultCreateTest.data?.statusCode === RequestStatuses.SUCCESS ||
 				resultCreateTest.data?.statusCode === RequestStatuses.SUCCESS_201
 			) {
-				toast.success("Все гуд  тест создался");
-				const query: AddTestToLessonApiProps = {
-					...queryAuth,
-					idTest: resultCreateTest.data.id as string,
-					idLesson: idLesson,
-				};
+				toast.success("Все гуд тест создался");
 				setOpen(false);
-				addTestToLesson(query);
+				refetch && refetch();
 			} else {
 				resultCreateTest.data?.message?.forEach((e) => {
 					toast.error(`Ошибка:${e}`);
@@ -61,13 +54,6 @@ export const TestCreate: FC<TestCreateProps> = ({ idLesson, refetch }) => {
 			}
 		}
 	}, [resultCreateTest]);
-
-	useEffect(() => {
-		if (resultAddTestToLesson.status === QueryStatus.fulfilled) {
-			toast.success("Все гуд тест привязался");
-			refetch && refetch();
-		}
-	}, [resultAddTestToLesson]);
 
 	return (
 		<>

@@ -12,7 +12,7 @@ import CourseResultType from "../../../../Components/UI-KIT/Course/course-props.
 import Loader from "../../../../Components/UI-KIT/Loader";
 import {
 	AddTestToLessonApiProps,
-	useGetTestMutation,
+	useGetTestMMutation,
 	useRemoveTestMutation,
 	useUpdateTestMutation,
 } from "../../redux/test.api";
@@ -28,7 +28,7 @@ export const TestUpdate: FC<TestUpdateProps> = ({ idTest, refetch }) => {
 		authToken: auth.token ?? "",
 	};
 
-	const [getTest, test] = useGetTestMutation();
+	const [getTest, test] = useGetTestMMutation();
 
 	const [open, setOpen] = useState<boolean>(false);
 
@@ -92,7 +92,7 @@ export const TestUpdate: FC<TestUpdateProps> = ({ idTest, refetch }) => {
 		if (open) {
 			getTest({
 				...queryAuth,
-				id: idTest,
+				idTest: idTest,
 			});
 		}
 	}, [open]);

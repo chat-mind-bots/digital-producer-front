@@ -172,7 +172,7 @@ const CourseId: FC<ICourseState & Pick<CourseResultType, "refetch">> = ({
 									isLoading={loading}
 									image={currentLesson.image}
 									refetch={refetch}
-									status={status}
+									// status={status}
 								/>
 							</>
 						) : (
@@ -213,21 +213,19 @@ const CourseId: FC<ICourseState & Pick<CourseResultType, "refetch">> = ({
 					</ST.Content>
 				</WrapperContent>
 
-				{!!currentLesson?.tests && (
+				{currentLesson?.test ? (
 					<WrapperContent header={"Тесты"}>
 						<ST.Content>
-							<TestCreate
-								idLesson={currentLesson.id}
-								refetch={() => state.lesson && requestLesson(state.lesson)}
-							/>
-							{currentLesson?.tests.map((test) => (
-								<TestCard
-									key={`CourseId-TestCard-${test.id}`}
-									{...test}
-								/>
-							))}
+							<TestCard {...currentLesson?.test} />
 						</ST.Content>
 					</WrapperContent>
+				) : (
+					currentLesson && (
+						<TestCreate
+							idLesson={currentLesson.id}
+							refetch={() => state.lesson && requestLesson(state.lesson)}
+						/>
+					)
 				)}
 
 				{currentLesson ? (

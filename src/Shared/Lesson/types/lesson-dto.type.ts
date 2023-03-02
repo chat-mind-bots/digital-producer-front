@@ -12,7 +12,7 @@ export interface ILessonDTO {
 	logic_number?: number;
 	documents?: IDocumentDTO[];
 	owner?: IOwnerDTO;
-	tests?: ITestDTO[];
+	test?: ITestDTO;
 	createdAt?: string;
 	updatedAt?: string;
 }

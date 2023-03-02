@@ -198,15 +198,10 @@ const CourseId: FC<ICourseState & Pick<CourseResultType, "refetch">> = ({
 						)}
 					</ST.Content>
 				</WrapperContent>
-				{currentLesson?.tests && (
+				{currentLesson?.test && (
 					<WrapperContent header={"Тесты"}>
 						<ST.Content>
-							{currentLesson?.tests.map((test) => (
-								<TestCard
-									key={`CourseId-TestCard-${test.id}`}
-									{...test}
-								/>
-							))}
+							<TestCard {...currentLesson?.test} />
 						</ST.Content>
 					</WrapperContent>
 				)}
