@@ -16,7 +16,7 @@ export interface ListType {
 	name: string;
 	description: string;
 	timeRead: string;
-	date: string;
+	createdAt: string;
 	image: string;
 	tags: ITagState[];
 }
