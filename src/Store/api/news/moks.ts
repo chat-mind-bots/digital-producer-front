@@ -15,7 +15,7 @@ export const NewsData: ServerResponse<NewsType> = {
 				name: "Продажа и мышление",
 				description: "Научитесь продавать и запускать инфопродукты в Инстаграм",
 				timeRead: "20",
-				date: "",
+				createdAt: "",
 				image: "./",
 				tags: [
 					{ id: "0", name: "финансы", background: "red", color: "white" },
@@ -27,7 +27,7 @@ export const NewsData: ServerResponse<NewsType> = {
 				name: "Продажа и мышление",
 				description: "Научитесь продавать и запускать инфопродукты в Инстаграм",
 				timeRead: "20",
-				date: "",
+				createdAt: "",
 				image: "./",
 				tags: [
 					{ id: "0", name: "финансы", background: "red", color: "white" },
@@ -39,7 +39,7 @@ export const NewsData: ServerResponse<NewsType> = {
 				name: "Продажа и мышление",
 				description: "Научитесь продавать и запускать инфопродукты в Инстаграм",
 				timeRead: "20",
-				date: "",
+				createdAt: "",
 				image: "./",
 				tags: [
 					{ id: "0", name: "финансы", background: "red", color: "white" },

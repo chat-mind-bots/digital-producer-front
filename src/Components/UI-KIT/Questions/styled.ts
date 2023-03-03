@@ -3,23 +3,28 @@ import styled from "styled-components";
 import Colors from "Colors";
 
 export const Questions = styled.div`
+	width: 100%;
+	justify-content: center;
 	display: flex;
 	flex-wrap: wrap;
 	gap: 28px;
 	margin-top: 28px;
 	padding: 28px 0;
-	box-shadow: inset 0 0 11px ${Colors.GREY1};
 	border-radius: 20px;
 `;
 
 export const Question = styled.div`
+	position: relative;
+	max-width: 850px;
 	width: 100%;
 	display: flex;
 	flex-wrap: wrap;
-	gap: 20px;
-	background: ${Colors.WHITE3};
-	padding: 0 18px;
-	border-radius: 20px;
+	gap: 10px;
+	background: ${Colors.WHITE};
+	padding: 18px;
+	border-radius: 16px;
+	border: 1px solid rgba(217, 217, 217, 0.5);
+	box-sizing: border-box;
 `;
 
 export const AnswerWrapper = styled.div`
@@ -56,6 +61,12 @@ export const Text = styled.p`
 	padding: 19px;
 	border-radius: 20px;
 	width: 100%;
+	text-overflow: ellipsis;
+	overflow: hidden;
+	-webkit-line-clamp: 100;
+	display: -webkit-box;
+	word-wrap: break-word;
+	-webkit-box-orient: vertical;
 `;
 
 export const Answer = styled.p`
@@ -63,11 +74,24 @@ export const Answer = styled.p`
 	font-size: 15px;
 	line-height: 155%;
 	color: ${Colors.GREY1};
+	text-overflow: ellipsis;
+	overflow: hidden;
+	-webkit-line-clamp: 100;
+	display: -webkit-box;
+	word-wrap: break-word;
+	-webkit-box-orient: vertical;
 `;
 
 export const WrapperSettings = styled.div`
+	position: absolute;
 	font-weight: 500;
 	font-size: 15px;
 	line-height: 155%;
 	color: ${Colors.GREY1};
+	top: 15px;
+	right: 15px;
+	:hover {
+		cursor: pointer;
+		fill: ${Colors.BLUE};
+	}
 `;
