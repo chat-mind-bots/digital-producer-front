@@ -141,10 +141,10 @@ const LessonView: FC<LessonViewProps> = ({
 			</ST.WrapperSubTitle>
 			<ST.TitleInfo>Заметки (доп. описание):</ST.TitleInfo>
 			{notes &&
-				notes.map((nete) => (
+				notes.map((nete, index) => (
 					<ST.WrapperSubTitle
 						isLoading={isLoading}
-						key={`note-${1}`}
+						key={`note-${index}-${nete.name}-${nete.value}`}
 						delay={0.6}
 					>
 						<ST.SubTitleInfo>

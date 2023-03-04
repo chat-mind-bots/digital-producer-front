@@ -22,6 +22,11 @@ export interface GetTestApiProps {
 	idTest?: string;
 }
 
+export interface ProgressTestApiProps extends TestProgressDataType {
+	authToken: string;
+	idTest?: string;
+}
+
 export interface UpdateTestApiProps extends TestDataType {
 	authToken: string;
 }
@@ -39,6 +44,17 @@ export interface RemoveTestApiProps {
 
 export interface TestDataType {
 	data: ITestState;
+}
+
+export interface TestProgressDataType {
+	data: {
+		duration: number;
+		status: "IN_PROGRESS" | "DONE";
+		answers?: {
+			question: string;
+			answer_key: string[];
+		}[];
+	};
 }
 
 export const testApi = createApi({
@@ -171,6 +187,27 @@ export const testApi = createApi({
 				return setStatusToDtoService(TestFromDtoServiceObject(response), meta);
 			},
 		}),
+
+		progressTest: build.mutation<ITestState, ProgressTestApiProps>({
+			query: ({ authToken, idTest, data }) => ({
+				url: `/test/${idTest}/progress`,
+				method: HttpMethods.POST,
+				headers: {
+					Authorization: `Bearer ${authToken}`,
+				},
+				body: data,
+
+				validateStatus: (response, result) => {
+					logout(response.status as RequestStatusesType);
+
+					return result;
+				},
+			}),
+
+			transformResponse: (response: ITestDTO, meta) => {
+				return setStatusToDtoService(TestFromDtoServiceObject(response), meta);
+			},
+		}),
 	}),
 });
 
@@ -181,4 +218,5 @@ export const {
 	useUpdateTestMutation,
 	useRemoveTestMutation,
 	useGetTestMMutation,
+	useProgressTestMutation,
 } = testApi;

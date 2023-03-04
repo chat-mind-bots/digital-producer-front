@@ -1,5 +1,6 @@
 import React, { FC, useCallback, useEffect, useState } from "react";
 import { QueryStatus } from "@reduxjs/toolkit/query";
+import { Link } from "react-router-dom";
 
 import { AccordionType, HandleClickType } from "../../Accordion/type";
 import { BreadCrumbsArrayType } from "../../BreadCrumbs";
@@ -182,59 +183,70 @@ const CourseId: FC<ICourseState & Pick<CourseResultType, "refetch">> = ({
 						)}
 					</ST.Content>
 				</WrapperContent>
-				<WrapperContent header={"Лекторы"}>
-					<ST.Content>
-						{owner && (
-							<LectorCard
-								name={owner.firstName || ""}
-								description={"asadsadasd"}
-								img={"2123"}
-							/>
-						)}
-					</ST.Content>
-				</WrapperContent>
-				{currentLesson?.test && (
-					<WrapperContent header={"Тесты"}>
+				{!loading && (
+					<WrapperContent header={"Лекторы"}>
 						<ST.Content>
-							<TestCard {...currentLesson?.test} />
+							{owner && (
+								<LectorCard
+									name={owner.firstName || ""}
+									img={owner.photos?.big || ""}
+								/>
+							)}
 						</ST.Content>
 					</WrapperContent>
 				)}
-				{currentLesson ? (
-					<>
-						<WrapperContent header={"Документы урока"}>
-							<ST.Content>
-								{!!currentLesson.documents?.length &&
-									currentLesson.documents?.map((document) => (
-										<DocumentCard
-											key={`CourseId-DocumentCard-currentLesson-DocumentLesson-${document.id}`}
-											name={document.name}
-											description={document.description}
-											url={document.url}
-										/>
-									))}
-							</ST.Content>
-						</WrapperContent>
-					</>
-				) : (
-					documents &&
-					!!documents.length && (
-						<>
-							<WrapperContent header={"Документы курса"}>
-								<ST.Content>
-									{documents.map((document) => (
-										<DocumentCard
-											key={`CourseId-DocumentCard-currentLesson-DocumentCourse-${document.id}`}
-											name={document.name}
-											description={document.description}
-											url={document.url}
-										/>
-									))}
-								</ST.Content>
-							</WrapperContent>
-						</>
-					)
+
+				{currentLesson?.test && !loading && (
+					<WrapperContent header={"Тесты"}>
+						<ST.Content>
+							<Link
+								to={routeBuilderWithReplace(
+									[RoutesList.USER, RoutesList.TEST_ID],
+									"id",
+									currentLesson?.test.id
+								)}
+							>
+								<TestCard {...currentLesson?.test} />
+							</Link>
+						</ST.Content>
+					</WrapperContent>
 				)}
+				{currentLesson
+					? !loading && (
+							<>
+								<WrapperContent header={"Документы урока"}>
+									<ST.Content>
+										{!!currentLesson.documents?.length &&
+											currentLesson.documents?.map((document) => (
+												<DocumentCard
+													key={`CourseId-DocumentCard-currentLesson-DocumentLesson-${document.id}`}
+													name={document.name}
+													description={document.description}
+													url={document.url}
+												/>
+											))}
+									</ST.Content>
+								</WrapperContent>
+							</>
+					  )
+					: documents &&
+					  !!documents.length &&
+					  !loading && (
+							<>
+								<WrapperContent header={"Документы курса"}>
+									<ST.Content>
+										{documents.map((document) => (
+											<DocumentCard
+												key={`CourseId-DocumentCard-currentLesson-DocumentCourse-${document.id}`}
+												name={document.name}
+												description={document.description}
+												url={document.url}
+											/>
+										))}
+									</ST.Content>
+								</WrapperContent>
+							</>
+					  )}
 			</ST.WrapperInfo>
 
 			{isEnrolled ? (

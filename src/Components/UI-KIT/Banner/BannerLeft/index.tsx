@@ -29,7 +29,7 @@ const BannerLeft: FC<BannerProps> = ({ result }) => {
 							fontSize={"14px"}
 							lineHeight={"20px"}
 							fontWeight={"600"}
-							width={"max-content"}
+							width={"176px"}
 							style={data.styleButton}
 						/>
 					</Link>
@@ -40,7 +40,7 @@ const BannerLeft: FC<BannerProps> = ({ result }) => {
 						fontSize={"14px"}
 						lineHeight={"20px"}
 						fontWeight={"600"}
-						width={"max-content"}
+						width={"176px"}
 						style={data.styleButton}
 						onClick={() => openFileBlank(data.urlButton)}
 					/>

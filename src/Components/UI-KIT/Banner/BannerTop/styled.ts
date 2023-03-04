@@ -26,6 +26,12 @@ export const Title = styled.p`
 	font-size: 32px;
 	line-height: 44px;
 	color: ${Colors.BLACK1};
+	text-overflow: ellipsis;
+	-webkit-line-clamp: 1;
+	display: -webkit-box;
+	word-wrap: break-word;
+	-webkit-box-orient: vertical;
+	overflow: hidden;
 `;
 
 export const WrapperInfo = styled.div`
@@ -41,11 +47,20 @@ export const Description = styled.p`
 	margin-top: 16px;
 	color: ${Colors.BLACK1};
 	padding-right: 41px;
+	text-overflow: ellipsis;
+	-webkit-line-clamp: 2;
+	display: -webkit-box;
+	word-wrap: break-word;
+	-webkit-box-orient: vertical;
+	overflow: hidden;
 `;
 
 export const WrapperButton = styled.div`
 	height: max-content;
 	margin-top: 24px;
+	& > button {
+		max-width: 300px;
+	}
 `;
 
 export const ImageWrapper = styled.div`

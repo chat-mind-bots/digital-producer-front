@@ -26,7 +26,7 @@ const NewsCard: FC<INewsState> = ({
 				tagsColors={true}
 			/>
 			<ST.Title>{name}</ST.Title>
-			<ST.Description>{description}</ST.Description>
+			<ST.Description dangerouslySetInnerHTML={{ __html: description }} />
 		</ST.WrapperTop>
 		<ST.WrapperBot>
 			<ST.WrapperTime>

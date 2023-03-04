@@ -18,6 +18,8 @@ export const Accordion = styled.div`
 	top: 129px;
 	position: sticky;
 	border: 2px solid ${Colors.WHITE2};
+	overflow-y: scroll;
+	max-height: 357px;
 	@media (max-width: ${BreakPoints.TABLET}px) {
 		position: fixed;
 		right: 30px;
@@ -94,15 +96,17 @@ export const Number = styled.span``;
 
 export const WrapperItems = styled.div<Props>`
 	border-radius: 6px;
-	overflow-y: scroll;
+	overflow-y: auto;
 	overflow-x: hidden;
-	max-height: ${({ isActive }) => (isActive ? "400px" : 0)};
+	max-height: ${({ isActive }) => (isActive ? "174px" : 0)};
 	transition: 1s;
+	position: relative;
 `;
 
 export const WrapperButtonAddLesson = styled.div`
-	margin-top: 8px;
+	padding-top: 8px;
 	width: 100%;
+	overflow: hidden;
 `;
 
 export const UpdateButton = styled.div`

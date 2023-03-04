@@ -14,6 +14,7 @@ import {
 	useGetSearchCoursesMutation,
 } from "../../redux/course.api";
 import * as ST from "./styled";
+import { UserRoleEnum } from "../../../Auth/types/role.enum";
 
 type CourseGetProps = Record<"children", React.ReactElement<BannerResultType>> &
 	Pick<
@@ -22,6 +23,7 @@ type CourseGetProps = Record<"children", React.ReactElement<BannerResultType>> &
 	> &
 	Pick<GetCoursesApiProps, "sortBy"> & {
 		header: string;
+		role: UserRoleEnum;
 	};
 
 const CoursesGet: FC<CourseGetProps> = ({
@@ -32,6 +34,7 @@ const CoursesGet: FC<CourseGetProps> = ({
 	enrolledUserId,
 	status,
 	sortBy,
+	role,
 }) => {
 	const auth = useAppSelector((state) => state.auth);
 	const query: GetCoursesApiProps = {
@@ -47,7 +50,7 @@ const CoursesGet: FC<CourseGetProps> = ({
 	const [searchRequest, resultSearchRequest] = useGetSearchCoursesMutation();
 
 	const defaultBreadCrumbs: BreadCrumbsArrayType[] = [
-		{ id: 1, name: "Главная", url: RoutesList.USER },
+		{ id: 1, name: "Главная", url: `/${role}` },
 		{ id: 2, name: header, url: RoutesList.COURSES },
 	];
 

@@ -50,6 +50,10 @@ const ModalFormik: FC<ModalProps> = ({
 							...defaultStyle,
 							...transitionStyles[state],
 						}}
+						onClick={(e) => {
+							e.preventDefault();
+							e.stopPropagation();
+						}}
 					>
 						<ST.Window>
 							<ST.Header>

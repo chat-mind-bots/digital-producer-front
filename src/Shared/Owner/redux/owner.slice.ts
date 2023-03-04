@@ -5,6 +5,7 @@ import RequestStatuses from "RequestStatuses";
 export enum IOwnerEnum {
 	id = "id",
 	firstName = "firstName",
+	photos = "photos",
 
 	statusCode = "statusCode",
 }
@@ -12,6 +13,7 @@ export enum IOwnerEnum {
 export interface IOwnerState {
 	[IOwnerEnum.id]?: string;
 	[IOwnerEnum.firstName]?: string;
+	[IOwnerEnum.photos]?: { big: string };
 
 	[IOwnerEnum.statusCode]?: RequestStatuses;
 }

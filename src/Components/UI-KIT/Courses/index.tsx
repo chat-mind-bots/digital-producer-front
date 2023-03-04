@@ -32,6 +32,7 @@ const Courses: FC<Type> = ({
 			ownerId={ownerId}
 			status={status}
 			sortBy={sortBy}
+			role={role}
 		>
 			<SwitchCourses
 				role={role}

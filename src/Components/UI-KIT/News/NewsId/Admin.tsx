@@ -35,7 +35,7 @@ const NewsId: FC<INewsState & Pick<NewsResultType, "refetch">> = ({
 			id: 3,
 			name: name,
 			url: routeBuilderWithReplace(
-				[RoutesList.USER, RoutesList.NEWS_ID],
+				[RoutesList.ADMIN, RoutesList.NEWS_ID],
 				"id",
 				id
 			),

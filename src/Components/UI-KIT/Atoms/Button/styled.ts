@@ -61,6 +61,13 @@ export const Button = styled.button<ButtonProps>`
 	outline: none;
 	transition: color 0.5s;
 	cursor: pointer;
+	text-overflow: ellipsis;
+	-webkit-line-clamp: 1;
+	display: -webkit-box;
+	word-wrap: break-word;
+	-webkit-box-orient: vertical;
+	overflow: hidden;
+	overflow-wrap: normal;
 	&:before {
 		content: "";
 		z-index: 1;

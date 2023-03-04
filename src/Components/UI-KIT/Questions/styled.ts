@@ -2,6 +2,10 @@ import styled from "styled-components";
 
 import Colors from "Colors";
 
+type QuestionProps = {
+	isOpen: boolean;
+};
+
 export const Questions = styled.div`
 	width: 100%;
 	justify-content: center;
@@ -13,7 +17,7 @@ export const Questions = styled.div`
 	border-radius: 20px;
 `;
 
-export const Question = styled.div`
+export const Question = styled.div<QuestionProps>`
 	position: relative;
 	max-width: 850px;
 	width: 100%;
@@ -25,6 +29,9 @@ export const Question = styled.div`
 	border-radius: 16px;
 	border: 1px solid rgba(217, 217, 217, 0.5);
 	box-sizing: border-box;
+	filter: blur(${({ isOpen }) => (isOpen ? 0 : 5)}px);
+	overflow: hidden;
+	pointer-events: ${({ isOpen }) => !isOpen && "none"};
 `;
 
 export const AnswerWrapper = styled.div`

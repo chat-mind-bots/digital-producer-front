@@ -25,10 +25,12 @@ export const DocumentCardSettings: FC<
 		<ST.Wrapper>
 			<ST.Name>
 				<ST.NameCurrent>{name}</ST.NameCurrent>
-				<DocumentUpdate
-					refetch={refetch}
-					idDocument={id}
-				/>
+				<ST.UpdateIco>
+					<DocumentUpdate
+						refetch={refetch}
+						idDocument={id}
+					/>
+				</ST.UpdateIco>
 			</ST.Name>
 			<ST.Description>{description}</ST.Description>
 		</ST.Wrapper>

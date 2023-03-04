@@ -4,12 +4,14 @@ export const Wrapper = styled.div`
 	display: flex;
 	flex-wrap: wrap;
 	gap: 22px;
+	width: 100%;
 `;
 
 export const WrapperButtons = styled.div`
 	display: flex;
 	flex-wrap: wrap;
 	gap: 22px;
+	width: 100%;
 `;
 
 export const WrapperFunctionsButtons = styled.div<{ isMax: boolean }>`
@@ -27,6 +29,7 @@ export const WrapperFunctionButton = styled.div`
 	flex-wrap: wrap;
 	gap: 22px;
 	height: max-content;
+	max-width: 339px;
 `;
 
 export const WrapperButtonsInside = styled.div`

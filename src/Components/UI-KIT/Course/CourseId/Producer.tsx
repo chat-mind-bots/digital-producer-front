@@ -1,5 +1,6 @@
 import React, { FC, useCallback, useEffect, useState } from "react";
 import { QueryStatus } from "@reduxjs/toolkit/query";
+import { Link } from "react-router-dom";
 
 import { AccordionType, HandleClickType } from "../../Accordion/type";
 import { BreadCrumbsArrayType } from "../../BreadCrumbs";
@@ -199,87 +200,105 @@ const CourseId: FC<ICourseState & Pick<CourseResultType, "refetch">> = ({
 					</ST.Content>
 				</WrapperContent>
 
-				<WrapperContent header={"Лекторы"}>
-					<ST.Content>
+				{!loading && (
+					<WrapperContent header={"Лекторы"}>
 						<ST.Content>
-							{owner && (
-								<LectorCard
-									name={owner.firstName || ""}
-									description={"asadsadasd"}
-									img={"2123"}
-								/>
-							)}
-						</ST.Content>
-					</ST.Content>
-				</WrapperContent>
-
-				{currentLesson?.test ? (
-					<WrapperContent header={"Тесты"}>
-						<ST.Content>
-							<TestCard {...currentLesson?.test} />
+							<ST.Content>
+								{owner && (
+									<LectorCard
+										name={owner.firstName || ""}
+										img={owner.photos?.big || ""}
+									/>
+								)}
+							</ST.Content>
 						</ST.Content>
 					</WrapperContent>
-				) : (
-					currentLesson && (
-						<TestCreate
-							idLesson={currentLesson.id}
-							refetch={() => state.lesson && requestLesson(state.lesson)}
-						/>
-					)
 				)}
 
-				{currentLesson ? (
-					<>
-						<WrapperContent header={"Документы урока"}>
-							<ST.Content>
-								<DocumentCreate
-									idLesson={currentLesson.id}
-									idCourse={""}
-									refetch={() => state.lesson && requestLesson(state.lesson)}
-								/>
-								{currentLesson.documents?.map((document) => (
-									<DocumentCardSettings
-										key={`CourseId-DocumentCard-currentLesson-DocumentLesson-${document.id}`}
-										id={document.id}
-										name={document.name}
-										description={document.description}
-										refetch={() => state.lesson && requestLesson(state.lesson)}
-									/>
-								))}
-							</ST.Content>
-						</WrapperContent>
-					</>
-				) : (
-					<>
-						<WrapperContent header={"Документы курса"}>
-							<ST.Content>
-								<DocumentCreate
-									idLesson={""}
-									idCourse={id}
-									refetch={refetch}
-								/>
-								{documents?.map((document) => (
-									<DocumentCardSettings
-										key={`CourseId-DocumentCard-currentLesson-DocumentCourse-${document.id}`}
-										id={document.id}
-										name={document.name}
-										description={document.description}
-										refetch={refetch}
-									/>
-								))}
-							</ST.Content>
-						</WrapperContent>
-					</>
-				)}
+				{currentLesson?.test
+					? !loading && (
+							<WrapperContent header={"Тесты"}>
+								<ST.Content>
+									<Link
+										to={routeBuilderWithReplace(
+											[RoutesList.PRODUCER, RoutesList.TEST_ID],
+											"id",
+											currentLesson?.test.id
+										)}
+									>
+										<TestCard {...currentLesson?.test} />
+									</Link>
+								</ST.Content>
+							</WrapperContent>
+					  )
+					: currentLesson &&
+					  !loading && (
+							<TestCreate
+								idLesson={currentLesson.id}
+								refetch={() => state.lesson && requestLesson(state.lesson)}
+							/>
+					  )}
 
-				<WrapperContent header={"Студенты"}>
-					<ST.Content>
-						<StudentsTable
-							idCourse={id}
-							refetch={refetch}
-						/>
-					</ST.Content>
-				</WrapperContent>
+				{currentLesson
+					? !loading && (
+							<>
+								<WrapperContent header={"Документы урока"}>
+									<ST.Content>
+										<DocumentCreate
+											idLesson={currentLesson.id}
+											idCourse={""}
+											refetch={() =>
+												state.lesson && requestLesson(state.lesson)
+											}
+										/>
+										{currentLesson.documents?.map((document) => (
+											<DocumentCardSettings
+												key={`CourseId-DocumentCard-currentLesson-DocumentLesson-${document.id}`}
+												id={document.id}
+												name={document.name}
+												description={document.description}
+												refetch={() =>
+													state.lesson && requestLesson(state.lesson)
+												}
+											/>
+										))}
+									</ST.Content>
+								</WrapperContent>
+							</>
+					  )
+					: !loading && (
+							<>
+								<WrapperContent header={"Документы курса"}>
+									<ST.Content>
+										<DocumentCreate
+											idLesson={""}
+											idCourse={id}
+											refetch={refetch}
+										/>
+										{documents?.map((document) => (
+											<DocumentCardSettings
+												key={`CourseId-DocumentCard-currentLesson-DocumentCourse-${document.id}`}
+												id={document.id}
+												name={document.name}
+												description={document.description}
+												refetch={refetch}
+											/>
+										))}
+									</ST.Content>
+								</WrapperContent>
+							</>
+					  )}
+
+				{!loading && (
+					<WrapperContent header={"Студенты"}>
+						<ST.Content>
+							<StudentsTable
+								idCourse={id}
+								refetch={refetch}
+							/>
+						</ST.Content>
+					</WrapperContent>
+				)}
 			</ST.WrapperInfo>
 			{accordion && (
 				<Accordion

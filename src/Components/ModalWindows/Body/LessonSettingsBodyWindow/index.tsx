@@ -52,7 +52,12 @@ const LessonSettingsBodyWindow: FC<LessonSettingsBodyWindowProps> = ({
 				setSubmitting,
 			}) => {
 				return (
-					<ST.Form>
+					<ST.Form
+						onClick={(e) => {
+							e.preventDefault();
+							e.stopPropagation();
+						}}
+					>
 						<ST.Content>
 							<ST.Wrapper>
 								<ST.Name>Название</ST.Name>

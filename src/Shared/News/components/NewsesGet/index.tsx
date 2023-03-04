@@ -10,12 +10,14 @@ import { BreadCrumbsArrayType } from "Components/UI-KIT/BreadCrumbs";
 
 import { GetNewsesApiProps, useGetNewsesQuery } from "../../redux/news.api";
 import * as ST from "./styled";
+import { UserRoleEnum } from "../../../Auth/types/role.enum";
 
 type NewsGetProps = Record<"children", React.ReactElement<BannerResultType>> & {
 	header: string;
+	role: UserRoleEnum;
 };
 
-const NewsesGet: FC<NewsGetProps> = ({ children, header }) => {
+const NewsesGet: FC<NewsGetProps> = ({ children, header, role }) => {
 	const auth = useAppSelector((state) => state.auth);
 	const query: GetNewsesApiProps = {
 		authToken: auth.token ?? "",
@@ -23,7 +25,7 @@ const NewsesGet: FC<NewsGetProps> = ({ children, header }) => {
 	const { data, isError, isLoading, refetch } = useGetNewsesQuery(query);
 
 	const defaultBreadCrumbs: BreadCrumbsArrayType[] = [
-		{ id: 1, name: "Главная", url: RoutesList.USER },
+		{ id: 1, name: "Главная", url: `/${role}` },
 		{ id: 2, name: header, url: RoutesList.NEWS },
 	];
 
@@ -46,32 +48,6 @@ const NewsesGet: FC<NewsGetProps> = ({ children, header }) => {
 					</WrapperRequest>
 				</ST.Wrapper>
 			</WrapperContent>
-			{/*<WrapperContent header={"Читать также"}>*/}
-			{/*	<ST.Wrapper>*/}
-			{/*		<WrapperRequest*/}
-			{/*			isError={isError}*/}
-			{/*			isLoading={isLoading}*/}
-			{/*		>*/}
-			{/*			<>*/}
-			{/*				{data &&*/}
-			{/*					data.readAlsoList.map((readMoreCardItem) => (*/}
-			{/*						<ReadMoreCard*/}
-			{/*							key={`News-readMoreCard-item-${readMoreCardItem.id}`}*/}
-			{/*							name={readMoreCardItem.name}*/}
-			{/*							description={readMoreCardItem.description}*/}
-			{/*							url={routeBuilderWithReplace(*/}
-			{/*								[RoutesList.ADMIN, RoutesList.NEWS_ID],*/}
-			{/*								"id",*/}
-			{/*								readMoreCardItem.id*/}
-			{/*							)}*/}
-			{/*							tagsColors={data.tagsColors}*/}
-			{/*							tags={readMoreCardItem.tags}*/}
-			{/*						/>*/}
-			{/*					))}*/}
-			{/*			</>*/}
-			{/*		</WrapperRequest>*/}
-			{/*	</ST.Wrapper>*/}
-			{/*</WrapperContent>*/}
 		</ST.WrapperNews>
 	);
 };

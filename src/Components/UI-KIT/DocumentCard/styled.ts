@@ -21,14 +21,10 @@ export const DocumentCardProducer = styled.div`
 	display: flex;
 	align-items: center;
 	justify-content: center;
-	border: 2px solid ${Colors.TRANSPARENT};
 	cursor: pointer;
-	&:hover {
-		border: 2px solid ${Colors.WHITE2};
-	}
 `;
 
-export const Name = styled.p`
+export const Name = styled.div`
 	font-family: "Vela Sans";
 	font-style: normal;
 	font-weight: 700;
@@ -50,7 +46,7 @@ export const Name = styled.p`
 	}
 `;
 
-export const NameCurrent = styled.span`
+export const NameCurrent = styled.p`
 	max-width: 260px;
 	text-overflow: ellipsis;
 	overflow: hidden;
@@ -74,9 +70,29 @@ export const Description = styled.p`
 
 export const Wrapper = styled.div`
 	padding: 18px;
-	border: 2px solid ${Colors.TRANSPARENT};
 	cursor: pointer;
+	border: 2px solid ${Colors.TRANSPARENT};
+	border-radius: 16px;
+	position: relative;
 	&:hover {
 		border: 2px solid ${Colors.WHITE2};
+	}
+`;
+
+export const UpdateIco = styled.div`
+	position: absolute;
+	top: 15px;
+	right: 15px;
+	background: ${Colors.BLUE};
+	width: 36px;
+	height: 36px;
+	border-radius: 50%;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	&:hover {
+		& path {
+			fill: ${Colors.WHITE};
+		}
 	}
 `;

@@ -1,5 +1,6 @@
 import React, { FC, useCallback, useEffect, useState } from "react";
 import { QueryStatus } from "@reduxjs/toolkit/query";
+import { Link } from "react-router-dom";
 
 import { AccordionType, HandleClickType } from "../../Accordion/type";
 import { BreadCrumbsArrayType } from "../../BreadCrumbs";
@@ -187,27 +188,38 @@ const CourseId: FC<ICourseState & Pick<CourseResultType, "refetch">> = ({
 						)}
 					</ST.Content>
 				</WrapperContent>
-				<WrapperContent header={"Лекторы"}>
-					<ST.Content>
-						{owner && (
-							<LectorCard
-								name={owner.firstName || ""}
-								description={"asadsadasd"}
-								img={"2123"}
-							/>
-						)}
-					</ST.Content>
-				</WrapperContent>
-				{currentLesson?.test && (
+				{!loading && (
+					<WrapperContent header={"Лекторы"}>
+						<ST.Content>
+							{owner && (
+								<LectorCard
+									name={owner.firstName || ""}
+									img={owner.photos?.big || ""}
+								/>
+							)}
+						</ST.Content>
+					</WrapperContent>
+				)}
+
+				{currentLesson?.test && !loading && (
 					<WrapperContent header={"Тесты"}>
 						<ST.Content>
-							<TestCard {...currentLesson?.test} />
+							<Link
+								to={routeBuilderWithReplace(
+									[RoutesList.ADMIN, RoutesList.TEST_ID],
+									"id",
+									currentLesson?.test.id
+								)}
+							>
+								<TestCard {...currentLesson?.test} />
+							</Link>
 						</ST.Content>
 					</WrapperContent>
 				)}
 
 				{currentLesson
-					? !!currentLesson.documents?.length && (
+					? !!currentLesson.documents?.length &&
+					  !loading && (
 							<>
 								<WrapperContent header={"Документы урока"}>
 									<ST.Content>
@@ -224,7 +236,8 @@ const CourseId: FC<ICourseState & Pick<CourseResultType, "refetch">> = ({
 							</>
 					  )
 					: documents &&
-					  documents.length && (
+					  documents.length &&
+					  !loading && (
 							<>
 								<WrapperContent header={"Документы курса"}>
 									<ST.Content>

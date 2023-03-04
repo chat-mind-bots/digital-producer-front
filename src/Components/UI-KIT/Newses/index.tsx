@@ -15,7 +15,10 @@ type Type = {
 
 const Newses: FC<Type> = ({ role, header }) => {
 	return (
-		<NewsesGet header={header}>
+		<NewsesGet
+			header={header}
+			role={role}
+		>
 			<SwitchNewses
 				role={role}
 				header={header}

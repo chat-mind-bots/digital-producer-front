@@ -5,7 +5,10 @@ import RoutesList from "../../../../Router/routesList";
 import * as ST from "./styled";
 import WrapperContent from "../../../WrapperContent";
 import { INewsState } from "../../../../Shared/News/redux/news.slice";
-import { routeBuilderWithReplace } from "../../../../Router/services/route-builder";
+import {
+	routeBuilder,
+	routeBuilderWithReplace,
+} from "../../../../Router/services/route-builder";
 import NewsResultType from "../news-props.type";
 import Time from "../../Atoms/Time";
 import Date from "../../Atoms/Date";
@@ -21,11 +24,17 @@ const NewsId: FC<INewsState & Pick<NewsResultType, "refetch">> = ({
 	tags,
 }) => {
 	const breadCrumbs: BreadCrumbsArrayType[] = [
+		{ id: 1, name: "Главная", url: `/${RoutesList.PRODUCER}` },
+		{
+			id: 3,
+			name: "Новости",
+			url: routeBuilder([RoutesList.PRODUCER, RoutesList.NEWS]),
+		},
 		{
 			id: 3,
 			name: name,
 			url: routeBuilderWithReplace(
-				[RoutesList.USER, RoutesList.NEWS_ID],
+				[RoutesList.PRODUCER, RoutesList.NEWS_ID],
 				"id",
 				id
 			),

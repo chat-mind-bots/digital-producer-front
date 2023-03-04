@@ -62,7 +62,7 @@ export const Description = styled.p`
 	margin-top: 10px;
 	text-overflow: ellipsis;
 	overflow: hidden;
-	-webkit-line-clamp: 3;
+	-webkit-line-clamp: 2;
 	display: -webkit-box;
 	word-wrap: break-word;
 	-webkit-box-orient: vertical;

@@ -51,6 +51,12 @@ export const Title = styled.p`
 	text-align: center;
 	margin-top: 24px;
 	padding: 0 5px;
+	text-overflow: ellipsis;
+	overflow: hidden;
+	-webkit-line-clamp: 1;
+	display: -webkit-box;
+	word-wrap: break-word;
+	-webkit-box-orient: vertical;
 `;
 
 export const Description = styled.p`
@@ -61,8 +67,14 @@ export const Description = styled.p`
 	color: ${Colors.BLACK1};
 	margin-top: 12px;
 	padding: 0 5px;
+	-webkit-line-clamp: 2;
+	display: -webkit-box;
+	word-wrap: break-word;
+	-webkit-box-orient: vertical;
+	overflow: hidden;
 `;
 
 export const WrapperButton = styled.div`
 	margin-top: 28px;
+	overflow: hidden;
 `;

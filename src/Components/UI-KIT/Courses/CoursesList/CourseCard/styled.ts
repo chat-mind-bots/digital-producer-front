@@ -54,7 +54,7 @@ export const Description = styled.p`
 	color: ${Colors.GREY1};
 	text-overflow: ellipsis;
 	overflow: hidden;
-	-webkit-line-clamp: 3;
+	-webkit-line-clamp: 2;
 	display: -webkit-box;
 	word-wrap: break-word;
 	-webkit-box-orient: vertical;
@@ -81,9 +81,10 @@ export const Wrapper = styled.div`
 export const ImageWrapper = styled.div`
 	min-width: 220px;
 	width: 220px;
-	height: 169px;
 	position: relative;
 	border-radius: 16px;
+	height: 100%;
+	max-height: 173px;
 	overflow: hidden;
 	& > object {
 		position: absolute;
