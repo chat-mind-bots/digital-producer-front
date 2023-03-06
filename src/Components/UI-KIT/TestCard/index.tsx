@@ -29,7 +29,7 @@ const TestCard: FC<ITestState> = ({
 				max: 3,
 			}}
 		/>
-		<Time value={`Время для прохождения: ${duration} мин.`} />
+		<Time value={`Время для прохождения: ${duration}.`} />
 		<ST.Info>
 			<StatusFalse />
 			Максимум:{"@"}/{"@"}

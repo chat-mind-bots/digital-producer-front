@@ -1,4 +1,6 @@
 import React, { FC, useEffect, useState } from "react";
+// eslint-disable-next-line import/named
+import { isNull } from "lodash";
 
 import BreadCrumbs, {
 	BreadCrumbsArrayType,
@@ -18,10 +20,10 @@ const WrapperContent: FC<WrapperContentProps> = ({
 	header,
 	search,
 }) => {
-	const [state, setState] = useState<string>("");
+	const [state, setState] = useState<string | null>(null);
 
 	useEffect(() => {
-		search && search(state);
+		search && !isNull(state) && search(state);
 	}, [state]);
 
 	return (

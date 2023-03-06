@@ -19,10 +19,13 @@ const CourseId: FC<ITestState & Pick<CourseResultType, "refetch">> = ({
 			<ST.Wrapper>
 				<WrapperContent header={"Тест"}>
 					<>
-						<QuestionCreate
-							refetch={refetch}
-							idTest={id}
-						/>
+						<ST.WrapperCreateButton>
+							<QuestionCreate
+								refetch={refetch}
+								idTest={id}
+							/>
+						</ST.WrapperCreateButton>
+
 						<Questions
 							refetch={refetch}
 							arrayQuestion={questions}

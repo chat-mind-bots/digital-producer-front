@@ -25,7 +25,6 @@ export const TestCardProducer = styled.div`
 	background: ${Colors.BLUE};
 	border-radius: 16px;
 	width: 100%;
-	max-width: 850px;
 	height: 150px;
 	box-sizing: border-box;
 	display: flex;
@@ -33,7 +32,7 @@ export const TestCardProducer = styled.div`
 	justify-content: center;
 	border: 2px solid ${Colors.TRANSPARENT};
 	cursor: pointer;
-	margin: auto;
+	max-width: 333px;
 	&:hover {
 		border: 2px solid ${Colors.WHITE2};
 	}

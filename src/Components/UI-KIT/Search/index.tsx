@@ -7,7 +7,7 @@ import * as ST from "./styled";
 export type FocusType = boolean;
 
 export type SearchProps = {
-	value: string;
+	value: string | null;
 	setValue: Dispatch<string>;
 	placeholder: string;
 };
@@ -19,14 +19,14 @@ const Search: FC<SearchProps> = ({ value, setValue, placeholder }) => {
 		<ST.Search>
 			<ST.SearchWrapper
 				isFocus={focus}
-				value={value}
+				value={value || ""}
 			>
 				<IconSearch />
 				<ST.SearchElement
 					placeholder={placeholder}
 					onFocus={() => setFocus(true)}
 					onBlur={() => setFocus(false)}
-					value={value}
+					value={value || ""}
 					isFocus={focus}
 					onChange={(e) => {
 						setValue(e.target.value);
@@ -38,4 +38,4 @@ const Search: FC<SearchProps> = ({ value, setValue, placeholder }) => {
 	);
 };
 
-export default Search;
+export default React.memo(Search);

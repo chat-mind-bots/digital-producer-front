@@ -154,7 +154,7 @@ const CourseId: FC<ICourseState & Pick<CourseResultType, "refetch">> = ({
 									id={currentLesson.id}
 									name={currentLesson.name}
 									video={currentLesson.video}
-									levelDifficulty={levelDifficulty}
+									levelDifficulty={currentLesson.levelDifficulty}
 									description={currentLesson.description}
 									studentsLength={23}
 									language={language}
@@ -163,6 +163,7 @@ const CourseId: FC<ICourseState & Pick<CourseResultType, "refetch">> = ({
 									modulesLength={moduleLength}
 									isLoading={loading}
 									image={currentLesson.image}
+									isLesson={true}
 								/>
 							</>
 						) : (
@@ -180,6 +181,7 @@ const CourseId: FC<ICourseState & Pick<CourseResultType, "refetch">> = ({
 									modulesLength={moduleLength}
 									isLoading={loading}
 									image={image}
+									isLesson={false}
 								/>
 							</>
 						)}

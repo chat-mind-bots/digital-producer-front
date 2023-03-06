@@ -166,7 +166,7 @@ const CourseId: FC<ICourseState & Pick<CourseResultType, "refetch">> = ({
 									id={currentLesson.id}
 									name={currentLesson.name}
 									video={currentLesson.video}
-									levelDifficulty={levelDifficulty}
+									levelDifficulty={currentLesson.levelDifficulty}
 									description={currentLesson.description}
 									studentsLength={23}
 									language={language}
@@ -176,6 +176,7 @@ const CourseId: FC<ICourseState & Pick<CourseResultType, "refetch">> = ({
 									isLoading={loading}
 									image={currentLesson.image}
 									refetch={refetch}
+									isLesson={true}
 									// status={status}
 								/>
 							</>
@@ -197,6 +198,7 @@ const CourseId: FC<ICourseState & Pick<CourseResultType, "refetch">> = ({
 									idCourse={id}
 									refetch={refetch}
 									status={status}
+									isLesson={false}
 								/>
 							</>
 						)}
@@ -236,10 +238,12 @@ const CourseId: FC<ICourseState & Pick<CourseResultType, "refetch">> = ({
 					  )
 					: currentLesson &&
 					  !loading && (
-							<TestCreate
-								idLesson={currentLesson.id}
-								refetch={() => state.lesson && requestLesson(state.lesson)}
-							/>
+							<WrapperContent header={"Тесты"}>
+								<TestCreate
+									idLesson={currentLesson.id}
+									refetch={() => state.lesson && requestLesson(state.lesson)}
+								/>
+							</WrapperContent>
 					  )}
 
 				{currentLesson

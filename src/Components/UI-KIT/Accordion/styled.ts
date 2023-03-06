@@ -105,6 +105,10 @@ export const WrapperItems = styled.div<Props>`
 	max-height: ${({ isActive }) => (isActive ? "174px" : 0)};
 	transition: 1s;
 	position: relative;
+	&::-webkit-scrollbar {
+		width: 0;
+		border-radius: 10px;
+	}
 `;
 
 export const WrapperButtonAddLesson = styled.div`

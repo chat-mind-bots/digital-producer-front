@@ -63,7 +63,7 @@ const TestSettingsBodyWindow: FC<LessonSettingsBodyWindowProps> = ({
 											setFieldValue && setFieldValue("name", str);
 										}}
 										setFocus={(state) => setFieldTouched("name", state)}
-										placeholder={"Введите заголовок "}
+										placeholder={"Введите название "}
 										padding={"10px 14px"}
 										fontSize={"16px"}
 										fontWeight={"400"}
@@ -85,7 +85,7 @@ const TestSettingsBodyWindow: FC<LessonSettingsBodyWindowProps> = ({
 											setFieldValue && setFieldValue("description", str);
 										}}
 										setFocus={(state) => setFieldTouched("description", state)}
-										placeholder={"Введите заголовок "}
+										placeholder={"Введите описание "}
 										padding={"10px 14px"}
 										fontSize={"16px"}
 										fontWeight={"400"}
@@ -100,7 +100,7 @@ const TestSettingsBodyWindow: FC<LessonSettingsBodyWindowProps> = ({
 								</ST.WrapperInput>
 							</ST.Wrapper>
 							<ST.Wrapper>
-								<ST.Name>duration</ST.Name>
+								<ST.Name>Таймер</ST.Name>
 								<ST.WrapperInput>
 									<Input
 										value={String(values?.duration || "")}
@@ -109,7 +109,7 @@ const TestSettingsBodyWindow: FC<LessonSettingsBodyWindowProps> = ({
 												setFieldValue("duration", Number(str) || 0);
 										}}
 										setFocus={(state) => setFieldTouched("duration", state)}
-										placeholder={"Введите заголовок "}
+										placeholder={"Введите время прохождения "}
 										padding={"10px 14px"}
 										fontSize={"16px"}
 										fontWeight={"400"}

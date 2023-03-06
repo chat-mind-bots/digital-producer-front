@@ -34,6 +34,7 @@ type LessonViewProps = Pick<
 		modulesLength: number;
 		isLoading: boolean;
 		idCourse: string;
+		isLesson: boolean;
 	};
 
 const LessonView: FC<LessonViewProps> = ({
@@ -50,6 +51,7 @@ const LessonView: FC<LessonViewProps> = ({
 	status,
 	idCourse,
 	refetch,
+	isLesson,
 }) => (
 	<ST.LessonView>
 		<ST.WrapperVideo isLoading={isLoading}>
@@ -111,7 +113,9 @@ const LessonView: FC<LessonViewProps> = ({
 			)}
 		</ST.WrapperLevelDifficulty>
 		<ST.WrapperInfo>
-			<ST.TitleInfo>Описание курса:</ST.TitleInfo>
+			<ST.TitleInfo>
+				{isLesson ? "Описание урока:" : "Описание курса:"}
+			</ST.TitleInfo>
 			<ST.WrapperSubTitle
 				delay={0.1}
 				isLoading={isLoading}

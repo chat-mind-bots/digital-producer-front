@@ -281,7 +281,9 @@ const BannerSettingsBodyWindow: FC<CreateBannerProps> = ({
 										value={values?.urlButton || ""}
 										optionalText={
 											values.isThirdPartySource
-												? `${process.env.REACT_APP_API_URL}/`
+												? `${
+														process.env.REACT_APP_API_URL
+												  }/${role?.toLocaleLowerCase()}/`
 												: undefined
 										}
 										setValue={(str) => {

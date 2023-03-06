@@ -33,9 +33,9 @@ const AuthBlock = () => {
 			<ST.WrapperArrowDown onClick={() => setIsWindow(!isWindow)}>
 				<ArrowDown />
 				<ST.Window isOpen={isWindow}>
-					<ST.ItemWindow onClick={() => alert(123)}>
-						{t("Components.UIKIT.AuthBlock.Settings")}
-					</ST.ItemWindow>
+					{/*<ST.ItemWindow onClick={() => alert(123)}>*/}
+					{/*	{t("Components.UIKIT.AuthBlock.Settings")}*/}
+					{/*</ST.ItemWindow>*/}
 					<ST.ItemWindow
 						isExit={true}
 						onClick={logOutHandler}

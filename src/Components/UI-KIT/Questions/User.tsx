@@ -4,7 +4,6 @@ import Radio from "Components/UI-KIT/Atoms/Radio";
 
 import * as ST from "./styled";
 import { IQuestionState } from "../../../Shared/Question/redux/question.slice";
-import { QuestionUpdate } from "../../../Shared/Question/components/QuestionSet/update";
 import CourseResultType from "../Course/course-props.type";
 import CheckBox from "../Atoms/CheckBox";
 
@@ -20,7 +19,7 @@ export type QuestionProps = Pick<CourseResultType, "refetch"> & {
 
 const Questions: FC<QuestionProps> = ({
 	arrayQuestion,
-	refetch,
+	// refetch,
 	isOpen,
 	clickHandler,
 }) => {
@@ -31,12 +30,6 @@ const Questions: FC<QuestionProps> = ({
 					isOpen={isOpen}
 					key={`Question-${question.id}`}
 				>
-					<ST.WrapperSettings>
-						<QuestionUpdate
-							refetch={refetch}
-							idQuestion={question.id}
-						/>
-					</ST.WrapperSettings>
 					<ST.Text>{question.question}</ST.Text>
 					<ST.Answers>
 						{question.answers.map((answer) => (

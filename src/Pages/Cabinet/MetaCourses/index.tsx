@@ -6,7 +6,7 @@ import { BannerEnum } from "Shared/Banner/types/banner.enum";
 import Courses from "Components/UI-KIT/Courses";
 
 import * as ST from "./styled";
-import { CoursesStatuses } from "../../../Shared/Courses/redux/course.api";
+// import { CoursesStatuses } from "../../../Shared/Courses/redux/course.api";
 
 const MetaCourses = () => {
 	return (
@@ -14,7 +14,7 @@ const MetaCourses = () => {
 			<Courses
 				role={UserRoleEnum.USER}
 				header={"Курсы мета"}
-				status={CoursesStatuses.AVAILABLE}
+				// status={CoursesStatuses.AVAILABLE}
 			/>
 			<Banner
 				role={UserRoleEnum.USER}

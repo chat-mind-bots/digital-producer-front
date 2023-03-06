@@ -35,6 +35,7 @@ type LessonViewProps = Pick<
 	lessonsLength: number;
 	modulesLength: number;
 	isLoading: boolean;
+	isLesson: boolean;
 } & Pick<GetCourseApiProps, "idCourse"> &
 	Pick<CourseResultType, "refetch">;
 
@@ -52,6 +53,7 @@ const LessonView: FC<LessonViewProps> = ({
 	idCourse,
 	status,
 	refetch,
+	isLesson,
 }) => (
 	<ST.LessonView>
 		<ST.WrapperVideo isLoading={isLoading}>
@@ -107,7 +109,9 @@ const LessonView: FC<LessonViewProps> = ({
 			)}
 		</ST.WrapperLevelDifficulty>
 		<ST.WrapperInfo>
-			<ST.TitleInfo>Описание курса:</ST.TitleInfo>
+			<ST.TitleInfo>
+				{isLesson ? "Описание урока:" : "Описание курса:"}
+			</ST.TitleInfo>
 			<ST.WrapperSubTitle
 				delay={0.1}
 				isLoading={isLoading}

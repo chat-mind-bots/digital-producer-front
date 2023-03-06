@@ -3,8 +3,6 @@ import React, { FC } from "react";
 import { ReactComponent as Clock } from "Icons/Clock.svg";
 
 import * as ST from "./styled";
-import Button from "../Atoms/Button";
-import Colors from "../../../Colors";
 import Image from "../Atoms/Image";
 
 type TestTimerProps = {
@@ -35,19 +33,6 @@ const TestTimer: FC<TestTimerProps> = ({ lengthQuestions, duration }) => {
 				Верных ответов:
 				<ST.Count>0</ST.Count>
 			</ST.Line>
-			<Button
-				title={"Далее"}
-				padding={"10px 25px"}
-				fontSize={"16px"}
-				lineHeight={"20px"}
-				fontWeight={"400"}
-				background={Colors.BLUE}
-				color={Colors.WHITE}
-				backgroundAnimation={Colors.BLUE}
-				colorHover={Colors.WHITE}
-				border={`1px solid ${Colors.RGBA_GREY}`}
-				width={"100%"}
-			/>
 		</ST.TestTimer>
 	);
 };

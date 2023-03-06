@@ -1,4 +1,4 @@
-import React, { FC, useState } from "react";
+import React, { FC, useEffect, useState } from "react";
 
 import Radio from "Components/UI-KIT/Atoms/Radio";
 
@@ -16,11 +16,15 @@ export type QuestionProps = Pick<CourseResultType, "refetch"> & {
 const Questions: FC<QuestionProps> = ({ arrayQuestion, refetch, isOpen }) => {
 	const [answers, setAnswers] = useState<
 		(IQuestionState & { values: string[] })[]
-	>(
-		arrayQuestion.map((e) => {
-			return { ...e, values: [] };
-		})
-	);
+	>([]);
+
+	useEffect(() => {
+		setAnswers(
+			arrayQuestion.map((e) => {
+				return { ...e, values: [] };
+			})
+		);
+	}, [arrayQuestion]);
 
 	const radioHandler = (
 		questionId: string,
