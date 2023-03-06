@@ -18,6 +18,8 @@ import { CourseSetStatus } from "../../../Shared/Courses/components/CourseSet/se
 import { ReactComponent as StatusWait } from "../../../Icons/StatusWait.svg";
 import { ReactComponent as Progress } from "../../../Icons/Progress.svg";
 import { ReactComponent as StatusTrue } from "../../../Icons/StatusTrue.svg";
+import { ITagState } from "../../../Shared/Tag/redux/tag.slice";
+import Tags from "../Atoms/Tags";
 
 type LessonViewProps = Pick<
 	ICourseState,
@@ -36,6 +38,7 @@ type LessonViewProps = Pick<
 	modulesLength: number;
 	isLoading: boolean;
 	isLesson: boolean;
+	tags?: ITagState[];
 } & Pick<GetCourseApiProps, "idCourse"> &
 	Pick<CourseResultType, "refetch">;
 
@@ -54,6 +57,7 @@ const LessonView: FC<LessonViewProps> = ({
 	status,
 	refetch,
 	isLesson,
+	tags,
 }) => (
 	<ST.LessonView>
 		<ST.WrapperVideo isLoading={isLoading}>
@@ -156,6 +160,18 @@ const LessonView: FC<LessonViewProps> = ({
 						</ST.SubTitleInfo>
 					</ST.WrapperSubTitle>
 				))}
+
+			{tags && (
+				<ST.WrapperTags
+					delay={0.8}
+					isLoading={isLoading}
+				>
+					<Tags
+						tags={tags}
+						tagsColors={false}
+					/>
+				</ST.WrapperTags>
+			)}
 
 			<ST.WrapperButton>
 				{idCourse && (

@@ -8,6 +8,8 @@ import { ICourseEnum, ICourseState } from "Shared/Courses/redux/course.slice";
 import * as ST from "./styled";
 import Image from "../Atoms/Image";
 import PlayVideo from "../Atoms/PlayVideo";
+import { ITagState } from "../../../Shared/Tag/redux/tag.slice";
+import Tags from "../Atoms/Tags";
 
 type LessonViewProps = Pick<
 	ICourseState,
@@ -25,6 +27,7 @@ type LessonViewProps = Pick<
 	modulesLength: number;
 	isLoading: boolean;
 	isLesson: boolean;
+	tags?: ITagState[];
 };
 
 const LessonView: FC<LessonViewProps> = ({
@@ -39,6 +42,7 @@ const LessonView: FC<LessonViewProps> = ({
 	isLoading,
 	image,
 	isLesson,
+	tags,
 }) => (
 	<ST.LessonView>
 		<ST.WrapperVideo isLoading={isLoading}>
@@ -107,6 +111,18 @@ const LessonView: FC<LessonViewProps> = ({
 						</ST.SubTitleInfo>
 					</ST.WrapperSubTitle>
 				))}
+
+			{tags && (
+				<ST.WrapperTags
+					delay={0.8}
+					isLoading={isLoading}
+				>
+					<Tags
+						tags={tags}
+						tagsColors={false}
+					/>
+				</ST.WrapperTags>
+			)}
 		</ST.WrapperInfo>
 	</ST.LessonView>
 );

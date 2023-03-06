@@ -50,6 +50,7 @@ const CourseId: FC<ICourseState & Pick<CourseResultType, "refetch">> = ({
 	refetch,
 	moduleLength,
 	lessonLength,
+	tags,
 }) => {
 	const auth = useAppSelector((state) => state.auth);
 
@@ -182,6 +183,7 @@ const CourseId: FC<ICourseState & Pick<CourseResultType, "refetch">> = ({
 									isLoading={loading}
 									image={image}
 									isLesson={false}
+									tags={tags}
 								/>
 							</>
 						)}

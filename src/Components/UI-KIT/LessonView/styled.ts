@@ -256,6 +256,42 @@ export const WrapperSubTitle = styled.div<WrapperSubTitleProps>`
 	}
 `;
 
+export const WrapperTags = styled.div<WrapperSubTitleProps>`
+	width: 100%;
+	max-height: ${({ isLoading }) => (isLoading ? " 24.8px" : "400px")};
+	transition: 1s;
+	overflow: hidden;
+	position: relative;
+	overflow-y: auto;
+	text-overflow: ellipsis;
+	-webkit-line-clamp: 100000;
+	display: -webkit-box;
+	word-wrap: break-word;
+	-webkit-box-orient: vertical;
+	justify-content: flex-start;
+	flex-wrap: wrap;
+	& > div {
+		margin-top: 0;
+		flex-wrap: wrap;
+	}
+	&:after {
+		content: "";
+		width: 100%;
+		left: 0;
+		top: 0;
+		position: absolute;
+		background: ${Colors.BLUE};
+		height: 100%;
+		transform: ${({ isLoading }) => !isLoading && "translate(-100%, 0)"};
+		border-top-right-radius: 8px;
+		border-bottom-right-radius: 8px;
+		transition: 0.7s;
+		transition-delay: ${({ isLoading, delay }) =>
+			!isLoading ? `${delay + 0.4}s` : `${delay + 0.4}s`};
+		transition-timing-function: ease-in-out;
+	}
+`;
+
 export const WrapperButton = styled.div`
 	width: 100%;
 `;
