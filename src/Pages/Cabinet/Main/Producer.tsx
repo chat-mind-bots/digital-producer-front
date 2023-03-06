@@ -6,31 +6,42 @@ import Banner from "Components/UI-KIT/Banner";
 
 import * as ST from "./styled";
 import Courses from "../../../Components/UI-KIT/Courses";
+import { useAppSelector } from "../../../Hooks/redux";
+import { CoursesStatuses } from "../../../Shared/Courses/redux/course.api";
 
-const Main = () => (
-	<ST.Main>
-		<Banner
-			role={UserRoleEnum.PRODUCER}
-			type={BannerEnum.BANNER_TOP}
-		/>
-		<ST.WrapperMain>
+const Main = () => {
+	const auth = useAppSelector((state) => state.auth);
+
+	return (
+		<ST.Main>
 			<Banner
 				role={UserRoleEnum.PRODUCER}
-				type={BannerEnum.BANNER_SLIDER}
+				type={BannerEnum.BANNER_TOP}
 			/>
-			<ST.WrapperCourses>
-				<Courses
+			<ST.WrapperMain>
+				<Banner
 					role={UserRoleEnum.PRODUCER}
-					header={"Рекоменндованные курсы"}
+					type={BannerEnum.BANNER_SLIDER}
 				/>
-			</ST.WrapperCourses>
-		</ST.WrapperMain>
+				<ST.WrapperCourses>
+					{auth.id && (
+						<Courses
+							role={UserRoleEnum.PRODUCER}
+							header={"Мои опубликованные курсы "}
+							ownerId={[auth.id]}
+							status={CoursesStatuses.AVAILABLE}
+							isAdd={false}
+						/>
+					)}
+				</ST.WrapperCourses>
+			</ST.WrapperMain>
 
-		<Banner
-			role={UserRoleEnum.PRODUCER}
-			type={BannerEnum.BANNER_RIGHT}
-		/>
-	</ST.Main>
-);
+			<Banner
+				role={UserRoleEnum.PRODUCER}
+				type={BannerEnum.BANNER_RIGHT}
+			/>
+		</ST.Main>
+	);
+};
 
 export default Main;

@@ -13,7 +13,11 @@ type Type = Pick<
 	GetCoursesApiProps,
 	"subCategoryId" | "enrolledUserId" | "ownerId" | "status"
 > &
-	Pick<GetCoursesApiProps, "sortBy"> & { role: UserRoleEnum; header: string };
+	Pick<GetCoursesApiProps, "sortBy"> & {
+		role: UserRoleEnum;
+		header: string;
+		isAdd?: boolean;
+	};
 
 const Courses: FC<Type> = ({
 	role,
@@ -23,6 +27,7 @@ const Courses: FC<Type> = ({
 	ownerId,
 	status,
 	sortBy,
+	isAdd,
 }) => {
 	return (
 		<CoursesGet
@@ -37,6 +42,7 @@ const Courses: FC<Type> = ({
 			<SwitchCourses
 				role={role}
 				header={header}
+				isAdd={isAdd}
 			/>
 		</CoursesGet>
 	);
@@ -46,6 +52,7 @@ const SwitchCourses: FC<Type & CoursesResultType> = ({
 	result,
 	role,
 	refetch,
+	isAdd,
 }) => {
 	switch (role) {
 		case UserRoleEnum.USER:
@@ -55,6 +62,7 @@ const SwitchCourses: FC<Type & CoursesResultType> = ({
 				<ProducerCoursesList
 					result={result}
 					refetch={refetch}
+					isAdd={isAdd}
 				/>
 			);
 		case UserRoleEnum.ADMIN:

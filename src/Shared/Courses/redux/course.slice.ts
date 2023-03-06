@@ -31,6 +31,8 @@ export enum ICourseEnum {
 	modules = "modules",
 	createdAt = "createdAt",
 	updatedAt = "updatedAt",
+	moduleLength = "moduleLength",
+	lessonLength = "lessonLength",
 
 	statusCode = "statusCode",
 	message = "message",
@@ -58,6 +60,8 @@ export interface ICourseState {
 	[ICourseEnum.modules]: IModuleState[];
 	[ICourseEnum.createdAt]: string;
 	[ICourseEnum.updatedAt]: string;
+	[ICourseEnum.moduleLength]: number;
+	[ICourseEnum.lessonLength]: number;
 
 	[ICourseEnum.message]?: string[];
 	[ICourseEnum.statusCode]?: RequestStatuses;
@@ -85,6 +89,9 @@ export const initialCourseState: ICourseState = {
 	[ICourseEnum.modules]: [],
 	[ICourseEnum.createdAt]: "",
 	[ICourseEnum.updatedAt]: "",
+	[ICourseEnum.moduleLength]: 0,
+	[ICourseEnum.lessonLength]: 0,
+
 	[ICourseEnum.statusCode]: RequestStatuses.PENDING,
 };
 

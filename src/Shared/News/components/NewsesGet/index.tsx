@@ -25,7 +25,7 @@ const NewsesGet: FC<NewsGetProps> = ({ children, header, role }) => {
 	const { data, isError, isLoading, refetch } = useGetNewsesQuery(query);
 
 	const defaultBreadCrumbs: BreadCrumbsArrayType[] = [
-		{ id: 1, name: "Главная", url: `/${role}` },
+		{ id: 1, name: "Главная", url: `/${role.toLocaleLowerCase()}` },
 		{ id: 2, name: header, url: RoutesList.NEWS },
 	];
 

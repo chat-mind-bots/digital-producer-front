@@ -17,6 +17,7 @@ const CoursesPage = () => {
 				role={UserRoleEnum.PRODUCER}
 				header={"Мои курсы "}
 				ownerId={[auth.id]}
+				isAdd={true}
 			/>
 			<Banner
 				role={UserRoleEnum.PRODUCER}

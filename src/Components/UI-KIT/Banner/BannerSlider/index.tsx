@@ -10,8 +10,17 @@ import openFileBlank from "Utils/openFileBlank";
 import ButtonSwitchStyle from "Components/ButtonSwitchStyle";
 
 import * as ST from "./styled";
+import { routeBuilder } from "../../../../Router/services/route-builder";
+import RoutesList from "../../../../Router/routesList";
+import {
+	IBannerEnum,
+	IBannerState,
+} from "../../../../Shared/Banner/redux/banner.slice";
 
-const Insights: FC<BannerProps> = ({ result }) => {
+const Insights: FC<BannerProps & Pick<IBannerState, IBannerEnum.role>> = ({
+	result,
+	role,
+}) => {
 	const data = result;
 	const [numberPosition, setNumberPosition] = useState<string | undefined>();
 	const currentObject =
@@ -38,7 +47,16 @@ const Insights: FC<BannerProps> = ({ result }) => {
 					</ST.WrapperInfoContent>
 					<ST.WrapperButton>
 						{currentObject.isThirdPartySource ? (
-							<Link to={currentObject.urlButton}>
+							<Link
+								to={
+									role
+										? `${routeBuilder([
+												RoutesList[role],
+												currentObject.urlButton as RoutesList,
+										  ])}`
+										: ""
+								}
+							>
 								<ButtonSwitchStyle
 									title={currentObject.textButton}
 									padding={"11px 28px"}

@@ -9,8 +9,17 @@ import Image from "Components/UI-KIT/Atoms/Image";
 import openFileBlank from "Utils/openFileBlank";
 
 import * as ST from "./styled";
+import { routeBuilder } from "../../../../Router/services/route-builder";
+import RoutesList from "../../../../Router/routesList";
+import {
+	IBannerEnum,
+	IBannerState,
+} from "../../../../Shared/Banner/redux/banner.slice";
 
-const BannerTop: FC<BannerProps> = ({ result }) => {
+const BannerTop: FC<BannerProps & Pick<IBannerState, IBannerEnum.role>> = ({
+	result,
+	role,
+}) => {
 	const data = result && result[0];
 
 	return data ? (
@@ -20,7 +29,16 @@ const BannerTop: FC<BannerProps> = ({ result }) => {
 				<ST.Description>{data.description}</ST.Description>
 				<ST.WrapperButton>
 					{data.isThirdPartySource ? (
-						<Link to={`/${data.urlButton}`}>
+						<Link
+							to={
+								role
+									? `${routeBuilder([
+											RoutesList[role],
+											data.urlButton as RoutesList,
+									  ])}`
+									: ""
+							}
+						>
 							<ButtonSwitchStyle
 								title={data.textButton}
 								padding={"13px 23px"}

@@ -22,7 +22,7 @@ const NavBarDataProducer: NavBarType[] = [
 	{
 		id: 1,
 		name: "Главная",
-		count: 10,
+		count: 0,
 		url: routeBuilder(RoutesList.PRODUCER),
 		svg: <Main />,
 		element: <MainComponent />,

@@ -21,9 +21,7 @@ const WrapperContent: FC<WrapperContentProps> = ({
 	const [state, setState] = useState<string>("");
 
 	useEffect(() => {
-		if (state) {
-			search && search(state);
-		}
+		search && search(state);
 	}, [state]);
 
 	return (

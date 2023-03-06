@@ -18,8 +18,12 @@ export const Accordion = styled.div`
 	top: 129px;
 	position: sticky;
 	border: 2px solid ${Colors.WHITE2};
-	overflow-y: scroll;
+	overflow-y: auto;
 	max-height: 357px;
+	&::-webkit-scrollbar {
+		width: 0;
+		border-radius: 10px;
+	}
 	@media (max-width: ${BreakPoints.TABLET}px) {
 		position: fixed;
 		right: 30px;

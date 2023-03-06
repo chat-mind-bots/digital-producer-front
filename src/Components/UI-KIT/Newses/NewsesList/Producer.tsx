@@ -14,7 +14,7 @@ const ProducerNewsesList: FC<NewsesResultType> = ({ result }) => {
 				result.map((news) => (
 					<Link
 						to={routeBuilderWithReplace(
-							[RoutesList.USER, RoutesList.NEWS_ID],
+							[RoutesList.PRODUCER, RoutesList.NEWS_ID],
 							"id",
 							news.id
 						)}

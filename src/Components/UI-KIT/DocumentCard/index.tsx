@@ -1,9 +1,9 @@
 import React, { FC } from "react";
-import { Link } from "react-router-dom";
 
 import { ReactComponent as ArrowDown } from "Icons/ArrowDown.svg";
 
 import * as ST from "./styled";
+import openFileBlank from "../../../Utils/openFileBlank";
 
 type DocumentCardProps = {
 	name: string;
@@ -12,16 +12,14 @@ type DocumentCardProps = {
 };
 
 const DocumentCard: FC<DocumentCardProps> = ({ name, description, url }) => (
-	<ST.DocumentCard>
-		<Link to={url}>
-			<ST.Wrapper>
-				<ST.Name>
-					{name}
-					<ArrowDown />
-				</ST.Name>
-				<ST.Description>{description}</ST.Description>
-			</ST.Wrapper>
-		</Link>
+	<ST.DocumentCard onClick={() => openFileBlank(url)}>
+		<ST.Wrapper>
+			<ST.Name>
+				{name}
+				<ArrowDown />
+			</ST.Name>
+			<ST.Description>{description}</ST.Description>
+		</ST.Wrapper>
 	</ST.DocumentCard>
 );
 

@@ -8,6 +8,7 @@ export const DocumentCard = styled.div`
 	width: 100%;
 	box-sizing: border-box;
 	background: ${Colors.WHITE};
+	position: relative;
 `;
 
 export const DocumentCardProducer = styled.div`
@@ -16,7 +17,7 @@ export const DocumentCardProducer = styled.div`
 	background: ${Colors.BLUE};
 	border-radius: 24px;
 	width: 328px;
-	height: 99px;
+	height: auto;
 	box-sizing: border-box;
 	display: flex;
 	align-items: center;
@@ -74,6 +75,8 @@ export const Wrapper = styled.div`
 	border: 2px solid ${Colors.TRANSPARENT};
 	border-radius: 16px;
 	position: relative;
+	height: 100%;
+	box-sizing: border-box;
 	&:hover {
 		border: 2px solid ${Colors.WHITE2};
 	}
@@ -90,6 +93,7 @@ export const UpdateIco = styled.div`
 	display: flex;
 	align-items: center;
 	justify-content: center;
+	cursor: pointer;
 	&:hover {
 		& path {
 			fill: ${Colors.WHITE};

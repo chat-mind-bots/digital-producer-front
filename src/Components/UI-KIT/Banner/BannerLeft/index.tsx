@@ -9,8 +9,17 @@ import openFileBlank from "Utils/openFileBlank";
 import ButtonSwitchStyle from "Components/ButtonSwitchStyle";
 
 import * as ST from "./styled";
+import { routeBuilder } from "../../../../Router/services/route-builder";
+import RoutesList from "../../../../Router/routesList";
+import {
+	IBannerEnum,
+	IBannerState,
+} from "../../../../Shared/Banner/redux/banner.slice";
 
-const BannerLeft: FC<BannerProps> = ({ result }) => {
+const BannerLeft: FC<BannerProps & Pick<IBannerState, IBannerEnum.role>> = ({
+	result,
+	role,
+}) => {
 	const data = result && result[0];
 
 	return data ? (
@@ -22,7 +31,16 @@ const BannerLeft: FC<BannerProps> = ({ result }) => {
 			<IconForNavBar />
 			<ST.WrapperButton>
 				{data.isThirdPartySource ? (
-					<Link to={data.urlButton}>
+					<Link
+						to={
+							role
+								? `${routeBuilder([
+										RoutesList[role],
+										data.urlButton as RoutesList,
+								  ])}`
+								: ""
+						}
+					>
 						<ButtonSwitchStyle
 							title={data.textButton}
 							padding={"11px 23px"}

@@ -23,7 +23,7 @@ const NavBarDataAdmin: NavBarType[] = [
 	{
 		id: 1,
 		name: "Главная",
-		count: 10,
+		count: 0,
 		url: routeBuilder(RoutesList.ADMIN),
 		svg: <Main />,
 		element: <MainComponent />,

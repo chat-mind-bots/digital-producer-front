@@ -36,8 +36,8 @@ const SwitchCabinet: FC<Props> = ({ role }) => {
 			return <LazyCabinetProducer />;
 		case UserRoleEnum.ADMIN:
 			return <LazyCabinetAdmin />;
-		case UserRoleEnum.SUPER_ADMIN:
-			return <LazyCabinetAdmin />;
+		// case UserRoleEnum.SUPER_ADMIN:
+		// 	return <LazyCabinetAdmin />;
 		default:
 			return <></>;
 	}

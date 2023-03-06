@@ -16,7 +16,7 @@ const Tags: FC<NewsCardProps> = ({ tags, tagsColors }) => (
 			(tag, i) =>
 				i <= 2 && (
 					<ST.Tag
-						key={`NewsCard-tag-${tag.color}-${tag.id}`}
+						key={`NewsCard-tag-${tag.color}-${tag.id}-${i}`}
 						background={tagsColors ? tag.background : Colors.WHITE3}
 						color={tagsColors ? tag.color : Colors.GREY4}
 					>

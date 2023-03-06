@@ -8,10 +8,14 @@ import { routeBuilderWithReplace } from "../../../../Router/services/route-build
 import RoutesList from "../../../../Router/routesList";
 import * as ST from "./styled";
 
-const ProducerCoursesList: FC<CoursesResultType> = ({ result, refetch }) => {
+const ProducerCoursesList: FC<CoursesResultType> = ({
+	result,
+	refetch,
+	isAdd,
+}) => {
 	return (
 		<ST.CoursesList>
-			<CourseCreate refetch={refetch} />
+			{isAdd && <CourseCreate refetch={refetch} />}
 			{result &&
 				result.map((course) => (
 					<Link

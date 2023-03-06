@@ -18,12 +18,39 @@ const ReviewCourses = () => {
 
 	return (
 		<ST.MetaCourses>
-			<Courses
-				role={UserRoleEnum.ADMIN}
-				header={query ? "Все курсы продюсера" : "Курсы на проверке"}
-				status={query ? CoursesStatuses.AVAILABLE : CoursesStatuses.IN_REVIEW}
-				ownerId={ownerId}
-			/>
+			<ST.WrapperListCourses>
+				<Courses
+					role={UserRoleEnum.ADMIN}
+					header={query ? "Опубликованные" : "Курсы на проверке"}
+					status={query ? CoursesStatuses.AVAILABLE : CoursesStatuses.IN_REVIEW}
+					ownerId={ownerId}
+				/>
+				{query && (
+					<Courses
+						role={UserRoleEnum.ADMIN}
+						header={"На проверке"}
+						status={CoursesStatuses.IN_REVIEW}
+						ownerId={ownerId}
+					/>
+				)}
+				{query && (
+					<Courses
+						role={UserRoleEnum.ADMIN}
+						header={"В работе"}
+						status={CoursesStatuses.IN_PROGRESS}
+						ownerId={ownerId}
+					/>
+				)}
+				{query && (
+					<Courses
+						role={UserRoleEnum.ADMIN}
+						header={"Заблокированные"}
+						status={CoursesStatuses.NOT_ACTIVE}
+						ownerId={ownerId}
+					/>
+				)}
+			</ST.WrapperListCourses>
+
 			<Banner
 				role={UserRoleEnum.ADMIN}
 				type={BannerEnum.BANNER_RIGHT}

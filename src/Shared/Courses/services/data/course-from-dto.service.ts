@@ -27,6 +27,14 @@ export const courseFromDtoServiceObject = (dto: ICourseDTO): ICourseState => {
 		...other
 	} = dto;
 
+	let lessonLength = 0;
+
+	modules?.map((module) => {
+		module.lessons?.map(() => {
+			lessonLength = lessonLength + 1;
+		});
+	});
+
 	return {
 		...other,
 		id: _id,
@@ -48,5 +56,7 @@ export const courseFromDtoServiceObject = (dto: ICourseDTO): ICourseState => {
 		subCategory: sub_category,
 		modules: modules ? ModuleFromDtoServiceArray(modules) : [],
 		tags: tagFromDtoServiceArray(tags),
+		moduleLength: modules?.length || 0,
+		lessonLength,
 	};
 };

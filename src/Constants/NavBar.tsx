@@ -24,7 +24,7 @@ const NavBarData: NavBarType[] = [
 	{
 		id: 1,
 		name: "Главная",
-		count: 10,
+		count: 0,
 		url: routeBuilder(RoutesList.USER),
 		svg: <Main />,
 		element: <MainComponent />,

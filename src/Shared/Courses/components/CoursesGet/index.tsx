@@ -50,7 +50,7 @@ const CoursesGet: FC<CourseGetProps> = ({
 	const [searchRequest, resultSearchRequest] = useGetSearchCoursesMutation();
 
 	const defaultBreadCrumbs: BreadCrumbsArrayType[] = [
-		{ id: 1, name: "Главная", url: `/${role}` },
+		{ id: 1, name: "Главная", url: `/${role.toLocaleLowerCase()}` },
 		{ id: 2, name: header, url: RoutesList.COURSES },
 	];
 
@@ -75,7 +75,9 @@ const CoursesGet: FC<CourseGetProps> = ({
 						<>
 							{Children.toArray(children).map((child) =>
 								cloneElement(child as React.ReactElement<CoursesResultType>, {
-									result: resultSearchRequest.data?.data || data?.data,
+									result: resultSearchRequest.data?.data.length
+										? resultSearchRequest.data?.data
+										: data?.data,
 									refetch: refetch,
 								})
 							)}

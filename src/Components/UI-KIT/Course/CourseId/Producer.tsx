@@ -25,6 +25,7 @@ import CourseResultType from "../course-props.type";
 import { DocumentCreate } from "../../../../Shared/Document/components/DocumentSet/create";
 import { DocumentCardSettings } from "../../DocumentCard/Producer";
 import { TestCreate } from "../../../../Shared/Test/components/TestSet/create";
+import NotFound from "../../../../Pages/NotFound";
 
 const delay = 2000;
 
@@ -50,6 +51,8 @@ const CourseId: FC<ICourseState & Pick<CourseResultType, "refetch">> = ({
 	// statusCode,
 	status,
 	refetch,
+	moduleLength,
+	lessonLength,
 }) => {
 	const auth = useAppSelector((state) => state.auth);
 
@@ -152,7 +155,7 @@ const CourseId: FC<ICourseState & Pick<CourseResultType, "refetch">> = ({
 		[getLesson]
 	);
 
-	return (
+	return owner?.id === auth.id ? (
 		<ST.CourseID>
 			<ST.WrapperInfo>
 				<WrapperContent header={breadCrumbs}>
@@ -168,8 +171,8 @@ const CourseId: FC<ICourseState & Pick<CourseResultType, "refetch">> = ({
 									studentsLength={23}
 									language={language}
 									notes={notes}
-									lessonsLength={23}
-									modulesLength={23}
+									lessonsLength={lessonLength}
+									modulesLength={moduleLength}
 									isLoading={loading}
 									image={currentLesson.image}
 									refetch={refetch}
@@ -187,8 +190,8 @@ const CourseId: FC<ICourseState & Pick<CourseResultType, "refetch">> = ({
 									studentsLength={23}
 									language={language}
 									notes={notes}
-									lessonsLength={23}
-									modulesLength={23}
+									lessonsLength={lessonLength}
+									modulesLength={moduleLength}
 									isLoading={loading}
 									image={image}
 									idCourse={id}
@@ -260,6 +263,7 @@ const CourseId: FC<ICourseState & Pick<CourseResultType, "refetch">> = ({
 												refetch={() =>
 													state.lesson && requestLesson(state.lesson)
 												}
+												url={document.url}
 											/>
 										))}
 									</ST.Content>
@@ -282,6 +286,7 @@ const CourseId: FC<ICourseState & Pick<CourseResultType, "refetch">> = ({
 												name={document.name}
 												description={document.description}
 												refetch={refetch}
+												url={document.url}
 											/>
 										))}
 									</ST.Content>
@@ -312,6 +317,8 @@ const CourseId: FC<ICourseState & Pick<CourseResultType, "refetch">> = ({
 
 			{/*MODAL WINDOW_______________________*/}
 		</ST.CourseID>
+	) : (
+		<NotFound />
 	);
 };
 

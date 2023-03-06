@@ -13,6 +13,7 @@ import NewsResultType from "../news-props.type";
 import Time from "../../Atoms/Time";
 import Date from "../../Atoms/Date";
 import Tags from "../../Atoms/Tags";
+import Image from "../../Atoms/Image";
 
 const NewsId: FC<INewsState & Pick<NewsResultType, "refetch">> = ({
 	id,
@@ -45,7 +46,9 @@ const NewsId: FC<INewsState & Pick<NewsResultType, "refetch">> = ({
 		<ST.NewsView>
 			<WrapperContent header={breadCrumbs}>
 				<>
-					<ST.WrapperIcon>{image}</ST.WrapperIcon>
+					<ST.WrapperIcon>
+						<Image src={image} />
+					</ST.WrapperIcon>
 					<ST.WrapperInfo>
 						<ST.WrapperDateInfo>
 							<Time value={`${timeRead}`} />

@@ -48,6 +48,8 @@ const CourseId: FC<ICourseState & Pick<CourseResultType, "refetch">> = ({
 	// statusCode,
 	isEnrolled,
 	refetch,
+	moduleLength,
+	lessonLength,
 }) => {
 	const auth = useAppSelector((state) => state.auth);
 
@@ -157,8 +159,8 @@ const CourseId: FC<ICourseState & Pick<CourseResultType, "refetch">> = ({
 									studentsLength={23}
 									language={language}
 									notes={notes}
-									lessonsLength={23}
-									modulesLength={23}
+									lessonsLength={lessonLength}
+									modulesLength={moduleLength}
 									isLoading={loading}
 									image={currentLesson.image}
 								/>
@@ -174,8 +176,8 @@ const CourseId: FC<ICourseState & Pick<CourseResultType, "refetch">> = ({
 									studentsLength={23}
 									language={language}
 									notes={notes}
-									lessonsLength={23}
-									modulesLength={23}
+									lessonsLength={lessonLength}
+									modulesLength={moduleLength}
 									isLoading={loading}
 									image={image}
 								/>

@@ -17,20 +17,43 @@ const Banner: FC<Type> = ({ role, type }) => (
 		role={role}
 		type={type}
 	>
-		<SwitchBanner type={type} />
+		<SwitchBanner
+			role={role}
+			type={type}
+		/>
 	</BannerGet>
 );
 
-const SwitchBanner: FC<Type & BannerResultType> = ({ type, result }) => {
+const SwitchBanner: FC<Type & BannerResultType> = ({ type, result, role }) => {
 	switch (type) {
 		case BannerEnum.BANNER_RIGHT:
-			return <BannerRight result={result} />;
+			return (
+				<BannerRight
+					role={role}
+					result={result}
+				/>
+			);
 		case BannerEnum.BANNER_TOP:
-			return <BannerTop result={result} />;
+			return (
+				<BannerTop
+					role={role}
+					result={result}
+				/>
+			);
 		case BannerEnum.BANNER_LEFT:
-			return <BannerLeft result={result} />;
+			return (
+				<BannerLeft
+					role={role}
+					result={result}
+				/>
+			);
 		case BannerEnum.BANNER_SLIDER:
-			return <BannerSlider result={result} />;
+			return (
+				<BannerSlider
+					role={role}
+					result={result}
+				/>
+			);
 		default:
 			return <></>;
 	}

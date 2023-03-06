@@ -20,3 +20,11 @@ export const WrapperCourses = styled.div`
 		max-width: 100%;
 	}
 `;
+
+export const WrapperListCourses = styled.div`
+	display: flex;
+	flex-wrap: wrap;
+	gap: 41px;
+	width: 100%;
+	max-width: 764px;
+`;
