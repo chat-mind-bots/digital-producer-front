@@ -9,8 +9,8 @@ export const getUrlByRoleService = (mainRole: UserRoleEnum): RoutesList => {
 			return RoutesList.PRODUCER;
 		case UserRoleEnum.ADMIN:
 			return RoutesList.ADMIN;
-		case UserRoleEnum.SUPER_ADMIN:
-			return RoutesList.SUPER_ADMIN;
+		// case UserRoleEnum.SUPER_ADMIN:
+		// 	return RoutesList.SUPER_ADMIN;
 		default:
 			return RoutesList.HOME;
 	}

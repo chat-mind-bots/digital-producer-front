@@ -6,6 +6,41 @@ body {
 	overflow-x: hidden;
 	background: #fcfcfc;
 }
+*::-webkit-scrollbar {
+	width: 4px;
+	height: 7px;
+	border-radius: 10px;
+}
+*::-webkit-scrollbar-button {
+	width: 0;
+	height: 0;
+	border-radius: 10px;
+}
+*::-webkit-scrollbar-thumb {
+	background: linear-gradient(to right top, #2E6CEE, #2E6CEE, #2E6CEE, #2E6CEE, #2E6CEE);
+	border: 0 none #ffffff;
+	border-radius: 10px;
+}
+*::-webkit-scrollbar-thumb:hover {
+	background: #0505A9;
+}
+*::-webkit-scrollbar-thumb:active {
+	background: #0505A9;
+}
+*::-webkit-scrollbar-track {
+	background: transparent;
+	border: 0 none #ffffff;
+	border-radius: 50px;
+}
+*::-webkit-scrollbar-track:hover {
+	background: transparent;
+}
+*::-webkit-scrollbar-track:active {
+	background: transparent;
+}
+*::-webkit-scrollbar-corner {
+	background: transparent;
+}
 input {
 	padding: 0;
 	margin: 0;

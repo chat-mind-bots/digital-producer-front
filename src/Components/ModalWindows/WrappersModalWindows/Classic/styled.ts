@@ -63,6 +63,9 @@ export const Title = styled.p`
 	display: flex;
 	align-items: center;
 	justify-content: space-between;
+	& > svg {
+		cursor: pointer;
+	}
 `;
 
 export const Description = styled.p`

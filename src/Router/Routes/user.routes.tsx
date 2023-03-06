@@ -2,17 +2,17 @@ import React from "react";
 import { RouteObject } from "react-router-dom";
 
 import RoutesList from "Router/routesList";
-import Err from "Pages/Err";
 import MainCabinet from "Pages/Cabinet/Main";
-import CoursesCabinet from "Pages/Cabinet/Courses";
+import CoursesCabinet from "Pages/Cabinet/Courses/User";
 import NewsCabinet from "Pages/Cabinet/News";
 import MetaCoursesCabinet from "Pages/Cabinet/MetaCourses";
 import NewsIdCabinet from "Pages/Cabinet/NewsId";
-import CourseIdCabinet from "Pages/Cabinet/CourseId";
-import TestIdCabinet from "Pages/Cabinet/TestId";
+import CourseIdCabinet from "Pages/Cabinet/CourseId/User";
+import TestIdCabinet from "Pages/Cabinet/TestId/User";
 import NotFound from "Pages/NotFound";
 import LazyCabinet from "Layout";
 import { UserRoleEnum } from "Shared/Auth/types/role.enum";
+import Err from "Components/UI-KIT/Err";
 
 export const RoutesUser: RouteObject[] = [
 	{

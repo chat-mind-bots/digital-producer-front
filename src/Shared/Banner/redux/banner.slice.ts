@@ -1,57 +1,81 @@
 import { createSlice } from "@reduxjs/toolkit";
 
 import RequestStatuses from "RequestStatuses";
-import { ITag } from "Shared/Types/tag.type";
+import { BannerEnum } from "Shared/Banner/types/banner.enum";
+import { UserRoleEnum } from "Shared/Auth/types/role.enum";
+import { ButtonSwitchStyleEnum } from "Components/ButtonSwitchStyle/button-switch-style.enum";
 
-export interface IBannerState {
-	id: string;
-	title: string;
-	type: string;
-	role: string;
-	urlButton: string;
-	textButton: string;
-	styleButton: string;
-	name: string;
-	description: string;
-	image: string;
-	isThirdPartySource: boolean;
-	tags: ITag[];
-	createdAt: string;
-	updatedAt: string;
-	statusCode?: RequestStatuses.PENDING;
+import { ITagState } from "../../Tag/redux/tag.slice";
+
+export enum IBannerEnum {
+	id = "id",
+	title = "title",
+	type = "type",
+	role = "role",
+	urlButton = "urlButton",
+	textButton = "textButton",
+	styleButton = "styleButton",
+	name = "name",
+	description = "description",
+	image = "image",
+	isThirdPartySource = "isThirdPartySource",
+	tags = "tags",
+	createdAt = "createdAt",
+	updatedAt = "updatedAt",
+	statusCode = "statusCode",
+	message = "message",
 }
 
-export const initialAuthState: IBannerState = {
-	id: "",
-	title: "",
-	type: "",
-	role: "",
-	urlButton: "",
-	textButton: "",
-	styleButton: "",
-	name: "",
-	description: "",
-	image: "",
-	isThirdPartySource: false,
-	tags: [
+export interface IBannerState {
+	[IBannerEnum.id]: string;
+	[IBannerEnum.title]: string;
+	[IBannerEnum.type]?: BannerEnum;
+	[IBannerEnum.role]?: UserRoleEnum;
+	[IBannerEnum.urlButton]: string;
+	[IBannerEnum.textButton]: string;
+	[IBannerEnum.styleButton]?: ButtonSwitchStyleEnum;
+	[IBannerEnum.name]: string;
+	[IBannerEnum.description]: string;
+	[IBannerEnum.image]: string;
+	[IBannerEnum.isThirdPartySource]: boolean;
+	[IBannerEnum.tags]: ITagState[];
+	[IBannerEnum.createdAt]: string;
+	[IBannerEnum.updatedAt]: string;
+	[IBannerEnum.statusCode]?: RequestStatuses;
+	[IBannerEnum.message]?: string[];
+}
+
+export const initialBannerState: IBannerState = {
+	[IBannerEnum.id]: "",
+	[IBannerEnum.title]: "",
+	[IBannerEnum.type]: undefined,
+	[IBannerEnum.role]: undefined,
+	[IBannerEnum.urlButton]: "",
+	[IBannerEnum.textButton]: "",
+	[IBannerEnum.styleButton]: undefined,
+	[IBannerEnum.name]: "",
+	[IBannerEnum.description]: "",
+	[IBannerEnum.image]: "",
+	[IBannerEnum.isThirdPartySource]: false,
+	[IBannerEnum.tags]: [
 		{
-			id: 0,
+			id: "0",
 			name: "",
 			background: "",
 			color: "",
 		},
 	],
-	createdAt: "",
-	updatedAt: "",
-	statusCode: RequestStatuses.PENDING,
+	[IBannerEnum.createdAt]: "",
+	[IBannerEnum.updatedAt]: "",
+	[IBannerEnum.statusCode]: RequestStatuses.PENDING,
 };
 
 export const bannerSlice = createSlice({
 	name: "banner",
-	initialState: initialAuthState,
+	initialState: initialBannerState,
 	reducers: {
 		undefined() {
-			return initialAuthState;
+			return initialBannerState;
 		},
 	},
 });

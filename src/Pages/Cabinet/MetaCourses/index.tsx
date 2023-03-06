@@ -1,53 +1,21 @@
 import React from "react";
 
-import { useGetCoursesQuery } from "Store/api/course/course.api";
-import { BreadCrumbsArrayType } from "Components/UI-KIT/BreadCrumbs";
-import RoutesList from "Router/routesList";
-import WrapperContent from "Components/WrapperContent";
-import CourseCard from "Components/UI-KIT/CourseCard";
-import WrapperRequest from "Components/WrapperRequest";
 import Banner from "Components/UI-KIT/Banner";
 import { UserRoleEnum } from "Shared/Auth/types/role.enum";
 import { BannerEnum } from "Shared/Banner/types/banner.enum";
+import Courses from "Components/UI-KIT/Courses";
 
 import * as ST from "./styled";
-
-const defaultBreadCrumbs: BreadCrumbsArrayType[] = [
-	{ id: 1, name: "Главная", url: RoutesList.USER },
-	{ id: 2, name: "Курсы Meta", url: RoutesList.META_COURSES },
-];
+import { CoursesStatuses } from "../../../Shared/Courses/redux/course.api";
 
 const MetaCourses = () => {
-	const ptops = useGetCoursesQuery("metaCourses");
-	const { data, isError, isLoading } = ptops;
-
 	return (
 		<ST.MetaCourses>
-			<ST.WrapperCourses>
-				<WrapperContent header={[...defaultBreadCrumbs]}>
-					<ST.Wrapper>
-						<WrapperRequest
-							isError={isError}
-							isLoading={isLoading}
-						>
-							<>
-								{data &&
-									data.list.map((course) => (
-										<CourseCard
-											key={`Courses-CourseCard-${course.id}`}
-											url={`${RoutesList.COURSE_ID}${course.id}`}
-											title={course.name}
-											description={course.description}
-											levelDifficulty={course.levelDifficulty}
-											tagsColors={data.tagsColors}
-											tags={course.tags}
-										/>
-									))}
-							</>
-						</WrapperRequest>
-					</ST.Wrapper>
-				</WrapperContent>
-			</ST.WrapperCourses>
+			<Courses
+				role={UserRoleEnum.USER}
+				header={"Курсы мета"}
+				status={CoursesStatuses.AVAILABLE}
+			/>
 			<Banner
 				role={UserRoleEnum.USER}
 				type={BannerEnum.BANNER_RIGHT}

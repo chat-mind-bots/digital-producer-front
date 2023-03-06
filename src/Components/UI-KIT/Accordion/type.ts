@@ -1,21 +1,21 @@
 export type AccordionProps = {
 	array: AccordionType[];
 	handleClick: (props: HandleClickType) => void;
-	onClickAddLesson?: () => void;
-	onClickAddModule?: () => void;
 };
 
 export type AccordionType = {
-	id: number;
+	id: string;
 	name: string;
+	logicNumber: number;
 	items: {
-		id: number;
+		id: string;
 		name: string;
 		isActive: boolean;
+		logicNumber: number;
 	}[];
 };
 
 export type HandleClickType = {
-	moduleId: number;
-	itemId: number;
+	moduleId: string;
+	itemId: string;
 };

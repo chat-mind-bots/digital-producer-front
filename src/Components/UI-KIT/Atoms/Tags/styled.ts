@@ -23,4 +23,11 @@ export const Tag = styled.p<TagProps>`
 	color: ${({ color }) => color};
 	border-radius: 3px;
 	padding: 3px 8px;
+	text-overflow: ellipsis;
+	overflow: hidden;
+	-webkit-line-clamp: 1;
+	display: -webkit-box;
+	word-wrap: break-word;
+	-webkit-box-orient: vertical;
+	max-width: 112px;
 `;

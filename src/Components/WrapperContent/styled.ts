@@ -27,4 +27,7 @@ export const Content = styled.div``;
 
 export const WrapperBreadCrumbs = styled.div`
 	padding-bottom: 28px;
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
 `;

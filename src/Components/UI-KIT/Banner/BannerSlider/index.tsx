@@ -1,16 +1,26 @@
 import React, { FC, useEffect, useState } from "react";
+import { Link } from "react-router-dom";
 
-import Button from "Components/UI-KIT/Atoms/Button";
 import Tags from "Components/UI-KIT/Atoms/Tags";
-import Colors from "Colors";
 import Image from "Components/UI-KIT/Atoms/Image";
 import BannerProps from "Components/UI-KIT/Banner/banner-props.type";
 import Loader from "Components/UI-KIT/Loader";
 import { ReactComponent as IconForInsight4 } from "Icons/IconForInsight4.svg";
+import openFileBlank from "Utils/openFileBlank";
+import ButtonSwitchStyle from "Components/ButtonSwitchStyle";
 
 import * as ST from "./styled";
+import { routeBuilder } from "../../../../Router/services/route-builder";
+import RoutesList from "../../../../Router/routesList";
+import {
+	IBannerEnum,
+	IBannerState,
+} from "../../../../Shared/Banner/redux/banner.slice";
 
-const Insights: FC<BannerProps> = ({ result }) => {
+const Insights: FC<BannerProps & Pick<IBannerState, IBannerEnum.role>> = ({
+	result,
+	role,
+}) => {
 	const data = result;
 	const [numberPosition, setNumberPosition] = useState<string | undefined>();
 	const currentObject =
@@ -36,18 +46,39 @@ const Insights: FC<BannerProps> = ({ result }) => {
 						</ST.WrapperText>
 					</ST.WrapperInfoContent>
 					<ST.WrapperButton>
-						<Button
-							title={currentObject.textButton}
-							padding={"11px 28px"}
-							fontSize={"14px"}
-							lineHeight={"20px"}
-							fontWeight={"600"}
-							background={Colors.BLUE}
-							color={Colors.WHITE}
-							backgroundAnimation={Colors.BLUE_DARK}
-							colorHover={Colors.WHITE}
-							width={"max-content"}
-						/>
+						{currentObject.isThirdPartySource ? (
+							<Link
+								to={
+									role
+										? `${routeBuilder([
+												RoutesList[role],
+												currentObject.urlButton as RoutesList,
+										  ])}`
+										: ""
+								}
+							>
+								<ButtonSwitchStyle
+									title={currentObject.textButton}
+									padding={"11px 28px"}
+									fontSize={"14px"}
+									lineHeight={"20px"}
+									fontWeight={"600"}
+									width={"max-content"}
+									style={currentObject.styleButton}
+								/>
+							</Link>
+						) : (
+							<ButtonSwitchStyle
+								title={currentObject.textButton}
+								padding={"11px 28px"}
+								fontSize={"14px"}
+								lineHeight={"20px"}
+								fontWeight={"600"}
+								width={"max-content"}
+								style={currentObject.styleButton}
+								onClick={() => openFileBlank(currentObject.urlButton)}
+							/>
+						)}
 					</ST.WrapperButton>
 				</ST.WrapperContent>
 				<ST.ImageWrapper>

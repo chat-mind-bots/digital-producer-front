@@ -11,7 +11,7 @@ type TimeProps = {
 const Time: FC<TimeProps> = ({ value }) => (
 	<ST.Time>
 		<Clock />
-		<ST.Value>{value}</ST.Value>
+		<ST.Value>{value} мин</ST.Value>
 	</ST.Time>
 );
 

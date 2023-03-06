@@ -21,11 +21,12 @@ export const SearchWrapper = styled.div<Props>`
 	width: 100%;
 	color: ${({ isFocus }) => (isFocus ? Colors.BLUE : Colors.GREY1)};
 	position: relative;
-	background: ${Colors.WHITE4};
+	background: ${Colors.WHITE3};
 	border-radius: 12px;
 	border: ${({ isFocus }) =>
 		isFocus ? `2px solid ${Colors.BLUE}` : `2px solid ${Colors.TRANSPARENT}`};
 	transition: 0.6s;
+	overflow: hidden;
 	& svg {
 		position: absolute;
 		pointer-events: none;
@@ -48,4 +49,5 @@ export const SearchElement = styled.input<Props>`
 	padding: 20px 16px 20px 68px;
 	background: transparent;
 	color: ${Colors.BLACK1};
+	max-width: calc(100% - 83px);
 `;

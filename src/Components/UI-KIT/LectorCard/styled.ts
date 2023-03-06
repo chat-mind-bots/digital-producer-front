@@ -7,7 +7,7 @@ export const LectorCard = styled.div`
 	width: 100%;
 	display: flex;
 	flex-wrap: wrap;
-	gap: 10px;
+	gap: 20px;
 	background: ${Colors.WHITE};
 	border-radius: 24px;
 	padding: 18px 18px 24px;
@@ -49,11 +49,26 @@ export const Name = styled.p`
 	width: 100%;
 	line-height: 140%;
 	color: ${Colors.BLACK1};
+	text-align: center;
 `;
 
-export const Description = styled.p`
-	font-weight: 400;
-	font-size: 14px;
-	line-height: 150%;
-	color: ${Colors.GREY1};
+export const ImageWrapper = styled.div`
+	width: 100%;
+	height: 200px;
+	overflow: hidden;
+`;
+
+export const ImageDefault = styled.div`
+	width: 100%;
+	height: 100%;
+	background: linear-gradient(-125deg, #ffffff, #2e6cee);
+	font-weight: 500;
+	font-size: 32px;
+	line-height: 16px;
+	color: ${Colors.WHITE};
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	border-radius: 16px;
+	overflow: hidden;
 `;

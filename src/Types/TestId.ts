@@ -1,5 +1,5 @@
 // ПРИМЕР: Тест Id
-// URL: /test/id
+// URL: /BannerList/id
 // METHOD: GET
 // AUTH: TRUE
 

@@ -1,13 +1,14 @@
 import React, { FC } from "react";
 import { Link } from "react-router-dom";
 
-import Tags, { TagType } from "Components/UI-KIT/Atoms/Tags";
+import Tags from "Components/UI-KIT/Atoms/Tags";
 
 import * as ST from "./styled";
+import { ITagState } from "../../../Shared/Tag/redux/tag.slice";
 
 type ReadMoreCardProps = {
 	name: string;
-	tags: TagType[];
+	tags: ITagState[];
 	tagsColors: boolean;
 	url: string;
 	description: string;

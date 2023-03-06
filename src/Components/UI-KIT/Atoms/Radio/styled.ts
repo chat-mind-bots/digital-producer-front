@@ -11,7 +11,7 @@ export const Radio = styled.p<RadioProps>`
   height: 20px;
   border: 2px solid ${({ isActive }) =>
 		isActive ? Colors.TRANSPARENT : Colors.GREY1};
-  border-radius: 12px;
+  border-radius: 50%;
   box-sizing: border-box;
   background: ${({ isActive }) =>
 		isActive ? Colors.BLUE : Colors.TRANSPARENT}};

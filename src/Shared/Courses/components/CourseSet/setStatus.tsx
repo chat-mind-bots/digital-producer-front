@@ -1,0 +1,78 @@
+import React, {
+	Children,
+	cloneElement,
+	FC,
+	useCallback,
+	useEffect,
+} from "react";
+import toast, { Toaster } from "react-hot-toast";
+import { QueryStatus } from "@reduxjs/toolkit/query";
+
+import ModalToaster from "Components/ModalWindows/WrappersModalWindows/ModalToaster";
+
+import { useAppSelector } from "../../../../Hooks/redux";
+import RequestStatuses from "../../../../RequestStatuses";
+import {
+	GetCourseApiProps,
+	UpdateCourseStatusApiProps,
+	useUpdateCourseStatusMutation,
+} from "../../redux/course.api";
+import CourseResultType from "../../../../Components/UI-KIT/Course/course-props.type";
+
+export const CourseSetStatus: FC<
+	Pick<UpdateCourseStatusApiProps, "status" | "idCourse"> &
+		Pick<CourseResultType, "refetch"> &
+		Record<"children", React.ReactElement>
+> = ({ refetch, children, status, idCourse }) => {
+	const auth = useAppSelector((state) => state.auth);
+	const queryAuth: GetCourseApiProps = {
+		authToken: auth.token ?? "",
+	};
+
+	const [updateStatusCourse, resultUpdateStatusCourse] =
+		useUpdateCourseStatusMutation();
+
+	const updateStatus = useCallback(
+		() =>
+			updateStatusCourse({
+				...queryAuth,
+				idCourse,
+				status,
+			}),
+		[updateStatusCourse]
+	);
+
+	useEffect(() => {
+		if (resultUpdateStatusCourse.status === QueryStatus.fulfilled) {
+			if (
+				resultUpdateStatusCourse.data?.statusCode === RequestStatuses.SUCCESS ||
+				resultUpdateStatusCourse.data?.statusCode ===
+					RequestStatuses.SUCCESS_201
+			) {
+				toast.success("Все гуд статус изменнен");
+				refetch && refetch();
+			} else {
+				resultUpdateStatusCourse.data?.message?.forEach((e) => {
+					toast.error(`Ошибка:${e}`);
+				});
+			}
+		}
+	}, [resultUpdateStatusCourse]);
+
+	return (
+		<>
+			<span onClick={() => updateStatus()}>
+				{Children.toArray(children).map((child) =>
+					cloneElement(child as React.ReactElement<CourseResultType>, {})
+				)}
+			</span>
+
+			<ModalToaster>
+				<Toaster
+					position="bottom-left"
+					reverseOrder={false}
+				/>
+			</ModalToaster>
+		</>
+	);
+};

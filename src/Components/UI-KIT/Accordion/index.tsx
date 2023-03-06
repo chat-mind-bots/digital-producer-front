@@ -4,39 +4,53 @@ import { ReactComponent as ArrowDown } from "Icons/ArrowDown.svg";
 
 import { AccordionProps } from "./type";
 import * as ST from "./styled";
+import sortPosition from "../../../Utils/sortPosition";
 
-const Accordion: FC<AccordionProps> = ({ array, handleClick }) => {
-	const [open, setOpen] = useState<number>();
+const Accordion: FC<AccordionProps & { isOnClick: boolean }> = ({
+	array,
+	handleClick,
+	isOnClick,
+}) => {
+	const [open, setOpen] = useState<string>();
 
 	return (
 		<ST.Accordion>
 			<ST.Title>Модули курса:</ST.Title>
 			<ST.Wrapper>
-				{array.map((module, indexModule) => (
-					<ST.WrapperModule key={`Accordion-module-${module.id}`}>
-						<ST.Name isActive={open === module.id}>
-							модуль {indexModule + 1}: {module.name}
-							<ArrowDown
-								onClick={() =>
-									setOpen(open === module.id ? undefined : module.id)
-								}
-							/>
-						</ST.Name>
-						<ST.WrapperItems isActive={open === module.id}>
-							{module.items.map((item, indexItem) => (
-								<ST.Item
-									onClick={() =>
-										handleClick({ moduleId: module.id, itemId: item.id })
-									}
-									isActive={item.isActive}
-									key={`Accordion-item-${item.id}`}
-								>
-									<ST.Number>{indexItem + 1}.</ST.Number>
-									{item.name}
-								</ST.Item>
-							))}
-						</ST.WrapperItems>
-					</ST.WrapperModule>
+				{sortPosition(array).map((module, indexModule) => (
+					<ST.WrapperItem key={`Accordion-module-${module.id}`}>
+						<ST.WrapperModule
+							onClick={() =>
+								isOnClick && setOpen(open === module.id ? undefined : module.id)
+							}
+						>
+							<ST.Name isActive={open === module.id}>
+								<ST.NameCurrent>
+									модуль {indexModule + 1}: {module.name}
+								</ST.NameCurrent>
+								<ArrowDown />
+							</ST.Name>
+							<ST.WrapperItems isActive={open === module.id}>
+								{sortPosition(module.items).map((item, indexItem) => (
+									<ST.WrapperItem key={`Accordion-item-${item.id}`}>
+										<ST.Item
+											onClick={() =>
+												isOnClick &&
+												handleClick({
+													moduleId: module.id,
+													itemId: item.id,
+												})
+											}
+											isActive={item.isActive}
+										>
+											<ST.Number>{indexItem + 1}.</ST.Number>
+											<ST.NameCurrent>{item.name}</ST.NameCurrent>
+										</ST.Item>
+									</ST.WrapperItem>
+								))}
+							</ST.WrapperItems>
+						</ST.WrapperModule>
+					</ST.WrapperItem>
 				))}
 			</ST.Wrapper>
 		</ST.Accordion>

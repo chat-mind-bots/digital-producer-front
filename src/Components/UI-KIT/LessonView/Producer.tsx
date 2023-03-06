@@ -1,25 +1,42 @@
 import React, { FC } from "react";
 
-import { ReactComponent as IconForLessonCard } from "Icons/IconForLessonCard.svg";
-import { ReactComponent as StatusFalse } from "Icons/StatusFalse.svg";
 import LevelDifficulty, {
 	LoadingLevelDifficulty,
 } from "Components/UI-KIT/Atoms/LevelDificulty";
-import { LessonType, OtherNote } from "Types/CourseId";
-import Button from "Components/UI-KIT/Atoms/Button";
-import Colors from "Colors";
+import { ICourseEnum, ICourseState } from "Shared/Courses/redux/course.slice";
 
 import * as ST from "./styled";
+import Image from "../Atoms/Image";
+import PlayVideo from "../Atoms/PlayVideo";
+import {
+	CoursesStatuses,
+	GetCourseApiProps,
+} from "../../../Shared/Courses/redux/course.api";
+import { CourseUpdate } from "../../../Shared/Courses/components/CourseSet/update";
+import CourseResultType from "../Course/course-props.type";
+import { CourseSetStatus } from "../../../Shared/Courses/components/CourseSet/setStatus";
+import { ReactComponent as StatusWait } from "../../../Icons/StatusWait.svg";
+import { ReactComponent as Progress } from "../../../Icons/Progress.svg";
+import { ReactComponent as StatusTrue } from "../../../Icons/StatusTrue.svg";
 
-type LessonViewProps = LessonType & {
+type LessonViewProps = Pick<
+	ICourseState,
+	| ICourseEnum.id
+	| ICourseEnum.name
+	| ICourseEnum.levelDifficulty
+	| ICourseEnum.description
+	| ICourseEnum.language
+	| ICourseEnum.notes
+	| ICourseEnum.image
+	| ICourseEnum.video
+	| ICourseEnum.status
+> & {
 	studentsLength: number;
-	language: string;
-	otherNotes: OtherNote[];
 	lessonsLength: number;
 	modulesLength: number;
 	isLoading: boolean;
-	onClick: () => void;
-};
+} & Pick<GetCourseApiProps, "idCourse"> &
+	Pick<CourseResultType, "refetch">;
 
 const LessonView: FC<LessonViewProps> = ({
 	name,
@@ -27,25 +44,66 @@ const LessonView: FC<LessonViewProps> = ({
 	description,
 	studentsLength,
 	language,
-	otherNotes,
+	notes,
 	lessonsLength,
 	modulesLength,
 	isLoading,
-	onClick,
+	image,
+	idCourse,
+	status,
+	refetch,
 }) => (
 	<ST.LessonView>
 		<ST.WrapperVideo isLoading={isLoading}>
 			<ST.Loader />
-			<IconForLessonCard />
+			<Image src={image} />
+			<PlayVideo isOpen={!isLoading} />
 		</ST.WrapperVideo>
 		<ST.Title isLoading={isLoading}>
-			{name} <StatusFalse />
+			{name}
+
+			<ST.WrapperStatuses>
+				{!!status && (
+					<ST.StatusDisables isActive={status === CoursesStatuses.AVAILABLE}>
+						<StatusTrue />
+					</ST.StatusDisables>
+				)}
+
+				{idCourse && (
+					<CourseSetStatus
+						status={CoursesStatuses.IN_REVIEW}
+						idCourse={idCourse}
+						refetch={refetch}
+					>
+						<ST.Status isActive={status === CoursesStatuses.IN_REVIEW}>
+							<StatusWait />
+						</ST.Status>
+					</CourseSetStatus>
+				)}
+
+				{status !== CoursesStatuses.IN_REVIEW && idCourse && (
+					<CourseSetStatus
+						status={CoursesStatuses.IN_PROGRESS}
+						idCourse={idCourse}
+						refetch={refetch}
+					>
+						<ST.Status isActive={status === CoursesStatuses.IN_PROGRESS}>
+							<Progress />
+						</ST.Status>
+					</CourseSetStatus>
+				)}
+			</ST.WrapperStatuses>
 		</ST.Title>
 		<ST.WrapperLevelDifficulty>
 			{isLoading ? (
 				<LoadingLevelDifficulty />
 			) : (
-				<LevelDifficulty data={levelDifficulty} />
+				<LevelDifficulty
+					data={{
+						curren: levelDifficulty,
+						max: 3,
+					}}
+				/>
 			)}
 		</ST.WrapperLevelDifficulty>
 		<ST.WrapperInfo>
@@ -54,7 +112,7 @@ const LessonView: FC<LessonViewProps> = ({
 				delay={0.1}
 				isLoading={isLoading}
 			>
-				<ST.SubTitleInfo>{description}</ST.SubTitleInfo>
+				<ST.SubTitleInfo dangerouslySetInnerHTML={{ __html: description }} />
 			</ST.WrapperSubTitle>
 			<ST.TitleInfo>Информация:</ST.TitleInfo>
 			<ST.WrapperSubTitle
@@ -82,31 +140,26 @@ const LessonView: FC<LessonViewProps> = ({
 				<ST.SubTitleInfo>Язык: {language}</ST.SubTitleInfo>
 			</ST.WrapperSubTitle>
 			<ST.TitleInfo>Заметки (доп. описание):</ST.TitleInfo>
-			{otherNotes.map((nete) => (
-				<ST.WrapperSubTitle
-					isLoading={isLoading}
-					key={`note-${nete.id}`}
-					delay={0.6}
-				>
-					<ST.SubTitleInfo>
-						{nete.name}: {nete.value}
-					</ST.SubTitleInfo>
-				</ST.WrapperSubTitle>
-			))}
+			{notes &&
+				notes.map((nete, index) => (
+					<ST.WrapperSubTitle
+						isLoading={isLoading}
+						key={`note-${index}-${nete.name}-${nete.value}`}
+						delay={0.6}
+					>
+						<ST.SubTitleInfo>
+							{nete.name}: {nete.value}
+						</ST.SubTitleInfo>
+					</ST.WrapperSubTitle>
+				))}
+
 			<ST.WrapperButton>
-				<Button
-					title={"Редактировать"}
-					padding={"11px 28px"}
-					fontSize={"14px"}
-					lineHeight={"20px"}
-					fontWeight={"600"}
-					background={Colors.BLUE}
-					color={Colors.WHITE}
-					backgroundAnimation={Colors.BLUE_DARK}
-					colorHover={Colors.WHITE}
-					width={"100%"}
-					onClick={onClick}
-				/>
+				{idCourse && (
+					<CourseUpdate
+						idCourse={idCourse}
+						refetch={refetch}
+					/>
+				)}
 			</ST.WrapperButton>
 		</ST.WrapperInfo>
 	</ST.LessonView>

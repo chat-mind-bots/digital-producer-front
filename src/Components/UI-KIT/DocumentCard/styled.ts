@@ -8,6 +8,7 @@ export const DocumentCard = styled.div`
 	width: 100%;
 	box-sizing: border-box;
 	background: ${Colors.WHITE};
+	position: relative;
 `;
 
 export const DocumentCardProducer = styled.div`
@@ -16,19 +17,15 @@ export const DocumentCardProducer = styled.div`
 	background: ${Colors.BLUE};
 	border-radius: 24px;
 	width: 328px;
-	height: 99px;
+	height: auto;
 	box-sizing: border-box;
 	display: flex;
 	align-items: center;
 	justify-content: center;
-	border: 2px solid ${Colors.TRANSPARENT};
 	cursor: pointer;
-	&:hover {
-		border: 2px solid ${Colors.WHITE2};
-	}
 `;
 
-export const Name = styled.p`
+export const Name = styled.div`
 	font-family: "Vela Sans";
 	font-style: normal;
 	font-weight: 700;
@@ -39,9 +36,25 @@ export const Name = styled.p`
 	justify-content: space-between;
 	width: 100%;
 	align-items: center;
+	text-overflow: ellipsis;
+	overflow: hidden;
+	-webkit-line-clamp: 1;
+	display: -webkit-box;
+	word-wrap: break-word;
+	-webkit-box-orient: vertical;
 	& svg {
 		transform: rotate(-90deg);
 	}
+`;
+
+export const NameCurrent = styled.p`
+	max-width: 260px;
+	text-overflow: ellipsis;
+	overflow: hidden;
+	-webkit-line-clamp: 1;
+	display: -webkit-box;
+	word-wrap: break-word;
+	-webkit-box-orient: vertical;
 `;
 
 export const Description = styled.p`
@@ -50,13 +63,40 @@ export const Description = styled.p`
 	font-size: 14px;
 	line-height: 150%;
 	color: ${Colors.GREY1};
+	-webkit-line-clamp: 10000;
+	display: -webkit-box;
+	word-wrap: break-word;
+	-webkit-box-orient: vertical;
 `;
 
 export const Wrapper = styled.div`
 	padding: 18px;
-	border: 2px solid ${Colors.TRANSPARENT};
 	cursor: pointer;
+	border: 2px solid ${Colors.TRANSPARENT};
+	border-radius: 16px;
+	position: relative;
+	height: 100%;
+	box-sizing: border-box;
 	&:hover {
 		border: 2px solid ${Colors.WHITE2};
+	}
+`;
+
+export const UpdateIco = styled.div`
+	position: absolute;
+	top: 15px;
+	right: 15px;
+	background: ${Colors.BLUE};
+	width: 36px;
+	height: 36px;
+	border-radius: 50%;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	cursor: pointer;
+	&:hover {
+		& path {
+			fill: ${Colors.WHITE};
+		}
 	}
 `;

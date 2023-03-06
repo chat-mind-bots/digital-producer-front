@@ -6,13 +6,18 @@ enum RoutesList {
 	LOGIN = "/login",
 	REGISTRATION = "/registration",
 
-	COURSES = "courses",
+	COURSES = "course",
 	NEWS = "news",
 	META_COURSES = "metaCourses",
+	COURSES_REVIEW = "reviewCourses",
 	DOCUMENT_ID = "document/:id",
 	NEWS_ID = "news/:id",
 	COURSE_ID = "course/:id",
 	TEST_ID = "test/:id",
+	BANNERS = "banners",
+	TEXT_EDITOR = "textEditor",
+	CATEGORIES = "categories",
+	USERS = "users",
 
 	// USER
 	USER = "user",

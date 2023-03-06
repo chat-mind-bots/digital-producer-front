@@ -5,7 +5,7 @@ import { TestIdType } from "Types/TestId";
 import { TestIdData } from "./moks";
 
 export const testApi = createApi({
-	reducerPath: "test/api",
+	reducerPath: "BannerList/api",
 	baseQuery: fetchBaseQuery({
 		baseUrl: "https://api.github.com/",
 	}),

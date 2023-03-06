@@ -15,3 +15,11 @@ export const userFromDtoService = (
 		firstName: first_name,
 	};
 };
+
+export const userFromDtoServiceArray = (
+	dto: IAuthUserDTO[]
+): IAuthUserState[] => {
+	return dto.map((user) => {
+		return userFromDtoService(user, "");
+	});
+};

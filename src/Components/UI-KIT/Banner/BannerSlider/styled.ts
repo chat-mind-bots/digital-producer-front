@@ -8,11 +8,11 @@ type CircleItemProps = {
 
 export const Insights = styled.div`
 	max-width: 760px;
-	width: 100%;
 	border-radius: 24px;
 	background: ${Colors.BLUE1};
 	padding: 26px 24px 24px;
 	box-sizing: border-box;
+	width: 760px;
 `;
 
 export const InsightsLoader = styled.div`
@@ -27,6 +27,12 @@ export const Title = styled.p`
 	font-size: 18px;
 	line-height: 24px;
 	color: ${Colors.WHITE};
+	text-overflow: ellipsis;
+	-webkit-line-clamp: 1;
+	display: -webkit-box;
+	word-wrap: break-word;
+	-webkit-box-orient: vertical;
+	overflow: hidden;
 `;
 
 export const WrapperInfo = styled.div`
@@ -49,6 +55,12 @@ export const Name = styled.p`
 	letter-spacing: -0.5px;
 	margin-top: 14px;
 	color: ${Colors.BLACK1};
+	text-overflow: ellipsis;
+	-webkit-line-clamp: 3;
+	display: -webkit-box;
+	word-wrap: break-word;
+	-webkit-box-orient: vertical;
+	overflow: hidden;
 `;
 
 export const Description = styled.p`
@@ -57,6 +69,12 @@ export const Description = styled.p`
 	line-height: 22px;
 	color: ${Colors.GREY1};
 	margin-top: 14px;
+	text-overflow: ellipsis;
+	-webkit-line-clamp: 3;
+	display: -webkit-box;
+	word-wrap: break-word;
+	-webkit-box-orient: vertical;
+	overflow: hidden;
 `;
 
 export const WrapperContent = styled.div`
@@ -92,9 +110,14 @@ export const WrapperButton = styled.div`
 	display: flex;
 	height: max-content;
 	place-self: flex-end;
+	& > button {
+		max-width: 243px;
+	}
 `;
 
-export const WrapperInfoContent = styled.div``;
+export const WrapperInfoContent = styled.div`
+	width: 100%;
+`;
 
 export const ImageWrapper = styled.div`
 	width: 380px;

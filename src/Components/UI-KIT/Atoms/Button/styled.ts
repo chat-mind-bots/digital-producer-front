@@ -1,13 +1,17 @@
 import styled from "styled-components";
 
-import { ButtonOtherStyles } from "./index";
+import Colors from "Colors";
+
+import { ButtonProps } from "./index";
 
 type AnimationListItemProps = {
 	backgroundAnimation: string;
+	disabled?: boolean;
 };
 
 type AnimationWrapperProps = {
 	background: string;
+	disabled?: boolean;
 };
 
 export const AnimationListItem = styled.span<AnimationListItemProps>`
@@ -15,7 +19,8 @@ export const AnimationListItem = styled.span<AnimationListItemProps>`
 	top: 2px;
 	width: 25%;
 	height: 100%;
-	background: ${({ backgroundAnimation }) => backgroundAnimation};
+	background: ${({ backgroundAnimation, disabled }) =>
+		disabled ? Colors.GREY5 : backgroundAnimation};
 	border-radius: 100%;
 	transform: translate3d(0, 150%, 0) scale(1.7);
 	transition: transform 0.45s;
@@ -40,8 +45,8 @@ export const AnimationListItem = styled.span<AnimationListItemProps>`
 	}
 `;
 
-export const Button = styled.button<ButtonOtherStyles>`
-	border: ${({ border }) => border};
+export const Button = styled.button<ButtonProps>`
+	border: ${({ border, disabled }) => !disabled && border};
 	font-weight: ${({ fontWeight }) => fontWeight};
 	font-size: ${({ fontSize }) => fontSize};
 	line-height: ${({ lineHeight }) => lineHeight};
@@ -50,12 +55,19 @@ export const Button = styled.button<ButtonOtherStyles>`
 	padding: ${({ padding }) => padding};
 	width: ${({ width }) => width};
 	border-radius: 10px;
-	color: ${({ color }) => color};
+	color: ${({ color, disabled }) => (disabled ? Colors.WHITE : color)};
 	justify-content: center;
 	background-color: transparent;
 	outline: none;
 	transition: color 0.5s;
 	cursor: pointer;
+	text-overflow: ellipsis;
+	-webkit-line-clamp: 1;
+	display: -webkit-box;
+	word-wrap: break-word;
+	-webkit-box-orient: vertical;
+	overflow: hidden;
+	overflow-wrap: normal;
 	&:before {
 		content: "";
 		z-index: 1;
@@ -104,7 +116,8 @@ export const AnimationWrapper = styled.span<AnimationWrapperProps>`
 	width: 100%;
 	height: 100%;
 	border-radius: 7px;
-	background: ${({ background }) => background};
+	background: ${({ background, disabled }) =>
+		disabled ? Colors.GREY5 : background};
 `;
 
 export const AnimationList = styled.span`

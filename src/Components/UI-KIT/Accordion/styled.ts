@@ -8,6 +8,7 @@ type Props = {
 };
 
 export const Accordion = styled.div`
+	width: 344px;
 	background: ${Colors.WHITE};
 	border-radius: 16px;
 	max-width: 344px;
@@ -17,6 +18,12 @@ export const Accordion = styled.div`
 	top: 129px;
 	position: sticky;
 	border: 2px solid ${Colors.WHITE2};
+	overflow-y: auto;
+	max-height: 357px;
+	&::-webkit-scrollbar {
+		width: 0;
+		border-radius: 10px;
+	}
 	@media (max-width: ${BreakPoints.TABLET}px) {
 		position: fixed;
 		right: 30px;
@@ -44,6 +51,7 @@ export const Name = styled.p<Props>`
 	align-items: center;
 	gap: 18px;
 	padding: 11px 10px;
+	justify-content: space-between;
 	& svg {
 		min-width: max-content;
 		transform: rotate(${({ isActive }) => (isActive ? "180deg" : "0deg")});
@@ -57,6 +65,7 @@ export const Wrapper = styled.div`
 	flex-wrap: wrap;
 	gap: 8px;
 	margin-top: 14px;
+	width: 100%;
 `;
 
 export const WrapperModule = styled.div`
@@ -64,6 +73,8 @@ export const WrapperModule = styled.div`
 	border-radius: 8px;
 	padding: 2px;
 	box-sizing: border-box;
+	width: 100%;
+	cursor: pointer;
 `;
 
 export const Item = styled.p<Props>`
@@ -89,12 +100,65 @@ export const Number = styled.span``;
 
 export const WrapperItems = styled.div<Props>`
 	border-radius: 6px;
-	overflow: hidden;
-	max-height: ${({ isActive }) => (isActive ? "400px" : 0)};
+	overflow-y: auto;
+	overflow-x: hidden;
+	max-height: ${({ isActive }) => (isActive ? "174px" : 0)};
 	transition: 1s;
+	position: relative;
 `;
 
 export const WrapperButtonAddLesson = styled.div`
-	margin-top: 8px;
+	padding-top: 8px;
 	width: 100%;
+	overflow: hidden;
+`;
+
+export const UpdateButton = styled.div`
+	position: absolute;
+	top: 50%;
+	right: 11px;
+	transform: translate(0px, -50%);
+	cursor: progress;
+	opacity: 0;
+	transition: 0.3s;
+	&:hover {
+		& path,
+		circle {
+			stroke: ${Colors.BLUE};
+		}
+	}
+`;
+
+export const UpdateButtonModule = styled.div`
+	position: absolute;
+	top: 10px;
+	right: 13px;
+	cursor: progress;
+	opacity: 0;
+	transition: 0.3s;
+	&:hover {
+		& path,
+		circle {
+			stroke: ${Colors.BLUE};
+		}
+	}
+`;
+
+export const WrapperItem = styled.div`
+	position: relative;
+	width: 100%;
+	&:hover > ${UpdateButton} {
+		opacity: 1;
+	}
+	&:hover > ${UpdateButtonModule} {
+		opacity: 1;
+	}
+`;
+
+export const NameCurrent = styled.span`
+	display: -webkit-box;
+	-webkit-line-clamp: 1;
+	-webkit-box-orient: vertical;
+	overflow: hidden;
+	padding-right: 27px;
 `;

@@ -3,6 +3,8 @@
 // METHOD: GET
 // AUTH: TRUE
 
+import { ITagState } from "../Shared/Tag/redux/tag.slice";
+
 export interface NewsIdType {
 	id: number;
 	name: string;
@@ -11,7 +13,7 @@ export interface NewsIdType {
 	date: string;
 	image: string;
 	tagsColors: boolean;
-	tags: Tag[];
+	tags: ITagState[];
 	readAlsoList: ReadAlsoList[];
 }
 
@@ -19,7 +21,7 @@ export interface ReadAlsoList {
 	id: number;
 	name: string;
 	description: string;
-	tags: Tag[];
+	tags: ITagState[];
 }
 
 export interface Tag {
