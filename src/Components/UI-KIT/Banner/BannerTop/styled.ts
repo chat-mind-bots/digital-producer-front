@@ -1,6 +1,7 @@
 import styled from "styled-components";
 
 import Colors from "Colors";
+import BreakPoints from "BreakPoints";
 
 export const NewsBanner = styled.div`
 	display: flex;
@@ -11,6 +12,12 @@ export const NewsBanner = styled.div`
 	overflow: hidden;
 	height: 100%;
 	min-height: 254px;
+	@media (max-width: ${BreakPoints.MOBILE}px) {
+		display: flex;
+		flex-wrap: wrap;
+		flex-direction: column-reverse;
+		max-width: 760px;
+	}
 `;
 
 export const NewsBannerLoader = styled.div`

@@ -1,6 +1,7 @@
 import styled from "styled-components";
 
-import Colors from "../../../../Colors";
+import Colors from "Colors";
+import BreakPoints from "BreakPoints";
 
 export const NewsesList = styled.div`
 	width: 100%;
@@ -11,6 +12,9 @@ export const NewsesList = styled.div`
 	& a {
 		max-height: 470px;
 		height: 100%;
+	}
+	@media (max-width: ${BreakPoints.TABLET}px) {
+		justify-content: center;
 	}
 `;
 export const WrapperSetting = styled.div`

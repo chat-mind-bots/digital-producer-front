@@ -1,6 +1,7 @@
 import styled from "styled-components";
 
 import Colors from "Colors";
+import BreakPoints from "BreakPoints";
 
 import { FocusType } from "./index";
 
@@ -11,6 +12,9 @@ type Props = {
 
 export const Search = styled.div`
 	width: 100%;
+	@media (max-width: ${BreakPoints.MOBILE}px) {
+		display: none;
+	}
 `;
 
 export const SearchList = styled.div``;

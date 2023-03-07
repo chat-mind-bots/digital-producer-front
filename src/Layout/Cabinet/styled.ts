@@ -21,6 +21,9 @@ export const Content = styled.div`
 		left: 0;
 		top: 0;
 		width: 100%;
+		& > div {
+			justify-content: center;
+		}
 	}
 `;
 

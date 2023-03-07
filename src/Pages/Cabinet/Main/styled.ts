@@ -1,9 +1,17 @@
 import styled from "styled-components";
 
+import BreakPoints from "BreakPoints";
+
 export const Main = styled.div`
 	display: flex;
 	flex-wrap: wrap;
 	gap: 45px;
+	@media (max-width: ${BreakPoints.MOBILE}px) {
+		justify-content: center;
+	}
+	@media (max-width: ${BreakPoints.TABLET}px) {
+		justify-content: center;
+	}
 `;
 
 export const Wrapper = styled.div`
@@ -27,4 +35,5 @@ export const WrapperMain = styled.div`
 	display: flex;
 	flex-wrap: wrap;
 	gap: 45px;
+	width: 100%;
 `;

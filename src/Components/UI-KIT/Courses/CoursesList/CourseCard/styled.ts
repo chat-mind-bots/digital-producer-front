@@ -1,28 +1,10 @@
 import styled from "styled-components";
 
-import BreakPoints from "BreakPoints";
 import Colors from "Colors";
+import BreakPoints from "BreakPoints";
 
 export const CourseCard = styled.div`
 	width: 100%;
-`;
-
-export const CourseCardProducer = styled.div`
-	font-size: 100px;
-	color: ${Colors.WHITE};
-	background: ${Colors.BLUE};
-	border-radius: 16px;
-	width: 100%;
-	height: 216px;
-	box-sizing: border-box;
-	display: flex;
-	align-items: center;
-	justify-content: center;
-	border: 2px solid ${Colors.TRANSPARENT};
-	cursor: pointer;
-	&:hover {
-		border: 2px solid ${Colors.WHITE2};
-	}
 `;
 
 export const MainWrapper = styled.div`

@@ -22,6 +22,9 @@ export const WrapperIcon = styled.div`
 			width: 100%;
 		}
 	}
+	@media (max-width: ${BreakPoints.MOBILE}px) {
+		display: none;
+	}
 `;
 export const WrapperInfo = styled.div``;
 

@@ -1,6 +1,7 @@
 import styled from "styled-components";
 
 import Colors from "Colors";
+import BreakPoints from "BreakPoints";
 
 type CircleItemProps = {
 	isActive: boolean;
@@ -12,7 +13,10 @@ export const Insights = styled.div`
 	background: ${Colors.BLUE1};
 	padding: 26px 24px 24px;
 	box-sizing: border-box;
-	width: 760px;
+	width: 100%;
+	@media (max-width: ${BreakPoints.MOBILE}px) {
+		display: none;
+	}
 `;
 
 export const InsightsLoader = styled.div`

@@ -7,7 +7,7 @@ export const AddBlock = styled.div`
 	padding: 20px 20px 32px;
 	border-radius: 24px;
 	background: ${Colors.WHITE};
-	max-width: 300px;
+	max-width: 298px;
 	border: 1px solid ${Colors.WHITE2};
 	position: sticky;
 	top: 129px;
