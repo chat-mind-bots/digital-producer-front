@@ -8,6 +8,7 @@ import Colors from "Colors";
 
 import * as ST from "./styled";
 import checkAuth from "../../Utils/CheckAuth";
+import Image from "../../Components/UI-KIT/Atoms/Image";
 
 type MainProps = {
 	isRegistration?: boolean;
@@ -20,10 +21,7 @@ const Main: FC<MainProps> = ({ isRegistration }) => {
 	return (
 		<ST.Main>
 			<ST.Image>
-				{/*<img*/}
-				{/*	src={"/mainPage.svg"}*/}
-				{/*	alt="Заставка сайта"*/}
-				{/*/>*/}
+				<Image src={"/mainPage.png"} />
 			</ST.Image>
 			<ST.Wrapper>
 				<ST.Header>
