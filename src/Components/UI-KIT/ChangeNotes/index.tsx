@@ -1,5 +1,3 @@
-import { isArray } from "util";
-
 import React, { FC } from "react";
 import { FormikErrors, FormikTouched, FormikValues } from "formik";
 
@@ -36,11 +34,11 @@ const ChangeNotes: FC<ChangeNotesProps> = ({
 	touched,
 	removeItem,
 }) => {
-	const errorTextInput = isArray(errors?.notes)
+	const errorTextInput = Array.isArray(errors?.notes)
 		? errors?.notes[index]
 		: undefined;
 
-	const touchedTextInput = isArray(touched?.notes)
+	const touchedTextInput = Array.isArray(touched?.notes)
 		? !!touched?.notes[index]
 		: false;
 

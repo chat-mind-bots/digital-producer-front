@@ -1,5 +1,3 @@
-import { isArray } from "util";
-
 import { SketchPicker } from "react-color";
 import React, { FC, useState } from "react";
 import { FormikErrors, FormikTouched, FormikValues } from "formik";
@@ -42,11 +40,11 @@ const ChangeTags: FC<ChangeTagsProps> = ({
 	const [backgroundWindow, setBackgroundWindow] = useState<boolean>(false);
 	const [colorWindow, setColorWindow] = useState<boolean>(false);
 
-	const errorTextInput = isArray(errors?.tags)
+	const errorTextInput = Array.isArray(errors?.tags)
 		? errors?.tags[index]
 		: undefined;
 
-	const touchedTextInput = isArray(touched?.tags)
+	const touchedTextInput = Array.isArray(touched?.tags)
 		? !!touched?.tags[index]
 		: false;
 

@@ -1,5 +1,3 @@
-import { isArray } from "util";
-
 import React, { FC } from "react";
 import { FormikErrors, FormikTouched, FormikValues } from "formik";
 
@@ -34,11 +32,11 @@ const ChangeAnswers: FC<ChangeTagsProps> = ({
 	touched,
 	removeItem,
 }) => {
-	const errorTextInput = isArray(errors?.answers)
+	const errorTextInput = Array.isArray(errors?.answers)
 		? errors?.answers[index]
 		: undefined;
 
-	const touchedTextInput = isArray(touched?.answers)
+	const touchedTextInput = Array.isArray(touched?.answers)
 		? !!touched?.answers[index]
 		: false;
 
