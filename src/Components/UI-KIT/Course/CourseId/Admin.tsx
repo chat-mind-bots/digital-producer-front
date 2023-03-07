@@ -199,7 +199,7 @@ const CourseId: FC<ICourseState & Pick<CourseResultType, "refetch">> = ({
 						<ST.Content>
 							{owner && (
 								<LectorCard
-									name={owner.firstName || ""}
+									name={owner.username || ""}
 									img={owner.photos?.big || ""}
 								/>
 							)}

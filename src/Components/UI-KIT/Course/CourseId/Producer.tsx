@@ -156,6 +156,9 @@ const CourseId: FC<ICourseState & Pick<CourseResultType, "refetch">> = ({
 		[getLesson]
 	);
 
+	// eslint-disable-next-line no-console
+	console.log(lesson);
+
 	return owner?.id === auth.id ? (
 		<ST.CourseID>
 			<ST.WrapperInfo>
@@ -213,7 +216,7 @@ const CourseId: FC<ICourseState & Pick<CourseResultType, "refetch">> = ({
 							<ST.Content>
 								{owner && (
 									<LectorCard
-										name={owner.firstName || ""}
+										name={owner.username || ""}
 										img={owner.photos?.big || ""}
 									/>
 								)}
@@ -316,6 +319,7 @@ const CourseId: FC<ICourseState & Pick<CourseResultType, "refetch">> = ({
 					array={accordion}
 					handleClick={handleClickAccordion}
 					refetch={refetch}
+					refetchLesson={() => state.lesson && requestLesson(state.lesson)}
 					idCourse={id}
 					isOnClick={!loading}
 				/>

@@ -48,7 +48,7 @@ const ButtonSwitchStyle: FC<ButtonSwitchStyleProps> = ({
 					onClick={onClick}
 				/>
 			);
-		case ButtonSwitchStyleEnum.SECONDARY:
+		case ButtonSwitchStyleEnum.PRIMARY:
 			return (
 				<Button
 					title={title}

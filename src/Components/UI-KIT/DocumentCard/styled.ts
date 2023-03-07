@@ -42,9 +42,6 @@ export const Name = styled.div`
 	display: -webkit-box;
 	word-wrap: break-word;
 	-webkit-box-orient: vertical;
-	& svg {
-		transform: rotate(-90deg);
-	}
 `;
 
 export const NameCurrent = styled.p`
@@ -79,6 +76,15 @@ export const Wrapper = styled.div`
 	box-sizing: border-box;
 	&:hover {
 		border: 2px solid ${Colors.WHITE2};
+	}
+`;
+
+export const Svg = styled.div`
+	position: absolute;
+	top: 21px;
+	right: 0;
+	& svg {
+		transform: rotate(-90deg);
 	}
 `;
 

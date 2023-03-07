@@ -194,7 +194,7 @@ const CourseId: FC<ICourseState & Pick<CourseResultType, "refetch">> = ({
 						<ST.Content>
 							{owner && (
 								<LectorCard
-									name={owner.firstName || ""}
+									name={owner.username || ""}
 									img={owner.photos?.big || ""}
 								/>
 							)}
@@ -266,7 +266,7 @@ const CourseId: FC<ICourseState & Pick<CourseResultType, "refetch">> = ({
 			) : (
 				<ShoppingCard
 					name={name}
-					paymentLink={""}
+					paymentLink={`https://t.me/${owner?.username}`}
 					isFree={isFree}
 					idCourse={id}
 					refetch={refetch}

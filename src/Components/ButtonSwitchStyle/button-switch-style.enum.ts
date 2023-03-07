@@ -8,8 +8,8 @@ export enum ButtonSwitchStyleEnum {
 
 export const ButtonSwitchStyleArray = [
 	{ id: ButtonSwitchStyleEnum.PRIMARY, value: "PRIMARY" },
-	{ id: ButtonSwitchStyleEnum.SECONDARY, value: "SECONDARY" },
-	{ id: ButtonSwitchStyleEnum.INFO, value: "INFO" },
+	// { id: ButtonSwitchStyleEnum.SECONDARY, value: "SECONDARY" },
+	// { id: ButtonSwitchStyleEnum.INFO, value: "INFO" },
 	{ id: ButtonSwitchStyleEnum.LIGHT, value: "LIGHT" },
 	{ id: ButtonSwitchStyleEnum.DARK, value: "DARK" },
 ];

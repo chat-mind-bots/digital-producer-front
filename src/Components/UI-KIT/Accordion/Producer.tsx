@@ -13,8 +13,11 @@ import sortPosition from "../../../Utils/sortPosition";
 const Accordion: FC<
 	AccordionProps &
 		Pick<CourseResultType, "refetch"> &
-		Pick<AddModuleToCourseApiProps, "idCourse"> & { isOnClick: boolean }
-> = ({ array, handleClick, refetch, idCourse, isOnClick }) => {
+		Pick<AddModuleToCourseApiProps, "idCourse"> & {
+			isOnClick: boolean;
+			refetchLesson: () => void;
+		}
+> = ({ array, handleClick, refetch, idCourse, isOnClick, refetchLesson }) => {
 	const [open, setOpen] = useState<string>();
 
 	return (
@@ -52,7 +55,10 @@ const Accordion: FC<
 										<ST.UpdateButton>
 											<LessonUpdate
 												idLesson={item.id}
-												refetch={refetch}
+												refetch={() => {
+													refetchLesson();
+													refetch && refetch();
+												}}
 											/>
 										</ST.UpdateButton>
 									</ST.WrapperItem>

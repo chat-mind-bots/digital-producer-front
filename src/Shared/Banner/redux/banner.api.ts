@@ -27,11 +27,17 @@ export interface BannerApiPropsSet {
 	data: IBannerState;
 }
 
+enum BannersTypesEnum {
+	BANNER = "BANNER",
+}
+
 export const bannerApi = createApi({
 	reducerPath: "banner/api",
 	baseQuery: fetchBaseQuery({
 		baseUrl: process.env.REACT_APP_API_URL,
 	}),
+	tagTypes: [BannersTypesEnum.BANNER],
+
 	endpoints: (build) => ({
 		getBanner: build.query<ServerResponse<IBannerState[]>, BannerApiProps>({
 			query: ({ authToken, role, type }) => ({
@@ -52,6 +58,7 @@ export const bannerApi = createApi({
 					return result;
 				},
 			}),
+			providesTags: [BannersTypesEnum.BANNER],
 			transformResponse: (response: ServerResponse<IBannerDTO[]>, meta) => {
 				const { data, ...other } = response;
 
@@ -83,7 +90,7 @@ export const bannerApi = createApi({
 					return result;
 				},
 			}),
-
+			invalidatesTags: [BannersTypesEnum.BANNER],
 			transformResponse: (response: IBannerDTO, meta) =>
 				setStatusToDtoService(bannerFromDtoServiceObject(response), meta),
 		}),
@@ -106,7 +113,7 @@ export const bannerApi = createApi({
 					return result;
 				},
 			}),
-
+			invalidatesTags: [BannersTypesEnum.BANNER],
 			transformResponse: (response: IBannerDTO, meta) =>
 				setStatusToDtoService(bannerFromDtoServiceObject(response), meta),
 		}),
@@ -125,7 +132,7 @@ export const bannerApi = createApi({
 					return result;
 				},
 			}),
-
+			invalidatesTags: [BannersTypesEnum.BANNER],
 			transformResponse: (response: IBannerDTO, meta) => {
 				return setStatusToDtoService(
 					bannerFromDtoServiceObject(response),
