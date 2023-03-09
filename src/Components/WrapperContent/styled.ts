@@ -11,6 +11,7 @@ export const WrapperContent = styled.div`
 	box-sizing: border-box;
 	@media (max-width: ${BreakPoints.MOBILE}px) {
 		padding: 12px;
+		border-radius: 0;
 	}
 `;
 

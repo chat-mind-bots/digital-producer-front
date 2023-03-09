@@ -2,6 +2,8 @@ import styled from "styled-components";
 
 import Colors from "Colors";
 
+import BreakPoints from "../../../BreakPoints";
+
 export const ShoppingCard = styled.div`
 	padding: 20px 20px 32px;
 	border-radius: 24px;
@@ -11,6 +13,9 @@ export const ShoppingCard = styled.div`
 	position: sticky;
 	top: 129px;
 	height: max-content;
+	@media (max-width: ${BreakPoints.MOBILE}px) {
+		display: none;
+	}
 `;
 
 export const Price = styled.p`

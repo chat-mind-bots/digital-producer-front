@@ -30,17 +30,19 @@ export const Accordion = styled.div<{ open: boolean }>`
 		z-index: 9;
 	}
 	@media (max-width: ${BreakPoints.MOBILE}px) {
-		width: ${({ open }) => (open ? null : "50px")};
+		width: ${({ open }) => (open ? "100%" : "50px")};
+		max-width: ${({ open }) => (open ? "100%" : null)};
 		height: ${({ open }) => (open ? "100vh" : "50px")};
 		max-height: ${({ open }) => (open ? "100vh" : null)};
 		background: ${({ open }) => (open ? null : Colors.BLUE)};
-		border-radius: ${({ open }) => (open ? null : "50%")};
+		border-radius: ${({ open }) => (open ? "0" : "50%")};
 		border-color: ${({ open }) => (open ? null : Colors.BLUE)};
 		right: ${({ open }) => (open ? "auto" : "12px")};
 		overflow: hidden;
 		top: ${({ open }) => (open ? "62px" : "auto")};
 		bottom: ${({ open }) => (open ? "auto" : "12px")};
 		z-index: 999999999999;
+		transition: 0.3s;
 		& > p {
 			opacity: ${({ open }) => (open ? "1" : "0")};
 		}
@@ -64,6 +66,17 @@ export const Title = styled.p`
 	font-size: 18px;
 	line-height: 140%;
 	color: ${Colors.BLACK1};
+	& > svg {
+		display: none;
+	}
+	@media (max-width: ${BreakPoints.MOBILE}px) {
+		& > svg {
+			display: block;
+		}
+		display: flex;
+		align-items: center;
+		justify-content: space-between;
+	}
 `;
 
 export const Name = styled.p<Props>`
@@ -93,6 +106,10 @@ export const Wrapper = styled.div`
 	gap: 8px;
 	margin-top: 14px;
 	width: 100%;
+	@media (max-width: ${BreakPoints.MOBILE}px) {
+		max-height: 309px;
+		overflow: auto;
+	}
 `;
 
 export const WrapperModule = styled.div`
@@ -183,6 +200,14 @@ export const WrapperItem = styled.div`
 	}
 	&:hover > ${UpdateButtonModule} {
 		opacity: 1;
+	}
+	@media (max-width: ${BreakPoints.MOBILE}px) {
+		& > ${UpdateButton} {
+			opacity: 1;
+		}
+		& > ${UpdateButtonModule} {
+			opacity: 1;
+		}
 	}
 `;
 

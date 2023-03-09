@@ -9,6 +9,7 @@ import { ModuleCreate } from "../../../Shared/Module/components/ModuleSet/create
 import { AddModuleToCourseApiProps } from "../../../Shared/Module/redux/module.api";
 import { ModuleUpdate } from "../../../Shared/Module/components/ModuleSet/update";
 import sortPosition from "../../../Utils/sortPosition";
+import { ReactComponent as Close } from "../../../Icons/Close.svg";
 
 const Accordion: FC<
 	AccordionProps &
@@ -26,7 +27,9 @@ const Accordion: FC<
 			open={openMobile}
 			onClick={() => !openMobile && setOpenMobile(true)}
 		>
-			<ST.Title>Модули курса:</ST.Title>
+			<ST.Title>
+				Модули курса: <Close onClick={() => setOpenMobile(false)} />
+			</ST.Title>
 			<ST.Wrapper>
 				{sortPosition(array).map((module, indexModule) => (
 					<ST.WrapperItem key={`Accordion-module-${module.id}`}>

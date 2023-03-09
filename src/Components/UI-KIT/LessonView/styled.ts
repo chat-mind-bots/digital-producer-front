@@ -295,3 +295,11 @@ export const WrapperTags = styled.div<WrapperSubTitleProps>`
 export const WrapperButton = styled.div`
 	width: 100%;
 `;
+
+export const MobileBy = styled.div`
+	margin-top: 12px;
+	display: none;
+	@media (max-width: ${BreakPoints.MOBILE}px) {
+		display: block;
+	}
+`;

@@ -13,6 +13,7 @@ export const NewsBanner = styled.div`
 	height: 100%;
 	min-height: 254px;
 	@media (max-width: ${BreakPoints.MOBILE}px) {
+		border-radius: 0;
 		display: flex;
 		flex-wrap: wrap;
 		flex-direction: column-reverse;
@@ -34,7 +35,7 @@ export const Title = styled.p`
 	line-height: 44px;
 	color: ${Colors.BLACK1};
 	text-overflow: ellipsis;
-	-webkit-line-clamp: 1;
+	-webkit-line-clamp: 2;
 	display: -webkit-box;
 	word-wrap: break-word;
 	-webkit-box-orient: vertical;

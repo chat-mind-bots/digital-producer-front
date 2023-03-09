@@ -5,6 +5,7 @@ import { ReactComponent as ArrowDown } from "Icons/ArrowDown.svg";
 import { AccordionProps } from "./type";
 import * as ST from "./styled";
 import sortPosition from "../../../Utils/sortPosition";
+import { ReactComponent as Close } from "../../../Icons/Close.svg";
 
 const Accordion: FC<AccordionProps & { isOnClick: boolean }> = ({
 	array,
@@ -20,7 +21,9 @@ const Accordion: FC<AccordionProps & { isOnClick: boolean }> = ({
 			open={openMobile}
 			onClick={() => !openMobile && setOpenMobile(true)}
 		>
-			<ST.Title>Модули курса:</ST.Title>
+			<ST.Title>
+				Модули курса: <Close onClick={() => setOpenMobile(false)} />
+			</ST.Title>
 			<ST.Wrapper>
 				{sortPosition(array).map((module, indexModule) => (
 					<ST.WrapperItem key={`Accordion-module-${module.id}`}>

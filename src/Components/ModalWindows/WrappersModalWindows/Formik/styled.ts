@@ -2,6 +2,8 @@ import styled from "styled-components";
 
 import Colors from "Colors";
 
+import BreakPoints from "../../../../BreakPoints";
+
 export const ModalWindow = styled.div`
 	position: fixed;
 	width: 100%;
@@ -43,6 +45,9 @@ export const Window = styled.div`
 	left: 50%;
 	transform: translate(-50%, 0);
 	top: 10px;
+	@media (max-width: ${BreakPoints.MOBILE}px) {
+		width: 100%;
+	}
 `;
 
 export const Header = styled.div`

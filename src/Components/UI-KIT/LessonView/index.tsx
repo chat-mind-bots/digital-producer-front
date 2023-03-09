@@ -10,6 +10,9 @@ import Image from "../Atoms/Image";
 import PlayVideo from "../Atoms/PlayVideo";
 import { ITagState } from "../../../Shared/Tag/redux/tag.slice";
 import Tags from "../Atoms/Tags";
+import Button from "../Atoms/Button";
+import Colors from "../../../Colors";
+import { EnrollToCourse } from "../../../Shared/Courses/components/CourseSet/enroll";
 
 type LessonViewProps = Pick<
 	ICourseState,
@@ -28,6 +31,10 @@ type LessonViewProps = Pick<
 	isLoading: boolean;
 	isLesson: boolean;
 	tags?: ITagState[];
+	isFree?: boolean;
+	paymentLink?: string;
+	idCourse?: string;
+	refetch?: () => void;
 };
 
 const LessonView: FC<LessonViewProps> = ({
@@ -43,6 +50,10 @@ const LessonView: FC<LessonViewProps> = ({
 	image,
 	isLesson,
 	tags,
+	isFree,
+	paymentLink,
+	idCourse,
+	refetch,
 }) => (
 	<ST.LessonView>
 		<ST.WrapperVideo isLoading={isLoading}>
@@ -124,6 +135,31 @@ const LessonView: FC<LessonViewProps> = ({
 				</ST.WrapperTags>
 			)}
 		</ST.WrapperInfo>
+
+		{!isLesson && (
+			<ST.MobileBy>
+				{!isFree ? (
+					<Button
+						title={"Купить курс"}
+						padding={"11px 28px"}
+						fontSize={"14px"}
+						lineHeight={"20px"}
+						fontWeight={"600"}
+						background={Colors.BLUE}
+						color={Colors.WHITE}
+						backgroundAnimation={Colors.BLUE_DARK}
+						colorHover={Colors.WHITE}
+						width={"100%"}
+						onClick={() => window.open(paymentLink)}
+					/>
+				) : (
+					<EnrollToCourse
+						idCourse={idCourse}
+						refetch={refetch}
+					/>
+				)}
+			</ST.MobileBy>
+		)}
 	</ST.LessonView>
 );
 

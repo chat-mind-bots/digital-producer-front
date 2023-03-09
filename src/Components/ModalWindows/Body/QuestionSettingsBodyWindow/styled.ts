@@ -2,6 +2,8 @@ import styled from "styled-components";
 
 import Colors from "Colors";
 
+import BreakPoints from "../../../../BreakPoints";
+
 type WrapperProps = {
 	isBorder?: boolean;
 };
@@ -68,6 +70,10 @@ export const Wrapper = styled.div<WrapperProps>`
 	border-bottom: ${({ isBorder }) => isBorder && `1px solid ${Colors.BLACK1}`};
 	border-top: ${({ isBorder }) => isBorder && `1px solid ${Colors.BLACK1}`};
 	padding: ${({ isBorder }) => isBorder && "16px 0"};
+	@media (max-width: ${BreakPoints.MOBILE}px) {
+		flex-wrap: wrap;
+		gap: 5px;
+	}
 `;
 
 export const Name = styled.p`
@@ -75,6 +81,9 @@ export const Name = styled.p`
 	font-size: 16px;
 	line-height: 155%;
 	width: 160px;
+	@media (max-width: ${BreakPoints.MOBILE}px) {
+		width: 100%;
+	}
 `;
 
 export const WrapperInput = styled.div`
