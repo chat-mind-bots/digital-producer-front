@@ -9,6 +9,11 @@ export const Cabinet = styled.div`
 	top: 0;
 	left: 0;
 	height: 100%;
+	@media (max-width: ${BreakPoints.MOBILE}px) {
+		//height: max-content;
+		z-index: 99;
+		height: auto;
+	}
 `;
 
 export const Content = styled.div`
@@ -18,6 +23,8 @@ export const Content = styled.div`
 	z-index: 3;
 	width: calc(100% - 337px);
 	@media (max-width: ${BreakPoints.MOBILE}px) {
+		margin-top: 70px;
+		position: relative;
 		left: 0;
 		top: 0;
 		width: 100%;

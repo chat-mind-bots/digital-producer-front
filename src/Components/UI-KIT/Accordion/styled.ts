@@ -7,7 +7,7 @@ type Props = {
 	isActive: boolean;
 };
 
-export const Accordion = styled.div`
+export const Accordion = styled.div<{ open: boolean }>`
 	width: 344px;
 	background: ${Colors.WHITE};
 	border-radius: 16px;
@@ -28,6 +28,33 @@ export const Accordion = styled.div`
 		position: fixed;
 		right: 30px;
 		z-index: 9;
+	}
+	@media (max-width: ${BreakPoints.MOBILE}px) {
+		width: ${({ open }) => (open ? null : "50px")};
+		height: ${({ open }) => (open ? "100vh" : "50px")};
+		max-height: ${({ open }) => (open ? "100vh" : null)};
+		background: ${({ open }) => (open ? null : Colors.BLUE)};
+		border-radius: ${({ open }) => (open ? null : "50%")};
+		border-color: ${({ open }) => (open ? null : Colors.BLUE)};
+		right: ${({ open }) => (open ? "auto" : "12px")};
+		overflow: hidden;
+		top: ${({ open }) => (open ? "62px" : "auto")};
+		bottom: ${({ open }) => (open ? "auto" : "12px")};
+		z-index: 999999999999;
+		& > p {
+			opacity: ${({ open }) => (open ? "1" : "0")};
+		}
+		&:after {
+			content: ${({ open }) => (open ? null : "'+'")};
+			position: absolute;
+			top: 50%;
+			left: 50%;
+			transform: translate(-50%, -50%);
+			color: ${Colors.WHITE};
+			font-family: "Vela Sans";
+			font-weight: 700;
+			font-size: 22px;
+		}
 	}
 `;
 

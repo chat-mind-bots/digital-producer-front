@@ -156,9 +156,6 @@ const CourseId: FC<ICourseState & Pick<CourseResultType, "refetch">> = ({
 		[getLesson]
 	);
 
-	// eslint-disable-next-line no-console
-	console.log(lesson);
-
 	return owner?.id === auth.id ? (
 		<ST.CourseID>
 			<ST.WrapperInfo>

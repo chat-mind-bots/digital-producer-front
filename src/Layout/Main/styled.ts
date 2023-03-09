@@ -7,6 +7,9 @@ export const Main = styled.div`
 	display: flex;
 	height: 100vh;
 	overflow: hidden;
+	@media (max-width: ${BreakPoints.MOBILE}px) {
+		height: auto;
+	}
 `;
 
 export const Wrapper = styled.div`
@@ -32,6 +35,9 @@ export const Footer = styled.div`
 	display: flex;
 	gap: 24px;
 	align-items: flex-end;
+	@media (max-width: ${BreakPoints.MOBILE}px) {
+		margin-top: 28px;
+	}
 `;
 
 export const Name = styled.div`
@@ -43,6 +49,9 @@ export const Name = styled.div`
 
 export const Content = styled.div`
 	width: 100%;
+	@media (max-width: ${BreakPoints.MOBILE}px) {
+		margin-top: 28px;
+	}
 `;
 
 export const Image = styled.div`
@@ -61,4 +70,15 @@ export const WrapperButton = styled.div`
 	width: max-content;
 `;
 
-export const Logo = styled.div``;
+export const Logo = styled.div`
+	@media (max-width: ${BreakPoints.MOBILE}px) {
+		display: none;
+	}
+`;
+
+export const LogoMobile = styled.div`
+	display: none;
+	@media (max-width: ${BreakPoints.MOBILE}px) {
+		display: block;
+	}
+`;

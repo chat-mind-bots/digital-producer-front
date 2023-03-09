@@ -13,8 +13,13 @@ const Accordion: FC<AccordionProps & { isOnClick: boolean }> = ({
 }) => {
 	const [open, setOpen] = useState<string>();
 
+	const [openMobile, setOpenMobile] = useState<boolean>(false);
+
 	return (
-		<ST.Accordion>
+		<ST.Accordion
+			open={openMobile}
+			onClick={() => !openMobile && setOpenMobile(true)}
+		>
 			<ST.Title>Модули курса:</ST.Title>
 			<ST.Wrapper>
 				{sortPosition(array).map((module, indexModule) => (
@@ -34,13 +39,14 @@ const Accordion: FC<AccordionProps & { isOnClick: boolean }> = ({
 								{sortPosition(module.items).map((item, indexItem) => (
 									<ST.WrapperItem key={`Accordion-item-${item.id}`}>
 										<ST.Item
-											onClick={() =>
+											onClick={() => {
 												isOnClick &&
-												handleClick({
-													moduleId: module.id,
-													itemId: item.id,
-												})
-											}
+													handleClick({
+														moduleId: module.id,
+														itemId: item.id,
+													});
+												setOpenMobile(false);
+											}}
 											isActive={item.isActive}
 										>
 											<ST.Number>{indexItem + 1}.</ST.Number>

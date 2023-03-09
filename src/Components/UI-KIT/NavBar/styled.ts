@@ -60,7 +60,7 @@ export const Wrapper = styled.div<Props>`
 		}
 	}
 	@media (max-width: ${BreakPoints.MOBILE}px) {
-		padding: 8px 8px;
-		max-width: 170px;
+		width: 100%;
+		max-width: 100%;
 	}
 `;

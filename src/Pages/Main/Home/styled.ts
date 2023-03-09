@@ -37,4 +37,12 @@ export const Buttons = styled.p`
 	gap: 10px;
 	margin-top: 48px;
 	flex-wrap: wrap;
+	@media (max-width: ${BreakPoints.MOBILE}px) {
+		& a {
+			width: 100%;
+			& > button {
+				width: 100%;
+			}
+		}
+	}
 `;

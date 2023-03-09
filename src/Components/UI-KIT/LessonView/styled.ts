@@ -219,11 +219,11 @@ export const WrapperVideo = styled.div<Props>`
 		}
 	}
 	// TODO: иконки в courseId
-	& svg {
-		@media (max-width: ${BreakPoints.MOBILE}px) {
-			display: none;
-		}
-	}
+	// & svg {
+	// 	@media (max-width: ${BreakPoints.MOBILE}px) {
+	// 		display: none;
+	// 	}
+	// }
 `;
 
 export const WrapperSubTitle = styled.div<WrapperSubTitleProps>`

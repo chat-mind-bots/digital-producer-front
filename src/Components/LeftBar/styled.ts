@@ -3,7 +3,7 @@ import styled from "styled-components";
 import BreakPoints from "BreakPoints";
 import Colors from "Colors";
 
-export const LeftBar = styled.div`
+export const LeftBar = styled.div<{ open: boolean }>`
 	background: ${Colors.WHITE};
 	padding: 40px 20px;
 	display: flex;
@@ -15,7 +15,12 @@ export const LeftBar = styled.div`
 	height: 100%;
 	z-index: 10;
 	@media (max-width: ${BreakPoints.MOBILE}px) {
-		display: none;
+		padding: 15px;
+		width: 100%;
+		max-width: initial;
+		max-height: ${({ open }) => (open ? "600" : "62")}px;
+		overflow: hidden;
+		transition: 1s ease;
 	}
 `;
 
@@ -24,6 +29,9 @@ export const WrapperInfo = styled.div`
 	flex-wrap: wrap;
 	gap: 16px;
 	height: max-content;
+	@media (max-width: ${BreakPoints.MOBILE}px) {
+		width: 100%;
+	}
 `;
 
 export const Sections = styled.p`
@@ -33,4 +41,17 @@ export const Sections = styled.p`
 	color: ${Colors.GREY1};
 	margin-top: 24px;
 	padding-left: 20px;
+	@media (max-width: ${BreakPoints.MOBILE}px) {
+		display: none;
+	}
+`;
+
+export const MobileBurger = styled.div`
+	margin-left: auto;
+	align-items: center;
+	justify-content: center;
+	display: none;
+	@media (max-width: ${BreakPoints.MOBILE}px) {
+		display: flex;
+	}
 `;

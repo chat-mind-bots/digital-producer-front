@@ -28,6 +28,9 @@ const Main: FC<MainProps> = ({ isRegistration }) => {
 					<ST.Logo>
 						<Logo isMax={true} />
 					</ST.Logo>
+					<ST.LogoMobile>
+						<Logo isMax={false} />
+					</ST.LogoMobile>
 					<ST.WrapperButton>
 						{/*<Link*/}
 						{/*	to={isRegistration ? RoutesList.REGISTRATION : RoutesList.LOGIN}*/}

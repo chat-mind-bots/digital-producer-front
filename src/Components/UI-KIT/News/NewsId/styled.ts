@@ -13,6 +13,9 @@ export const NewsView = styled.div`
 `;
 
 export const WrapperIcon = styled.div`
+	position: relative;
+	border-radius: 13px;
+	overflow: hidden;
 	& img {
 		max-width: 664px;
 		max-height: 284px;
@@ -21,9 +24,6 @@ export const WrapperIcon = styled.div`
 		& svg {
 			width: 100%;
 		}
-	}
-	@media (max-width: ${BreakPoints.MOBILE}px) {
-		display: none;
 	}
 `;
 export const WrapperInfo = styled.div``;
