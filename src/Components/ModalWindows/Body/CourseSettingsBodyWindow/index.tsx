@@ -27,7 +27,7 @@ const CourseSettingsBodyWindow: FC<CourseSettingsBodyWindowProps> = ({
 	initialValues,
 	handleClose,
 	sendData,
-	remove,
+	// remove,
 	categories,
 }) => {
 	return (
@@ -56,7 +56,7 @@ const CourseSettingsBodyWindow: FC<CourseSettingsBodyWindowProps> = ({
 				isSubmitting,
 				setFieldValue,
 				setFieldTouched,
-				setSubmitting,
+				// setSubmitting,
 			}) => {
 				const subCategories = categories.filter(
 					(e) => e.id === values?.category
@@ -515,26 +515,7 @@ const CourseSettingsBodyWindow: FC<CourseSettingsBodyWindowProps> = ({
 									onClick={handleClose}
 									disabled={isSubmitting}
 								/>
-							) : (
-								<Button
-									title={"Удалить"}
-									padding={"10px 0px"}
-									fontSize={"16px"}
-									lineHeight={"24px"}
-									fontWeight={"600"}
-									background={Colors.TRANSPARENT}
-									color={Colors.RED}
-									backgroundAnimation={Colors.RED}
-									colorHover={Colors.WHITE}
-									border={`2px solid ${Colors.RED}`}
-									width={"100%"}
-									onClick={() => {
-										setSubmitting(true);
-										remove && remove(values.id ?? "");
-									}}
-									disabled={isSubmitting}
-								/>
-							)}
+							) : null}
 
 							<Button
 								title={"Сохранить"}

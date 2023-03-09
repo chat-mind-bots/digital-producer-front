@@ -20,6 +20,7 @@ import { ReactComponent as Progress } from "../../../Icons/Progress.svg";
 import { ReactComponent as StatusTrue } from "../../../Icons/StatusTrue.svg";
 import { ITagState } from "../../../Shared/Tag/redux/tag.slice";
 import Tags from "../Atoms/Tags";
+import { ReactComponent as StatusFalse } from "../../../Icons/StatusFalse.svg";
 
 type LessonViewProps = Pick<
 	ICourseState,
@@ -69,7 +70,7 @@ const LessonView: FC<LessonViewProps> = ({
 			{name}
 
 			<ST.WrapperStatuses>
-				{!!status && (
+				{!!status && status === CoursesStatuses.AVAILABLE && (
 					<ST.StatusDisables isActive={status === CoursesStatuses.AVAILABLE}>
 						<StatusTrue />
 					</ST.StatusDisables>
@@ -88,15 +89,27 @@ const LessonView: FC<LessonViewProps> = ({
 				)}
 
 				{status !== CoursesStatuses.IN_REVIEW && idCourse && (
-					<CourseSetStatus
-						status={CoursesStatuses.IN_PROGRESS}
-						idCourse={idCourse}
-						refetch={refetch}
-					>
-						<ST.Status isActive={status === CoursesStatuses.IN_PROGRESS}>
-							<Progress />
-						</ST.Status>
-					</CourseSetStatus>
+					<>
+						<CourseSetStatus
+							status={CoursesStatuses.IN_PROGRESS}
+							idCourse={idCourse}
+							refetch={refetch}
+						>
+							<ST.Status isActive={status === CoursesStatuses.IN_PROGRESS}>
+								<Progress />
+							</ST.Status>
+						</CourseSetStatus>
+
+						<CourseSetStatus
+							status={CoursesStatuses.NOT_ACTIVE}
+							idCourse={idCourse}
+							refetch={refetch}
+						>
+							<ST.Status isActive={status === CoursesStatuses.NOT_ACTIVE}>
+								<StatusFalse />
+							</ST.Status>
+						</CourseSetStatus>
+					</>
 				)}
 			</ST.WrapperStatuses>
 		</ST.Title>
