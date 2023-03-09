@@ -1,6 +1,7 @@
 import styled from "styled-components";
 
 import Colors from "Colors";
+import BreakPoints from "BreakPoints";
 
 export const CategoriesTable = styled.div`
 	width: 100%;
@@ -18,6 +19,9 @@ export const Table = styled.table`
 	border-radius: 12px;
 	overflow: hidden;
 	height: max-content;
+	@media (max-width: ${BreakPoints.MOBILE}px) {
+		font-size: 15px;
+	}
 `;
 
 export const Thead = styled.thead`
@@ -98,10 +102,17 @@ export const WrapperCreate = styled.div`
 	& button {
 		max-width: 300px;
 	}
+	@media (max-width: ${BreakPoints.MOBILE}px) {
+		gap: 50px;
+	}
 `;
 
 export const WrapperTables = styled.div`
 	width: 100%;
 	display: flex;
 	gap: 130px;
+	@media (max-width: ${BreakPoints.MOBILE}px) {
+		flex-wrap: wrap;
+		gap: 50px;
+	}
 `;

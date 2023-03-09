@@ -43,6 +43,9 @@ export const NewsCardAdmin = styled.div`
 	&:hover {
 		border: 2px solid ${Colors.WHITE2};
 	}
+	@media (max-width: ${BreakPoints.MOBILE}px) {
+		height: 170px;
+	}
 `;
 
 export const Title = styled.p`

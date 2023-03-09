@@ -95,21 +95,11 @@ export const Th = styled.th`
 	padding: 12px 15px;
 `;
 
-export const WrapperCreate = styled.div`
-	display: flex;
-	gap: 130px;
-	justify-content: space-around;
-	align-items: center;
-	margin-top: 50px;
-	& button {
-		max-width: 300px;
-	}
-`;
-
 export const WrapperTables = styled.div`
 	width: 100%;
 	display: flex;
 	gap: 130px;
+	overflow: auto;
 `;
 
 export const WrapperAvatar = styled.div`

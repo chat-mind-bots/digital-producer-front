@@ -12,6 +12,9 @@ export const Content = styled.div`
 	display: flex;
 	flex-wrap: wrap;
 	gap: 10px;
+	@media (max-width: ${BreakPoints.MOBILE}px) {
+		justify-content: center;
+	}
 `;
 
 export const WrapperInfo = styled.div`
