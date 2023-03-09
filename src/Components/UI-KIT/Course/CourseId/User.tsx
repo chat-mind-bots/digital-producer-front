@@ -144,17 +144,6 @@ const CourseId: FC<ICourseState & Pick<CourseResultType, "refetch">> = ({
 		}, delay);
 	};
 
-	const requestLesson = useCallback(
-		(itemId: string) => {
-			const query: GetLessonApiProps = {
-				authToken: auth.token ?? "",
-				id: itemId,
-			};
-			getLesson(query);
-		},
-		[getLesson]
-	);
-
 	return (
 		<ST.CourseID>
 			<ST.WrapperInfo>
@@ -198,7 +187,7 @@ const CourseId: FC<ICourseState & Pick<CourseResultType, "refetch">> = ({
 									isFree={isFree}
 									paymentLink={`https://t.me/${owner?.username}`}
 									idCourse={id}
-									refetch={() => state.lesson && requestLesson(state.lesson)}
+									refetch={refetch}
 								/>
 							</>
 						)}
