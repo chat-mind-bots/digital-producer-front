@@ -3,6 +3,7 @@ import { useTranslation } from "react-i18next";
 
 import Image from "Components/UI-KIT/Atoms/Image";
 import { ReactComponent as ArrowDown } from "Icons/ArrowDown.svg";
+import { ReactComponent as ArrowUp } from "Icons/ArrowUp.svg";
 import { useAppSelector } from "Hooks/redux";
 import logout from "Utils/Logout";
 import RequestStatuses from "RequestStatuses";
@@ -31,11 +32,8 @@ const AuthBlock = () => {
 				<ST.Mail>@{auth.username}</ST.Mail>
 			</ST.WrapperInfo>
 			<ST.WrapperArrowDown onClick={() => setIsWindow(!isWindow)}>
-				<ArrowDown />
+				{!isWindow ? <ArrowDown /> : <ArrowUp />}
 				<ST.Window isOpen={isWindow}>
-					{/*<ST.ItemWindow onClick={() => alert(123)}>*/}
-					{/*	{t("Components.UIKIT.AuthBlock.Settings")}*/}
-					{/*</ST.ItemWindow>*/}
 					<ST.ItemWindow
 						isExit={true}
 						onClick={logOutHandler}
