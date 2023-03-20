@@ -12,11 +12,17 @@ export const lessonFromDtoServiceObject = (dto: ILessonDTO): ILessonState => {
 		documents,
 		owner,
 		test,
+		total_points,
+		total_questions,
+		test_status,
 		...other
 	} = dto;
 
 	return {
 		...other,
+		totalPoints: total_points,
+		totalQuestions: total_questions,
+		testStatus: test_status,
 		id: _id,
 		levelDifficulty: level_difficulty + 1,
 		logicNumber: logic_number,

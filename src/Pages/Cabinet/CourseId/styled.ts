@@ -26,3 +26,17 @@ export const WrapperInfo = styled.div`
 		max-width: 100%;
 	}
 `;
+
+export const CardTest = styled.div`
+	position: relative;
+	& > svg {
+		position: absolute;
+		font-weight: 500;
+		font-size: 15px;
+		line-height: 155%;
+		color: #808191;
+		top: 15px;
+		right: 15px;
+		cursor: pointer;
+	}
+`;

@@ -216,7 +216,12 @@ const CourseId: FC<ICourseState & Pick<CourseResultType, "refetch">> = ({
 									currentLesson?.test.id
 								)}
 							>
-								<TestCard {...currentLesson?.test} />
+								<TestCard
+									{...currentLesson?.test}
+									totalPoints={currentLesson.totalPoints}
+									totalQuestions={currentLesson.totalQuestions}
+									testStatus={currentLesson.testStatus}
+								/>
 							</Link>
 						</ST.Content>
 					</WrapperContent>

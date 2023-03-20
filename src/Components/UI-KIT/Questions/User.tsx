@@ -10,6 +10,7 @@ import CheckBox from "../Atoms/CheckBox";
 export type QuestionProps = Pick<CourseResultType, "refetch"> & {
 	arrayQuestion: (IQuestionState & { values: string[] })[];
 	isOpen: boolean;
+	results?: boolean[];
 	clickHandler: (
 		questionId: string,
 		answerId: string,
@@ -22,13 +23,15 @@ const Questions: FC<QuestionProps> = ({
 	// refetch,
 	isOpen,
 	clickHandler,
+	results,
 }) => {
 	return (
 		<ST.Questions>
-			{arrayQuestion.map((question) => (
+			{arrayQuestion.map((question, index) => (
 				<ST.Question
 					isOpen={isOpen}
 					key={`Question-${question.id}`}
+					correct={results && isOpen ? results[index] : undefined}
 				>
 					<ST.Text>{question.question}</ST.Text>
 					<ST.Answers>

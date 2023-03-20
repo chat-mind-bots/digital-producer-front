@@ -13,6 +13,7 @@ import { IQuestionState } from "../../../../Shared/Question/redux/question.slice
 
 const CourseId: FC<ITestState & Pick<CourseResultType, "refetch">> = ({
 	// refetch,
+	name,
 	id,
 	questions,
 	duration,
@@ -84,13 +85,18 @@ const CourseId: FC<ITestState & Pick<CourseResultType, "refetch">> = ({
 		);
 	};
 
+	const results = resultStart.data?.answers.map(
+		(e: any) => e.result as boolean
+	);
+
 	return (
 		<ST.MainWrapper>
 			<ST.Wrapper>
-				<WrapperContent header={"Тест"}>
+				<WrapperContent header={name}>
 					<>
 						<Questions
 							arrayQuestion={answers}
+							results={results}
 							isOpen={
 								resultStart.data?.statusCode == RequestStatuses.SUCCESS_201
 							}
@@ -105,6 +111,9 @@ const CourseId: FC<ITestState & Pick<CourseResultType, "refetch">> = ({
 				lengthQuestions={questions.length}
 				isStarted={resultStart.data?.statusCode == RequestStatuses.SUCCESS_201}
 				finishTest={finishTest}
+				rightAnswers={
+					results?.length ? results.filter((e: boolean) => e).length : undefined
+				}
 			/>
 		</ST.MainWrapper>
 	);

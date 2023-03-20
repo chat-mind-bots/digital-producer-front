@@ -12,7 +12,7 @@ import TestIdUserAdmin from "./TestId/Admin";
 type Type = { role: UserRoleEnum };
 
 const Test: FC<Type> = ({ role }) => (
-	<TestGet>
+	<TestGet role={role}>
 		<SwitchTest role={role} />
 	</TestGet>
 );

@@ -12,6 +12,7 @@ import { ITestState } from "./test.slice";
 import { ITestDTO } from "../types/test-dto.type";
 import { TestFromDtoServiceObject } from "../services/data/test-from-dto.service";
 import { TestToDtoServiceObject } from "../services/data/test-to-dto.service";
+import { UserRoleEnum } from "../../Auth/types/role.enum";
 
 export interface CreateTestApiProps extends TestDataType {
 	authToken: string;
@@ -20,6 +21,7 @@ export interface CreateTestApiProps extends TestDataType {
 export interface GetTestApiProps {
 	authToken: string;
 	idTest?: string;
+	role?: UserRoleEnum;
 }
 
 export interface ProgressTestApiProps extends TestProgressDataType {
@@ -64,8 +66,11 @@ export const testApi = createApi({
 	}),
 	endpoints: (build) => ({
 		getTest: build.query<ITestState, GetTestApiProps>({
-			query: ({ authToken, idTest }) => ({
-				url: `/test/${idTest}`,
+			query: ({ authToken, idTest, role }) => ({
+				url:
+					role === UserRoleEnum.USER
+						? `/test/${idTest}/for-user`
+						: `/test/${idTest}`,
 				method: HttpMethods.GET,
 				headers: {
 					Authorization: `Bearer ${authToken}`,
@@ -188,7 +193,7 @@ export const testApi = createApi({
 			},
 		}),
 
-		progressTest: build.mutation<ITestState, ProgressTestApiProps>({
+		progressTest: build.mutation<any, ProgressTestApiProps>({
 			query: ({ authToken, idTest, data }) => ({
 				url: `/test/${idTest}/progress`,
 				method: HttpMethods.POST,

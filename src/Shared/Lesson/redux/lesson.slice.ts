@@ -18,6 +18,9 @@ export enum ILessonEnum {
 	test = "test",
 	createdAt = "createdAt",
 	updatedAt = "updatedAt",
+	totalPoints = "totalPoints",
+	totalQuestions = "totalQuestions",
+	testStatus = "testStatus",
 
 	message = "message",
 	statusCode = "statusCode",
@@ -36,6 +39,9 @@ export interface ILessonState {
 	[ILessonEnum.test]?: ITestState;
 	[ILessonEnum.createdAt]?: string;
 	[ILessonEnum.updatedAt]?: string;
+	[ILessonEnum.totalPoints]?: number;
+	[ILessonEnum.totalQuestions]?: number;
+	[ILessonEnum.testStatus]?: any;
 
 	[ILessonEnum.message]?: string[];
 	[ILessonEnum.statusCode]?: RequestStatuses;

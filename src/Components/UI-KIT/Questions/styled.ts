@@ -4,6 +4,7 @@ import Colors from "Colors";
 
 type QuestionProps = {
 	isOpen: boolean;
+	correct?: boolean;
 };
 
 export const Questions = styled.div`
@@ -12,8 +13,7 @@ export const Questions = styled.div`
 	display: flex;
 	flex-wrap: wrap;
 	gap: 28px;
-	margin-top: 28px;
-	padding: 28px 0;
+	padding: 6px 0;
 	border-radius: 20px;
 `;
 
@@ -24,7 +24,12 @@ export const Question = styled.div<QuestionProps>`
 	display: flex;
 	flex-wrap: wrap;
 	gap: 10px;
-	background: ${Colors.WHITE};
+	background: ${({ correct }) =>
+		correct === false
+			? Colors.RED
+			: correct === true
+			? Colors.BLUE
+			: Colors.WHITE};
 	padding: 18px;
 	border-radius: 16px;
 	border: 1px solid rgba(217, 217, 217, 0.5);

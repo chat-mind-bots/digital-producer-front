@@ -1,14 +1,25 @@
 import React, { FC } from "react";
 
 import Time from "Components/UI-KIT/Atoms/Time";
-import LevelDifficulty from "Components/UI-KIT/Atoms/LevelDificulty";
 import { ReactComponent as StatusFalse } from "Icons/StatusFalse.svg";
 import { ReactComponent as StatusTrue } from "Icons/StatusTrue.svg";
 
 import * as ST from "./styled";
 import { ITestState } from "../../../Shared/Test/redux/test.slice";
+import {
+	ILessonEnum,
+	ILessonState,
+} from "../../../Shared/Lesson/redux/lesson.slice";
 
-const TestCard: FC<ITestState> = ({
+const TestCard: FC<
+	ITestState &
+		Pick<
+			ILessonState,
+			| ILessonEnum.totalPoints
+			| ILessonEnum.totalQuestions
+			| ILessonEnum.testStatus
+		>
+> = ({
 	// id,
 	name,
 	description,
@@ -19,34 +30,27 @@ const TestCard: FC<ITestState> = ({
 	// owner,
 	// createdAt,
 	// updatedAt,
+	totalPoints,
+	totalQuestions,
+	testStatus,
 }) => (
 	<ST.TestCard>
 		<ST.Title>{name}</ST.Title>
 		<ST.Description>{description}</ST.Description>
-		<LevelDifficulty
-			data={{
-				curren: 2,
-				max: 3,
-			}}
-		/>
-		<Time value={`Время для прохождения: ${duration}.`} />
+		<Time value={`Время для прохождения: ${duration}`} />
 		<ST.Info>
 			<StatusFalse />
-			Максимум:{"@"}/{"@"}
+			Для зачета:{"@"}/{totalQuestions} б.
 		</ST.Info>
-		<ST.Info>
-			<StatusFalse />
-			Для зачета:{"@"}/{"@"}
-		</ST.Info>
-		{status ? (
+		{testStatus ? (
 			<ST.Info>
 				<StatusTrue />
-				Пройден
+				Пройден: {totalPoints}/{totalQuestions} б.
 			</ST.Info>
 		) : (
 			<ST.Info>
 				<StatusFalse />
-				Не пройден
+				Не пройден: {totalPoints}/{totalQuestions} б.
 			</ST.Info>
 		)}
 	</ST.TestCard>

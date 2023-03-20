@@ -5,11 +5,24 @@ import { OwnerToDtoServiceObject } from "../../../Owner/services/data/owner-to-d
 import { TestToDtoServiceObject } from "../../../Test/services/data/test-to-dto.service";
 
 export const lessonToDtoServiceObject = (state: ILessonState): ILessonDTO => {
-	const { id, levelDifficulty, logicNumber, documents, owner, test, ...other } =
-		state;
+	const {
+		id,
+		levelDifficulty,
+		logicNumber,
+		documents,
+		owner,
+		test,
+		totalPoints,
+		totalQuestions,
+		testStatus,
+		...other
+	} = state;
 
 	return {
 		...other,
+		total_points: totalPoints,
+		total_questions: totalQuestions,
+		test_status: testStatus,
 		_id: id,
 		level_difficulty: levelDifficulty - 1,
 		logic_number: logicNumber,

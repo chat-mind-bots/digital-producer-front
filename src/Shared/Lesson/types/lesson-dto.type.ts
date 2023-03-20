@@ -15,4 +15,7 @@ export interface ILessonDTO {
 	test?: ITestDTO;
 	createdAt?: string;
 	updatedAt?: string;
+	total_points?: number;
+	total_questions?: number;
+	test_status?: any;
 }

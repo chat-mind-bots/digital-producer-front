@@ -111,7 +111,7 @@ export const TestUpdate: FC<TestUpdateProps> = ({ idTest, refetch }) => {
 			<WindowFormik
 				handleClose={() => setOpen(false)}
 				isOpen={open}
-				title={"Созданние теста "}
+				title={"Редактирование теста "}
 			>
 				<>
 					{test.data ? (

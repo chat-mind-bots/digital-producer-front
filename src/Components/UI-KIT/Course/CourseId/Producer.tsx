@@ -26,6 +26,7 @@ import { DocumentCreate } from "../../../../Shared/Document/components/DocumentS
 import { DocumentCardSettings } from "../../DocumentCard/Producer";
 import { TestCreate } from "../../../../Shared/Test/components/TestSet/create";
 import NotFound from "../../../../Pages/NotFound";
+import { TestUpdate } from "../../../../Shared/Test/components/TestSet/update";
 
 const delay = 2000;
 
@@ -226,15 +227,28 @@ const CourseId: FC<ICourseState & Pick<CourseResultType, "refetch">> = ({
 					? !loading && (
 							<WrapperContent header={"Тесты"}>
 								<ST.Content>
-									<Link
-										to={routeBuilderWithReplace(
-											[RoutesList.PRODUCER, RoutesList.TEST_ID],
-											"id",
-											currentLesson?.test.id
-										)}
-									>
-										<TestCard {...currentLesson?.test} />
-									</Link>
+									<ST.CardTest>
+										<TestUpdate
+											idTest={currentLesson?.test.id}
+											refetch={() =>
+												state.lesson && requestLesson(state.lesson)
+											}
+										/>
+										<Link
+											to={routeBuilderWithReplace(
+												[RoutesList.PRODUCER, RoutesList.TEST_ID],
+												"id",
+												currentLesson?.test.id
+											)}
+										>
+											<TestCard
+												{...currentLesson?.test}
+												totalPoints={currentLesson.totalPoints}
+												totalQuestions={currentLesson.totalQuestions}
+												testStatus={currentLesson.testStatus}
+											/>
+										</Link>
+									</ST.CardTest>
 								</ST.Content>
 							</WrapperContent>
 					  )
