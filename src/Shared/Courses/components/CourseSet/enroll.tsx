@@ -38,7 +38,7 @@ export const EnrollToCourse: FC<
 				resultEnrollToCourse.data?.statusCode === RequestStatuses.SUCCESS ||
 				resultEnrollToCourse.data?.statusCode === RequestStatuses.SUCCESS_201
 			) {
-				toast.success("Все гуд Курс куплен");
+				toast.success("Курс успешно добавлен в корзину");
 				refetch && refetch();
 			} else {
 				resultEnrollToCourse.data?.message?.forEach((e) => {

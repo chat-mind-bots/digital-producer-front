@@ -4,7 +4,6 @@ import toast, { Toaster } from "react-hot-toast";
 import { Link } from "react-router-dom";
 
 import * as ST from "./styled";
-import { Role } from "./styled";
 import {
 	UserApiPropsSet,
 	useUpgradeRoleMutation,
@@ -34,7 +33,7 @@ const UsersTable: FC<UserApiPropsSet & Pick<CourseResultType, "refetch">> = ({
 		if (resultUpgrade.status === QueryStatus.fulfilled) {
 			if (resultUpgrade.data?.statusCode == RequestStatuses.SUCCESS_201) {
 				refetch && refetch();
-				toast.success("Все гуд чел повышен");
+				toast.success("Успешно");
 			} else {
 				toast.error("Ошибка");
 			}
@@ -77,16 +76,10 @@ const UsersTable: FC<UserApiPropsSet & Pick<CourseResultType, "refetch">> = ({
 											</ST.DefaultImage>
 										</ST.WrapperAvatar>
 									</ST.Td>
-									<ST.Td
-										onClick={() =>
-											openFileBlank(`https://t.me/${user.username}`)
-										}
-									>
-										{user.username}
-									</ST.Td>
+									<ST.Td>{user.username}</ST.Td>
 									<ST.Td>
 										{user.role.map((role, index) => (
-											<Role
+											<ST.Role
 												key={`role-${role}-${index}`}
 												background={
 													role === UserRoleEnum.USER
@@ -104,7 +97,7 @@ const UsersTable: FC<UserApiPropsSet & Pick<CourseResultType, "refetch">> = ({
 												}
 											>
 												{role}
-											</Role>
+											</ST.Role>
 										))}
 									</ST.Td>
 									<ST.Td>{user.type}</ST.Td>
@@ -142,14 +135,16 @@ const UsersTable: FC<UserApiPropsSet & Pick<CourseResultType, "refetch">> = ({
 									>
 										{roleDow ? "Понизить" : "-"}
 									</ST.ThOpen>
-									<Link
-										to={`${routeBuilder([
-											RoutesList.ADMIN,
-											RoutesList.COURSES_REVIEW,
-										])}?ownerId=${user.id}`}
-									>
-										<ST.ThOpen>открыть</ST.ThOpen>
-									</Link>
+									<ST.ThOpenCourses>
+										<Link
+											to={`${routeBuilder([
+												RoutesList.ADMIN,
+												RoutesList.COURSES_REVIEW,
+											])}?ownerId=${user.id}`}
+										>
+											Открыть
+										</Link>
+									</ST.ThOpenCourses>
 								</ST.Tr>
 							);
 						})}

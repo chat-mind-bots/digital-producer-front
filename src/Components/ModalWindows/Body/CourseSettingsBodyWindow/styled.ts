@@ -27,6 +27,13 @@ type WrapperProps = {
 // `;
 //
 
+export const ImageCourse = styled.div`
+	width: 64px;
+	height: 64px;
+	border-radius: 50%;
+	overflow: hidden;
+`;
+
 export const Form = styled.div``;
 
 export const Content = styled.div`
@@ -100,26 +107,7 @@ export const WrapperAddFile = styled.div`
 	display: flex;
 	gap: 20px;
 	flex: 1;
-`;
-
-export const UploadFile = styled.div`
-	flex: 1;
-	border: 1px solid ${Colors.RGBA_GREY};
-	background: ${Colors.WHITE4};
-	border-radius: 12px;
-	display: flex;
-	flex-wrap: wrap;
-	gap: 4px;
-	padding: 16px 0;
-`;
-
-export const Instruction = styled.p`
-	font-weight: 400;
-	font-size: 16px;
-	line-height: 20px;
-	color: ${Colors.GREY1};
-	text-align: center;
-	width: 100%;
+	align-items: center;
 `;
 
 export const WrapperButtons = styled.div`
@@ -151,4 +139,12 @@ export const WrapperAddTag = styled.div`
 	justify-content: center;
 	width: 100%;
 	margin-top: 16px;
+`;
+
+export const Status = styled.div<{ status: boolean }>`
+	width: 64px;
+	height: 64px;
+	border-radius: 50%;
+	background: ${({ status }) => (status ? Colors.BLUE : Colors.RED)};
+	overflow: hidden;
 `;

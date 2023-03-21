@@ -49,7 +49,7 @@ export const CourseSetStatus: FC<
 				resultUpdateStatusCourse.data?.statusCode ===
 					RequestStatuses.SUCCESS_201
 			) {
-				toast.success("Все гуд статус изменнен");
+				toast.success("Статус курса изменнен");
 				refetch && refetch();
 			} else {
 				resultUpdateStatusCourse.data?.message?.forEach((e) => {

@@ -61,14 +61,14 @@ export const EnrollAnotherUserToCourse: FC<
 				resultGetUser.data?.statusCode === RequestStatuses.SUCCESS_201
 			) {
 				if (resultGetUser.data) {
-					toast.success("Все гуд пользовватель найден");
+					toast.success("Пользователь найден");
 					setOpen(false);
 					enrollAnotherUser(resultGetUser.data.id);
 				} else {
-					toast.error("Ошибка: пользовватель не найден");
+					toast.error("Ошибка: пользователь не найден");
 				}
 			} else {
-				toast.error("Ошибка: пользовватель не найден");
+				toast.error("Ошибка: пользователь не найден");
 			}
 		}
 	}, [resultGetUser]);
@@ -81,7 +81,7 @@ export const EnrollAnotherUserToCourse: FC<
 				resultEnrollAnotherUserToCourse.data?.statusCode ===
 					RequestStatuses.SUCCESS_201
 			) {
-				toast.success("Все гуд пользовватель добаввлен в курс");
+				toast.success("Пользователь добавлен в курс");
 				setOpen(false);
 				refetch && refetch();
 			} else {
@@ -102,7 +102,7 @@ export const EnrollAnotherUserToCourse: FC<
 				<WindowFormik
 					handleClose={() => setOpen(false)}
 					isOpen={open}
-					title={"добавление юзера  "}
+					title={"Добавление пользователя в курс"}
 				>
 					{data?.data ? (
 						<EnrollAnotherUserSettingsBodyWindow

@@ -50,7 +50,7 @@ export const SubCategoryCreate: FC<SubCategoryCreateProps> = ({
 				resultSubCreateCategory.data?.statusCode === RequestStatuses.SUCCESS ||
 				resultSubCreateCategory.data?.statusCode === RequestStatuses.SUCCESS_201
 			) {
-				toast.success("Все гуд саб категория создалась");
+				toast.success("Категория создана");
 				setOpen(false);
 				refetch && refetch();
 			} else {
@@ -84,7 +84,7 @@ export const SubCategoryCreate: FC<SubCategoryCreateProps> = ({
 				<WindowFormik
 					handleClose={() => setOpen(false)}
 					isOpen={open}
-					title={"Созданние урока "}
+					title={"Создание урока "}
 				>
 					<SubCategorySettingsBodyWindow
 						initialValues={{

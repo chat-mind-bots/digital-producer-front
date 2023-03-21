@@ -61,7 +61,7 @@ export const QuestionUpdate: FC<LessonSetProps> = ({ idQuestion, refetch }) => {
 				resultUpdateQuestion.data?.statusCode === RequestStatuses.SUCCESS ||
 				resultUpdateQuestion.data?.statusCode === RequestStatuses.SUCCESS_201
 			) {
-				toast.success("Все гуд вопрос изменился");
+				toast.success("Вопрос изменен");
 				setOpen(false);
 				refetch && refetch();
 			} else {
@@ -78,7 +78,7 @@ export const QuestionUpdate: FC<LessonSetProps> = ({ idQuestion, refetch }) => {
 				resultRemoveQuestion.data?.statusCode === RequestStatuses.SUCCESS ||
 				resultRemoveQuestion.data?.statusCode === RequestStatuses.SUCCESS_201
 			) {
-				toast.success("Все гуд вопрос удален");
+				toast.success("Вопрос удален");
 				setOpen(false);
 				refetch && refetch();
 			} else {
@@ -112,7 +112,7 @@ export const QuestionUpdate: FC<LessonSetProps> = ({ idQuestion, refetch }) => {
 			<WindowFormik
 				handleClose={() => setOpen(false)}
 				isOpen={open}
-				title={"Созданние урока "}
+				title={"Редактирование вопроса"}
 			>
 				<>
 					{question.data ? (

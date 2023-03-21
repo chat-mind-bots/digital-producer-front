@@ -3,6 +3,7 @@ import styled from "styled-components";
 import Colors from "Colors";
 
 import { PlayVideoProps } from "./index";
+import BreakPoints from "../../../../BreakPoints";
 
 export const PlayVideo = styled.div<PlayVideoProps>`
 	margin-left: -7px;
@@ -26,5 +27,27 @@ export const PlayVideo = styled.div<PlayVideoProps>`
 	}
 	&:hover {
 		opacity: 1;
+	}
+`;
+
+export const Player = styled.div<{ isOpen: boolean }>`
+	width: 100%;
+	height: 100%;
+	opacity: ${({ isOpen }) => (isOpen ? "1" : "0")};
+	transition: 0.5s;
+	position: absolute;
+	left: 0;
+	top: 0;
+	& > div {
+		position: absolute;
+		top: 0;
+		left: 0;
+		width: 100% !important;
+		height: 100% !important;
+	}
+	@media (max-width: ${BreakPoints.MOBILE}px) {
+		& video {
+			object-fit: contain !important;
+		}
 	}
 `;

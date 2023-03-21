@@ -47,7 +47,7 @@ export const NewsCreate: FC<Pick<NewsResultType, "refetch">> = ({
 				resultCreateNews.data?.statusCode === RequestStatuses.SUCCESS ||
 				resultCreateNews.data?.statusCode === RequestStatuses.SUCCESS_201
 			) {
-				toast.success("Все гуд новость создался");
+				toast.success("Новость создана");
 				refetch && refetch();
 				setOpen(false);
 			} else {
@@ -68,7 +68,7 @@ export const NewsCreate: FC<Pick<NewsResultType, "refetch">> = ({
 				<WindowFormik
 					handleClose={() => setOpen(false)}
 					isOpen={open}
-					title={"Созданние новости "}
+					title={"Создание новости"}
 				>
 					{data?.data ? (
 						<NewsSettingsBodyWindow

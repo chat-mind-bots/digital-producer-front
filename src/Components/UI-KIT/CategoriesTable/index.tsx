@@ -29,7 +29,7 @@ const CategoriesTable: FC<
 						{data.map((category) => (
 							<ST.Tr key={`category-${category.id}`}>
 								<ST.Td>{category.title}</ST.Td>
-								<ST.Td>{category.tagsColor}</ST.Td>
+								<ST.CircleColor background={category.tagsColor} />
 								<ST.ThOpen onClick={() => setIdCategory(category.id)}>
 									Открыть
 								</ST.ThOpen>
@@ -43,7 +43,6 @@ const CategoriesTable: FC<
 						))}
 					</ST.Tbody>
 				</ST.Table>
-
 				<ST.Table>
 					<ST.Thead>
 						<ST.Tr>
@@ -59,7 +58,9 @@ const CategoriesTable: FC<
 								.subCategories?.map((subCategory) => (
 									<ST.Tr key={`category-${subCategory.id}`}>
 										<ST.Td>{subCategory.title}</ST.Td>
-										<ST.Td>{subCategory.tagsColor}</ST.Td>
+										<ST.Td>
+											<ST.CircleColor background={subCategory.tagsColor} />
+										</ST.Td>
 										<ST.ThOpenEdit>
 											<SubCategoryUpdate
 												refetch={refetch}

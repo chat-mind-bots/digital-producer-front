@@ -10,6 +10,9 @@ import { INewsState } from "../../../../Shared/News/redux/news.slice";
 import { NewsApiPropsSet } from "../../../../Shared/News/redux/news.api";
 import Input from "../../../UI-KIT/Atoms/Input";
 import ChangeTags from "../../../UI-KIT/ChangeTags";
+import Image from "../../../UI-KIT/Atoms/Image";
+import { ReactComponent as ModalWindowAddFileIcon } from "../../../../Icons/ModalWindowAddFileIcon.svg";
+import DropZone from "../../../UI-KIT/Atoms/DropZone";
 
 type NewsSettingsBodyWindowProps = {
 	initialValues: INewsState;
@@ -143,26 +146,27 @@ const NewsSettingsBodyWindow: FC<NewsSettingsBodyWindowProps> = ({
 									/>
 								</ST.WrapperInput>
 							</ST.Wrapper>
-							<ST.Wrapper>
-								<ST.Name>Картинка</ST.Name>
-								<ST.WrapperInput>
-									<Input
-										value={values?.image || ""}
-										setValue={(str) => {
-											setFieldValue && setFieldValue("image", str);
-										}}
-										setFocus={(state) => setFieldTouched("image", state)}
-										placeholder={"Введите ссылку на картинку "}
-										padding={"10px 14px"}
-										fontSize={"16px"}
-										fontWeight={"400"}
-										borderSize={"1px"}
+							<ST.Wrapper isBorder={true}>
+								<ST.Name>Добавить фото</ST.Name>
+								<ST.WrapperAddFile>
+									{values?.image ? (
+										<ST.ImageCourse>
+											<Image src={values?.image} />
+										</ST.ImageCourse>
+									) : (
+										<ModalWindowAddFileIcon />
+									)}
+
+									<DropZone
+										setUrl={(url) =>
+											setFieldValue && setFieldValue("image", url)
+										}
 										errorText={
 											errors.image && touched.image ? errors.image : undefined
 										}
 										isError={!!errors.image && touched.image}
 									/>
-								</ST.WrapperInput>
+								</ST.WrapperAddFile>
 							</ST.Wrapper>
 							<ST.Wrapper>
 								<ST.Name>Теги</ST.Name>

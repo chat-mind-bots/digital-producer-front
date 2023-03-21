@@ -42,14 +42,12 @@ export const CourseCreate: FC<Pick<CourseResultType, "refetch">> = ({
 	);
 
 	useEffect(() => {
-		// eslint-disable-next-line no-console
-		console.log(123, resultCreateCourse);
 		if (resultCreateCourse.status === QueryStatus.fulfilled) {
 			if (
 				resultCreateCourse.data?.statusCode === RequestStatuses.SUCCESS ||
 				resultCreateCourse.data?.statusCode === RequestStatuses.SUCCESS_201
 			) {
-				toast.success("Все гуд Курс создался");
+				toast.success("Курс создался");
 				refetch && refetch();
 				setOpen(false);
 			} else {
@@ -70,7 +68,7 @@ export const CourseCreate: FC<Pick<CourseResultType, "refetch">> = ({
 				<WindowFormik
 					handleClose={() => setOpen(false)}
 					isOpen={open}
-					title={"Созданние курса "}
+					title={"Создание курса"}
 				>
 					{data?.data ? (
 						<CourseSettingsBodyWindow

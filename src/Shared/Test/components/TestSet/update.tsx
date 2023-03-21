@@ -60,7 +60,7 @@ export const TestUpdate: FC<TestUpdateProps> = ({ idTest, refetch }) => {
 				resultUpdateTest.data?.statusCode === RequestStatuses.SUCCESS ||
 				resultUpdateTest.data?.statusCode === RequestStatuses.SUCCESS_201
 			) {
-				toast.success("Все гуд Курс изменился");
+				toast.success("Тест измененн");
 				setOpen(false);
 				refetch && refetch();
 			} else {
@@ -77,7 +77,7 @@ export const TestUpdate: FC<TestUpdateProps> = ({ idTest, refetch }) => {
 				resultRemoveTest.data?.statusCode === RequestStatuses.SUCCESS ||
 				resultRemoveTest.data?.statusCode === RequestStatuses.SUCCESS_201
 			) {
-				toast.success("Все гуд тест удален");
+				toast.success("Тест удален");
 				setOpen(false);
 				refetch && refetch();
 			} else {
@@ -111,7 +111,7 @@ export const TestUpdate: FC<TestUpdateProps> = ({ idTest, refetch }) => {
 			<WindowFormik
 				handleClose={() => setOpen(false)}
 				isOpen={open}
-				title={"Редактирование теста "}
+				title={"Редактирование теста"}
 			>
 				<>
 					{test.data ? (

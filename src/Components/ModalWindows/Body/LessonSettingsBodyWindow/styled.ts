@@ -100,6 +100,7 @@ export const WrapperAddFile = styled.div`
 	display: flex;
 	gap: 20px;
 	flex: 1;
+	align-items: center;
 `;
 
 export const UploadFile = styled.div`
@@ -151,4 +152,19 @@ export const WrapperAddTag = styled.div`
 	justify-content: center;
 	width: 100%;
 	margin-top: 16px;
+`;
+
+export const ImageCourse = styled.div`
+	width: 64px;
+	height: 64px;
+	border-radius: 50%;
+	overflow: hidden;
+`;
+
+export const Status = styled.div<{ status: boolean }>`
+	width: 64px;
+	height: 64px;
+	border-radius: 50%;
+	background: ${({ status }) => (status ? Colors.BLUE : Colors.RED)};
+	overflow: hidden;
 `;

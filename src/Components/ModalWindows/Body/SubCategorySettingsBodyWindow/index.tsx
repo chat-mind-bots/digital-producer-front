@@ -1,5 +1,6 @@
-import React, { FC } from "react";
+import React, { FC, useState } from "react";
 import { Formik } from "formik";
+import { SketchPicker } from "react-color";
 
 import Input from "Components/UI-KIT/Atoms/Input";
 import Button from "Components/UI-KIT/Atoms/Button";
@@ -8,6 +9,7 @@ import Colors from "Colors";
 import { ValidationSchema } from "./validationSchema";
 import * as ST from "./styled";
 import { ISubCategoryState } from "../../../../Shared/SubCategory/redux/subCategory.slice";
+import ErrText from "../../../UI-KIT/Atoms/Input/ErrText";
 
 type LessonSettingsBodyWindowProps = {
 	initialValues: ISubCategoryState;
@@ -22,6 +24,8 @@ const SubCategorySettingsBodyWindow: FC<LessonSettingsBodyWindowProps> = ({
 	sendData,
 	remove,
 }) => {
+	const [backgroundWindow, setBackgroundWindow] = useState<boolean>(false);
+
 	return (
 		<Formik
 			initialValues={initialValues}
@@ -74,29 +78,60 @@ const SubCategorySettingsBodyWindow: FC<LessonSettingsBodyWindowProps> = ({
 									/>
 								</ST.WrapperInput>
 							</ST.Wrapper>
-
 							<ST.Wrapper>
-								<ST.Name>цвет</ST.Name>
-								<ST.WrapperInput>
-									<Input
-										value={values?.tagsColor || ""}
-										setValue={(str) => {
-											setFieldValue && setFieldValue("tagsColor", str);
+								<ST.Name>Цвет</ST.Name>
+								<ST.WrapperColor>
+									<ST.BlockColor
+										style={{
+											backgroundColor: values?.tagsColor,
 										}}
-										setFocus={(state) => setFieldTouched("tagsColor", state)}
-										placeholder={"Введите названние"}
-										padding={"10px 14px"}
-										fontSize={"16px"}
-										fontWeight={"400"}
-										borderSize={"1px"}
-										errorText={
-											errors.tagsColor && touched.tagsColor
-												? errors.tagsColor
-												: undefined
-										}
-										isError={!!errors.tagsColor && touched.tagsColor}
-									/>
-								</ST.WrapperInput>
+										onClick={() => setBackgroundWindow(!backgroundWindow)}
+									>
+										{backgroundWindow ? "Закрыть" : "Цвет фона"}
+									</ST.BlockColor>
+
+									{backgroundWindow && (
+										<ST.WrapperSketchPicker>
+											<SketchPicker
+												onChange={(color) => {
+													setFieldValue &&
+														setFieldValue("tagsColor", color.hex);
+												}}
+												color={values?.tagsColor}
+											/>
+										</ST.WrapperSketchPicker>
+									)}
+									{!!errors.tagsColor && touched.tagsColor && (
+										<ErrText
+											value={
+												errors.tagsColor && touched.tagsColor
+													? errors.tagsColor
+													: undefined
+											}
+										/>
+									)}
+								</ST.WrapperColor>
+
+								{/*<ST.WrapperInput>*/}
+								{/*	<Input*/}
+								{/*		value={values?.tagsColor || ""}*/}
+								{/*		setValue={(str) => {*/}
+								{/*			setFieldValue && setFieldValue("tagsColor", str);*/}
+								{/*		}}*/}
+								{/*		setFocus={(state) => setFieldTouched("tagsColor", state)}*/}
+								{/*		placeholder={"Введите названние"}*/}
+								{/*		padding={"10px 14px"}*/}
+								{/*		fontSize={"16px"}*/}
+								{/*		fontWeight={"400"}*/}
+								{/*		borderSize={"1px"}*/}
+								{/*		errorText={*/}
+								{/*			errors.tagsColor && touched.tagsColor*/}
+								{/*				? errors.tagsColor*/}
+								{/*				: undefined*/}
+								{/*		}*/}
+								{/*		isError={!!errors.tagsColor && touched.tagsColor}*/}
+								{/*	/>*/}
+								{/*</ST.WrapperInput>*/}
 							</ST.Wrapper>
 						</ST.Content>
 						<ST.Footer>

@@ -60,7 +60,7 @@ export const DocumentUpdate: FC<LessonSetProps> = ({ refetch, idDocument }) => {
 				resultUpdateLesson.data?.statusCode === RequestStatuses.SUCCESS ||
 				resultUpdateLesson.data?.statusCode === RequestStatuses.SUCCESS_201
 			) {
-				toast.success("Все гуд док изменился");
+				toast.success("Документ изменен");
 				setOpen(false);
 				refetch && refetch();
 			} else {
@@ -77,7 +77,7 @@ export const DocumentUpdate: FC<LessonSetProps> = ({ refetch, idDocument }) => {
 				resultRemoveDocument.data?.statusCode === RequestStatuses.SUCCESS ||
 				resultRemoveDocument.data?.statusCode === RequestStatuses.SUCCESS_201
 			) {
-				toast.success("Все гуд док удален");
+				toast.success("Документ удален");
 				setOpen(false);
 				refetch && refetch();
 			} else {
@@ -111,7 +111,7 @@ export const DocumentUpdate: FC<LessonSetProps> = ({ refetch, idDocument }) => {
 			<WindowFormik
 				handleClose={() => setOpen(false)}
 				isOpen={open}
-				title={"редактирование дока "}
+				title={"Редактирование документа"}
 			>
 				<>
 					{document.data ? (

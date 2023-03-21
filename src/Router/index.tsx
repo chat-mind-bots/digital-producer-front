@@ -31,7 +31,6 @@ export const Router: RouteObject[] = [
 		errorElement: <Err />,
 		children: [...RoutesUser, ...RoutesProducer, ...RoutesAdmin],
 	},
-
 	{
 		path: RoutesList.NOT_FOUND,
 		element: <Main isRegistration={false} />,

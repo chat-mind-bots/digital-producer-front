@@ -78,12 +78,15 @@ const CourseId: FC<ICourseState & Pick<CourseResultType, "refetch">> = ({
 				backToMainPageCourse();
 			},
 		},
-		{
+	];
+
+	if (currentLesson) {
+		breadCrumbs.push({
 			id: 4,
 			name: currentLesson ? currentLesson.name : "",
 			url: RoutesList.USER,
-		},
-	];
+		});
+	}
 
 	const [getLesson, lesson] = useGetLessonMutation();
 
@@ -165,6 +168,7 @@ const CourseId: FC<ICourseState & Pick<CourseResultType, "refetch">> = ({
 									isLoading={loading}
 									image={currentLesson.image}
 									isLesson={true}
+									isEnrolled={isEnrolled}
 								/>
 							</>
 						) : (
@@ -188,6 +192,7 @@ const CourseId: FC<ICourseState & Pick<CourseResultType, "refetch">> = ({
 									paymentLink={`https://t.me/${owner?.username}`}
 									idCourse={id}
 									refetch={refetch}
+									isEnrolled={isEnrolled}
 								/>
 							</>
 						)}
@@ -227,7 +232,8 @@ const CourseId: FC<ICourseState & Pick<CourseResultType, "refetch">> = ({
 					</WrapperContent>
 				)}
 				{currentLesson
-					? !loading && (
+					? !loading &&
+					  !!currentLesson.documents?.length && (
 							<>
 								<WrapperContent header={"Документы урока"}>
 									<ST.Content>

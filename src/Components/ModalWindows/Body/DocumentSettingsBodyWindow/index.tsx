@@ -9,6 +9,7 @@ import { ValidationSchema } from "./validationSchema";
 import * as ST from "./styled";
 import { BannerApiPropsSet } from "../../../../Shared/Banner/redux/banner.api";
 import { IDocumentState } from "../../../../Shared/Document/redux/document.slice";
+import DropZone from "../../../UI-KIT/Atoms/DropZone";
 
 type DocumentSettingsBodyWindowProps = {
 	initialValues: IDocumentState;
@@ -75,27 +76,22 @@ const DocumentSettingsBodyWindow: FC<DocumentSettingsBodyWindowProps> = ({
 									/>
 								</ST.WrapperInput>
 							</ST.Wrapper>
-							<ST.Wrapper>
-								<ST.Name>Ссылка</ST.Name>
-								<ST.WrapperInput>
-									<Input
-										value={values?.url || ""}
-										setValue={(str) => {
-											setFieldValue && setFieldValue("url", str);
-										}}
-										setFocus={(state) => setFieldTouched("url", state)}
-										placeholder={"Введите заголовок "}
-										padding={"10px 14px"}
-										fontSize={"16px"}
-										fontWeight={"400"}
-										borderSize={"1px"}
+
+							<ST.Wrapper isBorder={true}>
+								<ST.Name>Добавить документ</ST.Name>
+								<ST.WrapperAddFile>
+									<ST.Status status={!!values?.url} />
+
+									<DropZone
+										setUrl={(url) => setFieldValue && setFieldValue("url", url)}
 										errorText={
 											errors.url && touched.url ? errors.url : undefined
 										}
 										isError={!!errors.url && touched.url}
 									/>
-								</ST.WrapperInput>
+								</ST.WrapperAddFile>
 							</ST.Wrapper>
+
 							<ST.Wrapper>
 								<ST.Name>Описание</ST.Name>
 								<ST.WrapperInput>

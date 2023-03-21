@@ -61,7 +61,7 @@ export const ModuleUpdate: FC<ModuleUpdateProps> = ({ idModule, refetch }) => {
 				resultUpdateModule.data?.statusCode === RequestStatuses.SUCCESS ||
 				resultUpdateModule.data?.statusCode === RequestStatuses.SUCCESS_201
 			) {
-				toast.success("Все гуд модуль изменился");
+				toast.success("Модуль изменен");
 				setOpen(false);
 				refetch && refetch();
 			} else {
@@ -78,7 +78,7 @@ export const ModuleUpdate: FC<ModuleUpdateProps> = ({ idModule, refetch }) => {
 				resultRemoveModule.data?.statusCode === RequestStatuses.SUCCESS ||
 				resultRemoveModule.data?.statusCode === RequestStatuses.SUCCESS_201
 			) {
-				toast.success("Все гуд модуль удален");
+				toast.success("Модуль удален");
 				setOpen(false);
 				refetch && refetch();
 			} else {
@@ -112,7 +112,7 @@ export const ModuleUpdate: FC<ModuleUpdateProps> = ({ idModule, refetch }) => {
 			<WindowFormik
 				handleClose={() => setOpen(false)}
 				isOpen={open}
-				title={"Редактирование модуля "}
+				title={"Редактирование модуля"}
 			>
 				<>
 					{module.data ? (

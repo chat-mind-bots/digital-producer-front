@@ -29,6 +29,14 @@ type WrapperProps = {
 
 export const Form = styled.div``;
 
+export const Status = styled.div<{ status: boolean }>`
+	width: 64px;
+	height: 64px;
+	border-radius: 50%;
+	background: ${({ status }) => (status ? Colors.BLUE : Colors.RED)};
+	overflow: hidden;
+`;
+
 export const Content = styled.div`
 	padding: 20px 24px 32px;
 	display: flex;
@@ -100,6 +108,7 @@ export const WrapperAddFile = styled.div`
 	display: flex;
 	gap: 20px;
 	flex: 1;
+	align-items: center;
 `;
 
 export const UploadFile = styled.div`

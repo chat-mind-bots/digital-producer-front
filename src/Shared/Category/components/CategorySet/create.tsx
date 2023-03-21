@@ -44,7 +44,7 @@ export const CategoryCreate: FC<CategoryCreateProps> = ({ refetch }) => {
 				resultCreateCategory.data?.statusCode === RequestStatuses.SUCCESS ||
 				resultCreateCategory.data?.statusCode === RequestStatuses.SUCCESS_201
 			) {
-				toast.success("Все гуд категория создалась");
+				toast.success("Категория создана");
 				setOpen(false);
 				refetch && refetch();
 			} else {
@@ -77,7 +77,7 @@ export const CategoryCreate: FC<CategoryCreateProps> = ({ refetch }) => {
 				<WindowFormik
 					handleClose={() => setOpen(false)}
 					isOpen={open}
-					title={"Созданние урока "}
+					title={"Создание категории "}
 				>
 					<CategorySettingsBodyWindow
 						initialValues={initialCategoryState}

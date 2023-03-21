@@ -49,7 +49,7 @@ export const LessonCreate: FC<LessonCreateProps> = ({ idModule, refetch }) => {
 				resultCreateLesson.data?.statusCode === RequestStatuses.SUCCESS ||
 				resultCreateLesson.data?.statusCode === RequestStatuses.SUCCESS_201
 			) {
-				toast.success("Все гуд Курс создался");
+				toast.success("Урок создан");
 				const query: AddLessonToModuleApiProps = {
 					...queryAuth,
 					idLesson: resultCreateLesson.data.id as string,
@@ -71,7 +71,7 @@ export const LessonCreate: FC<LessonCreateProps> = ({ idModule, refetch }) => {
 				resultAddLessonToModule.data?.statusCode === RequestStatuses.SUCCESS ||
 				resultAddLessonToModule.data?.statusCode === RequestStatuses.SUCCESS_201
 			) {
-				toast.success("Все гуд Курс привязался");
+				toast.success("Урок добавлен в курс");
 				refetch && refetch();
 			} else {
 				resultCreateLesson.data?.message?.forEach((e) => {
@@ -104,7 +104,7 @@ export const LessonCreate: FC<LessonCreateProps> = ({ idModule, refetch }) => {
 				<WindowFormik
 					handleClose={() => setOpen(false)}
 					isOpen={open}
-					title={"Созданние урока "}
+					title={"Создание урока"}
 				>
 					<LessonSettingsBodyWindow
 						initialValues={initialLessonState}

@@ -1,9 +1,8 @@
 import React, { FC, useCallback, useEffect, useState } from "react";
-import toast, { Toaster } from "react-hot-toast";
+import toast from "react-hot-toast";
 import { QueryStatus } from "@reduxjs/toolkit/query";
 
 import { ReactComponent as IcoSettings } from "Icons/Settings2.svg";
-import ModalToaster from "Components/ModalWindows/WrappersModalWindows/ModalToaster";
 
 import WindowFormik from "../../../../Components/ModalWindows/WrappersModalWindows/Formik";
 import { useAppSelector } from "../../../../Hooks/redux";
@@ -18,6 +17,7 @@ import {
 } from "../../redux/subCategory.api";
 import { ISubCategoryState } from "../../redux/subCategory.slice";
 import SubCategorySettingsBodyWindow from "../../../../Components/ModalWindows/Body/SubCategorySettingsBodyWindow";
+import * as ST from "./styled";
 
 type subCategoryUpdateProps = Pick<CourseResultType, "refetch"> &
 	Pick<GetSubCategoryApiProps, "idSubCategory">;
@@ -50,14 +50,11 @@ export const SubCategoryUpdate: FC<subCategoryUpdateProps> = ({
 		[updateSubCategory]
 	);
 
-	const remove = useCallback(
-		(id: string) =>
-			removeSubCategory({
-				...queryAuth,
-				id,
-			}),
-		[removeSubCategory]
-	);
+	const remove = (id: string) =>
+		removeSubCategory({
+			...queryAuth,
+			id,
+		});
 
 	useEffect(() => {
 		if (resultUpdateSubCategory.status === QueryStatus.fulfilled) {
@@ -65,7 +62,7 @@ export const SubCategoryUpdate: FC<subCategoryUpdateProps> = ({
 				resultUpdateSubCategory.data?.statusCode === RequestStatuses.SUCCESS ||
 				resultUpdateSubCategory.data?.statusCode === RequestStatuses.SUCCESS_201
 			) {
-				toast.success("Все гуд Курс изменился");
+				toast.success("Саб категория изменена");
 				setOpen(false);
 				refetch && refetch();
 			} else {
@@ -82,7 +79,7 @@ export const SubCategoryUpdate: FC<subCategoryUpdateProps> = ({
 				resultRemoveSubCategory.data?.statusCode === RequestStatuses.SUCCESS ||
 				resultRemoveSubCategory.data?.statusCode === RequestStatuses.SUCCESS_201
 			) {
-				toast.success("Все гуд Курс удален");
+				toast.success("Саб категория удалена");
 				setOpen(false);
 				refetch && refetch();
 			} else {
@@ -104,19 +101,21 @@ export const SubCategoryUpdate: FC<subCategoryUpdateProps> = ({
 
 	return (
 		<>
-			<IcoSettings
+			<ST.WrapperEdit
 				onClick={(e) => {
 					e.preventDefault();
 					e.stopPropagation();
 					setOpen(true);
 				}}
-			/>
+			>
+				<IcoSettings />
+			</ST.WrapperEdit>
 
 			{/*MODAL WINDOW_______________________*/}
 			<WindowFormik
 				handleClose={() => setOpen(false)}
 				isOpen={open}
-				title={"редактирование"}
+				title={"Редактирование саб категории"}
 			>
 				<>
 					{subCategory.data ? (
@@ -133,13 +132,6 @@ export const SubCategoryUpdate: FC<subCategoryUpdateProps> = ({
 					)}
 				</>
 			</WindowFormik>
-
-			<ModalToaster>
-				<Toaster
-					position="bottom-left"
-					reverseOrder={false}
-				/>
-			</ModalToaster>
 		</>
 	);
 };

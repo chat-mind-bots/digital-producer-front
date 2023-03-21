@@ -116,3 +116,12 @@ export const WrapperTables = styled.div`
 		gap: 50px;
 	}
 `;
+
+export const CircleColor = styled.span<{ background: string }>`
+	width: 36px;
+	height: 36px;
+	display: block;
+	border-radius: 50%;
+	margin-left: auto;
+	background: ${({ background }) => background};
+`;

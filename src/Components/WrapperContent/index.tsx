@@ -34,13 +34,13 @@ const WrapperContent: FC<WrapperContentProps> = ({
 				<ST.WrapperBreadCrumbs>
 					<BreadCrumbs array={header} />
 					{search && (
-						<div>
+						<ST.WrapperSearch>
 							<Search
 								value={state}
 								setValue={(e) => setState(e)}
 								placeholder={"Поиск"}
 							/>
-						</div>
+						</ST.WrapperSearch>
 					)}
 				</ST.WrapperBreadCrumbs>
 			)}

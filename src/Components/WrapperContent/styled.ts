@@ -15,6 +15,14 @@ export const WrapperContent = styled.div`
 	}
 `;
 
+export const WrapperSearch = styled.div`
+	position: absolute;
+	right: 0;
+	top: 50%;
+	transform: translate(0px, -50%);
+	margin-top: -13px;
+`;
+
 export const Title = styled.p`
 	font-family: "Vela Sans";
 	font-weight: 700;
@@ -31,4 +39,5 @@ export const WrapperBreadCrumbs = styled.div`
 	display: flex;
 	align-items: center;
 	justify-content: space-between;
+	position: relative;
 `;

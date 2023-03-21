@@ -55,7 +55,7 @@ export const QuestionCreate: FC<TestCreateProps> = ({ idTest, refetch }) => {
 					idQuestion: resultCreateQuestion.data.id,
 					idTest: idTest,
 				};
-				toast.success("Все гуд вопрос создался");
+				toast.success("Вопрос создан");
 				addQuestionToTest(query);
 			} else {
 				resultCreateQuestion.data?.message?.forEach((e) => {
@@ -71,7 +71,7 @@ export const QuestionCreate: FC<TestCreateProps> = ({ idTest, refetch }) => {
 				resultAddQuestionToTest.data?.statusCode === RequestStatuses.SUCCESS ||
 				resultAddQuestionToTest.data?.statusCode === RequestStatuses.SUCCESS_201
 			) {
-				toast.success("Все гуд вопрос привязался");
+				toast.success("Вопрос привязан к тесту");
 				setOpen(false);
 				refetch && refetch();
 			} else {
@@ -92,7 +92,7 @@ export const QuestionCreate: FC<TestCreateProps> = ({ idTest, refetch }) => {
 				<WindowFormik
 					handleClose={() => setOpen(false)}
 					isOpen={open}
-					title={"Созданние вопроса для теста "}
+					title={"Создание вопроса"}
 				>
 					<QuestionSettingsBodyWindow
 						initialValues={initialQuestionState}

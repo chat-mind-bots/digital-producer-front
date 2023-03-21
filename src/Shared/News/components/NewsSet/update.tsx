@@ -63,7 +63,7 @@ export const NewsUpdate: FC<NewsIdSetProps> = ({ idNews, refetch }) => {
 				resultUpdateNews.data?.statusCode === RequestStatuses.SUCCESS ||
 				resultUpdateNews.data?.statusCode === RequestStatuses.SUCCESS_201
 			) {
-				toast.success("Все гуд Курс изменился");
+				toast.success("Новость изменена");
 				setOpen(false);
 				refetch && refetch();
 			} else {
@@ -80,7 +80,7 @@ export const NewsUpdate: FC<NewsIdSetProps> = ({ idNews, refetch }) => {
 				resultRemoveNews.data?.statusCode === RequestStatuses.SUCCESS ||
 				resultRemoveNews.data?.statusCode === RequestStatuses.SUCCESS_201
 			) {
-				toast.success("Все гуд Курс удален");
+				toast.success("Новость удалена");
 				refetch && refetch();
 				setOpen(false);
 			} else {

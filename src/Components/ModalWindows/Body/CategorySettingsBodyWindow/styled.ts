@@ -152,3 +152,31 @@ export const WrapperAddTag = styled.div`
 	width: 100%;
 	margin-top: 16px;
 `;
+
+export const WrapperColor = styled.div`
+	position: relative;
+	width: 100%;
+	flex: 1;
+`;
+
+export const BlockColor = styled.div`
+	font-weight: 400;
+	font-size: 16px;
+	line-height: 20px;
+	color: ${Colors.GREY1};
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	height: 40px;
+	width: 100%;
+	border: 1px solid ${Colors.GREY1};
+	border-radius: 12px;
+	position: relative;
+	cursor: pointer;
+`;
+
+export const WrapperSketchPicker = styled.div`
+	position: absolute;
+	z-index: 2;
+	top: 100%;
+`;

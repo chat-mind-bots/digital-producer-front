@@ -3,6 +3,7 @@ import { Formik } from "formik";
 
 import Button from "Components/UI-KIT/Atoms/Button";
 import Colors from "Colors";
+import { ReactComponent as ModalWindowAddFileIcon } from "Icons/ModalWindowAddFileIcon.svg";
 
 import { ValidationSchema } from "./validationSchema";
 import * as ST from "./styled";
@@ -14,6 +15,8 @@ import ErrText from "../../../UI-KIT/Atoms/Input/ErrText";
 import ChangeNotes from "../../../UI-KIT/ChangeNotes";
 import { ICategoryState } from "../../../../Shared/Category/redux/category.slice";
 import Select from "../../../UI-KIT/Atoms/Select";
+import Image from "../../../UI-KIT/Atoms/Image";
+import DropZone from "../../../UI-KIT/Atoms/DropZone";
 
 type CourseSettingsBodyWindowProps = {
 	initialValues: ICourseState;
@@ -70,9 +73,6 @@ const CourseSettingsBodyWindow: FC<CourseSettingsBodyWindowProps> = ({
 								};
 							})
 					: [];
-
-				// eslint-disable-next-line no-console
-				console.log(values);
 
 				return (
 					<ST.Form>
@@ -142,6 +142,29 @@ const CourseSettingsBodyWindow: FC<CourseSettingsBodyWindowProps> = ({
 								</ST.WrapperInput>
 							</ST.Wrapper>
 
+							<ST.Wrapper isBorder={true}>
+								<ST.Name>Добавить фото</ST.Name>
+								<ST.WrapperAddFile>
+									{values?.image ? (
+										<ST.ImageCourse>
+											<Image src={values?.image} />
+										</ST.ImageCourse>
+									) : (
+										<ModalWindowAddFileIcon />
+									)}
+
+									<DropZone
+										setUrl={(url) =>
+											setFieldValue && setFieldValue("image", url)
+										}
+										errorText={
+											errors.image && touched.image ? errors.image : undefined
+										}
+										isError={!!errors.image && touched.image}
+									/>
+								</ST.WrapperAddFile>
+							</ST.Wrapper>
+
 							<ST.Wrapper>
 								<ST.Name>Название</ST.Name>
 								<ST.WrapperInput>
@@ -186,49 +209,24 @@ const CourseSettingsBodyWindow: FC<CourseSettingsBodyWindowProps> = ({
 									/>
 								</ST.WrapperInput>
 							</ST.Wrapper>
-							<ST.Wrapper>
-								<ST.Name>Картинка</ST.Name>
-								<ST.WrapperInput>
-									<Input
-										value={values?.image || ""}
-										setValue={(str) => {
-											setFieldValue && setFieldValue("image", str);
-										}}
-										setFocus={(state) => setFieldTouched("image", state)}
-										placeholder={"Введите ссылку на картинку "}
-										padding={"10px 14px"}
-										fontSize={"16px"}
-										fontWeight={"400"}
-										borderSize={"1px"}
-										errorText={
-											errors.image && touched.image ? errors.image : undefined
-										}
-										isError={!!errors.image && touched.image}
-									/>
-								</ST.WrapperInput>
-							</ST.Wrapper>
 
-							<ST.Wrapper>
-								<ST.Name>Видео</ST.Name>
-								<ST.WrapperInput>
-									<Input
-										value={values?.video || ""}
-										setValue={(str) => {
-											setFieldValue && setFieldValue("video", str);
-										}}
-										setFocus={(state) => setFieldTouched("video", state)}
-										placeholder={"Введите ссылку на картинку "}
-										padding={"10px 14px"}
-										fontSize={"16px"}
-										fontWeight={"400"}
-										borderSize={"1px"}
+							<ST.Wrapper isBorder={true}>
+								<ST.Name>Добавить видео</ST.Name>
+								<ST.WrapperAddFile>
+									<ST.Status status={!!values?.video} />
+
+									<DropZone
+										setUrl={(url) =>
+											setFieldValue && setFieldValue("video", url)
+										}
 										errorText={
 											errors.video && touched.video ? errors.video : undefined
 										}
 										isError={!!errors.video && touched.video}
 									/>
-								</ST.WrapperInput>
+								</ST.WrapperAddFile>
 							</ST.Wrapper>
+
 							<ST.Wrapper>
 								<ST.Name>Теги</ST.Name>
 								<ST.WrapperInput>

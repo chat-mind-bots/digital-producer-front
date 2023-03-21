@@ -61,7 +61,7 @@ export const LessonUpdate: FC<LessonSetProps> = ({ idLesson, refetch }) => {
 				resultUpdateLesson.data?.statusCode === RequestStatuses.SUCCESS ||
 				resultUpdateLesson.data?.statusCode === RequestStatuses.SUCCESS_201
 			) {
-				toast.success("Все гуд Курс изменился");
+				toast.success("Урок изменен");
 				setOpen(false);
 				refetch && refetch();
 			} else {
@@ -78,7 +78,7 @@ export const LessonUpdate: FC<LessonSetProps> = ({ idLesson, refetch }) => {
 				resultRemoveLesson.data?.statusCode === RequestStatuses.SUCCESS ||
 				resultRemoveLesson.data?.statusCode === RequestStatuses.SUCCESS_201
 			) {
-				toast.success("Все гуд Курс удален");
+				toast.success("Урок удален");
 				setOpen(false);
 				refetch && refetch();
 			} else {
@@ -112,7 +112,7 @@ export const LessonUpdate: FC<LessonSetProps> = ({ idLesson, refetch }) => {
 			<WindowFormik
 				handleClose={() => setOpen(false)}
 				isOpen={open}
-				title={"Созданние урока "}
+				title={"Редактирование урока"}
 			>
 				<>
 					{lesson.data ? (

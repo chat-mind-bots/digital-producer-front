@@ -12,6 +12,8 @@ export const BreadCrumbs = styled.div`
 	gap: 12px;
 `;
 
+export const ItemBreadCrumbs = styled.div``;
+
 export const Item = styled.p<ItemProps>`
 	font-family: "Vela Sans";
 	font-weight: 700;
@@ -30,7 +32,7 @@ export const Item = styled.p<ItemProps>`
 		color: ${Colors.BLUE};
 	}
 	&:after {
-		content: ${({ isLast }) => !isLast && "/"};
+		content: ${({ isLast }) => !isLast && "'/'"};
 		margin-left: 12px;
 		color: ${Colors.GREY4} !important;
 	}

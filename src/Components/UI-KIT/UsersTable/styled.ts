@@ -64,6 +64,23 @@ export const ThOpen = styled.td`
 	}
 `;
 
+export const ThOpenCourses = styled.td`
+	& > a {
+		height: calc(100% + 2px);
+		width: calc(100% + 2px);
+		display: flex;
+		-webkit-box-align: center;
+		align-items: center;
+		padding: 12px 15px;
+		cursor: pointer;
+		box-sizing: border-box;
+		&:hover {
+			background: ${Colors.BLUE};
+			color: ${Colors.WHITE};
+		}
+	}
+`;
+
 export const ThOpenEdit = styled.td`
 	display: flex;
 	align-items: center;

@@ -49,7 +49,7 @@ export const ModuleCreate: FC<ModuleCreateProps> = ({ idCourse, refetch }) => {
 				resultCreateModule.data?.statusCode === RequestStatuses.SUCCESS ||
 				resultCreateModule.data?.statusCode === RequestStatuses.SUCCESS_201
 			) {
-				toast.success("Все гуд модуль создался");
+				toast.success("Модуль создан");
 				const query: AddModuleToCourseApiProps = {
 					...queryAuth,
 					idModule: resultCreateModule.data.id as string,
@@ -71,7 +71,7 @@ export const ModuleCreate: FC<ModuleCreateProps> = ({ idCourse, refetch }) => {
 				resultAddCourseToModule.data?.statusCode === RequestStatuses.SUCCESS ||
 				resultAddCourseToModule.data?.statusCode === RequestStatuses.SUCCESS_201
 			) {
-				toast.success("Все гуд модуль привязался");
+				toast.success("Модуль привязан к курсу");
 				refetch && refetch();
 			} else {
 				resultCreateModule.data?.message?.forEach((e) => {
@@ -103,7 +103,7 @@ export const ModuleCreate: FC<ModuleCreateProps> = ({ idCourse, refetch }) => {
 				<WindowFormik
 					handleClose={() => setOpen(false)}
 					isOpen={open}
-					title={"Созданние модуля "}
+					title={"Создание модуля"}
 				>
 					<ModuleSettingsBodyWindow
 						initialValues={initialModuleState}

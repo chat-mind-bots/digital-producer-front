@@ -9,6 +9,9 @@ import { ValidationSchema } from "./validationSchema";
 import * as ST from "./styled";
 import { ILessonState } from "../../../../Shared/Lesson/redux/lesson.slice";
 import { BannerApiPropsSet } from "../../../../Shared/Banner/redux/banner.api";
+import Image from "../../../UI-KIT/Atoms/Image";
+import { ReactComponent as ModalWindowAddFileIcon } from "../../../../Icons/ModalWindowAddFileIcon.svg";
+import DropZone from "../../../UI-KIT/Atoms/DropZone";
 
 type LessonSettingsBodyWindowProps = {
 	initialValues: ILessonState;
@@ -105,50 +108,29 @@ const LessonSettingsBodyWindow: FC<LessonSettingsBodyWindowProps> = ({
 								</ST.WrapperInput>
 							</ST.Wrapper>
 							{/*	*/}
-							<ST.Wrapper>
-								<ST.Name>Картинка</ST.Name>
-								<ST.WrapperInput>
-									<Input
-										value={values?.image || ""}
-										setValue={(str) => {
-											setFieldValue && setFieldValue("image", str);
-										}}
-										setFocus={(state) => setFieldTouched("image", state)}
-										placeholder={"Введите заголовок "}
-										padding={"10px 14px"}
-										fontSize={"16px"}
-										fontWeight={"400"}
-										borderSize={"1px"}
+
+							<ST.Wrapper isBorder={true}>
+								<ST.Name>Добавить фото</ST.Name>
+								<ST.WrapperAddFile>
+									{values?.image ? (
+										<ST.ImageCourse>
+											<Image src={values?.image} />
+										</ST.ImageCourse>
+									) : (
+										<ModalWindowAddFileIcon />
+									)}
+
+									<DropZone
+										setUrl={(url) =>
+											setFieldValue && setFieldValue("image", url)
+										}
 										errorText={
 											errors.image && touched.image ? errors.image : undefined
 										}
 										isError={!!errors.image && touched.image}
 									/>
-								</ST.WrapperInput>
+								</ST.WrapperAddFile>
 							</ST.Wrapper>
-							{/*	*/}
-							<ST.Wrapper>
-								<ST.Name>Видео</ST.Name>
-								<ST.WrapperInput>
-									<Input
-										value={values?.video || ""}
-										setValue={(str) => {
-											setFieldValue && setFieldValue("video", str);
-										}}
-										setFocus={(state) => setFieldTouched("video", state)}
-										placeholder={"Введите заголовок "}
-										padding={"10px 14px"}
-										fontSize={"16px"}
-										fontWeight={"400"}
-										borderSize={"1px"}
-										errorText={
-											errors.video && touched.video ? errors.video : undefined
-										}
-										isError={!!errors.video && touched.video}
-									/>
-								</ST.WrapperInput>
-							</ST.Wrapper>
-							{/*	*/}
 							<ST.Wrapper>
 								<ST.Name>levelDifficulty</ST.Name>
 								<ST.WrapperInput>
@@ -179,7 +161,22 @@ const LessonSettingsBodyWindow: FC<LessonSettingsBodyWindowProps> = ({
 									</ST.WrapperInput>
 								</ST.WrapperInput>
 							</ST.Wrapper>
-							{/*	*/}
+							<ST.Wrapper isBorder={true}>
+								<ST.Name>Добавить видео</ST.Name>
+								<ST.WrapperAddFile>
+									<ST.Status status={!!values?.video} />
+
+									<DropZone
+										setUrl={(url) =>
+											setFieldValue && setFieldValue("video", url)
+										}
+										errorText={
+											errors.video && touched.video ? errors.video : undefined
+										}
+										isError={!!errors.video && touched.video}
+									/>
+								</ST.WrapperAddFile>
+							</ST.Wrapper>
 							<ST.Wrapper>
 								<ST.Name>Позиция</ST.Name>
 								<ST.WrapperInput>

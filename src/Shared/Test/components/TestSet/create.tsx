@@ -44,7 +44,7 @@ export const TestCreate: FC<TestCreateProps> = ({ idLesson, refetch }) => {
 				resultCreateTest.data?.statusCode === RequestStatuses.SUCCESS ||
 				resultCreateTest.data?.statusCode === RequestStatuses.SUCCESS_201
 			) {
-				toast.success("Все гуд тест создался");
+				toast.success("Тест создан");
 				setOpen(false);
 				refetch && refetch();
 			} else {
@@ -65,7 +65,7 @@ export const TestCreate: FC<TestCreateProps> = ({ idLesson, refetch }) => {
 				<WindowFormik
 					handleClose={() => setOpen(false)}
 					isOpen={open}
-					title={"Созданние теста "}
+					title={"Создание теста"}
 				>
 					<TestSettingsBodyWindow
 						initialValues={initialTestState}

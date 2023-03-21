@@ -11,6 +11,7 @@ import {
 } from "Components/ModalWindows/animation";
 
 import * as ST from "./styled";
+import Colors from "../../../../Colors";
 
 type ModalProps = {
 	children: JSX.Element;
@@ -50,10 +51,10 @@ const ModalFormik: FC<ModalProps> = ({
 							...defaultStyle,
 							...transitionStyles[state],
 						}}
-						onClick={(e) => {
-							e.preventDefault();
-							e.stopPropagation();
-						}}
+						// onClick={(e) => {
+						// 	e.preventDefault();
+						// 	e.stopPropagation();
+						// }} // поискать баги
 					>
 						<ST.Window>
 							<ST.Header>
@@ -64,7 +65,13 @@ const ModalFormik: FC<ModalProps> = ({
 										<Close onClick={handleClose} />
 									</ST.Title>
 									<ST.Description>
-										Create your company profile for free in less than 5 minutes.
+										В случае возникновения вопросов обращаться:{" "}
+										<a
+											style={{ color: Colors.BLUE }}
+											href="https://t.me/Svyatoslav_Zhilin"
+										>
+											support.tg
+										</a>
 									</ST.Description>
 								</ST.WrapperInfoHeader>
 							</ST.Header>

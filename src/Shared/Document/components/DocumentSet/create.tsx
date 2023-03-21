@@ -60,7 +60,7 @@ export const DocumentCreate: FC<LessonCreateProps> = ({
 				resultCreateDocument.data?.statusCode === RequestStatuses.SUCCESS_201
 			) {
 				if (idCourse) {
-					toast.success("Все гуд Курс создался");
+					toast.success("Документ создан");
 					const query: AddDocumentToCourseApiProps = {
 						...queryAuth,
 						idDocument: resultCreateDocument.data.id as string,
@@ -69,7 +69,7 @@ export const DocumentCreate: FC<LessonCreateProps> = ({
 					setOpen(false);
 					addDocumentToCourse(query);
 				} else {
-					toast.success("Все гуд Курс создался");
+					toast.success("Документ создан");
 					const query: AddDocumentToLessonApiProps = {
 						...queryAuth,
 						idDocument: resultCreateDocument.data.id as string,
@@ -94,7 +94,7 @@ export const DocumentCreate: FC<LessonCreateProps> = ({
 				resultAddDocumentToCourse.data?.statusCode ===
 					RequestStatuses.SUCCESS_201
 			) {
-				toast.success("Все гуд документ привязался к курсу");
+				toast.success("Документ приввязан к курсу");
 				refetch && refetch();
 			} else {
 				resultCreateDocument.data?.message?.forEach((e) => {
@@ -112,7 +112,7 @@ export const DocumentCreate: FC<LessonCreateProps> = ({
 				resultAddDocumentToLesson.data?.statusCode ===
 					RequestStatuses.SUCCESS_201
 			) {
-				toast.success("Все гуд документ привязался к уроку");
+				toast.success("Документ приввязан к уроку");
 				refetch && refetch();
 			} else {
 				resultCreateDocument.data?.message?.forEach((e) => {
@@ -132,7 +132,7 @@ export const DocumentCreate: FC<LessonCreateProps> = ({
 				<WindowFormik
 					handleClose={() => setOpen(false)}
 					isOpen={open}
-					title={"Созданние урока "}
+					title={"Создание документа"}
 				>
 					<DocumentSettingsBodyWindow
 						initialValues={initialDocumentState}

@@ -18,6 +18,7 @@ import {
 } from "../../redux/category.api";
 import { ICategoryState } from "../../redux/category.slice";
 import CategorySettingsBodyWindow from "../../../../Components/ModalWindows/Body/CategorySettingsBodyWindow";
+import * as ST from "./styled";
 
 type CategoryUpdateProps = Pick<CourseResultType, "refetch"> &
 	Pick<GetCategoryApiProps, "idCategory">;
@@ -63,7 +64,7 @@ export const CategoryUpdate: FC<CategoryUpdateProps> = ({
 				resultUpdateCategory.data?.statusCode === RequestStatuses.SUCCESS ||
 				resultUpdateCategory.data?.statusCode === RequestStatuses.SUCCESS_201
 			) {
-				toast.success("Все гуд Курс изменился");
+				toast.success("Категория изменена");
 				setOpen(false);
 				refetch && refetch();
 			} else {
@@ -80,7 +81,7 @@ export const CategoryUpdate: FC<CategoryUpdateProps> = ({
 				resultRemoveCategory.data?.statusCode === RequestStatuses.SUCCESS ||
 				resultRemoveCategory.data?.statusCode === RequestStatuses.SUCCESS_201
 			) {
-				toast.success("Все гуд Курс удален");
+				toast.success("Категория удалена");
 				setOpen(false);
 				refetch && refetch();
 			} else {
@@ -102,19 +103,21 @@ export const CategoryUpdate: FC<CategoryUpdateProps> = ({
 
 	return (
 		<>
-			<IcoSettings
+			<ST.WrapperEdit
 				onClick={(e) => {
 					e.preventDefault();
 					e.stopPropagation();
 					setOpen(true);
 				}}
-			/>
+			>
+				<IcoSettings />
+			</ST.WrapperEdit>
 
 			{/*MODAL WINDOW_______________________*/}
 			<WindowFormik
 				handleClose={() => setOpen(false)}
 				isOpen={open}
-				title={"редактирование"}
+				title={"Редактирование категории"}
 			>
 				<>
 					{subCategory.data ? (

@@ -2,6 +2,8 @@ import styled from "styled-components";
 
 import Colors from "Colors";
 
+import BreakPoints from "../../../BreakPoints";
+
 export const TestTimer = styled.div`
 	position: sticky;
 	max-width: 260px;
@@ -14,6 +16,13 @@ export const TestTimer = styled.div`
 	gap: 14px;
 	padding: 20px;
 	top: 129px;
+	@media (max-width: ${BreakPoints.TABLET}px) {
+		position: relative;
+		top: 0;
+		width: 100%;
+		max-width: fit-content;
+		border-radius: 0;
+	}
 `;
 
 export const Time = styled.div`

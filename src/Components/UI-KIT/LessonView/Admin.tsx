@@ -1,4 +1,4 @@
-import React, { FC } from "react";
+import React, { FC, useEffect, useState } from "react";
 
 import LevelDifficulty, {
 	LoadingLevelDifficulty,
@@ -56,128 +56,142 @@ const LessonView: FC<LessonViewProps> = ({
 	refetch,
 	isLesson,
 	tags,
-}) => (
-	<ST.LessonView>
-		<ST.WrapperVideo isLoading={isLoading}>
-			<ST.Loader />
-			<Image src={image} />
-			<PlayVideo isOpen={!isLoading} />
-		</ST.WrapperVideo>
-		<ST.Title isLoading={isLoading}>
-			{name}
-			<ST.WrapperStatuses>
-				<CourseSetStatus
-					status={CoursesStatuses.NOT_ACTIVE}
-					idCourse={idCourse}
-					refetch={refetch}
-				>
-					<ST.Status isActive={status === CoursesStatuses.NOT_ACTIVE}>
-						<StatusFalse />
-					</ST.Status>
-				</CourseSetStatus>
-				<CourseSetStatus
-					status={CoursesStatuses.AVAILABLE}
-					idCourse={idCourse}
-					refetch={refetch}
-				>
-					<ST.Status isActive={status === CoursesStatuses.AVAILABLE}>
-						<StatusTrue />
-					</ST.Status>
-				</CourseSetStatus>
-				<CourseSetStatus
-					status={CoursesStatuses.IN_REVIEW}
-					idCourse={idCourse}
-					refetch={refetch}
-				>
-					<ST.Status isActive={status === CoursesStatuses.IN_REVIEW}>
-						<StatusWait />
-					</ST.Status>
-				</CourseSetStatus>
-				<CourseSetStatus
-					status={CoursesStatuses.IN_PROGRESS}
-					idCourse={idCourse}
-					refetch={refetch}
-				>
-					<ST.Status isActive={status === CoursesStatuses.IN_PROGRESS}>
-						<Progress />
-					</ST.Status>
-				</CourseSetStatus>
-			</ST.WrapperStatuses>
-		</ST.Title>
-		<ST.WrapperLevelDifficulty>
-			{isLoading ? (
-				<LoadingLevelDifficulty />
-			) : (
-				<LevelDifficulty
-					data={{
-						curren: levelDifficulty,
-						max: 3,
-					}}
-				/>
-			)}
-		</ST.WrapperLevelDifficulty>
-		<ST.WrapperInfo>
-			<ST.TitleInfo>
-				{isLesson ? "Описание урока:" : "Описание курса:"}
-			</ST.TitleInfo>
-			<ST.WrapperSubTitle
-				delay={0.1}
-				isLoading={isLoading}
-			>
-				<ST.SubTitleInfo dangerouslySetInnerHTML={{ __html: description }} />
-			</ST.WrapperSubTitle>
-			<ST.TitleInfo>Информация:</ST.TitleInfo>
-			<ST.WrapperSubTitle
-				delay={0.2}
-				isLoading={isLoading}
-			>
-				<ST.SubTitleInfo>Уроков: {lessonsLength}</ST.SubTitleInfo>
-			</ST.WrapperSubTitle>
-			<ST.WrapperSubTitle
-				delay={0.3}
-				isLoading={isLoading}
-			>
-				<ST.SubTitleInfo>Модулей: {modulesLength}</ST.SubTitleInfo>
-			</ST.WrapperSubTitle>
-			<ST.WrapperSubTitle
-				delay={0.4}
-				isLoading={isLoading}
-			>
-				<ST.SubTitleInfo>Студенты: {studentsLength}</ST.SubTitleInfo>
-			</ST.WrapperSubTitle>
-			<ST.WrapperSubTitle
-				delay={0.5}
-				isLoading={isLoading}
-			>
-				<ST.SubTitleInfo>Язык: {language}</ST.SubTitleInfo>
-			</ST.WrapperSubTitle>
-			<ST.TitleInfo>Заметки (доп. описание):</ST.TitleInfo>
-			{notes &&
-				notes.map((nete, index) => (
-					<ST.WrapperSubTitle
-						isLoading={isLoading}
-						key={`note-${index}-${nete.name}-${nete.value}`}
-						delay={0.6}
-					>
-						<ST.SubTitleInfo>
-							{nete.name}: {nete.value}
-						</ST.SubTitleInfo>
-					</ST.WrapperSubTitle>
-				))}
+}) => {
+	const [startVideo, setStartVideo] = useState<boolean>(false);
 
-			{tags && (
-				<ST.WrapperTags
-					delay={0.8}
+	useEffect(() => {
+		if (isLoading) {
+			setStartVideo(false);
+		}
+	}, [isLoading]);
+
+	return (
+		<ST.LessonView>
+			<ST.WrapperVideo isLoading={isLoading}>
+				<ST.Loader />
+				{!startVideo && <Image src={image} />}
+				<PlayVideo
+					startVideo={startVideo}
+					setStartVideo={setStartVideo}
+					isOpen={!isLoading}
+				/>
+			</ST.WrapperVideo>
+			<ST.Title isLoading={isLoading}>
+				{name}
+				<ST.WrapperStatuses>
+					<CourseSetStatus
+						status={CoursesStatuses.NOT_ACTIVE}
+						idCourse={idCourse}
+						refetch={refetch}
+					>
+						<ST.Status isActive={status === CoursesStatuses.NOT_ACTIVE}>
+							<StatusFalse />
+						</ST.Status>
+					</CourseSetStatus>
+					<CourseSetStatus
+						status={CoursesStatuses.AVAILABLE}
+						idCourse={idCourse}
+						refetch={refetch}
+					>
+						<ST.Status isActive={status === CoursesStatuses.AVAILABLE}>
+							<StatusTrue />
+						</ST.Status>
+					</CourseSetStatus>
+					<CourseSetStatus
+						status={CoursesStatuses.IN_REVIEW}
+						idCourse={idCourse}
+						refetch={refetch}
+					>
+						<ST.Status isActive={status === CoursesStatuses.IN_REVIEW}>
+							<StatusWait />
+						</ST.Status>
+					</CourseSetStatus>
+					<CourseSetStatus
+						status={CoursesStatuses.IN_PROGRESS}
+						idCourse={idCourse}
+						refetch={refetch}
+					>
+						<ST.Status isActive={status === CoursesStatuses.IN_PROGRESS}>
+							<Progress />
+						</ST.Status>
+					</CourseSetStatus>
+				</ST.WrapperStatuses>
+			</ST.Title>
+			<ST.WrapperLevelDifficulty>
+				{isLoading ? (
+					<LoadingLevelDifficulty />
+				) : (
+					<LevelDifficulty
+						data={{
+							curren: levelDifficulty,
+							max: 3,
+						}}
+					/>
+				)}
+			</ST.WrapperLevelDifficulty>
+			<ST.WrapperInfo>
+				<ST.TitleInfo>
+					{isLesson ? "Описание урока:" : "Описание курса:"}
+				</ST.TitleInfo>
+				<ST.WrapperSubTitle
+					delay={0.1}
 					isLoading={isLoading}
 				>
-					<Tags
-						tags={tags}
-						tagsColors={false}
-					/>
-				</ST.WrapperTags>
-			)}
-		</ST.WrapperInfo>
-	</ST.LessonView>
-);
+					<ST.SubTitleInfo dangerouslySetInnerHTML={{ __html: description }} />
+				</ST.WrapperSubTitle>
+				<ST.TitleInfo>Информация:</ST.TitleInfo>
+				<ST.WrapperSubTitle
+					delay={0.2}
+					isLoading={isLoading}
+				>
+					<ST.SubTitleInfo>Уроков: {lessonsLength}</ST.SubTitleInfo>
+				</ST.WrapperSubTitle>
+				<ST.WrapperSubTitle
+					delay={0.3}
+					isLoading={isLoading}
+				>
+					<ST.SubTitleInfo>Модулей: {modulesLength}</ST.SubTitleInfo>
+				</ST.WrapperSubTitle>
+				<ST.WrapperSubTitle
+					delay={0.4}
+					isLoading={isLoading}
+				>
+					<ST.SubTitleInfo>Студенты: {studentsLength}</ST.SubTitleInfo>
+				</ST.WrapperSubTitle>
+				<ST.WrapperSubTitle
+					delay={0.5}
+					isLoading={isLoading}
+				>
+					<ST.SubTitleInfo>Язык: {language}</ST.SubTitleInfo>
+				</ST.WrapperSubTitle>
+				<ST.TitleInfo>Заметки (доп. описание):</ST.TitleInfo>
+				{notes &&
+					notes.map((nete, index) => (
+						<ST.WrapperSubTitle
+							isLoading={isLoading}
+							key={`note-${index}-${nete.name}-${nete.value}`}
+							delay={0.6}
+						>
+							<ST.SubTitleInfo>
+								{nete.name}: {nete.value}
+							</ST.SubTitleInfo>
+						</ST.WrapperSubTitle>
+					))}
+
+				{tags && (
+					<ST.WrapperTags
+						delay={0.8}
+						isLoading={isLoading}
+					>
+						<Tags
+							tags={tags}
+							tagsColors={false}
+						/>
+					</ST.WrapperTags>
+				)}
+			</ST.WrapperInfo>
+		</ST.LessonView>
+	);
+};
 
 export default LessonView;

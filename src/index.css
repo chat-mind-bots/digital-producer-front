@@ -130,3 +130,10 @@ select:-webkit-autofill:focus {
 #__next {
 	min-height: 100vh;
 }
+
+@media (max-width: 453px) {
+	span.time-wrap {
+		display: none;
+	}
+}
+

@@ -19,33 +19,28 @@ const BreadCrumbs: FC<BreadCrumbsProps> = ({ array }) => {
 
 	return (
 		<ST.BreadCrumbs>
-			{array.map((item, index) =>
-				index !== lengthArray ? (
-					item.onClick ? (
-						<ST.Item
-							key={`Breadcrumbs-item-${item.id}-${index + 2}`}
-							onClick={item.onClick}
-							isLast={index === lengthArray}
-						>
-							{item.name}
-						</ST.Item>
+			{array.map((item, index) => (
+				<ST.ItemBreadCrumbs key={`Breadcrumbs-item-${item.id}-${index + 2}`}>
+					{index !== lengthArray ? (
+						item.onClick ? (
+							<>
+								<ST.Item
+									onClick={item.onClick}
+									isLast={index === lengthArray}
+								>
+									{item.name}
+								</ST.Item>
+							</>
+						) : (
+							<Link to={item.url}>
+								<ST.Item isLast={index === lengthArray}>{item.name}</ST.Item>
+							</Link>
+						)
 					) : (
-						<Link
-							to={item.url}
-							key={`Breadcrumbs-item-${item.id}-${index + 1}`}
-						>
-							<ST.Item isLast={index === lengthArray}>{item.name}</ST.Item>
-						</Link>
-					)
-				) : (
-					<ST.Item
-						key={`Breadcrumbs-item-${item.id}-${index}`}
-						isLast={index === lengthArray}
-					>
-						{item.name}
-					</ST.Item>
-				)
-			)}
+						<ST.Item isLast={index === lengthArray}>{item.name}</ST.Item>
+					)}
+				</ST.ItemBreadCrumbs>
+			))}
 		</ST.BreadCrumbs>
 	);
 };

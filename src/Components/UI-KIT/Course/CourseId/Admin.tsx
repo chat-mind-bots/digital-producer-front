@@ -77,12 +77,15 @@ const CourseId: FC<ICourseState & Pick<CourseResultType, "refetch">> = ({
 				backToMainPageCourse();
 			},
 		},
-		{
+	];
+
+	if (currentLesson) {
+		breadCrumbs.push({
 			id: 4,
 			name: currentLesson ? currentLesson.name : "",
-			url: `${RoutesList.USER}?asdd`,
-		},
-	];
+			url: RoutesList.ADMIN,
+		});
+	}
 
 	const [getLesson, lesson] = useGetLessonMutation();
 
