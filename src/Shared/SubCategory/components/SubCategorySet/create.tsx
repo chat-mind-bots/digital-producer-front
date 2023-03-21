@@ -84,7 +84,7 @@ export const SubCategoryCreate: FC<SubCategoryCreateProps> = ({
 				<WindowFormik
 					handleClose={() => setOpen(false)}
 					isOpen={open}
-					title={"Создание урока "}
+					title={"Создание саб категории"}
 				>
 					<SubCategorySettingsBodyWindow
 						initialValues={{
