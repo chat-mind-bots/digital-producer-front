@@ -4,11 +4,8 @@ import BreakPoints from "BreakPoints";
 import Colors from "Colors";
 
 export const NewsView = styled.div`
-	padding: 18px;
-	border-radius: 16px;
-	background: ${Colors.WHITE};
 	width: 100%;
-	max-width: 764px;
+	max-width: 730px;
 	box-sizing: border-box;
 `;
 
@@ -16,6 +13,7 @@ export const WrapperIcon = styled.div`
 	position: relative;
 	border-radius: 13px;
 	overflow: hidden;
+	height: 358px;
 	& img {
 		max-width: 664px;
 		max-height: 284px;

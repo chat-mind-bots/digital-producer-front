@@ -16,6 +16,7 @@ import {
 } from "../services/data/news-from-dto.service";
 import { newsToDtoServiceObject } from "../services/data/news-to-dto.service";
 import ServerResponse from "../../../Types/ServerResponse/pagination";
+import { UserRoleEnum } from "../../Auth/types/role.enum";
 
 export interface CreateNewsApiProps extends NewsApiPropsSet {
 	authToken: string;
@@ -28,6 +29,7 @@ export interface GetNewsApiProps {
 
 export interface GetNewsesApiProps {
 	authToken: string;
+	role?: UserRoleEnum;
 }
 
 export interface UpdateNewsApiProps {
@@ -71,7 +73,7 @@ export const newsApi = createApi({
 		}),
 
 		getNewses: build.query<ServerResponse<INewsState[]>, GetNewsesApiProps>({
-			query: ({ authToken }) => ({
+			query: ({ authToken, role }) => ({
 				url: "/news",
 				method: HttpMethods.GET,
 				headers: {
@@ -80,6 +82,7 @@ export const newsApi = createApi({
 				params: {
 					limit: 1115,
 					offset: 0,
+					role: role,
 				},
 				validateStatus: (response, result) => {
 					logout(response.status as RequestStatusesType);

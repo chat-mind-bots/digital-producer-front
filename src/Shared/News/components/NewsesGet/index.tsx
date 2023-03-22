@@ -1,4 +1,4 @@
-import React, { FC, Children, cloneElement } from "react";
+import React, { Children, cloneElement, FC } from "react";
 
 import NewsesResultType from "Components/UI-KIT/Newses/newses-props.type";
 import { useAppSelector } from "Hooks/redux";
@@ -21,6 +21,7 @@ const NewsesGet: FC<NewsGetProps> = ({ children, header, role }) => {
 	const auth = useAppSelector((state) => state.auth);
 	const query: GetNewsesApiProps = {
 		authToken: auth.token ?? "",
+		role: role === UserRoleEnum.ADMIN ? undefined : role,
 	};
 	const { data, isError, isLoading, refetch } = useGetNewsesQuery(query);
 

@@ -13,6 +13,8 @@ import ChangeTags from "../../../UI-KIT/ChangeTags";
 import Image from "../../../UI-KIT/Atoms/Image";
 import { ReactComponent as ModalWindowAddFileIcon } from "../../../../Icons/ModalWindowAddFileIcon.svg";
 import DropZone from "../../../UI-KIT/Atoms/DropZone";
+import Select from "../../../UI-KIT/Atoms/Select";
+import { UserRoleArray } from "../../../../Shared/Auth/types/role.enum";
 
 type NewsSettingsBodyWindowProps = {
 	initialValues: INewsState;
@@ -84,13 +86,17 @@ const NewsSettingsBodyWindow: FC<NewsSettingsBodyWindowProps> = ({
 							<ST.Wrapper>
 								<ST.Name>role</ST.Name>
 								<ST.WrapperInput>
-									<Input
-										value={values?.role || ""}
+									<Select
+										value={
+											UserRoleArray.filter((e) => e.id === values?.role)[0]
+												? UserRoleArray.filter((e) => e.id === values?.role)[0]
+														.value || ""
+												: ""
+										}
 										setValue={(str) => {
 											setFieldValue && setFieldValue("role", str);
 										}}
-										setFocus={(state) => setFieldTouched("role", state)}
-										placeholder={"Введите название "}
+										placeholder={"Выберите роль"}
 										padding={"10px 14px"}
 										fontSize={"16px"}
 										fontWeight={"400"}
@@ -99,6 +105,7 @@ const NewsSettingsBodyWindow: FC<NewsSettingsBodyWindowProps> = ({
 											errors.role && touched.role ? errors.role : undefined
 										}
 										isError={!!errors.role && touched.role}
+										array={UserRoleArray}
 									/>
 								</ST.WrapperInput>
 							</ST.Wrapper>

@@ -87,6 +87,7 @@ export const WrapperBot = styled.div``;
 export const WrapperImage = styled.div`
 	max-width: 304px;
 	max-height: 200px;
+	min-width: 300px !important;
 	width: 100%;
 	height: 100%;
 	border-radius: 18px;
