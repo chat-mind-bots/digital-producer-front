@@ -21,7 +21,7 @@ const Main = () => (
 			<ST.WrapperCourses>
 				<Courses
 					role={UserRoleEnum.ADMIN}
-					header={"Рекоменндованные курсы"}
+					header={"Опубликованные курсы"}
 				/>
 			</ST.WrapperCourses>
 		</ST.WrapperMain>
