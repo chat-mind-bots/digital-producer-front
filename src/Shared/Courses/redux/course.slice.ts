@@ -1,6 +1,6 @@
 import { createSlice } from "@reduxjs/toolkit";
 
-import RequestStatuses from "../../../RequestStatuses";
+import RequestStatuses from "../../../Constants/RequestStatuses";
 import { IDocumentState } from "../../Document/redux/document.slice";
 import { IModuleState } from "../../Module/redux/module.slice";
 import { INoteState } from "../../Note/redux/note.slice";

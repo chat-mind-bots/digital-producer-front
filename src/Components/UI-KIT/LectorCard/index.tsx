@@ -3,7 +3,7 @@ import React, { FC } from "react";
 import * as ST from "./styled";
 import Image from "../Atoms/Image";
 import Button from "../Atoms/Button";
-import Colors from "../../../Colors";
+import Colors from "../../../Constants/Colors";
 import openFileBlank from "../../../Utils/openFileBlank";
 
 type LectorCardProps = {

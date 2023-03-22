@@ -4,7 +4,7 @@ import { Formik } from "formik";
 import Input from "Components/UI-KIT/Atoms/Input";
 import Button from "Components/UI-KIT/Atoms/Button";
 import { IBannerEnum, IBannerState } from "Shared/Banner/redux/banner.slice";
-import Colors from "Colors";
+import Colors from "Constants/Colors";
 import ErrText from "Components/UI-KIT/Atoms/Input/ErrText";
 import ChangeTags from "Components/UI-KIT/ChangeTags";
 import Select from "Components/UI-KIT/Atoms/Select";

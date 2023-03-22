@@ -1,7 +1,7 @@
 import styled from "styled-components";
 
-import BreakPoints from "BreakPoints";
-import Colors from "Colors";
+import BreakPoints from "Constants/BreakPoints";
+import Colors from "Constants/Colors";
 
 export const Main = styled.div`
 	display: flex;
@@ -45,7 +45,7 @@ export const Name = styled.div`
 	font-weight: 500;
 	font-size: 13px;
 	line-height: 18px;
-	color: ${Colors.GREY1};
+	color: ${Colors.BLACK1};
 `;
 
 export const Content = styled.div`

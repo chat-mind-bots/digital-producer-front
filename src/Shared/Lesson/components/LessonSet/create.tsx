@@ -1,8 +1,8 @@
 import React, { FC, useCallback, useEffect, useState } from "react";
-import toast from "react-hot-toast";
+import { toast } from "react-hot-toast";
 import { QueryStatus } from "@reduxjs/toolkit/query";
 
-import Colors from "../../../../Colors";
+import Colors from "../../../../Constants/Colors";
 import Button from "../../../../Components/UI-KIT/Atoms/Button";
 import WindowFormik from "../../../../Components/ModalWindows/WrappersModalWindows/Formik";
 import LessonSettingsBodyWindow from "../../../../Components/ModalWindows/Body/LessonSettingsBodyWindow";
@@ -14,7 +14,7 @@ import {
 	useCreateLessonMutation,
 } from "../../redux/lesson.api";
 import { useAppSelector } from "../../../../Hooks/redux";
-import RequestStatuses from "../../../../RequestStatuses";
+import RequestStatuses from "../../../../Constants/RequestStatuses";
 import CourseResultType from "../../../../Components/UI-KIT/Course/course-props.type";
 
 type LessonCreateProps = Pick<AddLessonToModuleApiProps, "idModule"> &
@@ -113,24 +113,6 @@ export const LessonCreate: FC<LessonCreateProps> = ({ idModule, refetch }) => {
 					/>
 				</WindowFormik>
 			)}
-
-			{/*<WindowFormik*/}
-			{/*	handleClose={() => setWindow(defaultWindow)}*/}
-			{/*	isOpen={window.state}*/}
-			{/*	title={`Создание ${window.type} : ${role}`}*/}
-			{/*>*/}
-			{/*	<LessonSettingsBodyWindow*/}
-			{/*		initialValues={initialBannerState}*/}
-			{/*		handleClose={() => setWindow(defaultWindow)}*/}
-			{/*		sendData={async (data: IBannerState) =>*/}
-			{/*			apiFunction(data, FuncEnum.CREATE)*/}
-			{/*		}*/}
-			{/*		role={role}*/}
-			{/*		type={window.type}*/}
-			{/*		remove={async (e: string) => apiFunction(e, FuncEnum.DELETE)}*/}
-			{/*	/>*/}
-			{/*</WindowFormik>*/}
-			{/*MODAL WINDOW_______________________*/}
 		</>
 	);
 };

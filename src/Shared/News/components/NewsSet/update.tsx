@@ -1,12 +1,12 @@
 import React, { FC, useCallback, useEffect, useState } from "react";
-import toast from "react-hot-toast";
+import { toast } from "react-hot-toast";
 import { QueryStatus } from "@reduxjs/toolkit/query";
 
 import { ReactComponent as IcoSettings } from "Icons/Settings.svg";
 
 import WindowFormik from "../../../../Components/ModalWindows/WrappersModalWindows/Formik";
 import { useAppSelector } from "../../../../Hooks/redux";
-import RequestStatuses from "../../../../RequestStatuses";
+import RequestStatuses from "../../../../Constants/RequestStatuses";
 import NewsResultType from "../../../../Components/UI-KIT/News/news-props.type";
 import Loader from "../../../../Components/UI-KIT/Loader";
 import {

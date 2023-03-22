@@ -1,6 +1,6 @@
 import { createSlice } from "@reduxjs/toolkit";
 
-import RequestStatuses from "../../../RequestStatuses";
+import RequestStatuses from "../../../Constants/RequestStatuses";
 import { IBannerEnum } from "../../Banner/redux/banner.slice";
 import { ITagState } from "../../Tag/redux/tag.slice";
 import { UserRoleEnum } from "../../Auth/types/role.enum";

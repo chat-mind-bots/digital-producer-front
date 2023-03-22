@@ -1,6 +1,6 @@
 import { createSlice } from "@reduxjs/toolkit";
 
-import RequestStatuses from "RequestStatuses";
+import RequestStatuses from "Constants/RequestStatuses";
 import { BannerEnum } from "Shared/Banner/types/banner.enum";
 import { UserRoleEnum } from "Shared/Auth/types/role.enum";
 import { ButtonSwitchStyleEnum } from "Components/ButtonSwitchStyle/button-switch-style.enum";

@@ -1,7 +1,7 @@
 import styled from "styled-components";
 
-import BreakPoints from "BreakPoints";
-import Colors from "Colors";
+import BreakPoints from "Constants/BreakPoints";
+import Colors from "Constants/Colors";
 
 export const ComponentForNavBar = styled.div`
 	position: relative;

@@ -1,5 +1,5 @@
 import React, { FC, useCallback, useEffect, useState } from "react";
-import toast from "react-hot-toast";
+import { toast } from "react-hot-toast";
 import { QueryStatus } from "@reduxjs/toolkit/query";
 
 import { ReactComponent as IcoSettings } from "Icons/Settings2.svg";
@@ -9,7 +9,7 @@ import Loader from "../../../../Components/UI-KIT/Loader";
 import CourseResultType from "../../../../Components/UI-KIT/Course/course-props.type";
 import { useAppSelector } from "../../../../Hooks/redux";
 import { IDocumentState } from "../../redux/document.slice";
-import RequestStatuses from "../../../../RequestStatuses";
+import RequestStatuses from "../../../../Constants/RequestStatuses";
 import DocumentSettingsBodyWindow from "../../../../Components/ModalWindows/Body/DocumentSettingsBodyWindow";
 import {
 	GetDocumentApiProps,
@@ -119,7 +119,6 @@ export const DocumentUpdate: FC<LessonSetProps> = ({ refetch, idDocument }) => {
 							sendData={async (data: IDocumentState) => {
 								return update(data);
 							}}
-							// handleClose={() => setOpen(false)}
 							remove={async (e: string) => remove(e)}
 						/>
 					) : (

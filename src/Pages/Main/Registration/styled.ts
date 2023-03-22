@@ -1,6 +1,6 @@
 import styled from "styled-components";
 
-import Colors from "Colors";
+import Colors from "Constants/Colors";
 
 export const Registration = styled.div`
 	max-width: 364px;

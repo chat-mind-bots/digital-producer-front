@@ -3,7 +3,7 @@ import { Formik } from "formik";
 
 import Input from "Components/UI-KIT/Atoms/Input";
 import Button from "Components/UI-KIT/Atoms/Button";
-import Colors from "Colors";
+import Colors from "Constants/Colors";
 import { IModuleState } from "Shared/Module/redux/module.slice";
 
 import { ValidationSchema } from "./validationSchema";

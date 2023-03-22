@@ -1,4 +1,4 @@
-import RequestStatuses from "../RequestStatuses";
+import RequestStatuses from "../Constants/RequestStatuses";
 
 type RequestStatusesType =
 	| RequestStatuses.UNAUTHORIZED

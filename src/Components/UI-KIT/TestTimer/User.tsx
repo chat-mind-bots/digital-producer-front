@@ -1,11 +1,11 @@
 import React, { Dispatch, FC, useEffect, useState } from "react";
-import toast from "react-hot-toast";
+import { toast } from "react-hot-toast";
 
 import { ReactComponent as Clock } from "Icons/Clock.svg";
 
 import * as ST from "./styled";
 import Button from "../Atoms/Button";
-import Colors from "../../../Colors";
+import Colors from "../../../Constants/Colors";
 import Image from "../Atoms/Image";
 
 type TestTimerProps = {

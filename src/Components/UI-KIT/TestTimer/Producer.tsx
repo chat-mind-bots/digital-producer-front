@@ -20,7 +20,6 @@ const TestTimer: FC<TestTimerProps> = ({ lengthQuestions, duration }) => {
 			/>
 			<ST.Time>
 				{duration} мин.
-				{/*00:00:00*/}
 				<ST.Count>
 					<Clock />
 				</ST.Count>

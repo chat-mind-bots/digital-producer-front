@@ -13,7 +13,7 @@ const Image: FC<ImageProps> = ({ src }) => (
 			type="image/png"
 		>
 			<ST.Image
-				src={" /transparent.png "}
+				src={"/image/transparent.png "}
 				alt={"Image"}
 			/>
 		</ST.Object>

@@ -1,7 +1,7 @@
 import styled from "styled-components";
 
-import BreakPoints from "BreakPoints";
-import Colors from "Colors";
+import BreakPoints from "Constants/BreakPoints";
+import Colors from "Constants/Colors";
 
 export const Home = styled.div``;
 
@@ -32,7 +32,7 @@ export const Description = styled.p`
 	}
 `;
 
-export const Buttons = styled.p`
+export const Buttons = styled.div`
 	display: flex;
 	gap: 10px;
 	margin-top: 48px;

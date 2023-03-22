@@ -1,5 +1,5 @@
-import React, { FC } from "react";
-import { Navigate } from "react-router-dom";
+import React, { FC, useLayoutEffect } from "react";
+import { Navigate, useLocation } from "react-router-dom";
 
 import { UserRoleEnum } from "Shared/Auth/types/role.enum";
 
@@ -17,6 +17,11 @@ type Props = {
 
 const LazyCabinet: FC<Props> = ({ role }) => {
 	const auth = useAppSelector((state) => state.auth);
+
+	const location = useLocation();
+	useLayoutEffect(() => {
+		document.documentElement.scrollTo(0, 0);
+	}, [location.pathname]);
 
 	return auth.role.includes(role) ? (
 		<SwitchCabinet role={role} />

@@ -1,11 +1,11 @@
 import React, { FC, useCallback, useEffect } from "react";
-import toast from "react-hot-toast";
+import { toast } from "react-hot-toast";
 import { QueryStatus } from "@reduxjs/toolkit/query";
 
-import Colors from "../../../../Colors";
+import Colors from "../../../../Constants/Colors";
 import Button from "../../../../Components/UI-KIT/Atoms/Button";
 import { useAppSelector } from "../../../../Hooks/redux";
-import RequestStatuses from "../../../../RequestStatuses";
+import RequestStatuses from "../../../../Constants/RequestStatuses";
 import {
 	EnrollToCourseApiProps,
 	useEnrollToCourseMutation,

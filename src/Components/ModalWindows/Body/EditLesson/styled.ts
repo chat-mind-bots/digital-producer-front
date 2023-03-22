@@ -1,6 +1,6 @@
 import styled from "styled-components";
 
-import Colors from "Colors";
+import Colors from "Constants/Colors";
 
 type WrapperProps = {
 	isBorder?: boolean;

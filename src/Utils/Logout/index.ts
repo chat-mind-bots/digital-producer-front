@@ -3,7 +3,7 @@ import {
 	localStorageService,
 } from "Utils/local-storage.service";
 import RequestStatusesType from "Types/RequestStatusesType";
-import RequestStatuses from "RequestStatuses";
+import RequestStatuses from "Constants/RequestStatuses";
 
 const logout = (status: RequestStatusesType): RequestStatusesType => {
 	if (status === RequestStatuses.UNAUTHORIZED) {

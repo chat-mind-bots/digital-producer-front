@@ -6,6 +6,7 @@
 			rel="icon"
 			href="%PUBLIC_URL%/favicon.ico"
 		/>
+		<link rel="apple-touch-icon" href="%PUBLIC_URL%/favicon.ico">
 		<meta
 			name="viewport"
 			content="width=device-width, initial-scale=1"
@@ -19,10 +20,6 @@
 			content="Платформа для создания и продажи онлайн-курсов. Самые последние и актуальные новости и обновления платформы"
 		/>
 		<meta property="og:title" name="og:title" content="Платформа для создания и продажи онлайн-курсов." data-app="true">
-		<link
-			rel="apple-touch-icon"
-			href="%PUBLIC_URL%/logo192.png"
-		/>
 
 		<link
 			rel="manifest"
@@ -37,10 +34,10 @@
 			href="https://fonts.gstatic.com"
 			crossorigin
 		/>
-		<link
-			href="https://fonts.googleapis.com/css2?family=Inter:wght@100;200;300;400;500;600;700;800;900&display=swap"
-			rel="stylesheet"
-		/>
+<!--		<link-->
+<!--			href="https://fonts.googleapis.com/css2?family=Inter:wght@100;200;300;400;500;600;700;800;900&display=swap"-->
+<!--			rel="stylesheet"-->
+<!--		/>-->
 		<title>Meta Platform</title>
 	</head>
 
@@ -50,20 +47,43 @@
 			src: local("Vela Sans"),
 				url("/fonts/VelaSans-ExtraBold.woff") format("woff");
 			font-weight: 800;
+			font-display: swap;
 		}
-
 		@font-face {
 			font-family: "Vela Sans";
 			src: local("Vela Sans"), url("/fonts/VelaSans-Bold.woff") format("woff");
 			font-weight: 700;
+			font-display: swap;
 		}
-
 		@font-face {
 			font-family: "Vela Sans";
 			src: local("Vela Sans"),
 				url("/fonts/VelaSans-SemiBold.woff") format("woff");
 			font-weight: 600;
+			font-display: swap;
 		}
+		@font-face {
+			font-family: "Inter";
+			src: local("Inter"),
+			url("/fonts/Inter-SemiBold.ttf") format("woff2");
+			font-weight: 600;
+			font-display: swap;
+		}
+		@font-face {
+			font-family: "Inter";
+			src: local("Inter"),
+			url("/fonts/Inter-Medium.ttf") format("woff2");
+			font-weight: 500;
+			font-display: swap;
+		}
+		@font-face {
+			font-family: "Inter";
+			src: local("Inter"),
+			url("/fonts/Inter-Regular.ttf") format("woff2");
+			font-weight: 400;
+			font-display: swap;
+		}
+
 	</style>
 
 	<body>

@@ -1,5 +1,5 @@
 import React, { FC, useCallback, useEffect, useState } from "react";
-import toast from "react-hot-toast";
+import { toast } from "react-hot-toast";
 import { QueryStatus } from "@reduxjs/toolkit/query";
 
 import { ReactComponent as IcoSettings } from "Icons/Settings.svg";
@@ -14,7 +14,7 @@ import {
 	useUpdateModuleMutation,
 } from "../../redux/module.api";
 import { useAppSelector } from "../../../../Hooks/redux";
-import RequestStatuses from "../../../../RequestStatuses";
+import RequestStatuses from "../../../../Constants/RequestStatuses";
 import CourseResultType from "../../../../Components/UI-KIT/Course/course-props.type";
 import Loader from "../../../../Components/UI-KIT/Loader";
 import ModuleSettingsBodyWindow from "../../../../Components/ModalWindows/Body/ModuleSettingsBodyWindow";
@@ -120,7 +120,6 @@ export const ModuleUpdate: FC<ModuleUpdateProps> = ({ idModule, refetch }) => {
 							sendData={async (data: IModuleState) => {
 								return update(data);
 							}}
-							// handleClose={() => setOpen(false)}
 							remove={async (e: string) => remove(e)}
 						/>
 					) : (

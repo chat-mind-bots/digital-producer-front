@@ -5,7 +5,7 @@ import Portal from "Components/ModalWindows/Portal";
 import Button from "Components/UI-KIT/Atoms/Button";
 import { ReactComponent as ModalWindowIcon } from "Icons/ModalWindowIcon.svg";
 import { ReactComponent as Close } from "Icons/Close.svg";
-import Colors from "Colors";
+import Colors from "Constants/Colors";
 import {
 	defaultStyle,
 	duration,

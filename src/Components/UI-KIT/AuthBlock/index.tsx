@@ -6,7 +6,7 @@ import { ReactComponent as ArrowDown } from "Icons/ArrowDown.svg";
 import { ReactComponent as ArrowUp } from "Icons/ArrowUp.svg";
 import { useAppSelector } from "Hooks/redux";
 import logout from "Utils/Logout";
-import RequestStatuses from "RequestStatuses";
+import RequestStatuses from "Constants/RequestStatuses";
 
 import * as ST from "./styled";
 

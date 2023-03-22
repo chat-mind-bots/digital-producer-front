@@ -1,10 +1,10 @@
 import React, { FC, useCallback, useEffect, useState } from "react";
-import toast from "react-hot-toast";
+import { toast } from "react-hot-toast";
 import { QueryStatus } from "@reduxjs/toolkit/query";
 
 import WindowFormik from "../../../../Components/ModalWindows/WrappersModalWindows/Formik";
 import { useAppSelector } from "../../../../Hooks/redux";
-import RequestStatuses from "../../../../RequestStatuses";
+import RequestStatuses from "../../../../Constants/RequestStatuses";
 import {
 	EnrollAnotherUserToCourseApiProps,
 	useEnrollAnotherUserToCourseMutation,

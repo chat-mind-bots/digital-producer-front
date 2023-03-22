@@ -8,7 +8,7 @@ import WrapperContent from "../../../WrapperContent";
 import TestTimer from "../../TestTimer/User";
 import { useProgressTestMutation } from "../../../../Shared/Test/redux/test.api";
 import { useAppSelector } from "../../../../Hooks/redux";
-import RequestStatuses from "../../../../RequestStatuses";
+import RequestStatuses from "../../../../Constants/RequestStatuses";
 import { IQuestionState } from "../../../../Shared/Question/redux/question.slice";
 
 const CourseId: FC<ITestState & Pick<CourseResultType, "refetch">> = ({

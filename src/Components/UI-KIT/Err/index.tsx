@@ -1,7 +1,7 @@
 import React from "react";
 import { Link } from "react-router-dom";
 
-import Colors from "Colors";
+import Colors from "Constants/Colors";
 import Button from "Components/UI-KIT/Atoms/Button";
 import { routeBuilder } from "Router/services/route-builder";
 import { useAppSelector } from "Hooks/redux";

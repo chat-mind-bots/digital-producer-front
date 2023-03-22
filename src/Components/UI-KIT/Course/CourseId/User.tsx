@@ -18,7 +18,7 @@ import {
 	useGetLessonMutation,
 } from "../../../../Shared/Lesson/redux/lesson.api";
 import { useAppSelector } from "../../../../Hooks/redux";
-import RequestStatuses from "../../../../RequestStatuses";
+import RequestStatuses from "../../../../Constants/RequestStatuses";
 import { routeBuilderWithReplace } from "../../../../Router/services/route-builder";
 import TestCard from "../../TestCard";
 import ShoppingCard from "../../ShoppingCard";
@@ -66,6 +66,14 @@ const CourseId: FC<ICourseState & Pick<CourseResultType, "refetch">> = ({
 	const [loading, setLoading] = useState<boolean>(false);
 
 	const breadCrumbs: BreadCrumbsArrayType[] = [
+		{ id: 1, name: "Главная", url: RoutesList.USER.toLocaleLowerCase() },
+		{
+			id: 1,
+			name: isEnrolled ? "Мои курсы" : "Курсы Meta",
+			url: `/${RoutesList.USER.toLocaleLowerCase()}/${
+				isEnrolled ? "course" : "metaCourses"
+			}`,
+		},
 		{
 			id: 3,
 			name: name,
@@ -169,6 +177,7 @@ const CourseId: FC<ICourseState & Pick<CourseResultType, "refetch">> = ({
 									image={currentLesson.image}
 									isLesson={true}
 									isEnrolled={isEnrolled}
+									isOwner={owner?.id === auth.id}
 								/>
 							</>
 						) : (
@@ -193,6 +202,7 @@ const CourseId: FC<ICourseState & Pick<CourseResultType, "refetch">> = ({
 									idCourse={id}
 									refetch={refetch}
 									isEnrolled={isEnrolled}
+									isOwner={owner?.id === auth.id}
 								/>
 							</>
 						)}

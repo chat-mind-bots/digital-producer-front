@@ -3,7 +3,7 @@ import { Formik } from "formik";
 
 import Input from "Components/UI-KIT/Atoms/Input";
 import Button from "Components/UI-KIT/Atoms/Button";
-import Colors from "Colors";
+import Colors from "Constants/Colors";
 
 import { ValidationSchema } from "./validationSchema";
 import * as ST from "./styled";
@@ -64,7 +64,7 @@ const DocumentSettingsBodyWindow: FC<DocumentSettingsBodyWindowProps> = ({
 											setFieldValue && setFieldValue("name", str);
 										}}
 										setFocus={(state) => setFieldTouched("name", state)}
-										placeholder={"Введите заголовок "}
+										placeholder={"Введите название документа"}
 										padding={"10px 14px"}
 										fontSize={"16px"}
 										fontWeight={"400"}
@@ -102,7 +102,7 @@ const DocumentSettingsBodyWindow: FC<DocumentSettingsBodyWindowProps> = ({
 											setFieldValue && setFieldValue("description", str);
 										}}
 										setFocus={(state) => setFieldTouched("description", state)}
-										placeholder={"Введите заголовок "}
+										placeholder={"Введите описание "}
 										padding={"10px 14px"}
 										fontSize={"16px"}
 										fontWeight={"400"}

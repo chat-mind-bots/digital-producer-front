@@ -18,7 +18,7 @@ import {
 	useGetLessonMutation,
 } from "../../../../Shared/Lesson/redux/lesson.api";
 import { useAppSelector } from "../../../../Hooks/redux";
-import RequestStatuses from "../../../../RequestStatuses";
+import RequestStatuses from "../../../../Constants/RequestStatuses";
 import { routeBuilderWithReplace } from "../../../../Router/services/route-builder";
 import TestCard from "../../TestCard";
 import CourseResultType from "../course-props.type";
@@ -65,6 +65,12 @@ const CourseId: FC<ICourseState & Pick<CourseResultType, "refetch">> = ({
 	const [loading, setLoading] = useState<boolean>(false);
 
 	const breadCrumbs: BreadCrumbsArrayType[] = [
+		{ id: 1, name: "Главная", url: RoutesList.ADMIN.toLocaleLowerCase() },
+		{
+			id: 1,
+			name: "Курсы",
+			url: `/${RoutesList.ADMIN.toLocaleLowerCase()}/metaCourses`,
+		},
 		{
 			id: 3,
 			name: name,

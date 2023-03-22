@@ -19,7 +19,7 @@ import {
 	GetLessonApiProps,
 	useGetLessonMutation,
 } from "../../../../Shared/Lesson/redux/lesson.api";
-import RequestStatuses from "../../../../RequestStatuses";
+import RequestStatuses from "../../../../Constants/RequestStatuses";
 import { ICourseState } from "../../../../Shared/Courses/redux/course.slice";
 import CourseResultType from "../course-props.type";
 import { DocumentCreate } from "../../../../Shared/Document/components/DocumentSet/create";
@@ -70,6 +70,12 @@ const CourseId: FC<ICourseState & Pick<CourseResultType, "refetch">> = ({
 	const [loading, setLoading] = useState<boolean>(false);
 
 	const breadCrumbs: BreadCrumbsArrayType[] = [
+		{ id: 1, name: "Главная", url: RoutesList.PRODUCER.toLocaleLowerCase() },
+		{
+			id: 1,
+			name: "Курсы",
+			url: `/${RoutesList.PRODUCER.toLocaleLowerCase()}/metaCourses`,
+		},
 		{
 			id: 3,
 			name: name,

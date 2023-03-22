@@ -1,7 +1,7 @@
 import styled from "styled-components";
 
-import BreakPoints from "BreakPoints";
-import Colors from "Colors";
+import BreakPoints from "Constants/BreakPoints";
+import Colors from "Constants/Colors";
 
 export const WrapperContent = styled.div`
 	background: ${Colors.WHITE3};
@@ -41,4 +41,7 @@ export const WrapperBreadCrumbs = styled.div`
 	align-items: center;
 	justify-content: space-between;
 	position: relative;
+	@media (max-width: ${BreakPoints.MOBILE}px) {
+		margin-bottom: -15px;
+	}
 `;

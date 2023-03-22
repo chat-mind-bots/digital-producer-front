@@ -1,8 +1,8 @@
 import React, { FC } from "react";
-import toast from "react-hot-toast";
+import { toast } from "react-hot-toast";
 
 import Button from "Components/UI-KIT/Atoms/Button";
-import Colors from "Colors";
+import Colors from "Constants/Colors";
 
 import * as ST from "./styled";
 import { EnrollToCourse } from "../../../Shared/Courses/components/CourseSet/enroll";
@@ -36,7 +36,7 @@ const ShoppingCard: FC<ShoppingCardProps> = ({
 }) => {
 	return (
 		<ST.ShoppingCard>
-			<Image src={"/IconForAddBlock.png"} />
+			<Image src={"/image/IconForAddBlock.png"} />
 			<ST.Title>{name}</ST.Title>
 			{!isFree && (
 				<ST.Price>

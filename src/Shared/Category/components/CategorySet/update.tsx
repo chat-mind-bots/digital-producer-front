@@ -1,12 +1,12 @@
 import React, { FC, useCallback, useEffect, useState } from "react";
-import toast from "react-hot-toast";
+import { toast } from "react-hot-toast";
 import { QueryStatus } from "@reduxjs/toolkit/query";
 
 import { ReactComponent as IcoSettings } from "Icons/Settings2.svg";
 
 import WindowFormik from "../../../../Components/ModalWindows/WrappersModalWindows/Formik";
 import { useAppSelector } from "../../../../Hooks/redux";
-import RequestStatuses from "../../../../RequestStatuses";
+import RequestStatuses from "../../../../Constants/RequestStatuses";
 import CourseResultType from "../../../../Components/UI-KIT/Course/course-props.type";
 import Loader from "../../../../Components/UI-KIT/Loader";
 import {
@@ -125,7 +125,6 @@ export const CategoryUpdate: FC<CategoryUpdateProps> = ({
 							sendData={async (data: ICategoryState) => {
 								return update(data);
 							}}
-							// handleClose={() => setOpen(false)}
 							remove={async (e: string) => remove(e)}
 						/>
 					) : (

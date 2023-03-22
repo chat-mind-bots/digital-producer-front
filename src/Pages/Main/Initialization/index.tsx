@@ -4,7 +4,7 @@ import { useLocation } from "react-router-dom";
 
 import Loader from "Components/UI-KIT/Loader";
 import { useAppSelector } from "Hooks/redux";
-import RequestStatuses from "RequestStatuses";
+import RequestStatuses from "Constants/RequestStatuses";
 
 import * as ST from "./styled";
 

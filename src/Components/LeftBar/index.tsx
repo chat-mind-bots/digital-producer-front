@@ -2,7 +2,7 @@ import React, { useState } from "react";
 
 import Logo from "Components/UI-KIT/Logo";
 import NavBar from "Components/UI-KIT/NavBar";
-import NavBarData from "Constants/NavBar";
+import NavBarData from "Constants/NavBar/NavBar";
 import { BannerEnum } from "Shared/Banner/types/banner.enum";
 import { UserRoleEnum } from "Shared/Auth/types/role.enum";
 import Banner from "Components/UI-KIT/Banner";

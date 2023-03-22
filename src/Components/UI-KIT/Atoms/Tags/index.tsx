@@ -1,6 +1,6 @@
 import React, { FC } from "react";
 
-import Colors from "Colors";
+import Colors from "Constants/Colors";
 
 import * as ST from "./styled";
 import { ITagState } from "../../../../Shared/Tag/redux/tag.slice";

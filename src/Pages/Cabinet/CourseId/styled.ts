@@ -1,6 +1,6 @@
 import styled from "styled-components";
 
-import BreakPoints from "BreakPoints";
+import BreakPoints from "Constants/BreakPoints";
 
 export const CourseID = styled.div`
 	display: flex;

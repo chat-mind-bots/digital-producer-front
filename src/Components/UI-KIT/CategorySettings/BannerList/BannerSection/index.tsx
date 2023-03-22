@@ -6,14 +6,14 @@ import {
 	IBannerState,
 	initialBannerState,
 } from "Shared/Banner/redux/banner.slice";
-import Colors from "Colors";
+import Colors from "Constants/Colors";
 import Button from "Components/UI-KIT/Atoms/Button";
 import WrapperRequest from "Components/WrapperRequest";
 import { BannerEnum } from "Shared/Banner/types/banner.enum";
 import BannerSettingsBodyWindow from "Components/ModalWindows/Body/BannerSettingsBodyWindow";
 import { BannerListProps } from "Components/UI-KIT/BannerSettings/BannerList";
 import { BannerApiPropsSet } from "Shared/Banner/redux/banner.api";
-import RequestStatuses from "RequestStatuses";
+import RequestStatuses from "Constants/RequestStatuses";
 
 import * as ST from "./styled";
 

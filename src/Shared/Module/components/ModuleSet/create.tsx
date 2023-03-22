@@ -1,8 +1,8 @@
 import React, { FC, useCallback, useEffect, useState } from "react";
-import toast from "react-hot-toast";
+import { toast } from "react-hot-toast";
 import { QueryStatus } from "@reduxjs/toolkit/query";
 
-import Colors from "../../../../Colors";
+import Colors from "../../../../Constants/Colors";
 import Button from "../../../../Components/UI-KIT/Atoms/Button";
 import WindowFormik from "../../../../Components/ModalWindows/WrappersModalWindows/Formik";
 import ModuleSettingsBodyWindow from "../../../../Components/ModalWindows/Body/ModuleSettingsBodyWindow";
@@ -14,7 +14,7 @@ import {
 	AddModuleToCourseApiProps,
 } from "../../redux/module.api";
 import { useAppSelector } from "../../../../Hooks/redux";
-import RequestStatuses from "../../../../RequestStatuses";
+import RequestStatuses from "../../../../Constants/RequestStatuses";
 import CourseResultType from "../../../../Components/UI-KIT/Course/course-props.type";
 
 type ModuleCreateProps = Pick<CourseResultType, "refetch"> &

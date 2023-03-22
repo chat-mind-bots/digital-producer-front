@@ -2,7 +2,7 @@ import React, { FC } from "react";
 import { Formik } from "formik";
 
 import Button from "Components/UI-KIT/Atoms/Button";
-import Colors from "Colors";
+import Colors from "Constants/Colors";
 
 import { ValidationSchema } from "./validationSchema";
 import * as ST from "./styled";
@@ -69,7 +69,7 @@ const NewsSettingsBodyWindow: FC<NewsSettingsBodyWindowProps> = ({
 											setFieldValue && setFieldValue("categoryId", str);
 										}}
 										setFocus={(state) => setFieldTouched("categoryId", state)}
-										placeholder={"Введите название "}
+										placeholder={"Введите categoryId "}
 										padding={"10px 14px"}
 										fontSize={"16px"}
 										fontWeight={"400"}
@@ -84,7 +84,7 @@ const NewsSettingsBodyWindow: FC<NewsSettingsBodyWindowProps> = ({
 								</ST.WrapperInput>
 							</ST.Wrapper>
 							<ST.Wrapper>
-								<ST.Name>role</ST.Name>
+								<ST.Name>Роль</ST.Name>
 								<ST.WrapperInput>
 									<Select
 										value={

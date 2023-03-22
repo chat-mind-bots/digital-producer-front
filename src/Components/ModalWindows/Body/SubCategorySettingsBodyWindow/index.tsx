@@ -4,7 +4,7 @@ import { SketchPicker } from "react-color";
 
 import Input from "Components/UI-KIT/Atoms/Input";
 import Button from "Components/UI-KIT/Atoms/Button";
-import Colors from "Colors";
+import Colors from "Constants/Colors";
 
 import { ValidationSchema } from "./validationSchema";
 import * as ST from "./styled";
@@ -111,27 +111,6 @@ const SubCategorySettingsBodyWindow: FC<LessonSettingsBodyWindowProps> = ({
 										/>
 									)}
 								</ST.WrapperColor>
-
-								{/*<ST.WrapperInput>*/}
-								{/*	<Input*/}
-								{/*		value={values?.tagsColor || ""}*/}
-								{/*		setValue={(str) => {*/}
-								{/*			setFieldValue && setFieldValue("tagsColor", str);*/}
-								{/*		}}*/}
-								{/*		setFocus={(state) => setFieldTouched("tagsColor", state)}*/}
-								{/*		placeholder={"Введите названние"}*/}
-								{/*		padding={"10px 14px"}*/}
-								{/*		fontSize={"16px"}*/}
-								{/*		fontWeight={"400"}*/}
-								{/*		borderSize={"1px"}*/}
-								{/*		errorText={*/}
-								{/*			errors.tagsColor && touched.tagsColor*/}
-								{/*				? errors.tagsColor*/}
-								{/*				: undefined*/}
-								{/*		}*/}
-								{/*		isError={!!errors.tagsColor && touched.tagsColor}*/}
-								{/*	/>*/}
-								{/*</ST.WrapperInput>*/}
 							</ST.Wrapper>
 						</ST.Content>
 						<ST.Footer>

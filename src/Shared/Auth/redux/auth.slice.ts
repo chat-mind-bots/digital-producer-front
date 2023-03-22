@@ -6,7 +6,7 @@ import {
 	LocalStorageMethodEnum,
 	localStorageService,
 } from "Utils/local-storage.service";
-import RequestStatuses from "RequestStatuses";
+import RequestStatuses from "Constants/RequestStatuses";
 
 export interface IAuthUserState {
 	token?: string;

@@ -1,6 +1,6 @@
 import { createSlice } from "@reduxjs/toolkit";
 
-import RequestStatuses from "RequestStatuses";
+import RequestStatuses from "Constants/RequestStatuses";
 
 import { IQuestionState } from "../../Question/redux/question.slice";
 

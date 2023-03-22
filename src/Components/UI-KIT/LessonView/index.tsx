@@ -1,4 +1,5 @@
 import React, { FC, useEffect, useState } from "react";
+import { toast } from "react-hot-toast";
 
 import LevelDifficulty, {
 	LoadingLevelDifficulty,
@@ -11,7 +12,7 @@ import PlayVideo from "../Atoms/PlayVideo";
 import { ITagState } from "../../../Shared/Tag/redux/tag.slice";
 import Tags from "../Atoms/Tags";
 import Button from "../Atoms/Button";
-import Colors from "../../../Colors";
+import Colors from "../../../Constants/Colors";
 import { EnrollToCourse } from "../../../Shared/Courses/components/CourseSet/enroll";
 
 type LessonViewProps = Pick<
@@ -36,6 +37,7 @@ type LessonViewProps = Pick<
 	idCourse?: string;
 	refetch?: () => void;
 	isEnrolled?: boolean;
+	isOwner?: boolean;
 };
 
 const LessonView: FC<LessonViewProps> = ({
@@ -57,6 +59,7 @@ const LessonView: FC<LessonViewProps> = ({
 	refetch,
 	isEnrolled,
 	video,
+	isOwner,
 }) => {
 	const [startVideo, setStartVideo] = useState<boolean>(false);
 
@@ -154,7 +157,14 @@ const LessonView: FC<LessonViewProps> = ({
 			</ST.WrapperInfo>
 
 			{!isLesson && (
-				<ST.MobileBy>
+				<ST.MobileBy
+					disabled={isOwner}
+					onClick={() => {
+						toast.error(
+							"Невозможно купить или учавствовать в собственном курсе"
+						);
+					}}
+				>
 					{!isFree ? (
 						<Button
 							title={"Купить курс"}
@@ -168,12 +178,14 @@ const LessonView: FC<LessonViewProps> = ({
 							colorHover={Colors.WHITE}
 							width={"100%"}
 							onClick={() => window.open(paymentLink)}
+							disabled={isOwner}
 						/>
 					) : (
 						!isEnrolled && (
 							<EnrollToCourse
 								idCourse={idCourse}
 								refetch={refetch}
+								disabled={isOwner}
 							/>
 						)
 					)}

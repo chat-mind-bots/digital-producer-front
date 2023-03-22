@@ -1,7 +1,7 @@
 import styled from "styled-components";
 
-import BreakPoints from "BreakPoints";
-import Colors from "Colors";
+import BreakPoints from "Constants/BreakPoints";
+import Colors from "Constants/Colors";
 
 type Props = {
 	isLoading: boolean;
@@ -296,9 +296,12 @@ export const WrapperButton = styled.div`
 	width: 100%;
 `;
 
-export const MobileBy = styled.div`
+export const MobileBy = styled.div<{ disabled?: boolean }>`
 	margin-top: 12px;
 	display: none;
+	& button {
+		pointer-events: ${({ disabled }) => (disabled ? "none" : "auto")};
+	}
 	@media (max-width: ${BreakPoints.MOBILE}px) {
 		display: block;
 	}

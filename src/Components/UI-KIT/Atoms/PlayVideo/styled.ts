@@ -1,9 +1,9 @@
 import styled from "styled-components";
 
-import Colors from "Colors";
+import Colors from "Constants/Colors";
 
 import { PlayVideoProps } from "./index";
-import BreakPoints from "../../../../BreakPoints";
+import BreakPoints from "../../../../Constants/BreakPoints";
 
 export const PlayVideo = styled.div<PlayVideoProps>`
 	margin-left: -7px;

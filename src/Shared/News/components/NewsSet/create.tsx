@@ -1,5 +1,5 @@
 import React, { FC, useCallback, useEffect, useState } from "react";
-import toast from "react-hot-toast";
+import { toast } from "react-hot-toast";
 import { QueryStatus } from "@reduxjs/toolkit/query";
 
 import {
@@ -10,7 +10,7 @@ import { INewsState, initialNewsState } from "Shared/News/redux/news.slice";
 
 import WindowFormik from "../../../../Components/ModalWindows/WrappersModalWindows/Formik";
 import { useAppSelector } from "../../../../Hooks/redux";
-import RequestStatuses from "../../../../RequestStatuses";
+import RequestStatuses from "../../../../Constants/RequestStatuses";
 import NewsSettingsBodyWindow from "../../../../Components/ModalWindows/Body/NewsSettingsBodyWindow";
 import { useGetCategoriesQuery } from "../../../Category/redux/category.api";
 import Loader from "../../../../Components/UI-KIT/Loader";

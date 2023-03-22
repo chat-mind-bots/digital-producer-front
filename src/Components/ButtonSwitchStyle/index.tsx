@@ -4,7 +4,7 @@ import Button, {
 	ButtonEnum,
 	ButtonProps,
 } from "Components/UI-KIT/Atoms/Button";
-import Colors from "Colors";
+import Colors from "Constants/Colors";
 
 import { ButtonSwitchStyleEnum } from "./button-switch-style.enum";
 

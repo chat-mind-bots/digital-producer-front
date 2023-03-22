@@ -1,7 +1,7 @@
 import React, { FC } from "react";
 import { Link, useLocation } from "react-router-dom";
 
-import { NavBarType } from "Constants/NavBar";
+import { NavBarType } from "Constants/NavBar/NavBar";
 
 import * as ST from "./styled";
 

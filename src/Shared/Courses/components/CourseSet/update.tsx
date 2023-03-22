@@ -1,11 +1,11 @@
 import React, { FC, useCallback, useEffect, useState } from "react";
-import toast from "react-hot-toast";
+import { toast } from "react-hot-toast";
 import { QueryStatus } from "@reduxjs/toolkit/query";
 import { useNavigate } from "react-router-dom";
 
 import WindowFormik from "../../../../Components/ModalWindows/WrappersModalWindows/Formik";
 import { useAppSelector } from "../../../../Hooks/redux";
-import RequestStatuses from "../../../../RequestStatuses";
+import RequestStatuses from "../../../../Constants/RequestStatuses";
 import CourseResultType from "../../../../Components/UI-KIT/Course/course-props.type";
 import Loader from "../../../../Components/UI-KIT/Loader";
 import {
@@ -17,7 +17,7 @@ import {
 import CourseSettingsBodyWindow from "../../../../Components/ModalWindows/Body/CourseSettingsBodyWindow";
 import { ICourseState } from "../../redux/course.slice";
 import { useGetCategoriesQuery } from "../../../Category/redux/category.api";
-import Colors from "../../../../Colors";
+import Colors from "../../../../Constants/Colors";
 import Button from "../../../../Components/UI-KIT/Atoms/Button";
 import { routeBuilder } from "../../../../Router/services/route-builder";
 import RoutesList from "../../../../Router/routesList";

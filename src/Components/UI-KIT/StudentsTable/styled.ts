@@ -1,6 +1,6 @@
 import styled from "styled-components";
 
-import Colors from "Colors";
+import Colors from "Constants/Colors";
 
 export const StudentsTable = styled.div`
 	width: 100%;

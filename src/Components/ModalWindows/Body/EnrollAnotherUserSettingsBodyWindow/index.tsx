@@ -2,7 +2,7 @@ import React, { FC } from "react";
 import { Formik } from "formik";
 
 import Button from "Components/UI-KIT/Atoms/Button";
-import Colors from "Colors";
+import Colors from "Constants/Colors";
 
 import { ValidationSchema } from "./validationSchema";
 import * as ST from "./styled";

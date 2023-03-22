@@ -2,7 +2,7 @@ import React, { FC } from "react";
 import { Formik } from "formik";
 
 import Button from "Components/UI-KIT/Atoms/Button";
-import Colors from "Colors";
+import Colors from "Constants/Colors";
 import { ReactComponent as ModalWindowAddFileIcon } from "Icons/ModalWindowAddFileIcon.svg";
 
 import { ValidationSchema } from "./validationSchema";
@@ -448,31 +448,6 @@ const CourseSettingsBodyWindow: FC<CourseSettingsBodyWindowProps> = ({
 									/>
 								</ST.WrapperInput>
 							</ST.Wrapper>
-
-							{/*<ST.Wrapper>*/}
-							{/*	<ST.Name>Позиция</ST.Name>*/}
-							{/*	<ST.WrapperInput>*/}
-							{/*		<Input*/}
-							{/*			value={String(values?.logicNumber || "")}*/}
-							{/*			setValue={(str) => {*/}
-							{/*				setFieldValue &&*/}
-							{/*					setFieldValue("logicNumber", Number(str ?? 0));*/}
-							{/*			}}*/}
-							{/*			setFocus={(state) => setFieldTouched("logicNumber", state)}*/}
-							{/*			placeholder={"Введите Текст кнопки"}*/}
-							{/*			padding={"10px 14px"}*/}
-							{/*			fontSize={"16px"}*/}
-							{/*			fontWeight={"400"}*/}
-							{/*			borderSize={"1px"}*/}
-							{/*			errorText={*/}
-							{/*				errors.logicNumber && touched.logicNumber*/}
-							{/*					? errors.logicNumber*/}
-							{/*					: undefined*/}
-							{/*			}*/}
-							{/*			isError={!!errors.logicNumber && touched.logicNumber}*/}
-							{/*		/>*/}
-							{/*	</ST.WrapperInput>*/}
-							{/*</ST.Wrapper>*/}
 
 							<ST.Wrapper>
 								<ST.Name>Язык курса</ST.Name>

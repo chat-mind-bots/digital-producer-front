@@ -3,7 +3,7 @@ import { Formik } from "formik";
 
 import Input from "Components/UI-KIT/Atoms/Input";
 import Button from "Components/UI-KIT/Atoms/Button";
-import Colors from "Colors";
+import Colors from "Constants/Colors";
 
 import { ValidationSchema } from "./validationSchema";
 import * as ST from "./styled";
@@ -83,7 +83,6 @@ const LessonSettingsBodyWindow: FC<LessonSettingsBodyWindowProps> = ({
 									/>
 								</ST.WrapperInput>
 							</ST.Wrapper>
-							{/*	*/}
 							<ST.Wrapper>
 								<ST.Name>Описание</ST.Name>
 								<ST.WrapperInput>
@@ -107,7 +106,6 @@ const LessonSettingsBodyWindow: FC<LessonSettingsBodyWindowProps> = ({
 									/>
 								</ST.WrapperInput>
 							</ST.Wrapper>
-							{/*	*/}
 
 							<ST.Wrapper isBorder={true}>
 								<ST.Name>Добавить фото</ST.Name>

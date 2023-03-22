@@ -43,19 +43,6 @@ const ChangeAnswers: FC<ChangeTagsProps> = ({
 	return (
 		<>
 			<ST.WrapperTags>
-				{/*<Input*/}
-				{/*	value={name || ""}*/}
-				{/*	setValue={(str) => {*/}
-				{/*		setFieldValue && setFieldValue(`answers.${index}.name`, str);*/}
-				{/*	}}*/}
-				{/*	setFocus={(state) => setFieldTouched(`answers.${index}.name`, state)}*/}
-				{/*	placeholder={"название"}*/}
-				{/*	padding={"10px 14px"}*/}
-				{/*	fontSize={"16px"}*/}
-				{/*	fontWeight={"400"}*/}
-				{/*	borderSize={"1px"}*/}
-				{/*/>*/}
-
 				<Input
 					value={value || ""}
 					setValue={(str) => {

@@ -1,8 +1,8 @@
 import styled from "styled-components";
 
-import Colors from "Colors";
+import Colors from "Constants/Colors";
 
-import BreakPoints from "../../../BreakPoints";
+import BreakPoints from "../../../Constants/BreakPoints";
 
 export const ShoppingCard = styled.div`
 	padding: 20px 20px 32px;

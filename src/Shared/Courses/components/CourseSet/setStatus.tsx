@@ -5,11 +5,11 @@ import React, {
 	useCallback,
 	useEffect,
 } from "react";
-import toast from "react-hot-toast";
+import { toast } from "react-hot-toast";
 import { QueryStatus } from "@reduxjs/toolkit/query";
 
 import { useAppSelector } from "../../../../Hooks/redux";
-import RequestStatuses from "../../../../RequestStatuses";
+import RequestStatuses from "../../../../Constants/RequestStatuses";
 import {
 	GetCourseApiProps,
 	UpdateCourseStatusApiProps,

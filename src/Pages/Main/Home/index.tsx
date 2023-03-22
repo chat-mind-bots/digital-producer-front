@@ -1,14 +1,17 @@
 import React from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 
 import Button from "Components/UI-KIT/Atoms/Button";
-import Colors from "Colors";
+import Colors from "Constants/Colors";
 
 import * as ST from "./styled";
 import checkRole from "../../../Utils/CheckRole";
+import checkAuth from "../../../Utils/CheckAuth";
 
 const Home = () => {
 	const authRoleFromLocalStorage = checkRole();
+	const authTokenFromLocalStorage = checkAuth();
+	const navigate = useNavigate();
 
 	return (
 		<ST.Home>
@@ -17,6 +20,26 @@ const Home = () => {
 				Самые последние и актуальные новости и обновления платформы
 			</ST.Description>
 			<ST.Buttons>
+				{!authRoleFromLocalStorage?.length && (
+					<Button
+						title={"Попробовать бесплатно"}
+						padding={"18px 24px"}
+						fontSize={"16px"}
+						lineHeight={"20px"}
+						fontWeight={"600"}
+						background={Colors.BLUE}
+						color={Colors.WHITE}
+						backgroundAnimation={Colors.BLUE_DARK}
+						colorHover={Colors.WHITE}
+						width={"100%"}
+						onClick={() => {
+							authTokenFromLocalStorage
+								? navigate("/admin")
+								: window.open(" https://t.me/SvyatoslavZhilin3312281_bot");
+						}}
+					/>
+				)}
+
 				{authRoleFromLocalStorage?.map((e) => (
 					<Link
 						key={`App-to-${e}`}
@@ -36,37 +59,6 @@ const Home = () => {
 						/>
 					</Link>
 				))}
-
-				{/*<Link to={routeBuilder(RoutesList.PRODUCER)}>*/}
-				{/*	<Button*/}
-				{/*		title={"Как продюсер"}*/}
-				{/*		padding={"18px 24px"}*/}
-				{/*		fontSize={"16px"}*/}
-				{/*		lineHeight={"20px"}*/}
-				{/*		fontWeight={"600"}*/}
-				{/*		background={Colors.TRANSPARENT}*/}
-				{/*		color={Colors.BLACK1}*/}
-				{/*		backgroundAnimation={Colors.BLACK1}*/}
-				{/*		colorHover={Colors.WHITE}*/}
-				{/*		border={`2px solid ${Colors.BLACK1}`}*/}
-				{/*		width={"max-content"}*/}
-				{/*	/>*/}
-				{/*</Link>*/}
-				{/*<Link to={routeBuilder(RoutesList.ADMIN)}>*/}
-				{/*	<Button*/}
-				{/*		title={"Как админ"}*/}
-				{/*		padding={"18px 24px"}*/}
-				{/*		fontSize={"16px"}*/}
-				{/*		lineHeight={"20px"}*/}
-				{/*		fontWeight={"600"}*/}
-				{/*		background={Colors.TRANSPARENT}*/}
-				{/*		color={Colors.BLACK1}*/}
-				{/*		backgroundAnimation={Colors.BLACK1}*/}
-				{/*		colorHover={Colors.WHITE}*/}
-				{/*		border={`2px solid ${Colors.BLACK1}`}*/}
-				{/*		width={"max-content"}*/}
-				{/*	/>*/}
-				{/*</Link>*/}
 			</ST.Buttons>
 		</ST.Home>
 	);

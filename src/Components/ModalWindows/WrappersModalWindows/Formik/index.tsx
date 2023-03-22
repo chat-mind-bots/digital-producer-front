@@ -1,4 +1,4 @@
-import React, { FC, useEffect, useRef } from "react";
+import React, { FC, memo, useEffect, useRef } from "react";
 import { Transition } from "react-transition-group";
 
 import Portal from "Components/ModalWindows/Portal";
@@ -11,7 +11,7 @@ import {
 } from "Components/ModalWindows/animation";
 
 import * as ST from "./styled";
-import Colors from "../../../../Colors";
+import Colors from "../../../../Constants/Colors";
 
 type ModalProps = {
 	children: JSX.Element;
@@ -83,4 +83,4 @@ const ModalFormik: FC<ModalProps> = ({
 		</Portal>
 	);
 };
-export default React.memo(ModalFormik);
+export default memo(ModalFormik);

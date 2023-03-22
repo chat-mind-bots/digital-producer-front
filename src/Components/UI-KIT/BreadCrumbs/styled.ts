@@ -1,6 +1,8 @@
 import styled from "styled-components";
 
-import Colors from "Colors";
+import Colors from "Constants/Colors";
+
+import BreakPoints from "../../../Constants/BreakPoints";
 
 type ItemProps = {
 	isLast: boolean;
@@ -10,6 +12,11 @@ export const BreadCrumbs = styled.div`
 	display: flex;
 	align-items: center;
 	gap: 12px;
+	@media (max-width: ${BreakPoints.MOBILE}px) {
+		overflow: auto;
+		padding-bottom: 6px;
+		padding-top: 6px;
+	}
 `;
 
 export const ItemBreadCrumbs = styled.div``;
@@ -28,6 +35,7 @@ export const Item = styled.p<ItemProps>`
 	word-wrap: break-word;
 	-webkit-box-orient: vertical;
 	max-width: 250px;
+	width: max-content;
 	&:hover {
 		color: ${Colors.BLUE};
 	}

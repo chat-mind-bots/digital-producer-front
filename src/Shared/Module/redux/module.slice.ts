@@ -1,6 +1,6 @@
 import { createSlice } from "@reduxjs/toolkit";
 
-import RequestStatuses from "../../../RequestStatuses";
+import RequestStatuses from "../../../Constants/RequestStatuses";
 import { ILessonState } from "../../Lesson/redux/lesson.slice";
 import { IOwnerState } from "../../Owner/redux/owner.slice";
 

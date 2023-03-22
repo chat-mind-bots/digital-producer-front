@@ -4,7 +4,7 @@ import { Link, Outlet, useNavigate } from "react-router-dom";
 import RoutesList from "Router/routesList";
 import Logo from "Components/UI-KIT/Logo";
 import Button from "Components/UI-KIT/Atoms/Button";
-import Colors from "Colors";
+import Colors from "Constants/Colors";
 
 import * as ST from "./styled";
 import checkAuth from "../../Utils/CheckAuth";
@@ -21,7 +21,7 @@ const Main: FC<MainProps> = ({ isRegistration }) => {
 	return (
 		<ST.Main>
 			<ST.Image>
-				<Image src={"/mainPage.png"} />
+				<Image src={"/image/mainPage.webp"} />
 			</ST.Image>
 			<ST.Wrapper>
 				<ST.Header>
@@ -32,9 +32,6 @@ const Main: FC<MainProps> = ({ isRegistration }) => {
 						<Logo isMax={false} />
 					</ST.LogoMobile>
 					<ST.WrapperButton>
-						{/*<Link*/}
-						{/*	to={isRegistration ? RoutesList.REGISTRATION : RoutesList.LOGIN}*/}
-						{/*>*/}
 						<Button
 							title={isRegistration ? "Регистрация" : "Войти"}
 							padding={"10px 14px"}
@@ -54,7 +51,6 @@ const Main: FC<MainProps> = ({ isRegistration }) => {
 								}
 							}}
 						/>
-						{/*</Link>*/}
 					</ST.WrapperButton>
 				</ST.Header>
 				<ST.Content>

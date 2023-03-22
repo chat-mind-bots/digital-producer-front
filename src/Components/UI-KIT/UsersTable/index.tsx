@@ -1,6 +1,6 @@
 import React, { FC, useEffect } from "react";
 import { QueryStatus } from "@reduxjs/toolkit/query";
-import toast from "react-hot-toast";
+import { toast } from "react-hot-toast";
 import { Link } from "react-router-dom";
 
 import * as ST from "./styled";
@@ -11,10 +11,10 @@ import {
 import Image from "../Atoms/Image";
 import openFileBlank from "../../../Utils/openFileBlank";
 import { UserRoleEnum } from "../../../Shared/Auth/types/role.enum";
-import Colors from "../../../Colors";
+import Colors from "../../../Constants/Colors";
 import { useAppSelector } from "../../../Hooks/redux";
 import CourseResultType from "../Course/course-props.type";
-import RequestStatuses from "../../../RequestStatuses";
+import RequestStatuses from "../../../Constants/RequestStatuses";
 import { routeBuilder } from "../../../Router/services/route-builder";
 import RoutesList from "../../../Router/routesList";
 

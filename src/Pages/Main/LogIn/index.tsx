@@ -2,7 +2,7 @@ import React, { useState } from "react";
 
 import Button from "Components/UI-KIT/Atoms/Button";
 import Input from "Components/UI-KIT/Atoms/Input";
-import Colors from "Colors";
+import Colors from "Constants/Colors";
 
 import * as ST from "./styled";
 

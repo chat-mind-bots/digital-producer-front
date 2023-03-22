@@ -6,7 +6,7 @@ import React, {
 	useCallback,
 } from "react";
 import { QueryStatus } from "@reduxjs/toolkit/query";
-import toast from "react-hot-toast";
+import { toast } from "react-hot-toast";
 
 import { useAppSelector } from "Hooks/redux";
 import {
@@ -19,7 +19,7 @@ import {
 import BannerResultType from "Components/UI-KIT/Banner/banner-props.type";
 import { BannerListProps } from "Components/UI-KIT/BannerSettings/BannerList";
 import { IBannerState } from "Shared/Banner/redux/banner.slice";
-import RequestStatuses from "RequestStatuses";
+import RequestStatuses from "Constants/RequestStatuses";
 import Loader from "Components/UI-KIT/Loader";
 
 type BannerSetProps = Record<"children", React.ReactElement<BannerResultType>>;

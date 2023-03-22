@@ -1,6 +1,6 @@
 import * as Yup from "yup";
 
-import ErrText from "ErrText";
+import ErrText from "Constants/ErrText";
 // import RequestStatuses from "RequestStatuses";
 // import { BannerEnum } from "Shared/Banner/types/banner.enum";
 

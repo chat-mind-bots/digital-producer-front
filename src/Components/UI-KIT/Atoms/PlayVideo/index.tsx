@@ -4,7 +4,7 @@ import JoLPlayer, { JoLPlayerRef } from "jol-player";
 import { ReactComponent as IconPlayVideo } from "Icons/playVideo.svg";
 
 import * as ST from "./styled";
-import Colors from "../../../../Colors";
+import Colors from "../../../../Constants/Colors";
 
 export type PlayVideoProps = {
 	isOpen: boolean;
