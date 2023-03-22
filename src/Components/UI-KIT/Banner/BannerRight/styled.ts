@@ -14,6 +14,7 @@ export const AddBlock = styled.div`
 	width: 300px;
 	height: max-content;
 	box-sizing: border-box;
+	min-height: 468px;
 	@media (max-width: ${BreakPoints.TABLET}px) {
 		display: none;
 	}
@@ -35,10 +36,13 @@ export const ImageWrapper = styled.div`
 `;
 
 export const AddBlockLoader = styled.div`
-	position: relative;
 	height: 100%;
 	width: 100%;
 	display: flex;
+	position: absolute;
+	left: 50%;
+	top: 50%;
+	transform: translate(-50%, -50%);
 `;
 
 export const Title = styled.p`
