@@ -5,10 +5,8 @@ import React, {
 	useCallback,
 	useEffect,
 } from "react";
-import toast, { Toaster } from "react-hot-toast";
+import toast from "react-hot-toast";
 import { QueryStatus } from "@reduxjs/toolkit/query";
-
-import ModalToaster from "Components/ModalWindows/WrappersModalWindows/ModalToaster";
 
 import { useAppSelector } from "../../../../Hooks/redux";
 import RequestStatuses from "../../../../RequestStatuses";
@@ -66,13 +64,6 @@ export const CourseSetStatus: FC<
 					cloneElement(child as React.ReactElement<CourseResultType>, {})
 				)}
 			</span>
-
-			<ModalToaster>
-				<Toaster
-					position="bottom-left"
-					reverseOrder={false}
-				/>
-			</ModalToaster>
 		</>
 	);
 };

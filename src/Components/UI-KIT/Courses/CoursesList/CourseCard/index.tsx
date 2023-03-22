@@ -1,6 +1,5 @@
 import React, { FC } from "react";
 
-import { ReactComponent as IconForCourseCard } from "Icons/IconForCourseCard.svg";
 import LevelDifficulty from "Components/UI-KIT/Atoms/LevelDificulty";
 import { ICourseState } from "Shared/Courses/redux/course.slice";
 import Tags from "Components/UI-KIT/Atoms/Tags";
@@ -31,10 +30,9 @@ const CourseCard: FC<ICourseState> = ({
 	<ST.CourseCard>
 		<ST.Wrapper>
 			<ST.ImageWrapper>
-				<IconForCourseCard />
+				<ST.BlockImage />
 				<Image src={image} />
 			</ST.ImageWrapper>
-
 			<ST.MainWrapper>
 				<Tags
 					tags={tags}

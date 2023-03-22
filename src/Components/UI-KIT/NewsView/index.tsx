@@ -1,6 +1,5 @@
 import React, { FC } from "react";
 
-import { ReactComponent as IconForNewsView } from "Icons/IconForNewsView.svg";
 import Date from "Components/UI-KIT/Atoms/Date";
 import Time from "Components/UI-KIT/Atoms/Time";
 import Tags from "Components/UI-KIT/Atoms/Tags";
@@ -26,9 +25,7 @@ const NewsView: FC<NewsViewProps> = ({
 	tagsColors,
 }) => (
 	<ST.NewsView>
-		<ST.WrapperIcon>
-			<IconForNewsView />
-		</ST.WrapperIcon>
+		<ST.WrapperIcon />
 		<ST.WrapperInfo>
 			<ST.WrapperDateInfo>
 				<Time value={time} />

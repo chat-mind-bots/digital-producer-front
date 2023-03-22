@@ -1,8 +1,7 @@
 import React, { FC, useCallback, useEffect, useState } from "react";
-import toast, { Toaster } from "react-hot-toast";
+import toast from "react-hot-toast";
 import { QueryStatus } from "@reduxjs/toolkit/query";
 
-import ModalToaster from "Components/ModalWindows/WrappersModalWindows/ModalToaster";
 import {
 	GetNewsApiProps,
 	useCreateNewsMutation,
@@ -83,13 +82,6 @@ export const NewsCreate: FC<Pick<NewsResultType, "refetch">> = ({
 					)}
 				</WindowFormik>
 			)}
-
-			<ModalToaster>
-				<Toaster
-					position="bottom-left"
-					reverseOrder={false}
-				/>
-			</ModalToaster>
 		</>
 	);
 };

@@ -1,6 +1,5 @@
 import React, { FC } from "react";
 
-import { ReactComponent as IconForAddBlock } from "Icons/IconForAddBlock.svg";
 import Button from "Components/UI-KIT/Atoms/Button";
 import Colors from "Colors";
 
@@ -8,6 +7,7 @@ import * as ST from "./styled";
 import { EnrollToCourse } from "../../../Shared/Courses/components/CourseSet/enroll";
 import CourseResultType from "../Course/course-props.type";
 import { EnrollToCourseApiProps } from "../../../Shared/Courses/redux/course.api";
+import Image from "../Atoms/Image";
 
 type ShoppingCardProps = Pick<CourseResultType, "refetch"> &
 	Pick<EnrollToCourseApiProps, "idCourse"> & {
@@ -33,7 +33,7 @@ const ShoppingCard: FC<ShoppingCardProps> = ({
 }) => {
 	return (
 		<ST.ShoppingCard>
-			<IconForAddBlock />
+			<Image src={"/IconForAddBlock.png"} />
 			<ST.Title>{name}</ST.Title>
 			{!isFree && (
 				<ST.Price>

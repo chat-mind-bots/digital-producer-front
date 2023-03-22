@@ -1,6 +1,6 @@
 import React, { FC, useEffect } from "react";
 import { QueryStatus } from "@reduxjs/toolkit/query";
-import toast, { Toaster } from "react-hot-toast";
+import toast from "react-hot-toast";
 import { Link } from "react-router-dom";
 
 import * as ST from "./styled";
@@ -15,7 +15,6 @@ import Colors from "../../../Colors";
 import { useAppSelector } from "../../../Hooks/redux";
 import CourseResultType from "../Course/course-props.type";
 import RequestStatuses from "../../../RequestStatuses";
-import ModalToaster from "../../ModalWindows/WrappersModalWindows/ModalToaster";
 import { routeBuilder } from "../../../Router/services/route-builder";
 import RoutesList from "../../../Router/routesList";
 
@@ -151,12 +150,6 @@ const UsersTable: FC<UserApiPropsSet & Pick<CourseResultType, "refetch">> = ({
 					</ST.Tbody>
 				</ST.Table>
 			</ST.WrapperTables>
-			<ModalToaster>
-				<Toaster
-					position="bottom-left"
-					reverseOrder={false}
-				/>
-			</ModalToaster>
 		</ST.CategoriesTable>
 	);
 };

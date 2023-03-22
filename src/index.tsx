@@ -8,6 +8,10 @@ import { Router } from "Router";
 
 import "18n.ts";
 import "index.css";
+import ModalToaster from "./Components/ModalWindows/WrappersModalWindows/ModalToaster";
+
+// eslint-disable-next-line import/order
+import { Toaster } from "react-hot-toast";
 
 const root = ReactDOMClient.createRoot(
 	document.getElementById("root") as HTMLElement
@@ -20,5 +24,11 @@ root.render(
 		<Provider store={store}>
 			<RouterProvider router={router} />
 		</Provider>
+		<ModalToaster>
+			<Toaster
+				position="bottom-left"
+				reverseOrder={false}
+			/>
+		</ModalToaster>
 	</React.StrictMode>
 );

@@ -1,5 +1,5 @@
 import React, { FC, useCallback, useEffect } from "react";
-import toast, { Toaster } from "react-hot-toast";
+import toast from "react-hot-toast";
 import { QueryStatus } from "@reduxjs/toolkit/query";
 
 import Colors from "../../../../Colors";
@@ -11,7 +11,6 @@ import {
 	useEnrollToCourseMutation,
 } from "../../redux/course.api";
 import CourseResultType from "../../../../Components/UI-KIT/Course/course-props.type";
-import ModalToaster from "../../../../Components/ModalWindows/WrappersModalWindows/ModalToaster";
 
 export const EnrollToCourse: FC<
 	Pick<CourseResultType, "refetch"> & Pick<EnrollToCourseApiProps, "idCourse">
@@ -63,13 +62,6 @@ export const EnrollToCourse: FC<
 				width={"100%"}
 				onClick={() => (idCourse ? enroll(idCourse) : toast.error("Ошибка id"))}
 			/>
-
-			<ModalToaster>
-				<Toaster
-					position="bottom-left"
-					reverseOrder={false}
-				/>
-			</ModalToaster>
 		</>
 	);
 };

@@ -1,5 +1,4 @@
 import React, { FC, useState } from "react";
-import { Toaster } from "react-hot-toast";
 
 import WindowFormik from "Components/ModalWindows/WrappersModalWindows/Formik";
 import {
@@ -245,10 +244,6 @@ const BannerSection: FC<BannerSectionProps> = ({
 				</WindowFormik>
 			)}
 			{/*MODAL WINDOW_______________________*/}
-			<Toaster
-				position="bottom-left"
-				reverseOrder={false}
-			/>
 		</ST.Wrapper>
 	);
 };

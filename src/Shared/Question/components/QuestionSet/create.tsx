@@ -1,8 +1,6 @@
 import React, { FC, useCallback, useEffect, useState } from "react";
-import toast, { Toaster } from "react-hot-toast";
+import toast from "react-hot-toast";
 import { QueryStatus } from "@reduxjs/toolkit/query";
-
-import ModalToaster from "Components/ModalWindows/WrappersModalWindows/ModalToaster";
 
 import WindowFormik from "../../../../Components/ModalWindows/WrappersModalWindows/Formik";
 import { useAppSelector } from "../../../../Hooks/redux";
@@ -105,13 +103,6 @@ export const QuestionCreate: FC<TestCreateProps> = ({ idTest, refetch }) => {
 			)}
 
 			{/*MODAL WINDOW_______________________*/}
-
-			<ModalToaster>
-				<Toaster
-					position="bottom-left"
-					reverseOrder={false}
-				/>
-			</ModalToaster>
 		</>
 	);
 };

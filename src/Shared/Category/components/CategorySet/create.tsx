@@ -1,8 +1,6 @@
 import React, { FC, useCallback, useEffect, useState } from "react";
-import toast, { Toaster } from "react-hot-toast";
+import toast from "react-hot-toast";
 import { QueryStatus } from "@reduxjs/toolkit/query";
-
-import ModalToaster from "Components/ModalWindows/WrappersModalWindows/ModalToaster";
 
 import Colors from "../../../../Colors";
 import Button from "../../../../Components/UI-KIT/Atoms/Button";
@@ -89,13 +87,6 @@ export const CategoryCreate: FC<CategoryCreateProps> = ({ refetch }) => {
 				</WindowFormik>
 			)}
 			{/*MODAL WINDOW_______________________*/}
-
-			<ModalToaster>
-				<Toaster
-					position="bottom-left"
-					reverseOrder={false}
-				/>
-			</ModalToaster>
 		</>
 	);
 };

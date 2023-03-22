@@ -1,7 +1,6 @@
 import React, { FC } from "react";
 import { Link } from "react-router-dom";
 
-import { ReactComponent as IconForNavBar } from "Icons/IconForNavBar.svg";
 import BannerProps from "Components/UI-KIT/Banner//banner-props.type";
 import Loader from "Components/UI-KIT/Loader";
 import Image from "Components/UI-KIT/Atoms/Image";
@@ -28,7 +27,6 @@ const BannerLeft: FC<BannerProps & Pick<IBannerState, IBannerEnum.role>> = ({
 				<Image src={data.image} />
 			</ST.ImageWrapper>
 
-			<IconForNavBar />
 			<ST.WrapperButton>
 				{data.isThirdPartySource ? (
 					<Link

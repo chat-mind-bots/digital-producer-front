@@ -1,5 +1,5 @@
 import React, { Dispatch, FC, useEffect, useState } from "react";
-import toast, { Toaster } from "react-hot-toast";
+import toast from "react-hot-toast";
 
 import { ReactComponent as Clock } from "Icons/Clock.svg";
 
@@ -127,10 +127,6 @@ const Timer = ({ date, isStart }: { date: Date; isStart: boolean }) => {
 			{`${timer.hours < 10 ? `0${timer.hours}` : `${timer.hours}`} : ${
 				timer.minutes < 10 ? `0${timer.minutes}` : `${timer.minutes}`
 			} : ${timer.seconds < 10 ? `0${timer.seconds}` : `${timer.seconds}`}`}
-			<Toaster
-				position="bottom-left"
-				reverseOrder={false}
-			/>
 		</>
 	);
 };

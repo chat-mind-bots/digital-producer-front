@@ -6,7 +6,7 @@ import React, {
 	useCallback,
 } from "react";
 import { QueryStatus } from "@reduxjs/toolkit/query";
-import toast, { Toaster } from "react-hot-toast";
+import toast from "react-hot-toast";
 
 import { useAppSelector } from "Hooks/redux";
 import {
@@ -19,7 +19,6 @@ import {
 import BannerResultType from "Components/UI-KIT/Banner/banner-props.type";
 import { BannerListProps } from "Components/UI-KIT/BannerSettings/BannerList";
 import { IBannerState } from "Shared/Banner/redux/banner.slice";
-import ModalToaster from "Components/ModalWindows/WrappersModalWindows/ModalToaster";
 import RequestStatuses from "RequestStatuses";
 import Loader from "Components/UI-KIT/Loader";
 
@@ -122,12 +121,6 @@ const BannerSet: FC<BannerSetProps> = ({ children }) => {
 			) : (
 				<Loader />
 			)}
-			<ModalToaster>
-				<Toaster
-					position="bottom-left"
-					reverseOrder={false}
-				/>
-			</ModalToaster>
 		</>
 	);
 };

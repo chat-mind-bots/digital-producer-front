@@ -1,7 +1,6 @@
 import React, { FC } from "react";
 import { Link } from "react-router-dom";
 
-import { ReactComponent as IconForAddBlock } from "Icons/IconForAddBlock.svg";
 import BannerProps from "Components/UI-KIT/Banner//banner-props.type";
 import Loader from "Components/UI-KIT/Loader";
 import Image from "Components/UI-KIT/Atoms/Image";
@@ -26,7 +25,6 @@ const BannerRight: FC<BannerProps & Pick<IBannerState, IBannerEnum.role>> = ({
 		<ST.AddBlock>
 			<ST.ImageWrapper>
 				<Image src={data.image} />
-				<IconForAddBlock />
 			</ST.ImageWrapper>
 
 			<ST.Title>{data.name}</ST.Title>

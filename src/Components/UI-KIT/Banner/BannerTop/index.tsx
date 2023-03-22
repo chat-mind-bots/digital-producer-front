@@ -4,7 +4,6 @@ import { Link } from "react-router-dom";
 import ButtonSwitchStyle from "Components/ButtonSwitchStyle";
 import BannerProps from "Components/UI-KIT/Banner/banner-props.type";
 import Loader from "Components/UI-KIT/Loader";
-import { ReactComponent as IconForNews } from "Icons/IconForNews.svg";
 import Image from "Components/UI-KIT/Atoms/Image";
 import openFileBlank from "Utils/openFileBlank";
 
@@ -65,7 +64,6 @@ const BannerTop: FC<BannerProps & Pick<IBannerState, IBannerEnum.role>> = ({
 			</ST.WrapperInfo>
 			<ST.ImageWrapper>
 				<Image src={data.image} />
-				<IconForNews />
 			</ST.ImageWrapper>
 		</ST.NewsBanner>
 	) : (

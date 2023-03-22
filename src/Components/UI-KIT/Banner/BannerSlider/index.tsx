@@ -5,7 +5,6 @@ import Tags from "Components/UI-KIT/Atoms/Tags";
 import Image from "Components/UI-KIT/Atoms/Image";
 import BannerProps from "Components/UI-KIT/Banner/banner-props.type";
 import Loader from "Components/UI-KIT/Loader";
-import { ReactComponent as IconForInsight4 } from "Icons/IconForInsight4.svg";
 import openFileBlank from "Utils/openFileBlank";
 import ButtonSwitchStyle from "Components/ButtonSwitchStyle";
 
@@ -83,7 +82,6 @@ const Insights: FC<BannerProps & Pick<IBannerState, IBannerEnum.role>> = ({
 				</ST.WrapperContent>
 				<ST.ImageWrapper>
 					<Image src={currentObject.image} />
-					<IconForInsight4 />
 				</ST.ImageWrapper>
 			</ST.WrapperInfo>
 			<ST.Circles>

@@ -13,6 +13,10 @@ export const ShoppingCard = styled.div`
 	position: sticky;
 	top: 129px;
 	height: max-content;
+	& > object {
+		width: 258px;
+		height: 248px;
+	}
 	@media (max-width: ${BreakPoints.MOBILE}px) {
 		display: none;
 	}

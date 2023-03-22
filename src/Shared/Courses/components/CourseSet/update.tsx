@@ -1,9 +1,7 @@
 import React, { FC, useCallback, useEffect, useState } from "react";
-import toast, { Toaster } from "react-hot-toast";
+import toast from "react-hot-toast";
 import { QueryStatus } from "@reduxjs/toolkit/query";
 import { useNavigate } from "react-router-dom";
-
-import ModalToaster from "Components/ModalWindows/WrappersModalWindows/ModalToaster";
 
 import WindowFormik from "../../../../Components/ModalWindows/WrappersModalWindows/Formik";
 import { useAppSelector } from "../../../../Hooks/redux";
@@ -149,13 +147,6 @@ export const CourseUpdate: FC<LessonSetProps> = ({ idCourse, refetch }) => {
 					)}
 				</>
 			</WindowFormik>
-
-			<ModalToaster>
-				<Toaster
-					position="bottom-left"
-					reverseOrder={false}
-				/>
-			</ModalToaster>
 		</>
 	);
 };

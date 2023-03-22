@@ -97,3 +97,8 @@ export const Create = styled.div`
 		border: 2px solid ${Colors.WHITE2};
 	}
 `;
+
+export const BlockImage = styled.div`
+	width: 220px;
+	min-height: 169px;
+`;
