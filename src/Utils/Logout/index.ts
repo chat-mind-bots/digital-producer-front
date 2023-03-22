@@ -18,8 +18,9 @@ const logout = (status: RequestStatusesType): RequestStatusesType => {
 				key: String(localStorage.key(i)),
 			});
 		}
-		// TODO: заменить эту хуйню
-		window.location.href = "/";
+		if (window.location.pathname.indexOf("/auth/") !== 0) {
+			window.location.href = "/";
+		}
 	}
 
 	return status;

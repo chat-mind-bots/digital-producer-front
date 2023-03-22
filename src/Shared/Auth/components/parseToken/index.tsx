@@ -13,7 +13,7 @@ import { routeBuilder } from "Router/services/route-builder";
 import { getUrlByRoleService } from "Shared/Auth/services/get-url-by-role.service";
 import { getMainRoleService } from "Shared/Auth/services/get-main-role.service";
 import checkAuth from "Utils/CheckAuth";
-import Loader from "Components/UI-KIT/Loader";
+import Initialization from "Pages/Main/Initialization";
 
 const ParseToken = () => {
 	const { token: authTokenParams } = useParams();
@@ -42,6 +42,6 @@ const ParseToken = () => {
 			);
 	}, [auth.id]);
 
-	return auth.id ? <Outlet /> : <Loader />;
+	return auth.id ? <Outlet /> : <Initialization />;
 };
 export default ParseToken;

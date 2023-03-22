@@ -35,15 +35,17 @@ export const authSlice = createSlice({
 	initialState: initialAuthState,
 	reducers: {
 		login(state, action: PayloadAction<IAuthUserState>) {
-			localStorageService(LocalStorageMethodEnum.SET, {
-				key: "auth",
-				data: action.payload.token,
-			});
+			action.payload.statusCode === RequestStatuses.SUCCESS_201 &&
+				localStorageService(LocalStorageMethodEnum.SET, {
+					key: "auth",
+					data: action.payload.token,
+				});
 
-			localStorageService(LocalStorageMethodEnum.SET, {
-				key: "role",
-				data: JSON.stringify(action.payload.role),
-			});
+			action.payload.statusCode === RequestStatuses.SUCCESS_201 &&
+				localStorageService(LocalStorageMethodEnum.SET, {
+					key: "role",
+					data: JSON.stringify(action.payload.role),
+				});
 
 			return {
 				...state,

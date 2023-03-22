@@ -1,5 +1,6 @@
 import React, { FC } from "react";
 import { useTranslation } from "react-i18next";
+import { useLocation } from "react-router-dom";
 
 import Loader from "Components/UI-KIT/Loader";
 import { useAppSelector } from "Hooks/redux";
@@ -12,11 +13,21 @@ type SwitchStatusProps = {
 };
 
 const Initialization = () => {
+	const location = useLocation();
+
+	const isAuthPage = location.pathname.indexOf("/auth/") === 0;
+
 	const auth = useAppSelector((state) => state.auth);
 
 	return (
 		<ST.Initialization>
-			<SwitchStatus status={auth.statusCode} />
+			{isAuthPage ? (
+				<SwitchStatus status={auth.statusCode} />
+			) : (
+				<ST.MainLoader>
+					<Loader />
+				</ST.MainLoader>
+			)}
 		</ST.Initialization>
 	);
 };
@@ -32,7 +43,9 @@ const SwitchStatus: FC<SwitchStatusProps> = ({ status }) => {
 		case RequestStatuses.PENDING:
 			return (
 				<>
-					<Loader />
+					<ST.AuthLoader>
+						<Loader />
+					</ST.AuthLoader>
 					<ST.Title>{t("Components.STATUS_TOKEN.PENDING")}</ST.Title>
 				</>
 			);

@@ -9,6 +9,22 @@ type TitleProps = {
 
 export const Initialization = styled.div`
 	width: 100%;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	height: 100%;
+	flex-wrap: wrap;
+`;
+
+export const MainLoader = styled.div`
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	transform: translate(-50%, -50%);
+`;
+
+export const AuthLoader = styled.div`
+	width: 100%;
 `;
 
 export const Title = styled.div<TitleProps>`
