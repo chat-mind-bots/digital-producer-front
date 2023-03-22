@@ -46,11 +46,16 @@ export interface DeleteNewsApiProps {
 	id?: string;
 }
 
+enum TagTypesEnum {
+	NEWS = "NEWS",
+}
+
 export const newsApi = createApi({
 	reducerPath: "news/api",
 	baseQuery: fetchBaseQuery({
 		baseUrl: process.env.REACT_APP_API_URL,
 	}),
+	tagTypes: [TagTypesEnum.NEWS],
 	endpoints: (build) => ({
 		getNews: build.query<INewsState, GetNewsApiProps>({
 			query: ({ authToken, idNews }) => ({
@@ -90,6 +95,7 @@ export const newsApi = createApi({
 					return result;
 				},
 			}),
+			providesTags: [TagTypesEnum.NEWS],
 			transformResponse: (response: ServerResponse<INewsDTO[]>, meta) => {
 				const { data, ...other } = response;
 
@@ -119,7 +125,7 @@ export const newsApi = createApi({
 					return result;
 				},
 			}),
-
+			invalidatesTags: [TagTypesEnum.NEWS],
 			transformResponse: (response: INewsDTO, meta) => {
 				return setStatusToDtoService(newsFromDtoServiceObject(response), meta);
 			},
@@ -162,7 +168,7 @@ export const newsApi = createApi({
 					return result;
 				},
 			}),
-
+			invalidatesTags: [TagTypesEnum.NEWS],
 			transformResponse: (response: INewsDTO, meta) =>
 				setStatusToDtoService(newsFromDtoServiceObject(response), meta),
 		}),
@@ -182,7 +188,7 @@ export const newsApi = createApi({
 					return result;
 				},
 			}),
-
+			invalidatesTags: [TagTypesEnum.NEWS],
 			transformResponse: (response: INewsDTO, meta) => {
 				return setStatusToDtoService(newsFromDtoServiceObject(response), meta);
 			},
