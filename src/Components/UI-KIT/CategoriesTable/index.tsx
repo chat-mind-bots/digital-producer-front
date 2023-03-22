@@ -29,7 +29,10 @@ const CategoriesTable: FC<
 						{data.map((category) => (
 							<ST.Tr key={`category-${category.id}`}>
 								<ST.Td>{category.title}</ST.Td>
-								<ST.CircleColor background={category.tagsColor} />
+								<ST.Td>
+									<ST.CircleColor background={category.tagsColor} />
+								</ST.Td>
+
 								<ST.ThOpen onClick={() => setIdCategory(category.id)}>
 									Открыть
 								</ST.ThOpen>
