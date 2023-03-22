@@ -84,6 +84,10 @@ export const Description = styled.p`
 	color: ${Colors.BLACK1};
 `;
 
-export const WrapperButton = styled.div`
+export const WrapperButton = styled.div<{ disabled?: boolean }>`
 	margin-top: 24px;
+	& > button {
+		pointer-events: ${({ disabled }) => (disabled ? "none" : "auto")};
+	}
+	cursor: ${({ disabled }) => (disabled ? "pointer" : "auto")};
 `;

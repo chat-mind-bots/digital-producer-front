@@ -13,8 +13,11 @@ import {
 import CourseResultType from "../../../../Components/UI-KIT/Course/course-props.type";
 
 export const EnrollToCourse: FC<
-	Pick<CourseResultType, "refetch"> & Pick<EnrollToCourseApiProps, "idCourse">
-> = ({ refetch, idCourse }) => {
+	Pick<CourseResultType, "refetch"> &
+		Pick<EnrollToCourseApiProps, "idCourse"> & {
+			disabled?: boolean;
+		}
+> = ({ refetch, idCourse, disabled }) => {
 	const auth = useAppSelector((state) => state.auth);
 	const queryAuth = {
 		authToken: auth.token ?? "",
@@ -61,6 +64,7 @@ export const EnrollToCourse: FC<
 				colorHover={Colors.WHITE}
 				width={"100%"}
 				onClick={() => (idCourse ? enroll(idCourse) : toast.error("Ошибка id"))}
+				disabled={disabled}
 			/>
 		</>
 	);

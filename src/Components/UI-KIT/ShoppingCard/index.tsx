@@ -1,4 +1,5 @@
 import React, { FC } from "react";
+import toast from "react-hot-toast";
 
 import Button from "Components/UI-KIT/Atoms/Button";
 import Colors from "Colors";
@@ -15,6 +16,7 @@ type ShoppingCardProps = Pick<CourseResultType, "refetch"> &
 		paymentLink: string;
 		isFree: boolean;
 		price?: Price;
+		isOwner?: boolean;
 	};
 
 export interface Price {
@@ -30,6 +32,7 @@ const ShoppingCard: FC<ShoppingCardProps> = ({
 	isFree,
 	idCourse,
 	refetch,
+	isOwner,
 }) => {
 	return (
 		<ST.ShoppingCard>
@@ -41,7 +44,12 @@ const ShoppingCard: FC<ShoppingCardProps> = ({
 				</ST.Price>
 			)}
 
-			<ST.WrapperButton>
+			<ST.WrapperButton
+				disabled={isOwner}
+				onClick={() => {
+					toast.error("Невозможно купить или учавствовать в собственном курсе");
+				}}
+			>
 				{!isFree ? (
 					<Button
 						title={"Купить курс"}
@@ -55,11 +63,13 @@ const ShoppingCard: FC<ShoppingCardProps> = ({
 						colorHover={Colors.WHITE}
 						width={"100%"}
 						onClick={() => window.open(paymentLink)}
+						disabled={isOwner}
 					/>
 				) : (
 					<EnrollToCourse
 						idCourse={idCourse}
 						refetch={refetch}
+						disabled={isOwner}
 					/>
 				)}
 			</ST.WrapperButton>

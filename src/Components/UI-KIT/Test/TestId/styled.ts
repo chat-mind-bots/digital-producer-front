@@ -18,6 +18,7 @@ export const MainWrapper = styled.div`
 `;
 
 export const WrapperCreateButton = styled.div`
+	margin-bottom: 22px;
 	& > div {
 		max-width: 100%;
 	}

@@ -19,7 +19,7 @@ const TestTimer: FC<TestTimerProps> = ({ lengthQuestions, duration }) => {
 				}
 			/>
 			<ST.Time>
-				{duration}
+				{duration} мин.
 				{/*00:00:00*/}
 				<ST.Count>
 					<Clock />
@@ -28,10 +28,6 @@ const TestTimer: FC<TestTimerProps> = ({ lengthQuestions, duration }) => {
 			<ST.Line>
 				<ST.AllCount>Всего вопросов:</ST.AllCount>
 				<ST.CountAll>{lengthQuestions}</ST.CountAll>
-			</ST.Line>
-			<ST.Line>
-				Верных ответов:
-				<ST.Count>0</ST.Count>
 			</ST.Line>
 		</ST.TestTimer>
 	);

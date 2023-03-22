@@ -294,6 +294,7 @@ const CourseId: FC<ICourseState & Pick<CourseResultType, "refetch">> = ({
 							  }
 							: undefined
 					}
+					isOwner={owner?.id === auth.id}
 				/>
 			)}
 		</ST.CourseID>
