@@ -35,6 +35,9 @@ export const Description = styled.p`
 	line-height: 155%;
 	color: ${Colors.GREY1};
 	margin-top: 4px;
+	@media (max-width: ${BreakPoints.MOBILE}px) {
+		display: none;
+	}
 `;
 
 export const Window = styled.div`

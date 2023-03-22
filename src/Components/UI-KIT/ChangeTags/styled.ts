@@ -2,11 +2,17 @@ import styled from "styled-components";
 
 import Colors from "Colors";
 
+import BreakPoints from "../../../BreakPoints";
+
 export const WrapperTags = styled.div`
 	display: flex;
 	gap: 12px;
 	width: 100%;
 	align-items: center;
+	@media (max-width: ${BreakPoints.MOBILE}px) {
+		flex-wrap: wrap;
+		justify-content: center;
+	}
 `;
 
 export const WrapperColor = styled.div`
