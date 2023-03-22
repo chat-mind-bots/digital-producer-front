@@ -9,6 +9,7 @@ export const Main = styled.div`
 	overflow: hidden;
 	@media (max-width: ${BreakPoints.MOBILE}px) {
 		height: auto;
+		min-height: 100vh;
 	}
 `;
 
