@@ -51,7 +51,7 @@ const NewsId: FC<INewsState & Pick<NewsResultType, "refetch">> = ({
 					</ST.WrapperIcon>
 					<ST.WrapperInfo>
 						<ST.WrapperDateInfo>
-							<Time value={`${timeRead}`} />
+							<Time value={`Время чтения: ${timeRead}`} />
 							<Date value={createdAt} />
 						</ST.WrapperDateInfo>
 						<Tags

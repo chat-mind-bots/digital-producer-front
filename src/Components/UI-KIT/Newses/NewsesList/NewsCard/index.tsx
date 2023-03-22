@@ -30,7 +30,7 @@ const NewsCard: FC<INewsState> = ({
 		</ST.WrapperTop>
 		<ST.WrapperBot>
 			<ST.WrapperTime>
-				<Time value={`${timeRead}`} />
+				<Time value={`Время чтения: ${timeRead}`} />
 			</ST.WrapperTime>
 			<ST.WrapperDate>
 				<Date value={createdAt} />
