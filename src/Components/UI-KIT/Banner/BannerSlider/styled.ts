@@ -14,6 +14,13 @@ export const Insights = styled.div`
 	padding: 26px 24px 24px;
 	box-sizing: border-box;
 	width: 100%;
+	min-height: 517px;
+	& > div > div > div > div {
+		border-top-color: #fff;
+		border-right-color: #fff;
+		border-bottom-color: #fff;
+		border-left-color: #fff;
+	}
 	@media (max-width: ${BreakPoints.MOBILE}px) {
 		display: none;
 	}
