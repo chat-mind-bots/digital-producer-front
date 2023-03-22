@@ -45,7 +45,7 @@ const EnrollAnotherUserSettingsBodyWindow: FC<
 					<ST.Form>
 						<ST.Content>
 							<ST.Wrapper>
-								<ST.Name>имя в тг</ST.Name>
+								<ST.Name>Имя</ST.Name>
 								<ST.WrapperInput>
 									<Input
 										value={values?.name || ""}
@@ -53,7 +53,7 @@ const EnrollAnotherUserSettingsBodyWindow: FC<
 											setFieldValue && setFieldValue("name", str);
 										}}
 										setFocus={(state) => setFieldTouched("name", state)}
-										placeholder={"Введите название "}
+										placeholder={"Введите имя пользователя без @"}
 										padding={"10px 14px"}
 										fontSize={"16px"}
 										fontWeight={"400"}

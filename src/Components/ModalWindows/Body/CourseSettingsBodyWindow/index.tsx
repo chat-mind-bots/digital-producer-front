@@ -154,6 +154,7 @@ const CourseSettingsBodyWindow: FC<CourseSettingsBodyWindowProps> = ({
 									)}
 
 									<DropZone
+										format={["png", "jpg"]}
 										setUrl={(url) =>
 											setFieldValue && setFieldValue("image", url)
 										}
@@ -216,6 +217,7 @@ const CourseSettingsBodyWindow: FC<CourseSettingsBodyWindowProps> = ({
 									<ST.Status status={!!values?.video} />
 
 									<DropZone
+										format={["mp4"]}
 										setUrl={(url) =>
 											setFieldValue && setFieldValue("video", url)
 										}

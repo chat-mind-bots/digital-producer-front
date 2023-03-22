@@ -141,6 +141,7 @@ const BannerSettingsBodyWindow: FC<CreateBannerProps> = ({
 									)}
 
 									<DropZone
+										format={["png", "jpg"]}
 										setUrl={(url) =>
 											setFieldValue && setFieldValue("image", url)
 										}

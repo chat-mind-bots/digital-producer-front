@@ -56,6 +56,7 @@ const LessonView: FC<LessonViewProps> = ({
 	idCourse,
 	refetch,
 	isEnrolled,
+	video,
 }) => {
 	const [startVideo, setStartVideo] = useState<boolean>(false);
 
@@ -71,6 +72,7 @@ const LessonView: FC<LessonViewProps> = ({
 				<ST.Loader />
 				{!startVideo && <Image src={image} />}
 				<PlayVideo
+					url={video}
 					startVideo={startVideo}
 					setStartVideo={setStartVideo}
 					isOpen={!isLoading}

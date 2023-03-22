@@ -56,6 +56,8 @@ const LessonView: FC<LessonViewProps> = ({
 	refetch,
 	isLesson,
 	tags,
+
+	video,
 }) => {
 	const [startVideo, setStartVideo] = useState<boolean>(false);
 
@@ -74,6 +76,7 @@ const LessonView: FC<LessonViewProps> = ({
 					startVideo={startVideo}
 					setStartVideo={setStartVideo}
 					isOpen={!isLoading}
+					url={video}
 				/>
 			</ST.WrapperVideo>
 			<ST.Title isLoading={isLoading}>

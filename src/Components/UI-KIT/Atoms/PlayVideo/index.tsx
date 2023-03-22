@@ -10,12 +10,14 @@ export type PlayVideoProps = {
 	isOpen: boolean;
 	startVideo?: boolean;
 	setStartVideo?: Dispatch<boolean>;
+	url: string;
 };
 
 const PlayVideo: FC<PlayVideoProps> = ({
 	isOpen,
 	startVideo,
 	setStartVideo,
+	url,
 }) => {
 	const videoRef = useRef<JoLPlayerRef>(null!);
 
@@ -29,6 +31,7 @@ const PlayVideo: FC<PlayVideoProps> = ({
 		<>
 			{!startVideo && (
 				<ST.PlayVideo
+					url={url}
 					isOpen={isOpen}
 					onClick={() => {
 						videoRef.current.play();
@@ -52,29 +55,28 @@ const PlayVideo: FC<PlayVideoProps> = ({
 					// onQualityChange={onQualityChange}
 					style={{}}
 					option={{
-						videoSrc:
-							"https://gs-files.oss-cn-hongkong.aliyuncs.com/okr/prod/file/2021/08/31/540p.mp4",
+						videoSrc: url,
 						theme: Colors.BLUE,
 						isShowScreenshot: false,
 						isShowWebFullScreen: false,
 						isShowSet: false,
 
-						poster:
-							"https://gs-files.oss-cn-hongkong.aliyuncs.com/okr/prod/file/2021/08/31/1080pp.png",
+						// poster:
+						// 	"https://gs-files.oss-cn-hongkong.aliyuncs.com/okr/prod/file/2021/08/31/1080pp.png",
 						language: "en",
 						pausePlacement: "center",
 						quality: [
 							{
 								name: "FHD",
-								url: "https://gs-files.oss-cn-hongkong.aliyuncs.com/okr/prod/file/2021/08/31/720p.mp4",
+								url: url,
 							},
 							{
 								name: "HD",
-								url: "https://gs-files.oss-cn-hongkong.aliyuncs.com/okr/prod/file/2021/08/31/540p.mp4",
+								url: url,
 							},
 							{
 								name: "SD",
-								url: "https://gs-files.oss-accelerate.aliyuncs.com/okr/prod/file/2021/08/31/1630377480138360p.mp4",
+								url: url,
 							},
 						],
 					}}

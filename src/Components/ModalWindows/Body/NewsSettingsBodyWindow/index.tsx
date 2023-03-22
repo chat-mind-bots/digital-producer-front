@@ -158,6 +158,7 @@ const NewsSettingsBodyWindow: FC<NewsSettingsBodyWindowProps> = ({
 									)}
 
 									<DropZone
+										format={["png", "jpg"]}
 										setUrl={(url) =>
 											setFieldValue && setFieldValue("image", url)
 										}

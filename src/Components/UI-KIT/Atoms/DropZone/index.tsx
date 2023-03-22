@@ -3,31 +3,34 @@ import toast from "react-hot-toast";
 
 import * as ST from "./styled";
 import ErrText from "../Input/ErrText";
+import { useAppSelector } from "../../../../Hooks/redux";
 
 type DropZoneProps = {
 	setUrl: (utl: string) => void;
 	errorText?: string;
 	isError?: boolean;
+	format: ("mp4" | "pdf" | "png" | "jpg")[];
 };
 
-const DropZone: FC<DropZoneProps> = ({ setUrl, errorText, isError }) => {
+const DropZone: FC<DropZoneProps> = ({
+	setUrl,
+	errorText,
+	isError,
+	format,
+}) => {
+	const auth = useAppSelector((state) => state.auth);
 	const uploadRef = useRef<any>();
 	const progressRef = useRef<any>();
 
 	const UploadFile = () => {
-		const token =
-			"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6IlN2YXRvc2xhdiIsInN1YiI6NDg3NDQ2MTk5LCJyb2xlcyI6WyJVU0VSIiwiUFJPRFVDRVIiLCJBRE1JTiJdLCJpYXQiOjE2NzkzOTAzNzUsImV4cCI6MTY3OTQ3Njc3NX0.EjVsFURibVyWBr6_x89TKPtEVn0tiTwDSbltioLyswg";
+		const token = auth.token ?? "";
 		const file = uploadRef.current.files[0];
 		const formData = new FormData();
 		formData.append("file", file);
 		const xhr = new XMLHttpRequest();
 		xhr.onreadystatechange = function () {
 			if (xhr.readyState == XMLHttpRequest.DONE) {
-				setUrl(
-					`file:///Users/svyatoslaczhilin/Documents/GitHub/back-dp-2023/${
-						JSON.parse(xhr.response).image_path
-					}`
-				);
+				setUrl(JSON.parse(xhr.response).url);
 			}
 		};
 		xhr.upload.addEventListener("progress", ProgressHandler, false);
@@ -57,17 +60,20 @@ const DropZone: FC<DropZoneProps> = ({ setUrl, errorText, isError }) => {
 		progressRef.current.value = 0;
 	};
 
+	const formatCurrent = `${format.map((e) => `.${e}`)}`;
+
 	return (
 		<ST.UploadFile>
-			<ST.Instruction>Нажмите для загрузки файла</ST.Instruction>
+			<ST.Instruction>Нажмите для загрузки файла.</ST.Instruction>
 			<ST.Instruction>
 				<ST.InputFile
 					type="file"
 					name="file"
 					ref={uploadRef}
 					onChange={UploadFile}
+					accept={formatCurrent}
 				/>
-				SVG, PNG, JPG or GIF
+				Выберите файл формата:{formatCurrent}, на латиннице без пробелов.
 				<ST.Progress
 					ref={progressRef}
 					value="0"
