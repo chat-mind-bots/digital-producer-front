@@ -93,7 +93,9 @@ export const Name = styled.p<Props>`
 	padding: 11px 10px;
 	justify-content: space-between;
 	& svg {
-		min-width: max-content;
+		width: 24px;
+		height: 24px;
+		min-width: 24px;
 		transform: rotate(${({ isActive }) => (isActive ? "180deg" : "0deg")});
 		transition: 0.6s;
 		cursor: pointer;
@@ -211,10 +213,16 @@ export const WrapperItem = styled.div`
 	}
 `;
 
-export const NameCurrent = styled.span`
-	display: -webkit-box;
-	-webkit-line-clamp: 1;
-	-webkit-box-orient: vertical;
-	overflow: hidden;
+export const NameCurrent = styled.div`
 	padding-right: 27px;
+	width: 100%;
+	text-overflow: ellipsis;
+	overflow: hidden;
+	-webkit-line-clamp: 1;
+	display: -webkit-box;
+	overflow-wrap: break-word;
+	-webkit-box-orient: vertical;
+	@media (max-width: ${BreakPoints.MOBILE}px) {
+		padding-right: 0;
+	}
 `;

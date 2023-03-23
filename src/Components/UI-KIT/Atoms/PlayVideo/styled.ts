@@ -44,6 +44,8 @@ export const Player = styled.div<{ isOpen: boolean }>`
 		left: 0;
 		width: 100% !important;
 		height: 100% !important;
+		border-radius: 8px;
+		overflow: hidden;
 	}
 	@media (max-width: ${BreakPoints.MOBILE}px) {
 		& video {

@@ -13,6 +13,7 @@ export const LectorCard = styled.div`
 	padding: 18px 18px 24px;
 	max-width: 328px;
 	box-sizing: border-box;
+
 	& svg {
 		height: max-content;
 	}
@@ -21,6 +22,9 @@ export const LectorCard = styled.div`
 		@media (max-width: ${BreakPoints.MOBILE}px) {
 			display: none;
 		}
+	}
+	@media (max-width: ${BreakPoints.MOBILE}px) {
+		max-width: 100%;
 	}
 `;
 
@@ -44,6 +48,16 @@ export const LectorCardProducer = styled.div`
 
 export const Name = styled.p`
 	font-family: "Vela Sans";
+	font-weight: 700;
+	font-size: 20px;
+	width: 100%;
+	line-height: 140%;
+	color: ${Colors.BLACK1};
+	text-align: center;
+`;
+
+export const Dog = styled.span`
+	font-family: "Inter";
 	font-weight: 700;
 	font-size: 20px;
 	width: 100%;

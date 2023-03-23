@@ -17,7 +17,10 @@ const LectorCard: FC<LectorCardProps> = ({ name, img }) => (
 			<ST.ImageDefault>{name[0]}</ST.ImageDefault>
 			<Image src={img} />
 		</ST.ImageWrapper>
-		<ST.Name>{name}</ST.Name>
+		<ST.Name>
+			<ST.Dog>@</ST.Dog>
+			{name}
+		</ST.Name>
 		<Button
 			title={"Открыть чат"}
 			padding={"11px 28px"}

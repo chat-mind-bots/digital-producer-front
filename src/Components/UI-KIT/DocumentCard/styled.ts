@@ -2,6 +2,8 @@ import styled from "styled-components";
 
 import Colors from "Constants/Colors";
 
+import BreakPoints from "../../../Constants/BreakPoints";
+
 export const DocumentCard = styled.div`
 	border-radius: 16px;
 	max-width: 328px;
@@ -9,6 +11,9 @@ export const DocumentCard = styled.div`
 	box-sizing: border-box;
 	background: ${Colors.WHITE};
 	position: relative;
+	@media (max-width: ${BreakPoints.MOBILE}px) {
+		max-width: 100%;
+	}
 `;
 
 export const DocumentCardProducer = styled.div`
@@ -26,6 +31,9 @@ export const DocumentCardProducer = styled.div`
 `;
 
 export const Name = styled.div`
+	text-align: left;
+	display: flex;
+	align-items: start;
 	font-family: "Vela Sans";
 	font-style: normal;
 	font-weight: 700;
@@ -35,7 +43,6 @@ export const Name = styled.div`
 	display: flex;
 	justify-content: space-between;
 	width: 100%;
-	align-items: center;
 	text-overflow: ellipsis;
 	overflow: hidden;
 	-webkit-line-clamp: 1;
@@ -83,6 +90,7 @@ export const Svg = styled.div`
 	position: absolute;
 	top: 21px;
 	right: 0;
+	display: none;
 	& svg {
 		transform: rotate(-90deg);
 	}

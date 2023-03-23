@@ -34,7 +34,7 @@ const Accordion: FC<AccordionProps & { isOnClick: boolean }> = ({
 						>
 							<ST.Name isActive={open === module.id}>
 								<ST.NameCurrent>
-									модуль {indexModule + 1}: {module.name}
+									{`модуль ${indexModule + 1}: ${module.name}`}
 								</ST.NameCurrent>
 								<ArrowDown />
 							</ST.Name>

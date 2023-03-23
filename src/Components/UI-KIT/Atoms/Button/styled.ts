@@ -3,6 +3,7 @@ import styled from "styled-components";
 import Colors from "Constants/Colors";
 
 import { ButtonProps } from "./index";
+import BreakPoints from "../../../../Constants/BreakPoints";
 
 type AnimationListItemProps = {
 	backgroundAnimation: string;
@@ -89,20 +90,22 @@ export const Button = styled.button<ButtonProps>`
 		transition: all 0.3s 0.2s;
 		border-radius: 10px;
 	}
-	&:hover {
-		color: ${({ colorHover }) => colorHover};
-	}
-	&:hover:after {
-		transition: all 0.3s;
-		left: 0;
-		top: 0;
-	}
-	&:hover ${AnimationListItem} {
-		transform: translateZ(0) scale(1.7);
-	}
-	@supports (filter: url("#goo")) {
+	@media (min-width: ${BreakPoints.TABLET}px) {
+		&:hover {
+			color: ${({ colorHover }) => colorHover};
+		}
+		&:hover:after {
+			transition: all 0.3s;
+			left: 0;
+			top: 0;
+		}
 		&:hover ${AnimationListItem} {
-			transform: translateZ(0) scale(1.4);
+			transform: translateZ(0) scale(1.7);
+		}
+		@supports (filter: url("#goo")) {
+			&:hover ${AnimationListItem} {
+				transform: translateZ(0) scale(1.4);
+			}
 		}
 	}
 `;

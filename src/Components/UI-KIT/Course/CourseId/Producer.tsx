@@ -72,7 +72,11 @@ const CourseId: FC<ICourseState & Pick<CourseResultType, "refetch">> = ({
 	const [loading, setLoading] = useState<boolean>(false);
 
 	const breadCrumbs: BreadCrumbsArrayType[] = [
-		{ id: 1, name: "Главная", url: RoutesList.PRODUCER.toLocaleLowerCase() },
+		{
+			id: 1,
+			name: "Главная",
+			url: `/${RoutesList.PRODUCER.toLocaleLowerCase()}`,
+		},
 		{
 			id: 1,
 			name: "Курсы",

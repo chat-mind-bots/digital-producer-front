@@ -25,6 +25,9 @@ export const NewsCard = styled.div`
 			display: none;
 		}
 	}
+	@media (max-width: ${BreakPoints.MOBILE}px) {
+		max-width: 100%;
+	}
 `;
 
 export const NewsCardAdmin = styled.div`

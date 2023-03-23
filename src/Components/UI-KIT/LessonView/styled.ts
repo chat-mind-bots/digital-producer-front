@@ -30,10 +30,9 @@ export const Title = styled.p<Props>`
 	position: relative;
 	overflow: hidden;
 	display: flex;
-	align-items: center;
+	align-items: start;
 	gap: 8px;
 	text-overflow: ellipsis;
-	overflow: hidden;
 	-webkit-line-clamp: 4;
 	display: -webkit-box;
 	word-wrap: break-word;

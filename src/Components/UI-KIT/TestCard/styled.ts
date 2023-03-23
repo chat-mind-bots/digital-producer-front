@@ -2,6 +2,8 @@ import styled from "styled-components";
 
 import Colors from "Constants/Colors";
 
+import BreakPoints from "../../../Constants/BreakPoints";
+
 export const TestCard = styled.div`
 	display: flex;
 	flex-wrap: wrap;
@@ -16,6 +18,9 @@ export const TestCard = styled.div`
 	cursor: pointer;
 	&:hover {
 		border: 2px solid ${Colors.WHITE2};
+	}
+	@media (max-width: ${BreakPoints.MOBILE}px) {
+		max-width: 100%;
 	}
 `;
 

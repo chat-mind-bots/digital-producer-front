@@ -7,6 +7,7 @@ import Colors from "Constants/Colors";
 import * as ST from "./styled";
 import checkRole from "../../../Utils/CheckRole";
 import checkAuth from "../../../Utils/CheckAuth";
+import { UserRoleEnum } from "../../../Shared/Auth/types/role.enum";
 
 const Home = () => {
 	const authRoleFromLocalStorage = checkRole();
@@ -46,7 +47,9 @@ const Home = () => {
 						to={e.toLocaleLowerCase()}
 					>
 						<Button
-							title={`Войти как ${e.toLocaleLowerCase()}`}
+							title={`Войти как ${
+								e === UserRoleEnum.USER ? "пользователь" : e.toLocaleLowerCase()
+							}`}
 							padding={"18px 24px"}
 							fontSize={"16px"}
 							lineHeight={"20px"}
