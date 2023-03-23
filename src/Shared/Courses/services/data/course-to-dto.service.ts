@@ -29,6 +29,7 @@ export const courseToDtoServiceObject = (state: ICourseState): ICourseDTO => {
 		logicNumber,
 		isEnrolled,
 		tags,
+		studentsTotal,
 		...other
 	} = state;
 
@@ -46,5 +47,7 @@ export const courseToDtoServiceObject = (state: ICourseState): ICourseDTO => {
 		price: price ? priceToDtoServiceObject(price) : undefined,
 		notes: notes ? noteToDtoServiceArray(notes) : [],
 		tags: tagToDtoServiceArray(tags),
+		students_total: studentsTotal,
+		students: undefined,
 	};
 };

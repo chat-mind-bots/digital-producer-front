@@ -4,11 +4,17 @@ import * as ST from "./styled";
 import { EnrollAnotherUserToCourse } from "../../../Shared/Courses/components/CourseSet/enrollAnotherUser";
 import { EnrollAnotherUserToCourseApiProps } from "../../../Shared/Courses/redux/course.api";
 import CourseResultType from "../Course/course-props.type";
+import {
+	ICourseEnum,
+	ICourseState,
+} from "../../../Shared/Courses/redux/course.slice";
+import openFileBlank from "../../../Utils/openFileBlank";
 
 const StudentsTable: FC<
-	Pick<EnrollAnotherUserToCourseApiProps, "idCourse"> &
+	Pick<ICourseState, ICourseEnum.students> &
+		Pick<EnrollAnotherUserToCourseApiProps, "idCourse"> &
 		Pick<CourseResultType, "refetch">
-> = ({ idCourse, refetch }) => {
+> = ({ idCourse, refetch, students }) => {
 	return (
 		<ST.StudentsTable>
 			<EnrollAnotherUserToCourse
@@ -19,21 +25,24 @@ const StudentsTable: FC<
 				<ST.Thead>
 					<ST.Tr>
 						<ST.Th>Имя</ST.Th>
-						<ST.Th>Прогресс</ST.Th>
-						<ST.Th>Статус</ST.Th>
+						<ST.Th />
+						<ST.Th>Чат</ST.Th>
 					</ST.Tr>
 				</ST.Thead>
 				<ST.Tbody>
-					<ST.Tr>
-						<ST.Td>Сергей</ST.Td>
-						<ST.Td>50%</ST.Td>
-						<ST.Td>активен</ST.Td>
-					</ST.Tr>
-					<ST.Tr>
-						<ST.Td>Антон</ST.Td>
-						<ST.Td>70%</ST.Td>
-						<ST.Td>активен</ST.Td>
-					</ST.Tr>
+					{students.map((student) => (
+						<ST.Tr key={`student-${student.id}`}>
+							<ST.Td>@{student.username}</ST.Td>
+							<ST.Td />
+							<ST.ThOpen
+								onClick={() =>
+									openFileBlank(`https://t.me/${student.username}`)
+								}
+							>
+								Открыть
+							</ST.ThOpen>
+						</ST.Tr>
+					))}
 				</ST.Tbody>
 			</ST.Table>
 		</ST.StudentsTable>

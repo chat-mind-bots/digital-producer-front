@@ -8,6 +8,7 @@ import { IOwnerState } from "../../Owner/redux/owner.slice";
 import { IPriceState } from "../../Price/redux/price.slice";
 import { ITagState } from "../../Tag/redux/tag.slice";
 import { CoursesStatuses } from "./course.api";
+import { IAuthUserState } from "../../Auth/redux/auth.slice";
 
 export enum ICourseEnum {
 	id = "id",
@@ -33,6 +34,8 @@ export enum ICourseEnum {
 	updatedAt = "updatedAt",
 	moduleLength = "moduleLength",
 	lessonLength = "lessonLength",
+	students = "students",
+	studentsTotal = "studentsTotal",
 
 	statusCode = "statusCode",
 	message = "message",
@@ -62,6 +65,8 @@ export interface ICourseState {
 	[ICourseEnum.updatedAt]: string;
 	[ICourseEnum.moduleLength]: number;
 	[ICourseEnum.lessonLength]: number;
+	[ICourseEnum.students]: IAuthUserState[];
+	[ICourseEnum.studentsTotal]: number;
 
 	[ICourseEnum.message]?: string[];
 	[ICourseEnum.statusCode]?: RequestStatuses;
@@ -91,6 +96,8 @@ export const initialCourseState: ICourseState = {
 	[ICourseEnum.updatedAt]: "",
 	[ICourseEnum.moduleLength]: 0,
 	[ICourseEnum.lessonLength]: 0,
+	[ICourseEnum.students]: [],
+	[ICourseEnum.studentsTotal]: 0,
 
 	[ICourseEnum.statusCode]: RequestStatuses.PENDING,
 };

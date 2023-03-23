@@ -3,6 +3,7 @@ import { ICourseState } from "../../redux/course.slice";
 import { OwnerFromDtoServiceObject } from "../../../Owner/services/data/owner-from-dto.service";
 import { ModuleFromDtoServiceArray } from "../../../Module/services/data/module-from-dto.service";
 import { tagFromDtoServiceArray } from "../../../Tag/services/data/tag-from-dto.service";
+import { userFromDtoServiceArray } from "../../../Auth/services/data/user-from-dto.service";
 
 export const courseFromDtoServiceArray = (
 	dto: ICourseDTO[]
@@ -24,6 +25,8 @@ export const courseFromDtoServiceObject = (dto: ICourseDTO): ICourseState => {
 		modules,
 		logic_number,
 		tags,
+		students_total,
+		students,
 		...other
 	} = dto;
 
@@ -58,5 +61,7 @@ export const courseFromDtoServiceObject = (dto: ICourseDTO): ICourseState => {
 		tags: tagFromDtoServiceArray(tags),
 		moduleLength: modules?.length || 0,
 		lessonLength,
+		studentsTotal: students_total,
+		students: students ? userFromDtoServiceArray(students) : [],
 	};
 };

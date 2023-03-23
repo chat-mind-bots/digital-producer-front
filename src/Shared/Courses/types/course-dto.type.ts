@@ -5,6 +5,7 @@ import { IDocumentDTO } from "../../Document/types/document-dto.type";
 import { IOwnerDTO } from "../../Owner/types/owner-dto.type";
 import { IModuleDTO } from "../../Module/types/module-dto.type";
 import { CoursesStatuses } from "../redux/course.api";
+import { IAuthUserDTO } from "../../Auth/types/user-dto.type";
 
 export interface ICourseDTO {
 	_id: string;
@@ -27,4 +28,6 @@ export interface ICourseDTO {
 	modules: IModuleDTO[];
 	createdAt: string;
 	updatedAt: string;
+	students?: IAuthUserDTO[];
+	students_total: number;
 }

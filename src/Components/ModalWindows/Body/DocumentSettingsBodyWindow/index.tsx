@@ -84,6 +84,7 @@ const DocumentSettingsBodyWindow: FC<DocumentSettingsBodyWindowProps> = ({
 
 									<DropZone
 										format={["pdf"]}
+										type={"document"}
 										setUrl={(url) => setFieldValue && setFieldValue("url", url)}
 										errorText={
 											errors.url && touched.url ? errors.url : undefined

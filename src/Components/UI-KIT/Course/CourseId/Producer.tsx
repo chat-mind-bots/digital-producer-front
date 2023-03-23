@@ -55,6 +55,8 @@ const CourseId: FC<ICourseState & Pick<CourseResultType, "refetch">> = ({
 	moduleLength,
 	lessonLength,
 	tags,
+	students,
+	studentsTotal,
 }) => {
 	const auth = useAppSelector((state) => state.auth);
 
@@ -74,7 +76,7 @@ const CourseId: FC<ICourseState & Pick<CourseResultType, "refetch">> = ({
 		{
 			id: 1,
 			name: "Курсы",
-			url: `/${RoutesList.PRODUCER.toLocaleLowerCase()}/metaCourses`,
+			url: `/${RoutesList.PRODUCER.toLocaleLowerCase()}/course`,
 		},
 		{
 			id: 3,
@@ -179,7 +181,7 @@ const CourseId: FC<ICourseState & Pick<CourseResultType, "refetch">> = ({
 									video={currentLesson.video}
 									levelDifficulty={currentLesson.levelDifficulty}
 									description={currentLesson.description}
-									studentsLength={23}
+									studentsLength={studentsTotal}
 									language={language}
 									notes={notes}
 									lessonsLength={lessonLength}
@@ -199,7 +201,7 @@ const CourseId: FC<ICourseState & Pick<CourseResultType, "refetch">> = ({
 									video={video}
 									levelDifficulty={levelDifficulty}
 									description={description}
-									studentsLength={23}
+									studentsLength={studentsTotal}
 									language={language}
 									notes={notes}
 									lessonsLength={lessonLength}
@@ -329,6 +331,7 @@ const CourseId: FC<ICourseState & Pick<CourseResultType, "refetch">> = ({
 							<StudentsTable
 								idCourse={id}
 								refetch={refetch}
+								students={students}
 							/>
 						</ST.Content>
 					</WrapperContent>

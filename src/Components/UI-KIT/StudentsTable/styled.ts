@@ -89,3 +89,12 @@ export const Create = styled.div`
 	height: 150px;
 	margin-bottom: 22px;
 `;
+
+export const ThOpen = styled.td`
+	padding: 12px 15px;
+	cursor: pointer;
+	&:hover {
+		background: ${Colors.BLUE};
+		color: ${Colors.WHITE};
+	}
+`;

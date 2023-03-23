@@ -10,6 +10,7 @@ type DropZoneProps = {
 	errorText?: string;
 	isError?: boolean;
 	format: ("mp4" | "pdf" | "png" | "jpg")[];
+	type: "image" | "video" | "document";
 };
 
 const DropZone: FC<DropZoneProps> = ({
@@ -17,6 +18,7 @@ const DropZone: FC<DropZoneProps> = ({
 	errorText,
 	isError,
 	format,
+	type,
 }) => {
 	const auth = useAppSelector((state) => state.auth);
 	const uploadRef = useRef<any>();
@@ -37,7 +39,7 @@ const DropZone: FC<DropZoneProps> = ({
 		xhr.addEventListener("load", SuccessHandler, false);
 		xhr.addEventListener("error", ErrorHandler, false);
 		xhr.addEventListener("abort", AbortHandler, false);
-		xhr.open("POST", "http://localhost:5050/file/upload");
+		xhr.open("POST", `${process.env.REACT_APP_API_URL}/file/${type}`);
 		xhr.setRequestHeader("Authorization", "Bearer " + token);
 		xhr.send(formData);
 		xhr.response;

@@ -22,6 +22,7 @@ import RequestStatuses from "../../../../Constants/RequestStatuses";
 import { routeBuilderWithReplace } from "../../../../Router/services/route-builder";
 import TestCard from "../../TestCard";
 import CourseResultType from "../course-props.type";
+import StudentsTable from "../../StudentsTable";
 
 const delay = 2000;
 
@@ -50,6 +51,8 @@ const CourseId: FC<ICourseState & Pick<CourseResultType, "refetch">> = ({
 	lessonLength,
 	moduleLength,
 	tags,
+	students,
+	studentsTotal,
 }) => {
 	const auth = useAppSelector((state) => state.auth);
 
@@ -69,7 +72,7 @@ const CourseId: FC<ICourseState & Pick<CourseResultType, "refetch">> = ({
 		{
 			id: 1,
 			name: "Курсы",
-			url: `/${RoutesList.ADMIN.toLocaleLowerCase()}/metaCourses`,
+			url: `/${RoutesList.ADMIN.toLocaleLowerCase()}/reviewCourses`,
 		},
 		{
 			id: 3,
@@ -166,7 +169,7 @@ const CourseId: FC<ICourseState & Pick<CourseResultType, "refetch">> = ({
 									video={currentLesson.video}
 									levelDifficulty={currentLesson.levelDifficulty}
 									description={currentLesson.description}
-									studentsLength={23}
+									studentsLength={studentsTotal}
 									language={language}
 									notes={notes}
 									lessonsLength={lessonLength}
@@ -187,7 +190,7 @@ const CourseId: FC<ICourseState & Pick<CourseResultType, "refetch">> = ({
 									video={video}
 									levelDifficulty={levelDifficulty}
 									description={description}
-									studentsLength={23}
+									studentsLength={studentsTotal}
 									language={language}
 									notes={notes}
 									lessonsLength={lessonLength}
@@ -273,6 +276,18 @@ const CourseId: FC<ICourseState & Pick<CourseResultType, "refetch">> = ({
 								</WrapperContent>
 							</>
 					  )}
+
+				{!loading && (
+					<WrapperContent header={"Студенты"}>
+						<ST.Content>
+							<StudentsTable
+								idCourse={id}
+								refetch={refetch}
+								students={students}
+							/>
+						</ST.Content>
+					</WrapperContent>
+				)}
 			</ST.WrapperInfo>
 			{accordion && (
 				<Accordion
