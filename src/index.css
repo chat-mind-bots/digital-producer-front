@@ -7,6 +7,9 @@ body {
 	background: #fcfcfc;
 	min-height: 100vh;
 }
+* {
+	-webkit-tap-highlight-color: transparent;
+}
 *::-webkit-scrollbar {
 	width: 4px;
 	height: 7px;
