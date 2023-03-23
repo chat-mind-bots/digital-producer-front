@@ -48,6 +48,12 @@ export const OptionalText = styled.span<InputElementProps>`
 		isFocus ? Colors.BLACK1 : isError ? Colors.RED : Colors.GREY1};
 	background: ${Colors.TRANSPARENT};
 	transition: 0.5s;
+	text-overflow: ellipsis;
+	overflow: hidden;
+	-webkit-line-clamp: 1;
+	display: -webkit-box;
+	overflow-wrap: break-word;
+	-webkit-box-orient: vertical;
 `;
 
 export const InputWrapper = styled.div<InputWrapperProps>`

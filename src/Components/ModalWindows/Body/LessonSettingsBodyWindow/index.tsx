@@ -56,10 +56,10 @@ const LessonSettingsBodyWindow: FC<LessonSettingsBodyWindowProps> = ({
 			}) => {
 				return (
 					<ST.Form
-						onClick={(e) => {
-							e.preventDefault();
-							e.stopPropagation();
-						}}
+					// onClick={(e) => {
+					// 	e.preventDefault();
+					// 	e.stopPropagation();
+					// }}
 					>
 						<ST.Content>
 							<ST.Wrapper>

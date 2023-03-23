@@ -290,7 +290,7 @@ const BannerSettingsBodyWindow: FC<CreateBannerProps> = ({
 										optionalText={
 											values.isThirdPartySource
 												? `${
-														process.env.REACT_APP_API_URL
+														process.env.REACT_APP_URL
 												  }/${role?.toLocaleLowerCase()}/`
 												: undefined
 										}

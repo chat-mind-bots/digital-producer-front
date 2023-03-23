@@ -61,8 +61,6 @@ const UsersTable: FC<UserApiPropsSet & Pick<CourseResultType, "refetch">> = ({
 							const roleDow =
 								auth.role[user.role.length - 1] === UserRoleEnum.USER
 									? undefined
-									: auth.role[user.role.length - 1] === UserRoleEnum.ADMIN
-									? undefined
 									: auth.role[user.role.length - 1];
 
 							return (
@@ -87,6 +85,8 @@ const UsersTable: FC<UserApiPropsSet & Pick<CourseResultType, "refetch">> = ({
 														? Colors.GREEN
 														: role === UserRoleEnum.ADMIN
 														? Colors.BLUE_DARK
+														: role === UserRoleEnum.SUPER_ADMIN
+														? Colors.RED
 														: Colors.GREEN
 												}
 												color={

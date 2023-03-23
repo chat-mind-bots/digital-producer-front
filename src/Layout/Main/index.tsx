@@ -47,7 +47,7 @@ const Main: FC<MainProps> = ({ isRegistration }) => {
 								if (!isRegistration) {
 									authTokenFromLocalStorage
 										? navigate("/admin")
-										: window.open(" https://t.me/SvyatoslavZhilin3312281_bot");
+										: window.open(" https://t.me/DigitalProducerDevelopBot");
 								}
 							}}
 						/>
