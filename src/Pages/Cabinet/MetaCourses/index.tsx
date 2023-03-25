@@ -13,6 +13,7 @@ const MetaCourses = () => {
 			<Courses
 				role={UserRoleEnum.USER}
 				header={"Курсы мета"}
+				hideBought={true}
 			/>
 			<Banner
 				role={UserRoleEnum.USER}

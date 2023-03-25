@@ -37,6 +37,7 @@ export interface GetCoursesApiProps {
 	status?: CoursesStatuses;
 	sortBy?: CoursesCreatedAt;
 	q?: string;
+	hideBought?: boolean;
 }
 
 export interface GetCourseApiProps {
@@ -98,6 +99,7 @@ export const courseApi = createApi({
 					enrolledUserId,
 					status,
 					sortBy,
+					hideBought,
 				}) => ({
 					url: "/course",
 					method: HttpMethods.GET,
@@ -111,6 +113,7 @@ export const courseApi = createApi({
 						"owner-id": ownerId,
 						"enrolled-user-id": enrolledUserId,
 						"sort-by": sortBy,
+						"hide-bought": hideBought,
 
 						status: status,
 					},

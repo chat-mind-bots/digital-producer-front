@@ -24,6 +24,7 @@ type CourseGetProps = Record<"children", React.ReactElement<BannerResultType>> &
 	Pick<GetCoursesApiProps, "sortBy"> & {
 		header: string;
 		role: UserRoleEnum;
+		hideBought?: boolean;
 	};
 
 const CoursesGet: FC<CourseGetProps> = ({
@@ -35,6 +36,7 @@ const CoursesGet: FC<CourseGetProps> = ({
 	status,
 	sortBy,
 	role,
+	hideBought,
 }) => {
 	const auth = useAppSelector((state) => state.auth);
 	const query: GetCoursesApiProps = {
@@ -44,6 +46,7 @@ const CoursesGet: FC<CourseGetProps> = ({
 		enrolledUserId: enrolledUserId,
 		status: status,
 		sortBy: sortBy,
+		hideBought: !!hideBought,
 	};
 	const { data, isError, isLoading, refetch } = useGetCoursesQuery(query);
 

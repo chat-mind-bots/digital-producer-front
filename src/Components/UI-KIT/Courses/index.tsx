@@ -17,6 +17,7 @@ type Type = Pick<
 		role: UserRoleEnum;
 		header: string;
 		isAdd?: boolean;
+		hideBought?: boolean;
 	};
 
 const Courses: FC<Type> = ({
@@ -28,6 +29,7 @@ const Courses: FC<Type> = ({
 	status,
 	sortBy,
 	isAdd,
+	hideBought,
 }) => {
 	return (
 		<CoursesGet
@@ -38,6 +40,7 @@ const Courses: FC<Type> = ({
 			status={status}
 			sortBy={sortBy}
 			role={role}
+			hideBought={hideBought}
 		>
 			<SwitchCourses
 				role={role}
