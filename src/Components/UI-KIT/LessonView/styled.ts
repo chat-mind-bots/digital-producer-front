@@ -58,9 +58,15 @@ export const WrapperLevelDifficulty = styled.div`
 	margin-top: 18px;
 `;
 
-export const WrapperStatuses = styled.span`
+export const WrapperStatuses = styled.span<{ isLoaded: boolean }>`
 	display: flex;
 	gap: 10px;
+	& div:first-child {
+		display: ${({ isLoaded }) => (isLoaded ? "block" : "none")};
+	}
+	& span {
+		display: ${({ isLoaded }) => (isLoaded ? "none" : "block")};
+	}
 `;
 
 type StatusProps = {
@@ -128,6 +134,10 @@ export const TitleInfo = styled.p`
 	text-transform: uppercase;
 	color: ${Colors.GREY2};
 	width: max-content;
+`;
+
+export const LinkToCourse = styled.div`
+	margin-top: 12px;
 `;
 
 export const Loader = styled.div`

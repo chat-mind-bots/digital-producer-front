@@ -20,9 +20,15 @@ import Loader from "../../../../Components/UI-KIT/Loader";
 import ModuleSettingsBodyWindow from "../../../../Components/ModalWindows/Body/ModuleSettingsBodyWindow";
 
 type ModuleUpdateProps = Pick<CourseResultType, "refetch"> &
-	Pick<AddModuleToCourseApiProps, "idModule">;
+	Pick<AddModuleToCourseApiProps, "idModule"> & {
+		setLoader: (e: boolean) => void;
+	};
 
-export const ModuleUpdate: FC<ModuleUpdateProps> = ({ idModule, refetch }) => {
+export const ModuleUpdate: FC<ModuleUpdateProps> = ({
+	idModule,
+	refetch,
+	setLoader,
+}) => {
 	const auth = useAppSelector((state) => state.auth);
 	const queryAuth: GetModuleApiProps = {
 		authToken: auth.token ?? "",
@@ -37,20 +43,24 @@ export const ModuleUpdate: FC<ModuleUpdateProps> = ({ idModule, refetch }) => {
 	const [removeModule, resultRemoveModule] = useRemoveModuleMutation();
 
 	const update = useCallback(
-		(res: IModuleState) =>
+		(res: IModuleState) => {
+			setLoader(true);
 			updateModule({
 				...queryAuth,
 				data: res,
-			}),
+			});
+		},
 		[updateModule]
 	);
 
 	const remove = useCallback(
-		(id: string) =>
+		(id: string) => {
+			setLoader(true);
 			removeModule({
 				...queryAuth,
 				id,
-			}),
+			});
+		},
 		[updateModule]
 	);
 
@@ -63,8 +73,10 @@ export const ModuleUpdate: FC<ModuleUpdateProps> = ({ idModule, refetch }) => {
 				toast.success("Модуль изменен");
 				setOpen(false);
 				refetch && refetch();
+				setTimeout(() => setLoader(false), 2000);
 			} else {
 				resultUpdateModule.data?.message?.forEach((e) => {
+					setTimeout(() => setLoader(false), 2000);
 					toast.error(`Ошибка:${e}`);
 				});
 			}
@@ -80,9 +92,11 @@ export const ModuleUpdate: FC<ModuleUpdateProps> = ({ idModule, refetch }) => {
 				toast.success("Модуль удален");
 				setOpen(false);
 				refetch && refetch();
+				setTimeout(() => setLoader(false), 2000);
 			} else {
 				resultRemoveModule.data?.message?.forEach((e) => {
 					toast.error(`Ошибка:${e}`);
+					setTimeout(() => setLoader(false), 2000);
 				});
 			}
 		}

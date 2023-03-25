@@ -12,6 +12,7 @@ import { ModuleUpdate } from "../../../Shared/Module/components/ModuleSet/update
 import sortPosition from "../../../Utils/sortPosition";
 import { ReactComponent as Close } from "../../../Icons/Close.svg";
 import Disable from "../Atoms/Disable";
+import Loader from "../Loader";
 
 const Accordion: FC<
 	AccordionProps &
@@ -32,6 +33,7 @@ const Accordion: FC<
 }) => {
 	const [open, setOpen] = useState<string>();
 	const [openMobile, setOpenMobile] = useState<boolean>(false);
+	const [loader, setLoader] = useState<boolean>(false);
 
 	return (
 		<ST.Accordion
@@ -42,6 +44,11 @@ const Accordion: FC<
 				Модули курса: <Close onClick={() => setOpenMobile(false)} />
 			</ST.Title>
 			<ST.Wrapper>
+				{loader && (
+					<ST.LoaderWrapper>
+						<Loader />
+					</ST.LoaderWrapper>
+				)}
 				{sortPosition(array).map((module, indexModule) => (
 					<ST.WrapperItem key={`Accordion-module-${module.id}`}>
 						<ST.WrapperModule
@@ -86,6 +93,7 @@ const Accordion: FC<
 														refetchLesson();
 														refetch && refetch();
 													}}
+													setLoader={setLoader}
 												/>
 											</Disable>
 										</ST.UpdateButton>
@@ -107,6 +115,7 @@ const Accordion: FC<
 										<LessonCreate
 											idModule={module.id}
 											refetch={refetch}
+											setLoader={setLoader}
 										/>
 									</Disable>
 								</ST.WrapperButtonAddLesson>
@@ -124,6 +133,7 @@ const Accordion: FC<
 								<ModuleUpdate
 									idModule={module.id}
 									refetch={refetch}
+									setLoader={setLoader}
 								/>
 							</Disable>
 						</ST.UpdateButtonModule>
@@ -143,6 +153,7 @@ const Accordion: FC<
 						<ModuleCreate
 							idCourse={idCourse}
 							refetch={refetch}
+							setLoader={setLoader}
 						/>
 					</Disable>
 				</ST.WrapperButtonAddLesson>

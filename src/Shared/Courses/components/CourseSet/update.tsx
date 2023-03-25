@@ -23,9 +23,15 @@ import { routeBuilder } from "../../../../Router/services/route-builder";
 import RoutesList from "../../../../Router/routesList";
 
 type LessonSetProps = Pick<CourseResultType, "refetch"> &
-	Pick<GetCourseApiProps, "idCourse">;
+	Pick<GetCourseApiProps, "idCourse"> & {
+		setLoading: (e: boolean) => void;
+	};
 
-export const CourseUpdate: FC<LessonSetProps> = ({ idCourse, refetch }) => {
+export const CourseUpdate: FC<LessonSetProps> = ({
+	idCourse,
+	refetch,
+	setLoading,
+}) => {
 	const auth = useAppSelector((state) => state.auth);
 	const queryAuth = {
 		authToken: auth.token ?? "",
@@ -43,20 +49,24 @@ export const CourseUpdate: FC<LessonSetProps> = ({ idCourse, refetch }) => {
 	const { data } = useGetCategoriesQuery(queryAuth);
 
 	const update = useCallback(
-		(res: ICourseState) =>
+		(res: ICourseState) => {
+			setLoading(true);
 			updateCourse({
 				...queryAuth,
 				data: res,
-			}),
+			});
+		},
 		[updateCourse]
 	);
 
 	const remove = useCallback(
-		(id: string) =>
+		(id: string) => {
+			setLoading(true);
 			removeCourse({
 				...queryAuth,
 				id,
-			}),
+			});
+		},
 		[removeCourse]
 	);
 
@@ -69,9 +79,11 @@ export const CourseUpdate: FC<LessonSetProps> = ({ idCourse, refetch }) => {
 				toast.success("Курс изменен");
 				setOpen(false);
 				refetch && refetch();
+				setTimeout(() => setLoading(false), 2000);
 			} else {
 				resultUpdateCourse.data?.message?.forEach((e) => {
 					toast.error(`Ошибка:${e}`);
+					setTimeout(() => setLoading(false), 2000);
 				});
 			}
 		}
@@ -94,6 +106,7 @@ export const CourseUpdate: FC<LessonSetProps> = ({ idCourse, refetch }) => {
 			} else {
 				resultRemoveCourse.data?.message?.forEach((e) => {
 					toast.error(`Ошибка:${e}`);
+					setTimeout(() => setLoading(false), 2000);
 				});
 			}
 		}

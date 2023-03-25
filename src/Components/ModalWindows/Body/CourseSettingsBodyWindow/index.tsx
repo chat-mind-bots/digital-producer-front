@@ -154,6 +154,7 @@ const CourseSettingsBodyWindow: FC<CourseSettingsBodyWindowProps> = ({
 									)}
 
 									<DropZone
+										value={values?.image}
 										format={["png", "jpg"]}
 										type={"image"}
 										setUrl={(url) =>
@@ -218,6 +219,7 @@ const CourseSettingsBodyWindow: FC<CourseSettingsBodyWindowProps> = ({
 									<ST.Status status={!!values?.video} />
 
 									<DropZone
+										value={values?.video}
 										format={["mp4"]}
 										type={"video"}
 										setUrl={(url) =>
@@ -459,7 +461,7 @@ const CourseSettingsBodyWindow: FC<CourseSettingsBodyWindowProps> = ({
 											setFieldValue && setFieldValue("language", str);
 										}}
 										setFocus={(state) => setFieldTouched("language", state)}
-										placeholder={"Введите Текст кнопки"}
+										placeholder={"Введите язык курса"}
 										padding={"10px 14px"}
 										fontSize={"16px"}
 										fontWeight={"400"}

@@ -2,6 +2,8 @@ import styled from "styled-components";
 
 import BreakPoints from "Constants/BreakPoints";
 
+import Colors from "../../../Constants/Colors";
+
 export const CourseID = styled.div`
 	display: flex;
 	gap: 40px;
@@ -37,6 +39,8 @@ export const WrapperInfo = styled.div`
 
 export const CardTest = styled.div`
 	position: relative;
+	overflow: hidden;
+	border-radius: 16px;
 	& > #TestUpdate {
 		position: absolute;
 		top: 15px;
@@ -58,4 +62,17 @@ export const CardTest = styled.div`
 			}
 		}
 	}
+`;
+
+export const LoaderWrapper = styled.div`
+	position: absolute;
+	z-index: 3;
+	background: ${Colors.WHITE};
+	width: 100%;
+	height: 100%;
+	top: 0;
+	left: 0;
+	display: flex;
+	align-items: center;
+	justify-content: center;
 `;

@@ -11,6 +11,7 @@ type DropZoneProps = {
 	isError?: boolean;
 	format: ("mp4" | "pdf" | "png" | "jpg")[];
 	type: "image" | "video" | "document";
+	value?: string;
 };
 
 const DropZone: FC<DropZoneProps> = ({
@@ -19,6 +20,7 @@ const DropZone: FC<DropZoneProps> = ({
 	isError,
 	format,
 	type,
+	value,
 }) => {
 	const auth = useAppSelector((state) => state.auth);
 	const uploadRef = useRef<any>();
@@ -66,7 +68,9 @@ const DropZone: FC<DropZoneProps> = ({
 
 	return (
 		<ST.UploadFile>
-			<ST.Instruction>Нажмите для загрузки файла.</ST.Instruction>
+			<ST.Instruction>
+				Нажмите для загрузки {value && "другого"} файла.
+			</ST.Instruction>
 			<ST.Instruction>
 				<ST.InputFile
 					type="file"
@@ -75,7 +79,9 @@ const DropZone: FC<DropZoneProps> = ({
 					onChange={UploadFile}
 					accept={formatCurrent}
 				/>
-				Выберите файл формата:{formatCurrent}, на латиннице без пробелов.
+				{value
+					? value
+					: `Выберите файл формата: ${formatCurrent}, на латинице без пробелов.`}
 				<ST.Progress
 					ref={progressRef}
 					value="0"

@@ -119,6 +119,7 @@ const LessonSettingsBodyWindow: FC<LessonSettingsBodyWindowProps> = ({
 									)}
 
 									<DropZone
+										value={values?.image}
 										format={["png", "jpg"]}
 										type={"image"}
 										setUrl={(url) =>
@@ -132,7 +133,7 @@ const LessonSettingsBodyWindow: FC<LessonSettingsBodyWindowProps> = ({
 								</ST.WrapperAddFile>
 							</ST.Wrapper>
 							<ST.Wrapper>
-								<ST.Name>levelDifficulty</ST.Name>
+								<ST.Name>Уровень сложности</ST.Name>
 								<ST.WrapperInput>
 									<ST.WrapperInput>
 										<Input
@@ -144,7 +145,7 @@ const LessonSettingsBodyWindow: FC<LessonSettingsBodyWindowProps> = ({
 											setFocus={(state) =>
 												setFieldTouched("levelDifficulty", state)
 											}
-											placeholder={"Введите заголовок "}
+											placeholder={"Введите уровень сложности"}
 											padding={"10px 14px"}
 											fontSize={"16px"}
 											fontWeight={"400"}
@@ -167,6 +168,7 @@ const LessonSettingsBodyWindow: FC<LessonSettingsBodyWindowProps> = ({
 									<ST.Status status={!!values?.video} />
 
 									<DropZone
+										value={values?.video}
 										format={["mp4"]}
 										type={"video"}
 										setUrl={(url) =>

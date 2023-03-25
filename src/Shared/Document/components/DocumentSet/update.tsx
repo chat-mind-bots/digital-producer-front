@@ -19,9 +19,15 @@ import {
 } from "../../redux/document.api";
 
 type LessonSetProps = Pick<CourseResultType, "refetch"> &
-	Pick<GetDocumentApiProps, "idDocument">;
+	Pick<GetDocumentApiProps, "idDocument"> & {
+		setLoader: (e: boolean) => void;
+	};
 
-export const DocumentUpdate: FC<LessonSetProps> = ({ refetch, idDocument }) => {
+export const DocumentUpdate: FC<LessonSetProps> = ({
+	refetch,
+	idDocument,
+	setLoader,
+}) => {
 	const auth = useAppSelector((state) => state.auth);
 	const queryAuth = {
 		authToken: auth.token ?? "",
@@ -36,20 +42,24 @@ export const DocumentUpdate: FC<LessonSetProps> = ({ refetch, idDocument }) => {
 	const [removeDocument, resultRemoveDocument] = useDeleteDocumentMutation();
 
 	const update = useCallback(
-		(res: IDocumentState) =>
+		(res: IDocumentState) => {
+			setLoader(true);
 			updateDocument({
 				...queryAuth,
 				data: res,
-			}),
+			});
+		},
 		[updateDocument]
 	);
 
 	const remove = useCallback(
-		(id: string) =>
+		(id: string) => {
+			setLoader(true);
 			removeDocument({
 				...queryAuth,
 				id,
-			}),
+			});
+		},
 		[updateDocument]
 	);
 
@@ -62,9 +72,11 @@ export const DocumentUpdate: FC<LessonSetProps> = ({ refetch, idDocument }) => {
 				toast.success("Документ изменен");
 				setOpen(false);
 				refetch && refetch();
+				setTimeout(() => setLoader(false), 2000);
 			} else {
 				resultUpdateLesson.data?.message?.forEach((e) => {
 					toast.error(`Ошибка:${e}`);
+					setTimeout(() => setLoader(false), 2000);
 				});
 			}
 		}
@@ -79,9 +91,11 @@ export const DocumentUpdate: FC<LessonSetProps> = ({ refetch, idDocument }) => {
 				toast.success("Документ удален");
 				setOpen(false);
 				refetch && refetch();
+				setTimeout(() => setLoader(false), 2000);
 			} else {
 				resultRemoveDocument.data?.message?.forEach((e) => {
 					toast.error(`Ошибка:${e}`);
+					setTimeout(() => setLoader(false), 2000);
 				});
 			}
 		}

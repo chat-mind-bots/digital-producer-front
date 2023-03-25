@@ -28,6 +28,14 @@ const ReviewCourses = () => {
 				{query && (
 					<Courses
 						role={UserRoleEnum.ADMIN}
+						header={"Готовые к публикации"}
+						status={CoursesStatuses.APPROVED}
+						ownerId={ownerId}
+					/>
+				)}
+				{query && (
+					<Courses
+						role={UserRoleEnum.ADMIN}
 						header={"На проверке"}
 						status={CoursesStatuses.IN_REVIEW}
 						ownerId={ownerId}

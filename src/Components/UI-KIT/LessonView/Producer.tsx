@@ -23,6 +23,9 @@ import { ITagState } from "../../../Shared/Tag/redux/tag.slice";
 import Tags from "../Atoms/Tags";
 import { ReactComponent as StatusFalse } from "../../../Icons/StatusFalse.svg";
 import Disable from "../Atoms/Disable";
+import StatusCourseToText from "../../../Utils/StatusCourseToText";
+import { ReactComponent as Approved } from "../../../Icons/Approved.svg";
+import Loader from "../Loader";
 
 type LessonViewProps = Pick<
 	ICourseState,
@@ -42,6 +45,7 @@ type LessonViewProps = Pick<
 	isLoading: boolean;
 	isLesson: boolean;
 	tags?: ITagState[];
+	setLoading: (e: boolean) => void;
 } & Pick<GetCourseApiProps, "idCourse"> &
 	Pick<CourseResultType, "refetch">;
 
@@ -62,8 +66,10 @@ const LessonView: FC<LessonViewProps> = ({
 	isLesson,
 	tags,
 	video,
+	setLoading,
 }) => {
 	const [startVideo, setStartVideo] = useState<boolean>(false);
+	const [loaderStatus, setLoaderStatus] = useState<boolean>(false);
 
 	useEffect(() => {
 		if (isLoading) {
@@ -83,46 +89,78 @@ const LessonView: FC<LessonViewProps> = ({
 					isOpen={!isLoading}
 				/>
 			</ST.WrapperVideo>
-			<ST.Title isLoading={isLoading}>
-				{name}
-
-				<ST.WrapperStatuses>
-					{!!status && status === CoursesStatuses.AVAILABLE && (
-						<>
-							<ST.StatusDisables
-								id={"AVAILABLE"}
-								isActive={status === CoursesStatuses.AVAILABLE}
-							>
-								<StatusTrue />
-							</ST.StatusDisables>
-							<ReactTooltip
-								anchorId="AVAILABLE"
-								place="right"
-								content="Курс опубликован."
-							/>
-						</>
-					)}
-
-					{idCourse && (
-						<>
-							<CourseSetStatus
-								status={CoursesStatuses.IN_REVIEW}
-								idCourse={idCourse}
-								refetch={refetch}
-								id={"IN_REVIEW"}
-							>
-								<ST.Status isActive={status === CoursesStatuses.IN_REVIEW}>
-									<StatusWait />
-								</ST.Status>
-							</CourseSetStatus>
-							<ReactTooltip
-								anchorId="IN_REVIEW"
-								place="right"
-								content="Курс на проверке у модератора."
-							/>
-						</>
-					)}
-
+			<ST.Title isLoading={isLoading}>{name}</ST.Title>
+			<ST.LinkToCourse>
+				<ST.WrapperStatuses isLoaded={loaderStatus}>
+					<Loader />
+					{idCourse &&
+						!!status &&
+						(status === CoursesStatuses.APPROVED ||
+							status === CoursesStatuses.AVAILABLE) && (
+							<>
+								<CourseSetStatus
+									id={"APPROVED"}
+									status={CoursesStatuses.APPROVED}
+									idCourse={idCourse}
+									refetch={refetch}
+									setLoader={setLoaderStatus}
+								>
+									<ST.Status isActive={status === CoursesStatuses.APPROVED}>
+										<Approved />
+									</ST.Status>
+								</CourseSetStatus>
+								<ReactTooltip
+									anchorId="APPROVED"
+									place="right"
+									content="Курс прошел модерацию и ожидает публикации."
+								/>
+							</>
+						)}
+					{idCourse &&
+						!!status &&
+						(status === CoursesStatuses.AVAILABLE ||
+							status === CoursesStatuses.APPROVED) && (
+							<>
+								<CourseSetStatus
+									id={"AVAILABLE"}
+									status={CoursesStatuses.AVAILABLE}
+									idCourse={idCourse}
+									refetch={refetch}
+									setLoader={setLoaderStatus}
+								>
+									<ST.Status isActive={status === CoursesStatuses.AVAILABLE}>
+										<StatusTrue />
+									</ST.Status>
+								</CourseSetStatus>
+								<ReactTooltip
+									anchorId="AVAILABLE"
+									place="right"
+									content="Курс опубликован."
+								/>
+							</>
+						)}
+					{idCourse &&
+						status !== CoursesStatuses.AVAILABLE &&
+						status !== CoursesStatuses.APPROVED && (
+							<>
+								<CourseSetStatus
+									status={CoursesStatuses.IN_REVIEW}
+									idCourse={idCourse}
+									refetch={refetch}
+									id={"IN_REVIEW"}
+									setLoader={setLoaderStatus}
+								>
+									<ST.Status isActive={status === CoursesStatuses.IN_REVIEW}>
+										<StatusWait />
+									</ST.Status>
+								</CourseSetStatus>
+								<ReactTooltip
+									anchorId="IN_REVIEW"
+									place="right"
+									content="Курс на проверке у модератора."
+								/>
+							</>
+						)}
 					{status !== CoursesStatuses.IN_REVIEW && idCourse && (
 						<>
 							<CourseSetStatus
@@ -130,6 +168,7 @@ const LessonView: FC<LessonViewProps> = ({
 								idCourse={idCourse}
 								refetch={refetch}
 								id={"IN_PROGRESS"}
+								setLoader={setLoaderStatus}
 							>
 								<ST.Status isActive={status === CoursesStatuses.IN_PROGRESS}>
 									<Progress />
@@ -145,6 +184,7 @@ const LessonView: FC<LessonViewProps> = ({
 								idCourse={idCourse}
 								refetch={refetch}
 								id={"NOT_ACTIVE"}
+								setLoader={setLoaderStatus}
 							>
 								<ST.Status isActive={status === CoursesStatuses.NOT_ACTIVE}>
 									<StatusFalse />
@@ -159,7 +199,31 @@ const LessonView: FC<LessonViewProps> = ({
 						</>
 					)}
 				</ST.WrapperStatuses>
-			</ST.Title>
+			</ST.LinkToCourse>
+			{!loaderStatus && (
+				<ST.LinkToCourse>
+					<ST.TitleInfo>Статус курса:</ST.TitleInfo>
+					<ST.WrapperSubTitle
+						delay={0.1}
+						isLoading={isLoading}
+					>
+						<ST.SubTitleInfo>
+							{status && StatusCourseToText(status)}
+						</ST.SubTitleInfo>
+					</ST.WrapperSubTitle>
+				</ST.LinkToCourse>
+			)}
+
+			<ST.LinkToCourse>
+				<ST.TitleInfo>Ссылка на курс</ST.TitleInfo>
+				<ST.WrapperSubTitle
+					delay={0.1}
+					isLoading={isLoading}
+				>
+					<ST.SubTitleInfo>{`${process.env.REACT_APP_URL}/user/course/${idCourse}`}</ST.SubTitleInfo>
+				</ST.WrapperSubTitle>
+			</ST.LinkToCourse>
+
 			<ST.WrapperLevelDifficulty>
 				{isLoading ? (
 					<LoadingLevelDifficulty />
@@ -243,6 +307,7 @@ const LessonView: FC<LessonViewProps> = ({
 							<CourseUpdate
 								idCourse={idCourse}
 								refetch={refetch}
+								setLoading={setLoading}
 							/>
 						)}
 					</ST.WrapperButton>

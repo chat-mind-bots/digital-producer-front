@@ -18,9 +18,15 @@ import RequestStatuses from "../../../../Constants/RequestStatuses";
 import CourseResultType from "../../../../Components/UI-KIT/Course/course-props.type";
 
 type LessonCreateProps = Pick<AddLessonToModuleApiProps, "idModule"> &
-	Pick<CourseResultType, "refetch">;
+	Pick<CourseResultType, "refetch"> & {
+		setLoader: (e: boolean) => void;
+	};
 
-export const LessonCreate: FC<LessonCreateProps> = ({ idModule, refetch }) => {
+export const LessonCreate: FC<LessonCreateProps> = ({
+	idModule,
+	refetch,
+	setLoader,
+}) => {
 	const auth = useAppSelector((state) => state.auth);
 	const queryAuth: GetLessonApiProps = {
 		authToken: auth.token ?? "",
@@ -33,11 +39,13 @@ export const LessonCreate: FC<LessonCreateProps> = ({ idModule, refetch }) => {
 		useAddLessonToModuleMutation();
 
 	const create = useCallback(
-		(res: ILessonState) =>
+		(res: ILessonState) => {
+			setLoader(true);
 			createLesson({
 				...queryAuth,
 				data: res,
-			}),
+			});
+		},
 		[createLesson]
 	);
 
@@ -71,9 +79,11 @@ export const LessonCreate: FC<LessonCreateProps> = ({ idModule, refetch }) => {
 			) {
 				toast.success("Урок добавлен в курс");
 				refetch && refetch();
+				setTimeout(() => setLoader(false), 2000);
 			} else {
 				resultCreateLesson.data?.message?.forEach((e) => {
 					toast.error(`Ошибка:${e}`);
+					setTimeout(() => setLoader(false), 2000);
 				});
 			}
 		}

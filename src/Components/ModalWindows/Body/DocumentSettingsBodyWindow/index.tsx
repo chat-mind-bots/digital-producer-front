@@ -83,6 +83,7 @@ const DocumentSettingsBodyWindow: FC<DocumentSettingsBodyWindowProps> = ({
 									<ST.Status status={!!values?.url} />
 
 									<DropZone
+										value={values?.url}
 										format={["pdf"]}
 										type={"document"}
 										setUrl={(url) => setFieldValue && setFieldValue("url", url)}

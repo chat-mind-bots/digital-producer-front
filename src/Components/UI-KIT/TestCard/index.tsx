@@ -1,7 +1,7 @@
 import React, { FC } from "react";
 
 import Time from "Components/UI-KIT/Atoms/Time";
-import { ReactComponent as StatusFalse } from "Icons/StatusFalse.svg";
+// import { ReactComponent as StatusFalse } from "Icons/StatusFalse.svg";
 import { ReactComponent as StatusTrue } from "Icons/StatusTrue.svg";
 
 import * as ST from "./styled";
@@ -32,27 +32,33 @@ const TestCard: FC<
 	// updatedAt,
 	totalPoints,
 	totalQuestions,
-	testStatus,
+	// testStatus,
 }) => (
 	<ST.TestCard>
 		<ST.Title>{name}</ST.Title>
 		<ST.Description>{description}</ST.Description>
 		<Time value={`Время для прохождения: ${duration}`} />
-		<ST.Info>
-			<StatusFalse />
-			Для зачета:{"@"}/{totalQuestions} б.
-		</ST.Info>
-		{testStatus ? (
+		{totalPoints && totalQuestions && (
 			<ST.Info>
 				<StatusTrue />
-				Пройден: {totalPoints}/{totalQuestions} б.
-			</ST.Info>
-		) : (
-			<ST.Info>
-				<StatusFalse />
-				Не пройден: {totalPoints}/{totalQuestions} б.
+				Тест пройден на {totalPoints}/{totalQuestions} б.
 			</ST.Info>
 		)}
+		{/*<ST.Info>*/}
+		{/*	<StatusFalse />*/}
+		{/*	Для зачета:{"@"}/{totalQuestions} б.*/}
+		{/*</ST.Info>*/}
+		{/*{testStatus ? (*/}
+		{/*	<ST.Info>*/}
+		{/*		<StatusTrue />*/}
+		{/*		Пройден: {totalPoints}/{totalQuestions} б.*/}
+		{/*	</ST.Info>*/}
+		{/*) : (*/}
+		{/*	<ST.Info>*/}
+		{/*		<StatusFalse />*/}
+		{/*		Не пройден: {totalPoints}/{totalQuestions} б.*/}
+		{/*	</ST.Info>*/}
+		{/*)}*/}
 	</ST.TestCard>
 );
 

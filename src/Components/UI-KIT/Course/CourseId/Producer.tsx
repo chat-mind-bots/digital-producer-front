@@ -29,6 +29,7 @@ import NotFound from "../../../../Pages/NotFound";
 import { TestUpdate } from "../../../../Shared/Test/components/TestSet/update";
 import { CoursesStatuses } from "../../../../Shared/Courses/redux/course.api";
 import Disable from "../../Atoms/Disable";
+import Loader from "../../Loader";
 
 const delay = 2000;
 
@@ -72,6 +73,7 @@ const CourseId: FC<ICourseState & Pick<CourseResultType, "refetch">> = ({
 	const [currentLesson, setCurrentLesson] = useState<ILessonState>();
 	const [accordion, setAccordion] = useState<AccordionType[]>();
 	const [loading, setLoading] = useState<boolean>(false);
+	const [loadingTest, setLoadingTest] = useState<boolean>(false);
 
 	const breadCrumbs: BreadCrumbsArrayType[] = [
 		{
@@ -119,6 +121,10 @@ const CourseId: FC<ICourseState & Pick<CourseResultType, "refetch">> = ({
 		}, delay);
 	}, []);
 
+	const setLoadingFunction = useCallback((e: boolean) => {
+		setLoading(e);
+	}, []);
+
 	useEffect(() => {
 		if (lesson.status === QueryStatus.fulfilled) {
 			if (lesson.data?.statusCode === RequestStatuses.SUCCESS) {
@@ -154,6 +160,8 @@ const CourseId: FC<ICourseState & Pick<CourseResultType, "refetch">> = ({
 	}, [state, modules]);
 
 	const handleClickAccordion = ({ moduleId, itemId }: HandleClickType) => {
+		// eslint-disable-next-line no-console
+		console.log({ module: moduleId, lesson: itemId });
 		setLoading(true);
 
 		setState({ module: moduleId, lesson: itemId });
@@ -196,6 +204,7 @@ const CourseId: FC<ICourseState & Pick<CourseResultType, "refetch">> = ({
 									image={currentLesson.image}
 									refetch={refetch}
 									isLesson={true}
+									setLoading={setLoadingFunction}
 									// status={status}
 								/>
 							</>
@@ -219,6 +228,7 @@ const CourseId: FC<ICourseState & Pick<CourseResultType, "refetch">> = ({
 									status={status}
 									isLesson={false}
 									tags={tags}
+									setLoading={setLoadingFunction}
 								/>
 							</>
 						)}
@@ -245,6 +255,11 @@ const CourseId: FC<ICourseState & Pick<CourseResultType, "refetch">> = ({
 							<WrapperContent header={"Тесты"}>
 								<ST.Content>
 									<ST.CardTest>
+										{loadingTest && (
+											<ST.LoaderWrapper>
+												<Loader />
+											</ST.LoaderWrapper>
+										)}
 										<Disable
 											id={"TestUpdate"}
 											disabled={status === CoursesStatuses.IN_REVIEW}
@@ -257,6 +272,7 @@ const CourseId: FC<ICourseState & Pick<CourseResultType, "refetch">> = ({
 												refetch={() =>
 													state.lesson && requestLesson(state.lesson)
 												}
+												setLoading={setLoadingTest}
 											/>
 										</Disable>
 										<Link

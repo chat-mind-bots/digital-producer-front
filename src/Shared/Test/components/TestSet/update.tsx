@@ -19,9 +19,15 @@ import { ITestState } from "../../redux/test.slice";
 import TestSettingsBodyWindow from "../../../../Components/ModalWindows/Body/TestSettingsBodyWindow";
 
 type TestUpdateProps = Pick<AddTestToLessonApiProps, "idTest"> &
-	Pick<CourseResultType, "refetch">;
+	Pick<CourseResultType, "refetch"> & {
+		setLoading: (e: boolean) => void;
+	};
 
-export const TestUpdate: FC<TestUpdateProps> = ({ idTest, refetch }) => {
+export const TestUpdate: FC<TestUpdateProps> = ({
+	idTest,
+	refetch,
+	setLoading,
+}) => {
 	const auth = useAppSelector((state) => state.auth);
 	const queryAuth = {
 		authToken: auth.token ?? "",
@@ -36,20 +42,24 @@ export const TestUpdate: FC<TestUpdateProps> = ({ idTest, refetch }) => {
 	const [removeTest, resultRemoveTest] = useRemoveTestMutation();
 
 	const update = useCallback(
-		(res: ITestState) =>
+		(res: ITestState) => {
+			setLoading(true);
 			updateTest({
 				...queryAuth,
 				data: res,
-			}),
+			});
+		},
 		[updateTest]
 	);
 
 	const remove = useCallback(
-		(id: string) =>
+		(id: string) => {
+			setLoading(true);
 			removeTest({
 				...queryAuth,
 				id,
-			}),
+			});
+		},
 		[updateTest]
 	);
 
@@ -62,9 +72,11 @@ export const TestUpdate: FC<TestUpdateProps> = ({ idTest, refetch }) => {
 				toast.success("Тест измененн");
 				setOpen(false);
 				refetch && refetch();
+				setTimeout(() => setLoading(false), 2000);
 			} else {
 				resultUpdateTest.data?.message?.forEach((e) => {
 					toast.error(`Ошибка:${e}`);
+					setTimeout(() => setLoading(false), 2000);
 				});
 			}
 		}
@@ -79,9 +91,11 @@ export const TestUpdate: FC<TestUpdateProps> = ({ idTest, refetch }) => {
 				toast.success("Тест удален");
 				setOpen(false);
 				refetch && refetch();
+				setTimeout(() => setLoading(false), 2000);
 			} else {
 				resultRemoveTest.data?.message?.forEach((e) => {
 					toast.error(`Ошибка:${e}`);
+					setTimeout(() => setLoading(false), 2000);
 				});
 			}
 		}

@@ -20,9 +20,15 @@ import CourseResultType from "../../../../Components/UI-KIT/Course/course-props.
 import Loader from "../../../../Components/UI-KIT/Loader";
 
 type LessonSetProps = Pick<AddLessonToModuleApiProps, "idLesson"> &
-	Pick<CourseResultType, "refetch">;
+	Pick<CourseResultType, "refetch"> & {
+		setLoader: (e: boolean) => void;
+	};
 
-export const LessonUpdate: FC<LessonSetProps> = ({ idLesson, refetch }) => {
+export const LessonUpdate: FC<LessonSetProps> = ({
+	idLesson,
+	refetch,
+	setLoader,
+}) => {
 	const auth = useAppSelector((state) => state.auth);
 	const queryAuth: GetLessonApiProps = {
 		authToken: auth.token ?? "",
@@ -37,20 +43,24 @@ export const LessonUpdate: FC<LessonSetProps> = ({ idLesson, refetch }) => {
 	const [removeLesson, resultRemoveLesson] = useRemoveLessonMutation();
 
 	const update = useCallback(
-		(res: ILessonState) =>
+		(res: ILessonState) => {
+			setLoader(true);
 			updateLesson({
 				...queryAuth,
 				data: res,
-			}),
+			});
+		},
 		[updateLesson]
 	);
 
 	const remove = useCallback(
-		(id: string) =>
+		(id: string) => {
+			setLoader(true);
 			removeLesson({
 				...queryAuth,
 				id,
-			}),
+			});
+		},
 		[updateLesson]
 	);
 
@@ -63,9 +73,11 @@ export const LessonUpdate: FC<LessonSetProps> = ({ idLesson, refetch }) => {
 				toast.success("Урок изменен");
 				setOpen(false);
 				refetch && refetch();
+				setTimeout(() => setLoader(false), 2000);
 			} else {
 				resultUpdateLesson.data?.message?.forEach((e) => {
 					toast.error(`Ошибка:${e}`);
+					setTimeout(() => setLoader(false), 2000);
 				});
 			}
 		}
@@ -80,9 +92,11 @@ export const LessonUpdate: FC<LessonSetProps> = ({ idLesson, refetch }) => {
 				toast.success("Урок удален");
 				setOpen(false);
 				refetch && refetch();
+				setTimeout(() => setLoader(false), 2000);
 			} else {
 				resultRemoveLesson.data?.message?.forEach((e) => {
 					toast.error(`Ошибка:${e}`);
+					setTimeout(() => setLoader(false), 2000);
 				});
 			}
 		}

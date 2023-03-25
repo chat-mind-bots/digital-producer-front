@@ -11,6 +11,7 @@ export const DocumentCard = styled.div`
 	box-sizing: border-box;
 	background: ${Colors.WHITE};
 	position: relative;
+	overflow: hidden;
 	@media (max-width: ${BreakPoints.MOBILE}px) {
 		max-width: 100%;
 	}
@@ -117,4 +118,17 @@ export const UpdateIco = styled.div`
 		align-items: center;
 		justify-content: center;
 	}
+`;
+
+export const LoaderWrapper = styled.div`
+	position: absolute;
+	z-index: 2;
+	background: ${Colors.WHITE};
+	width: 100%;
+	height: 100%;
+	top: 0;
+	left: 0;
+	display: flex;
+	align-items: center;
+	justify-content: center;
 `;

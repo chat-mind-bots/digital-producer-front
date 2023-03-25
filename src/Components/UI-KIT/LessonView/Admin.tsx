@@ -13,6 +13,7 @@ import * as ST from "./styled";
 import Image from "../Atoms/Image";
 import PlayVideo from "../Atoms/PlayVideo";
 import { ReactComponent as StatusFalse } from "../../../Icons/StatusFalse.svg";
+import { ReactComponent as Approved } from "../../../Icons/Approved.svg";
 import { ReactComponent as StatusTrue } from "../../../Icons/StatusTrue.svg";
 import { ReactComponent as StatusWait } from "../../../Icons/StatusWait.svg";
 import { ReactComponent as Progress } from "../../../Icons/Progress.svg";
@@ -31,6 +32,8 @@ import Colors from "../../../Constants/Colors";
 import Button from "../Atoms/Button";
 import { useAppSelector } from "../../../Hooks/redux";
 import { UserRoleEnum } from "../../../Shared/Auth/types/role.enum";
+import StatusCourseToText from "../../../Utils/StatusCourseToText";
+import Loader from "../Loader";
 
 type LessonViewProps = Pick<
 	ICourseState,
@@ -74,6 +77,8 @@ const LessonView: FC<LessonViewProps> = ({
 	video,
 }) => {
 	const [startVideo, setStartVideo] = useState<boolean>(false);
+	const [loaderStatus, setLoaderStatus] = useState<boolean>(false);
+
 	const auth = useAppSelector((state) => state.auth);
 	const queryAuth = {
 		authToken: auth.token ?? "",
@@ -128,14 +133,35 @@ const LessonView: FC<LessonViewProps> = ({
 					url={video}
 				/>
 			</ST.WrapperVideo>
-			<ST.Title isLoading={isLoading}>
-				{name}
-				<ST.WrapperStatuses>
+			<ST.Title isLoading={isLoading}>{name}</ST.Title>
+			<ST.LinkToCourse>
+				<ST.WrapperStatuses isLoaded={loaderStatus}>
+					<Loader />
+					<CourseSetStatus
+						id={"APPROVED-admin"}
+						status={CoursesStatuses.APPROVED}
+						idCourse={idCourse}
+						refetch={refetch}
+						setLoader={setLoaderStatus}
+					>
+						<ST.Status
+							onClick={() => setLoaderStatus(true)}
+							isActive={status === CoursesStatuses.APPROVED}
+						>
+							<Approved />
+						</ST.Status>
+					</CourseSetStatus>
+					<ReactTooltip
+						anchorId="APPROVED-admin"
+						place="right"
+						content="Курс прошел модерацию и ожидает публикации."
+					/>
 					<CourseSetStatus
 						id={"NOT_ACTIVE-admin"}
 						status={CoursesStatuses.NOT_ACTIVE}
 						idCourse={idCourse}
 						refetch={refetch}
+						setLoader={setLoaderStatus}
 					>
 						<ST.Status isActive={status === CoursesStatuses.NOT_ACTIVE}>
 							<StatusFalse />
@@ -152,6 +178,7 @@ const LessonView: FC<LessonViewProps> = ({
 						status={CoursesStatuses.AVAILABLE}
 						idCourse={idCourse}
 						refetch={refetch}
+						setLoader={setLoaderStatus}
 					>
 						<ST.Status isActive={status === CoursesStatuses.AVAILABLE}>
 							<StatusTrue />
@@ -168,6 +195,7 @@ const LessonView: FC<LessonViewProps> = ({
 						status={CoursesStatuses.IN_REVIEW}
 						idCourse={idCourse}
 						refetch={refetch}
+						setLoader={setLoaderStatus}
 					>
 						<ST.Status isActive={status === CoursesStatuses.IN_REVIEW}>
 							<StatusWait />
@@ -184,6 +212,7 @@ const LessonView: FC<LessonViewProps> = ({
 						status={CoursesStatuses.IN_PROGRESS}
 						idCourse={idCourse}
 						refetch={refetch}
+						setLoader={setLoaderStatus}
 					>
 						<ST.Status isActive={status === CoursesStatuses.IN_PROGRESS}>
 							<Progress />
@@ -195,7 +224,20 @@ const LessonView: FC<LessonViewProps> = ({
 						content="Курс в работе или на доработке."
 					/>
 				</ST.WrapperStatuses>
-			</ST.Title>
+			</ST.LinkToCourse>
+			{!isLoading && (
+				<ST.LinkToCourse>
+					<ST.TitleInfo>Статус курса:</ST.TitleInfo>
+					<ST.WrapperSubTitle
+						delay={0.1}
+						isLoading={isLoading}
+					>
+						<ST.SubTitleInfo>
+							{status && StatusCourseToText(status)}
+						</ST.SubTitleInfo>
+					</ST.WrapperSubTitle>
+				</ST.LinkToCourse>
+			)}
 			<ST.WrapperLevelDifficulty>
 				{isLoading ? (
 					<LoadingLevelDifficulty />

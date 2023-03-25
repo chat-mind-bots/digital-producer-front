@@ -18,9 +18,15 @@ import RequestStatuses from "../../../../Constants/RequestStatuses";
 import CourseResultType from "../../../../Components/UI-KIT/Course/course-props.type";
 
 type ModuleCreateProps = Pick<CourseResultType, "refetch"> &
-	Pick<AddModuleToCourseApiProps, "idCourse">;
+	Pick<AddModuleToCourseApiProps, "idCourse"> & {
+		setLoader: (e: boolean) => void;
+	};
 
-export const ModuleCreate: FC<ModuleCreateProps> = ({ idCourse, refetch }) => {
+export const ModuleCreate: FC<ModuleCreateProps> = ({
+	idCourse,
+	refetch,
+	setLoader,
+}) => {
 	const auth = useAppSelector((state) => state.auth);
 	const queryAuth: GetModuleApiProps = {
 		authToken: auth.token ?? "",
@@ -33,11 +39,13 @@ export const ModuleCreate: FC<ModuleCreateProps> = ({ idCourse, refetch }) => {
 		useAddModuleToCourseMutation();
 
 	const create = useCallback(
-		(res: IModuleState) =>
+		(res: IModuleState) => {
+			setLoader(true);
 			createModule({
 				...queryAuth,
 				data: res,
-			}),
+			});
+		},
 		[createModule]
 	);
 
@@ -71,9 +79,11 @@ export const ModuleCreate: FC<ModuleCreateProps> = ({ idCourse, refetch }) => {
 			) {
 				toast.success("Модуль привязан к курсу");
 				refetch && refetch();
+				setTimeout(() => setLoader(false), 2000);
 			} else {
 				resultCreateModule.data?.message?.forEach((e) => {
 					toast.error(`Ошибка:${e}`);
+					setTimeout(() => setLoader(false), 2000);
 				});
 			}
 		}

@@ -49,7 +49,7 @@ const ShoppingCard: FC<ShoppingCardProps> = ({
 				onClick={() => {
 					isOwner &&
 						toast.error(
-							"Невозможно купить или учавствовать в собственном курсе"
+							"Невозможно купить или участвовать в собственном курсе"
 						);
 				}}
 			>
