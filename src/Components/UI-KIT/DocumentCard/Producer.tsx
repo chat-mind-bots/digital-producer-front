@@ -4,6 +4,7 @@ import * as ST from "./styled";
 import { DocumentUpdate } from "../../../Shared/Document/components/DocumentSet/update";
 import CourseResultType from "../Course/course-props.type";
 import openFileBlank from "../../../Utils/openFileBlank";
+import Disable from "../Atoms/Disable";
 
 type DocumentCardProps = {
 	onClick: () => void;
@@ -14,6 +15,7 @@ type DocumentCardSettingsProps = {
 	name: string;
 	description: string;
 	url: string;
+	isDisabled: boolean;
 };
 
 const DocumentCard: FC<DocumentCardProps> = ({ onClick }) => (
@@ -22,7 +24,7 @@ const DocumentCard: FC<DocumentCardProps> = ({ onClick }) => (
 
 export const DocumentCardSettings: FC<
 	DocumentCardSettingsProps & Pick<CourseResultType, "refetch">
-> = ({ id, name, description, refetch, url }) => (
+> = ({ id, name, description, refetch, url, isDisabled }) => (
 	<ST.DocumentCard>
 		<ST.Wrapper onClick={() => openFileBlank(url)}>
 			<ST.Name>
@@ -31,10 +33,18 @@ export const DocumentCardSettings: FC<
 			<ST.Description>{description}</ST.Description>
 		</ST.Wrapper>
 		<ST.UpdateIco>
-			<DocumentUpdate
-				refetch={refetch}
-				idDocument={id}
-			/>
+			<Disable
+				id={"DocumentCardUpdate"}
+				disabled={isDisabled}
+				textErr={
+					"Курс находится на проверке, редактирование документа невозможно."
+				}
+			>
+				<DocumentUpdate
+					refetch={refetch}
+					idDocument={id}
+				/>
+			</Disable>
 		</ST.UpdateIco>
 	</ST.DocumentCard>
 );

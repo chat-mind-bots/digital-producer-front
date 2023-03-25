@@ -11,6 +11,7 @@ import { AddModuleToCourseApiProps } from "../../../Shared/Module/redux/module.a
 import { ModuleUpdate } from "../../../Shared/Module/components/ModuleSet/update";
 import sortPosition from "../../../Utils/sortPosition";
 import { ReactComponent as Close } from "../../../Icons/Close.svg";
+import Disable from "../Atoms/Disable";
 
 const Accordion: FC<
 	AccordionProps &
@@ -18,8 +19,17 @@ const Accordion: FC<
 		Pick<AddModuleToCourseApiProps, "idCourse"> & {
 			isOnClick: boolean;
 			refetchLesson: () => void;
+			isDisabled: boolean;
 		}
-> = ({ array, handleClick, refetch, idCourse, isOnClick, refetchLesson }) => {
+> = ({
+	array,
+	handleClick,
+	refetch,
+	idCourse,
+	isOnClick,
+	refetchLesson,
+	isDisabled,
+}) => {
 	const [open, setOpen] = useState<string>();
 	const [openMobile, setOpenMobile] = useState<boolean>(false);
 
@@ -61,14 +71,23 @@ const Accordion: FC<
 											<ST.Number>{indexItem + 1}.</ST.Number>
 											<ST.NameCurrent>{item.name}</ST.NameCurrent>
 										</ST.Item>
+
 										<ST.UpdateButton id={`UpdateButtonLesson-${item.id}`}>
-											<LessonUpdate
-												idLesson={item.id}
-												refetch={() => {
-													refetchLesson();
-													refetch && refetch();
-												}}
-											/>
+											<Disable
+												id={`UpdateButtonLesson-display-${item.id}`}
+												disabled={isDisabled}
+												textErr={
+													"Курс находится на проверке, редактирование урока невозможно."
+												}
+											>
+												<LessonUpdate
+													idLesson={item.id}
+													refetch={() => {
+														refetchLesson();
+														refetch && refetch();
+													}}
+												/>
+											</Disable>
 										</ST.UpdateButton>
 										<ReactTooltip
 											anchorId={`UpdateButtonLesson-${item.id}`}
@@ -78,19 +97,35 @@ const Accordion: FC<
 									</ST.WrapperItem>
 								))}
 								<ST.WrapperButtonAddLesson>
-									<LessonCreate
-										idModule={module.id}
-										refetch={refetch}
-									/>
+									<Disable
+										id={"LessonCrete"}
+										disabled={isDisabled}
+										textErr={
+											"Курс находится на проверке, создание урока невозможно."
+										}
+									>
+										<LessonCreate
+											idModule={module.id}
+											refetch={refetch}
+										/>
+									</Disable>
 								</ST.WrapperButtonAddLesson>
 							</ST.WrapperItems>
 						</ST.WrapperModule>
 
 						<ST.UpdateButtonModule id={`UpdateButtonModule-${module.id}`}>
-							<ModuleUpdate
-								idModule={module.id}
-								refetch={refetch}
-							/>
+							<Disable
+								id={`UpdateButtonModule-display-${module.id}`}
+								disabled={isDisabled}
+								textErr={
+									"Курс находится на проверке, редактирование модуля невозможно."
+								}
+							>
+								<ModuleUpdate
+									idModule={module.id}
+									refetch={refetch}
+								/>
+							</Disable>
 						</ST.UpdateButtonModule>
 						<ReactTooltip
 							anchorId={`UpdateButtonModule-${module.id}`}
@@ -100,10 +135,16 @@ const Accordion: FC<
 					</ST.WrapperItem>
 				))}
 				<ST.WrapperButtonAddLesson>
-					<ModuleCreate
-						idCourse={idCourse}
-						refetch={refetch}
-					/>
+					<Disable
+						id={"ModuleCreate"}
+						disabled={isDisabled}
+						textErr={"Курс находится на проверке, создание модуля невозможно."}
+					>
+						<ModuleCreate
+							idCourse={idCourse}
+							refetch={refetch}
+						/>
+					</Disable>
 				</ST.WrapperButtonAddLesson>
 			</ST.Wrapper>
 		</ST.Accordion>

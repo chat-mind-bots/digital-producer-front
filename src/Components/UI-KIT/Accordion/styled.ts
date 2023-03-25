@@ -213,7 +213,7 @@ export const WrapperItem = styled.div`
 	}
 `;
 
-export const NameCurrent = styled.div`
+export const NameCurrent = styled.span`
 	padding-right: 27px;
 	width: 100%;
 	text-overflow: ellipsis;

@@ -50,6 +50,14 @@ export const Title = styled.p`
 	line-height: 140%;
 	color: ${Colors.BLACK1};
 	width: 100%;
+	padding-right: 34px;
+	overflow: hidden;
+	position: relative;
+	text-overflow: ellipsis;
+	-webkit-line-clamp: 2;
+	display: -webkit-box;
+	overflow-wrap: break-word;
+	-webkit-box-orient: vertical;
 `;
 
 export const Description = styled.p`
@@ -58,6 +66,13 @@ export const Description = styled.p`
 	line-height: 150%;
 	color: ${Colors.GREY1};
 	width: 100%;
+	overflow: hidden;
+	position: relative;
+	text-overflow: ellipsis;
+	-webkit-line-clamp: 4;
+	display: -webkit-box;
+	overflow-wrap: break-word;
+	-webkit-box-orient: vertical;
 `;
 
 export const Info = styled.p`

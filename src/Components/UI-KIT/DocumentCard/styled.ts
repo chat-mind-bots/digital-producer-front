@@ -32,7 +32,6 @@ export const DocumentCardProducer = styled.div`
 
 export const Name = styled.div`
 	text-align: left;
-	display: flex;
 	align-items: start;
 	font-family: "Vela Sans";
 	font-style: normal;
@@ -112,5 +111,10 @@ export const UpdateIco = styled.div`
 		& path {
 			fill: ${Colors.WHITE};
 		}
+	}
+	& div {
+		display: flex;
+		align-items: center;
+		justify-content: center;
 	}
 `;

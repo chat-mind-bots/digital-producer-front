@@ -27,6 +27,8 @@ import { DocumentCardSettings } from "../../DocumentCard/Producer";
 import { TestCreate } from "../../../../Shared/Test/components/TestSet/create";
 import NotFound from "../../../../Pages/NotFound";
 import { TestUpdate } from "../../../../Shared/Test/components/TestSet/update";
+import { CoursesStatuses } from "../../../../Shared/Courses/redux/course.api";
+import Disable from "../../Atoms/Disable";
 
 const delay = 2000;
 
@@ -243,12 +245,20 @@ const CourseId: FC<ICourseState & Pick<CourseResultType, "refetch">> = ({
 							<WrapperContent header={"Тесты"}>
 								<ST.Content>
 									<ST.CardTest>
-										<TestUpdate
-											idTest={currentLesson?.test.id}
-											refetch={() =>
-												state.lesson && requestLesson(state.lesson)
+										<Disable
+											id={"TestUpdate"}
+											disabled={status === CoursesStatuses.IN_REVIEW}
+											textErr={
+												"Курс находится на проверке, редактирование теста невозможно."
 											}
-										/>
+										>
+											<TestUpdate
+												idTest={currentLesson?.test.id}
+												refetch={() =>
+													state.lesson && requestLesson(state.lesson)
+												}
+											/>
+										</Disable>
 										<Link
 											to={routeBuilderWithReplace(
 												[RoutesList.PRODUCER, RoutesList.TEST_ID],
@@ -270,10 +280,18 @@ const CourseId: FC<ICourseState & Pick<CourseResultType, "refetch">> = ({
 					: currentLesson &&
 					  !loading && (
 							<WrapperContent header={"Тесты"}>
-								<TestCreate
-									idLesson={currentLesson.id}
-									refetch={() => state.lesson && requestLesson(state.lesson)}
-								/>
+								<Disable
+									id={"TestCreate"}
+									disabled={status === CoursesStatuses.IN_REVIEW}
+									textErr={
+										"Курс находится на проверке, создание теста невозможно."
+									}
+								>
+									<TestCreate
+										idLesson={currentLesson.id}
+										refetch={() => state.lesson && requestLesson(state.lesson)}
+									/>
+								</Disable>
 							</WrapperContent>
 					  )}
 
@@ -282,13 +300,22 @@ const CourseId: FC<ICourseState & Pick<CourseResultType, "refetch">> = ({
 							<>
 								<WrapperContent header={"Документы урока"}>
 									<ST.Content>
-										<DocumentCreate
-											idLesson={currentLesson.id}
-											idCourse={""}
-											refetch={() =>
-												state.lesson && requestLesson(state.lesson)
+										<Disable
+											id={"DocumentCardUpdateCreate"}
+											disabled={status === CoursesStatuses.IN_REVIEW}
+											textErr={
+												"Курс находится на проверке, создание документа невозможно."
 											}
-										/>
+										>
+											<DocumentCreate
+												idLesson={currentLesson.id}
+												idCourse={""}
+												refetch={() =>
+													state.lesson && requestLesson(state.lesson)
+												}
+											/>
+										</Disable>
+
 										{currentLesson.documents?.map((document) => (
 											<DocumentCardSettings
 												key={`CourseId-DocumentCard-currentLesson-DocumentLesson-${document.id}`}
@@ -299,6 +326,7 @@ const CourseId: FC<ICourseState & Pick<CourseResultType, "refetch">> = ({
 													state.lesson && requestLesson(state.lesson)
 												}
 												url={document.url}
+												isDisabled={status === CoursesStatuses.IN_REVIEW}
 											/>
 										))}
 									</ST.Content>
@@ -309,11 +337,20 @@ const CourseId: FC<ICourseState & Pick<CourseResultType, "refetch">> = ({
 							<>
 								<WrapperContent header={"Документы курса"}>
 									<ST.Content>
-										<DocumentCreate
-											idLesson={""}
-											idCourse={id}
-											refetch={refetch}
-										/>
+										<Disable
+											id={"DocumentCardUpdateCreateCourse"}
+											disabled={status === CoursesStatuses.IN_REVIEW}
+											textErr={
+												"Курс находится на проверке, создание документа невозможно."
+											}
+										>
+											<DocumentCreate
+												idLesson={""}
+												idCourse={id}
+												refetch={refetch}
+											/>
+										</Disable>
+
 										{documents?.map((document) => (
 											<DocumentCardSettings
 												key={`CourseId-DocumentCard-currentLesson-DocumentCourse-${document.id}`}
@@ -322,6 +359,7 @@ const CourseId: FC<ICourseState & Pick<CourseResultType, "refetch">> = ({
 												description={document.description}
 												refetch={refetch}
 												url={document.url}
+												isDisabled={status === CoursesStatuses.IN_REVIEW}
 											/>
 										))}
 									</ST.Content>
@@ -350,10 +388,9 @@ const CourseId: FC<ICourseState & Pick<CourseResultType, "refetch">> = ({
 					refetchLesson={() => state.lesson && requestLesson(state.lesson)}
 					idCourse={id}
 					isOnClick={!loading}
+					isDisabled={status === CoursesStatuses.IN_REVIEW}
 				/>
 			)}
-
-			{/*MODAL WINDOW_______________________*/}
 		</ST.CourseID>
 	) : (
 		<NotFound />

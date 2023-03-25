@@ -12,6 +12,14 @@ export const Content = styled.div`
 	display: flex;
 	flex-wrap: wrap;
 	gap: 10px;
+	& #DocumentCardUpdateCreateCourse {
+		width: auto;
+		display: flex;
+	}
+	& #DocumentCardUpdateCreate {
+		width: auto;
+		display: flex;
+	}
 	@media (max-width: ${BreakPoints.MOBILE}px) {
 		justify-content: center;
 	}
@@ -29,14 +37,25 @@ export const WrapperInfo = styled.div`
 
 export const CardTest = styled.div`
 	position: relative;
-	& > svg {
+	& > #TestUpdate {
 		position: absolute;
-		font-weight: 500;
-		font-size: 15px;
-		line-height: 155%;
-		color: #808191;
 		top: 15px;
 		right: 15px;
+		background: rgb(46, 108, 238);
+		width: 36px;
+		height: 36px;
+		border-radius: 50%;
+		display: flex;
+		-webkit-box-align: center;
+		align-items: center;
+		-webkit-box-pack: center;
+		justify-content: center;
 		cursor: pointer;
+		z-index: 2;
+		&:hover {
+			& svg {
+				fill: rgb(255, 255, 255);
+			}
+		}
 	}
 `;

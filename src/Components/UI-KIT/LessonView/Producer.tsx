@@ -22,6 +22,7 @@ import { ReactComponent as StatusTrue } from "../../../Icons/StatusTrue.svg";
 import { ITagState } from "../../../Shared/Tag/redux/tag.slice";
 import Tags from "../Atoms/Tags";
 import { ReactComponent as StatusFalse } from "../../../Icons/StatusFalse.svg";
+import Disable from "../Atoms/Disable";
 
 type LessonViewProps = Pick<
 	ICourseState,
@@ -219,7 +220,6 @@ const LessonView: FC<LessonViewProps> = ({
 							</ST.SubTitleInfo>
 						</ST.WrapperSubTitle>
 					))}
-
 				{tags && (
 					<ST.WrapperTags
 						delay={0.8}
@@ -231,15 +231,22 @@ const LessonView: FC<LessonViewProps> = ({
 						/>
 					</ST.WrapperTags>
 				)}
-
-				<ST.WrapperButton>
-					{idCourse && (
-						<CourseUpdate
-							idCourse={idCourse}
-							refetch={refetch}
-						/>
-					)}
-				</ST.WrapperButton>
+				<Disable
+					id={"CourseUpdate"}
+					disabled={status === CoursesStatuses.IN_REVIEW}
+					textErr={
+						"Курс находится на проверке, редактирование курса невозможно."
+					}
+				>
+					<ST.WrapperButton>
+						{idCourse && (
+							<CourseUpdate
+								idCourse={idCourse}
+								refetch={refetch}
+							/>
+						)}
+					</ST.WrapperButton>
+				</Disable>
 			</ST.WrapperInfo>
 		</ST.LessonView>
 	);
