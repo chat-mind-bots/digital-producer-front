@@ -80,6 +80,7 @@ const Select: FC<SelectProps> = ({
 					{open ? <ArrowUp /> : <ArrowDown />}
 				</ST.WrapperIco>
 
+				{open && <ST.BlockBackground />}
 				{open && (
 					<ST.Options>
 						{array.map((item) => (

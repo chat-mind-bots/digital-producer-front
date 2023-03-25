@@ -12,8 +12,8 @@ export const BreadCrumbs = styled.div`
 	display: flex;
 	align-items: center;
 	gap: 12px;
+	overflow: auto;
 	@media (max-width: ${BreakPoints.MOBILE}px) {
-		overflow: auto;
 		padding-bottom: 6px;
 		padding-top: 6px;
 	}
@@ -34,7 +34,6 @@ export const Item = styled.p<ItemProps>`
 	display: -webkit-box;
 	word-wrap: break-word;
 	-webkit-box-orient: vertical;
-	max-width: 250px;
 	width: max-content;
 	&:hover {
 		color: ${Colors.BLUE};

@@ -21,6 +21,7 @@ export const AuthBlock = styled.div`
 	max-width: 218px;
 	box-sizing: border-box;
 	position: relative;
+	cursor: pointer;
 `;
 
 export const Name = styled.p`
@@ -28,6 +29,12 @@ export const Name = styled.p`
 	font-size: 14px;
 	line-height: 20px;
 	color: ${Colors.BLACK2};
+	text-overflow: ellipsis;
+	-webkit-line-clamp: 1;
+	display: -webkit-box;
+	overflow-wrap: break-word;
+	-webkit-box-orient: vertical;
+	overflow: hidden;
 `;
 
 export const Window = styled.div<WindowProps>`
@@ -46,6 +53,7 @@ export const Window = styled.div<WindowProps>`
 	transform: ${({ isOpen }) => !isOpen && "translate(0, -50px)"};
 	transition: 0.5s;
 	pointer-events: ${({ isOpen }) => !isOpen && "none"};
+	z-index: 2;
 `;
 
 export const ItemWindow = styled.p<ItemWindowProps>`
@@ -67,6 +75,15 @@ export const Mail = styled.p`
 	font-size: 12px;
 	line-height: 16px;
 	color: ${Colors.GREY5};
+`;
+
+export const BlockBackground = styled.div`
+	position: fixed;
+	left: 0;
+	top: 0;
+	width: 100%;
+	height: 100%;
+	z-index: 1;
 `;
 
 export const WrapperAvatar = styled.div`

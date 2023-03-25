@@ -24,7 +24,7 @@ const BannerList: FC<BannerListProps> = ({
 	return (
 		<ST.Banners>
 			<ST.WrapperBanners>
-				<WrapperContent header={`Баннеры ${UserRoleEnum.USER}`}>
+				<WrapperContent header={`Банеры ${UserRoleEnum.USER}`}>
 					<BannerSection
 						role={UserRoleEnum.USER}
 						result={result?.filter((i) => i.role === UserRoleEnum.USER)}
@@ -33,7 +33,7 @@ const BannerList: FC<BannerListProps> = ({
 						remove={remove}
 					/>
 				</WrapperContent>
-				<WrapperContent header={`Баннеры ${UserRoleEnum.PRODUCER}`}>
+				<WrapperContent header={`Банеры ${UserRoleEnum.PRODUCER}`}>
 					<BannerSection
 						role={UserRoleEnum.PRODUCER}
 						result={result?.filter((i) => i.role === UserRoleEnum.PRODUCER)}
@@ -42,7 +42,7 @@ const BannerList: FC<BannerListProps> = ({
 						remove={remove}
 					/>
 				</WrapperContent>
-				<WrapperContent header={`Баннеры ${UserRoleEnum.ADMIN}`}>
+				<WrapperContent header={`Банеры ${UserRoleEnum.ADMIN}`}>
 					<BannerSection
 						role={UserRoleEnum.ADMIN}
 						result={result?.filter((i) => i.role === UserRoleEnum.ADMIN)}

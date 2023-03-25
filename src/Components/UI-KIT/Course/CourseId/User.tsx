@@ -179,6 +179,7 @@ const CourseId: FC<ICourseState & Pick<CourseResultType, "refetch">> = ({
 									isLesson={true}
 									isEnrolled={isEnrolled}
 									isOwner={owner?.id === auth.id}
+									price={price}
 								/>
 							</>
 						) : (
@@ -204,6 +205,7 @@ const CourseId: FC<ICourseState & Pick<CourseResultType, "refetch">> = ({
 									refetch={refetch}
 									isEnrolled={isEnrolled}
 									isOwner={owner?.id === auth.id}
+									price={price}
 								/>
 							</>
 						)}

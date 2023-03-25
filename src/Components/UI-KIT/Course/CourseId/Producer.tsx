@@ -336,6 +336,7 @@ const CourseId: FC<ICourseState & Pick<CourseResultType, "refetch">> = ({
 								idCourse={id}
 								refetch={refetch}
 								students={students}
+								isAddFunction={true}
 							/>
 						</ST.Content>
 					</WrapperContent>

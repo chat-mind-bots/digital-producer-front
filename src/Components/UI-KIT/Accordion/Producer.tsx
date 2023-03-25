@@ -1,4 +1,5 @@
 import React, { FC, useState } from "react";
+import { Tooltip as ReactTooltip } from "react-tooltip";
 
 import { AccordionProps } from "./type";
 import * as ST from "./styled";
@@ -60,7 +61,7 @@ const Accordion: FC<
 											<ST.Number>{indexItem + 1}.</ST.Number>
 											<ST.NameCurrent>{item.name}</ST.NameCurrent>
 										</ST.Item>
-										<ST.UpdateButton>
+										<ST.UpdateButton id={`UpdateButtonLesson-${item.id}`}>
 											<LessonUpdate
 												idLesson={item.id}
 												refetch={() => {
@@ -69,6 +70,11 @@ const Accordion: FC<
 												}}
 											/>
 										</ST.UpdateButton>
+										<ReactTooltip
+											anchorId={`UpdateButtonLesson-${item.id}`}
+											place="left"
+											content="Редактировать урок."
+										/>
 									</ST.WrapperItem>
 								))}
 								<ST.WrapperButtonAddLesson>
@@ -80,12 +86,17 @@ const Accordion: FC<
 							</ST.WrapperItems>
 						</ST.WrapperModule>
 
-						<ST.UpdateButtonModule>
+						<ST.UpdateButtonModule id={`UpdateButtonModule-${module.id}`}>
 							<ModuleUpdate
 								idModule={module.id}
 								refetch={refetch}
 							/>
 						</ST.UpdateButtonModule>
+						<ReactTooltip
+							anchorId={`UpdateButtonModule-${module.id}`}
+							place="left"
+							content="Редактировать модуль."
+						/>
 					</ST.WrapperItem>
 				))}
 				<ST.WrapperButtonAddLesson>

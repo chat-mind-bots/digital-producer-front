@@ -19,9 +19,11 @@ import CourseResultType from "../../../../Components/UI-KIT/Course/course-props.
 
 export const CourseSetStatus: FC<
 	Pick<UpdateCourseStatusApiProps, "status" | "idCourse"> &
-		Pick<CourseResultType, "refetch"> &
-		Record<"children", React.ReactElement>
-> = ({ refetch, children, status, idCourse }) => {
+		Pick<CourseResultType, "refetch"> & { id?: string } & Record<
+			"children",
+			React.ReactElement
+		>
+> = ({ refetch, children, status, idCourse, id }) => {
 	const auth = useAppSelector((state) => state.auth);
 	const queryAuth: GetCourseApiProps = {
 		authToken: auth.token ?? "",
@@ -59,7 +61,10 @@ export const CourseSetStatus: FC<
 
 	return (
 		<>
-			<span onClick={() => updateStatus()}>
+			<span
+				id={id}
+				onClick={() => updateStatus()}
+			>
 				{Children.toArray(children).map((child) =>
 					cloneElement(child as React.ReactElement<CourseResultType>, {})
 				)}

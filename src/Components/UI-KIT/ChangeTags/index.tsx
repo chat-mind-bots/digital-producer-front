@@ -75,6 +75,11 @@ const ChangeTags: FC<ChangeTagsProps> = ({
 					</ST.BlockColor>
 
 					{backgroundWindow && (
+						<ST.BlockBackground
+							onClick={() => setBackgroundWindow(!backgroundWindow)}
+						/>
+					)}
+					{backgroundWindow && (
 						<ST.WrapperSketchPicker>
 							<SketchPicker
 								onChange={(color) => {
@@ -96,6 +101,10 @@ const ChangeTags: FC<ChangeTagsProps> = ({
 					>
 						{colorWindow ? "Закрыть" : "Цвет текста"}
 					</ST.BlockColor>
+
+					{colorWindow && (
+						<ST.BlockBackground onClick={() => setColorWindow(!colorWindow)} />
+					)}
 
 					{colorWindow && (
 						<ST.WrapperSketchPicker>

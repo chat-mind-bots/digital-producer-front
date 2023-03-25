@@ -183,13 +183,13 @@ const LessonSettingsBodyWindow: FC<LessonSettingsBodyWindowProps> = ({
 								<ST.Name>Позиция</ST.Name>
 								<ST.WrapperInput>
 									<Input
-										value={String(values?.logicNumber || 0)}
+										value={String(values?.logicNumber || "")}
 										setValue={(str) => {
 											setFieldValue &&
-												setFieldValue("logicNumber", Number(str) || 0);
+												setFieldValue("logicNumber", Number(str) || "");
 										}}
 										setFocus={(state) => setFieldTouched("logicNumber", state)}
-										placeholder={"Введите заголовок "}
+										placeholder={"Введите порядковый номер модуля"}
 										padding={"10px 14px"}
 										fontSize={"16px"}
 										fontWeight={"400"}

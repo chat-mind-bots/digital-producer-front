@@ -1,4 +1,8 @@
-import React, { FC, useEffect, useState } from "react";
+import React, { FC, useCallback, useEffect, useState } from "react";
+import { QueryStatus } from "@reduxjs/toolkit/query";
+import { toast } from "react-hot-toast";
+import { useNavigate } from "react-router-dom";
+import { Tooltip as ReactTooltip } from "react-tooltip";
 
 import LevelDifficulty, {
 	LoadingLevelDifficulty,
@@ -12,11 +16,21 @@ import { ReactComponent as StatusFalse } from "../../../Icons/StatusFalse.svg";
 import { ReactComponent as StatusTrue } from "../../../Icons/StatusTrue.svg";
 import { ReactComponent as StatusWait } from "../../../Icons/StatusWait.svg";
 import { ReactComponent as Progress } from "../../../Icons/Progress.svg";
-import { CoursesStatuses } from "../../../Shared/Courses/redux/course.api";
+import {
+	CoursesStatuses,
+	useRemoveCourseMutation,
+} from "../../../Shared/Courses/redux/course.api";
 import { CourseSetStatus } from "../../../Shared/Courses/components/CourseSet/setStatus";
 import CourseResultType from "../Course/course-props.type";
 import { ITagState } from "../../../Shared/Tag/redux/tag.slice";
 import Tags from "../Atoms/Tags";
+import { routeBuilder } from "../../../Router/services/route-builder";
+import RequestStatuses from "../../../Constants/RequestStatuses";
+import RoutesList from "../../../Router/routesList";
+import Colors from "../../../Constants/Colors";
+import Button from "../Atoms/Button";
+import { useAppSelector } from "../../../Hooks/redux";
+import { UserRoleEnum } from "../../../Shared/Auth/types/role.enum";
 
 type LessonViewProps = Pick<
 	ICourseState,
@@ -60,6 +74,41 @@ const LessonView: FC<LessonViewProps> = ({
 	video,
 }) => {
 	const [startVideo, setStartVideo] = useState<boolean>(false);
+	const auth = useAppSelector((state) => state.auth);
+	const queryAuth = {
+		authToken: auth.token ?? "",
+	};
+	const navigate = useNavigate();
+	const [removeCourse, resultRemoveCourse] = useRemoveCourseMutation();
+	const remove = useCallback(
+		(id: string) =>
+			removeCourse({
+				...queryAuth,
+				id,
+			}),
+		[removeCourse]
+	);
+
+	useEffect(() => {
+		if (resultRemoveCourse.status === QueryStatus.fulfilled) {
+			if (
+				resultRemoveCourse.data?.statusCode === RequestStatuses.SUCCESS ||
+				resultRemoveCourse.data?.statusCode === RequestStatuses.SUCCESS_201
+			) {
+				toast.success("Курс удален");
+
+				setTimeout(
+					() =>
+						navigate(routeBuilder([RoutesList.PRODUCER, RoutesList.COURSES])),
+					1000
+				);
+			} else {
+				resultRemoveCourse.data?.message?.forEach((e) => {
+					toast.error(`Ошибка:${e}`);
+				});
+			}
+		}
+	}, [resultRemoveCourse]);
 
 	useEffect(() => {
 		if (isLoading) {
@@ -83,6 +132,7 @@ const LessonView: FC<LessonViewProps> = ({
 				{name}
 				<ST.WrapperStatuses>
 					<CourseSetStatus
+						id={"NOT_ACTIVE-admin"}
 						status={CoursesStatuses.NOT_ACTIVE}
 						idCourse={idCourse}
 						refetch={refetch}
@@ -91,7 +141,14 @@ const LessonView: FC<LessonViewProps> = ({
 							<StatusFalse />
 						</ST.Status>
 					</CourseSetStatus>
+					<ReactTooltip
+						anchorId="NOT_ACTIVE-admin"
+						place="right"
+						content="Курс заблокирован или удален."
+					/>
+					{/**/}
 					<CourseSetStatus
+						id={"AVAILABLE-admin"}
 						status={CoursesStatuses.AVAILABLE}
 						idCourse={idCourse}
 						refetch={refetch}
@@ -100,7 +157,14 @@ const LessonView: FC<LessonViewProps> = ({
 							<StatusTrue />
 						</ST.Status>
 					</CourseSetStatus>
+					<ReactTooltip
+						anchorId="AVAILABLE-admin"
+						place="right"
+						content="Курс опубликован."
+					/>
+					{/**/}
 					<CourseSetStatus
+						id={"IN_REVIEW-admin"}
 						status={CoursesStatuses.IN_REVIEW}
 						idCourse={idCourse}
 						refetch={refetch}
@@ -109,7 +173,14 @@ const LessonView: FC<LessonViewProps> = ({
 							<StatusWait />
 						</ST.Status>
 					</CourseSetStatus>
+					<ReactTooltip
+						anchorId="IN_REVIEW-admin"
+						place="right"
+						content="Курс на проверке у модератора."
+					/>
+					{/**/}
 					<CourseSetStatus
+						id={"IN_PROGRESS"}
 						status={CoursesStatuses.IN_PROGRESS}
 						idCourse={idCourse}
 						refetch={refetch}
@@ -118,6 +189,11 @@ const LessonView: FC<LessonViewProps> = ({
 							<Progress />
 						</ST.Status>
 					</CourseSetStatus>
+					<ReactTooltip
+						anchorId={"IN_PROGRESS"}
+						place="right"
+						content="Курс в работе или на доработке."
+					/>
 				</ST.WrapperStatuses>
 			</ST.Title>
 			<ST.WrapperLevelDifficulty>
@@ -192,6 +268,23 @@ const LessonView: FC<LessonViewProps> = ({
 						/>
 					</ST.WrapperTags>
 				)}
+				<ST.WrapperButton>
+					{idCourse && auth.role.includes(UserRoleEnum.SUPER_ADMIN) && (
+						<Button
+							title={"Удалить"}
+							padding={"11px 28px"}
+							fontSize={"14px"}
+							lineHeight={"20px"}
+							fontWeight={"600"}
+							background={Colors.RED}
+							color={Colors.WHITE}
+							backgroundAnimation={Colors.BLUE_DARK}
+							colorHover={Colors.WHITE}
+							width={"100%"}
+							onClick={() => remove(idCourse)}
+						/>
+					)}
+				</ST.WrapperButton>
 			</ST.WrapperInfo>
 		</ST.LessonView>
 	);

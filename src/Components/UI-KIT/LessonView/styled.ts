@@ -15,7 +15,7 @@ export const LessonView = styled.div`
 	border-radius: 16px;
 	padding: 18px;
 	background: ${Colors.WHITE};
-	max-width: 666px;
+	max-width: 665.5px;
 	box-sizing: border-box;
 `;
 
@@ -65,6 +65,7 @@ export const WrapperStatuses = styled.span`
 
 type StatusProps = {
 	isActive: boolean;
+	id?: string;
 };
 
 export const Status = styled.span<StatusProps>`
@@ -231,7 +232,7 @@ export const WrapperSubTitle = styled.div<WrapperSubTitleProps>`
 	transition: 1s;
 	overflow: hidden;
 	position: relative;
-	overflow-y: auto;
+	overflow-y: ${({ isLoading }) => (isLoading ? "hidden" : "auto")};
 	text-overflow: ellipsis;
 	-webkit-line-clamp: 100000;
 	display: -webkit-box;
@@ -304,4 +305,14 @@ export const MobileBy = styled.div<{ disabled?: boolean }>`
 	@media (max-width: ${BreakPoints.MOBILE}px) {
 		display: block;
 	}
+`;
+
+export const Description = styled.p`
+	font-weight: 400;
+	font-size: 16px;
+	line-height: 155%;
+	color: ${Colors.GREY1};
+	text-align: initial;
+	margin-bottom: 12px;
+	padding: 0 5px;
 `;

@@ -67,7 +67,7 @@ const BannerSet: FC<BannerSetProps> = ({ children }) => {
 		if (resultDeleteBanner.status === QueryStatus.fulfilled) {
 			if (resultDeleteBanner.data?.statusCode === RequestStatuses.SUCCESS) {
 				refetch();
-				toast.success("Баннер удален");
+				toast.success("Банер удален");
 			} else {
 				resultDeleteBanner.data?.message?.forEach((e) => {
 					toast.error(`Ошибка:${e}`);
@@ -83,7 +83,7 @@ const BannerSet: FC<BannerSetProps> = ({ children }) => {
 				resultCreateBanner.data?.statusCode === RequestStatuses.SUCCESS_201
 			) {
 				refetch();
-				toast.success("Баннер создан");
+				toast.success("Банер создан");
 			} else {
 				resultCreateBanner.data?.message?.forEach((e) => {
 					toast.error(`Ошибка:${e}`);
@@ -96,7 +96,7 @@ const BannerSet: FC<BannerSetProps> = ({ children }) => {
 		if (resultUpdateBanner.status === QueryStatus.fulfilled) {
 			if (resultUpdateBanner.data?.statusCode === RequestStatuses.SUCCESS) {
 				refetch();
-				toast.success("Баннер изменен");
+				toast.success("Банер изменен");
 			} else {
 				resultUpdateBanner.data?.message?.forEach((e) => {
 					toast.error(`Ошибка:${e}`);

@@ -20,7 +20,8 @@ const AuthBlock = () => {
 	};
 
 	return auth ? (
-		<ST.AuthBlock>
+		<ST.AuthBlock onClick={() => setIsWindow(!isWindow)}>
+			{isWindow && <ST.BlockBackground />}
 			<ST.WrapperAvatar>
 				{auth.photos?.small && <Image src={auth.photos?.small} />}
 				<ST.DefaultImage>
@@ -31,7 +32,7 @@ const AuthBlock = () => {
 				<ST.Name>{auth.firstName}</ST.Name>
 				<ST.Mail>@{auth.username}</ST.Mail>
 			</ST.WrapperInfo>
-			<ST.WrapperArrowDown onClick={() => setIsWindow(!isWindow)}>
+			<ST.WrapperArrowDown>
 				{!isWindow ? <ArrowDown /> : <ArrowUp />}
 				<ST.Window isOpen={isWindow}>
 					<ST.ItemWindow

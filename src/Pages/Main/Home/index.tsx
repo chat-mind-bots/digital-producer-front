@@ -48,7 +48,11 @@ const Home = () => {
 					>
 						<Button
 							title={`Войти как ${
-								e === UserRoleEnum.USER ? "пользователь" : e.toLocaleLowerCase()
+								e === UserRoleEnum.USER
+									? "пользователь"
+									: e === UserRoleEnum.PRODUCER
+									? "продюсер"
+									: e.toLocaleLowerCase()
 							}`}
 							padding={"18px 24px"}
 							fontSize={"16px"}

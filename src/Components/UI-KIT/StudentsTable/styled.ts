@@ -73,20 +73,6 @@ export const Th = styled.th`
 `;
 
 export const Create = styled.div`
-	font-size: 100px;
-	color: ${Colors.WHITE};
-	background: ${Colors.BLUE};
-	border-radius: 16px;
-	box-sizing: border-box;
-	display: flex;
-	align-items: center;
-	justify-content: center;
-	border: 2px solid ${Colors.TRANSPARENT};
-	cursor: pointer;
-	&:hover {
-		border: 2px solid ${Colors.WHITE2};
-	}
-	height: 150px;
 	margin-bottom: 22px;
 `;
 

@@ -110,7 +110,7 @@ const CourseSettingsBodyWindow: FC<CourseSettingsBodyWindowProps> = ({
 							</ST.Wrapper>
 
 							<ST.Wrapper>
-								<ST.Name>Саб категория Список</ST.Name>
+								<ST.Name>Саб категория</ST.Name>
 								<ST.WrapperInput>
 									<Select
 										value={
@@ -341,7 +341,7 @@ const CourseSettingsBodyWindow: FC<CourseSettingsBodyWindowProps> = ({
 											setFocus={(state) =>
 												setFieldTouched("price.actual", state)
 											}
-											placeholder={"actual"}
+											placeholder={"Цена"}
 											padding={"10px 14px"}
 											fontSize={"16px"}
 											fontWeight={"400"}
@@ -356,12 +356,11 @@ const CourseSettingsBodyWindow: FC<CourseSettingsBodyWindowProps> = ({
 											setFocus={(state) =>
 												setFieldTouched("price.discount", state)
 											}
-											placeholder={"discount"}
+											placeholder={"Скидка в процентах"}
 											padding={"10px 14px"}
 											fontSize={"16px"}
 											fontWeight={"400"}
 											borderSize={"1px"}
-											optionalText={"% "}
 										/>
 									</ST.WrapperButtons>
 								</ST.Wrapper>

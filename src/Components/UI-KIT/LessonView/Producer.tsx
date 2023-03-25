@@ -1,4 +1,5 @@
 import React, { FC, useEffect, useState } from "react";
+import { Tooltip as ReactTooltip } from "react-tooltip";
 
 import LevelDifficulty, {
 	LoadingLevelDifficulty,
@@ -86,21 +87,39 @@ const LessonView: FC<LessonViewProps> = ({
 
 				<ST.WrapperStatuses>
 					{!!status && status === CoursesStatuses.AVAILABLE && (
-						<ST.StatusDisables isActive={status === CoursesStatuses.AVAILABLE}>
-							<StatusTrue />
-						</ST.StatusDisables>
+						<>
+							<ST.StatusDisables
+								id={"AVAILABLE"}
+								isActive={status === CoursesStatuses.AVAILABLE}
+							>
+								<StatusTrue />
+							</ST.StatusDisables>
+							<ReactTooltip
+								anchorId="AVAILABLE"
+								place="right"
+								content="Курс опубликован."
+							/>
+						</>
 					)}
 
 					{idCourse && (
-						<CourseSetStatus
-							status={CoursesStatuses.IN_REVIEW}
-							idCourse={idCourse}
-							refetch={refetch}
-						>
-							<ST.Status isActive={status === CoursesStatuses.IN_REVIEW}>
-								<StatusWait />
-							</ST.Status>
-						</CourseSetStatus>
+						<>
+							<CourseSetStatus
+								status={CoursesStatuses.IN_REVIEW}
+								idCourse={idCourse}
+								refetch={refetch}
+								id={"IN_REVIEW"}
+							>
+								<ST.Status isActive={status === CoursesStatuses.IN_REVIEW}>
+									<StatusWait />
+								</ST.Status>
+							</CourseSetStatus>
+							<ReactTooltip
+								anchorId="IN_REVIEW"
+								place="right"
+								content="Курс на проверке у модератора."
+							/>
+						</>
 					)}
 
 					{status !== CoursesStatuses.IN_REVIEW && idCourse && (
@@ -109,21 +128,33 @@ const LessonView: FC<LessonViewProps> = ({
 								status={CoursesStatuses.IN_PROGRESS}
 								idCourse={idCourse}
 								refetch={refetch}
+								id={"IN_PROGRESS"}
 							>
 								<ST.Status isActive={status === CoursesStatuses.IN_PROGRESS}>
 									<Progress />
 								</ST.Status>
 							</CourseSetStatus>
-
+							<ReactTooltip
+								anchorId="IN_PROGRESS"
+								place="right"
+								content="Курс в работе или на доработке."
+							/>
 							<CourseSetStatus
 								status={CoursesStatuses.NOT_ACTIVE}
 								idCourse={idCourse}
 								refetch={refetch}
+								id={"NOT_ACTIVE"}
 							>
 								<ST.Status isActive={status === CoursesStatuses.NOT_ACTIVE}>
 									<StatusFalse />
 								</ST.Status>
 							</CourseSetStatus>
+							<ReactTooltip
+								anchorId="NOT_ACTIVE"
+								place="right"
+								content="Курс заблокирован или удален."
+								className={"ReactTooltipWindowStyle"}
+							/>
 						</>
 					)}
 				</ST.WrapperStatuses>

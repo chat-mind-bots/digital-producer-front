@@ -25,6 +25,7 @@ type LessonViewProps = Pick<
 	| ICourseEnum.notes
 	| ICourseEnum.image
 	| ICourseEnum.video
+	| ICourseEnum.price
 > & {
 	studentsLength: number;
 	lessonsLength: number;
@@ -60,6 +61,7 @@ const LessonView: FC<LessonViewProps> = ({
 	isEnrolled,
 	video,
 	isOwner,
+	price,
 }) => {
 	const [startVideo, setStartVideo] = useState<boolean>(false);
 
@@ -160,26 +162,35 @@ const LessonView: FC<LessonViewProps> = ({
 				<ST.MobileBy
 					disabled={isOwner}
 					onClick={() => {
-						toast.error(
-							"Невозможно купить или учавствовать в собственном курсе"
-						);
+						isOwner &&
+							toast.error(
+								"Невозможно купить или учавствовать в собственном курсе"
+							);
 					}}
 				>
 					{!isFree ? (
-						<Button
-							title={"Купить курс"}
-							padding={"11px 28px"}
-							fontSize={"14px"}
-							lineHeight={"20px"}
-							fontWeight={"600"}
-							background={Colors.BLUE}
-							color={Colors.WHITE}
-							backgroundAnimation={Colors.BLUE_DARK}
-							colorHover={Colors.WHITE}
-							width={"100%"}
-							onClick={() => window.open(paymentLink)}
-							disabled={isOwner}
-						/>
+						<>
+							<ST.Description>
+								Для покупки курса вам необходимо связаться с создателем
+								курса(нажать на кнопку купить), после проведения оплаты,
+								создатель курса выдаст вам доступ и вы сможете приступить к
+								просмотру.
+							</ST.Description>
+							<Button
+								title={`Купить курс за ${price?.actual} руб.`}
+								padding={"11px 28px"}
+								fontSize={"14px"}
+								lineHeight={"20px"}
+								fontWeight={"600"}
+								background={Colors.BLUE}
+								color={Colors.WHITE}
+								backgroundAnimation={Colors.BLUE_DARK}
+								colorHover={Colors.WHITE}
+								width={"100%"}
+								onClick={() => window.open(paymentLink)}
+								disabled={isOwner}
+							/>
+						</>
 					) : (
 						!isEnrolled && (
 							<EnrollToCourse

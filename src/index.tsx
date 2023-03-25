@@ -7,6 +7,7 @@ import { store } from "Store";
 import { Router } from "Router";
 
 import "18n.ts";
+import "react-tooltip/dist/react-tooltip.css";
 import "index.css";
 import ModalToaster from "./Components/ModalWindows/WrappersModalWindows/ModalToaster";
 

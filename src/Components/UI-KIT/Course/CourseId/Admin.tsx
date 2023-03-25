@@ -23,6 +23,7 @@ import { routeBuilderWithReplace } from "../../../../Router/services/route-build
 import TestCard from "../../TestCard";
 import CourseResultType from "../course-props.type";
 import StudentsTable from "../../StudentsTable";
+import { UserRoleEnum } from "../../../../Shared/Auth/types/role.enum";
 
 const delay = 2000;
 
@@ -259,7 +260,7 @@ const CourseId: FC<ICourseState & Pick<CourseResultType, "refetch">> = ({
 							</>
 					  )
 					: documents &&
-					  documents.length &&
+					  !!documents.length &&
 					  !loading && (
 							<>
 								<WrapperContent header={"Документы курса"}>
@@ -284,6 +285,10 @@ const CourseId: FC<ICourseState & Pick<CourseResultType, "refetch">> = ({
 								idCourse={id}
 								refetch={refetch}
 								students={students}
+								isAddFunction={
+									auth.id === owner?.id ||
+									auth.role.includes(UserRoleEnum.SUPER_ADMIN)
+								}
 							/>
 						</ST.Content>
 					</WrapperContent>

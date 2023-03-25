@@ -11,16 +11,19 @@ import {
 import openFileBlank from "../../../Utils/openFileBlank";
 
 const StudentsTable: FC<
-	Pick<ICourseState, ICourseEnum.students> &
-		Pick<EnrollAnotherUserToCourseApiProps, "idCourse"> &
+	Pick<ICourseState, ICourseEnum.students> & {
+		isAddFunction: boolean;
+	} & Pick<EnrollAnotherUserToCourseApiProps, "idCourse"> &
 		Pick<CourseResultType, "refetch">
-> = ({ idCourse, refetch, students }) => {
+> = ({ idCourse, refetch, students, isAddFunction }) => {
 	return (
 		<ST.StudentsTable>
-			<EnrollAnotherUserToCourse
-				idCourse={idCourse}
-				refetch={refetch}
-			/>
+			{isAddFunction && (
+				<EnrollAnotherUserToCourse
+					idCourse={idCourse}
+					refetch={refetch}
+				/>
+			)}
 			<ST.Table>
 				<ST.Thead>
 					<ST.Tr>

@@ -163,7 +163,7 @@ export const WrapperButtonAddLesson = styled.div`
 	overflow: hidden;
 `;
 
-export const UpdateButton = styled.div`
+export const UpdateButton = styled.div<{ id: string }>`
 	position: absolute;
 	top: 50%;
 	right: 11px;
@@ -179,7 +179,7 @@ export const UpdateButton = styled.div`
 	}
 `;
 
-export const UpdateButtonModule = styled.div`
+export const UpdateButtonModule = styled.div<{ id: string }>`
 	position: absolute;
 	top: 10px;
 	right: 13px;

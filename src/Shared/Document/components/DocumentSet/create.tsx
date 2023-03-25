@@ -92,7 +92,7 @@ export const DocumentCreate: FC<LessonCreateProps> = ({
 				resultAddDocumentToCourse.data?.statusCode ===
 					RequestStatuses.SUCCESS_201
 			) {
-				toast.success("Документ приввязан к курсу");
+				toast.success("Документ привязан к курсу");
 				refetch && refetch();
 			} else {
 				resultCreateDocument.data?.message?.forEach((e) => {
@@ -110,7 +110,7 @@ export const DocumentCreate: FC<LessonCreateProps> = ({
 				resultAddDocumentToLesson.data?.statusCode ===
 					RequestStatuses.SUCCESS_201
 			) {
-				toast.success("Документ приввязан к уроку");
+				toast.success("Документ привязан к уроку");
 				refetch && refetch();
 			} else {
 				resultCreateDocument.data?.message?.forEach((e) => {
