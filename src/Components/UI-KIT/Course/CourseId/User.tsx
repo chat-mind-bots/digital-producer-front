@@ -114,12 +114,11 @@ const CourseId: FC<ICourseState & Pick<CourseResultType, "refetch">> = ({
 		if (lesson.status === QueryStatus.fulfilled) {
 			if (lesson.data?.statusCode === RequestStatuses.SUCCESS) {
 				setCurrentLesson(lesson.data);
+				setTimeout(() => {
+					setLoading(false);
+				}, delay);
 			}
 		}
-
-		setTimeout(() => {
-			setLoading(false);
-		}, delay);
 	}, [lesson]);
 
 	useEffect(() => {
