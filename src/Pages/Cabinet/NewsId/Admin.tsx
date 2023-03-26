@@ -10,7 +10,9 @@ import News from "../../../Components/UI-KIT/News";
 const NewsId = () => {
 	return (
 		<ST.News>
-			<News role={UserRoleEnum.ADMIN} />
+			<ST.WrapperNews>
+				<News role={UserRoleEnum.ADMIN} />
+			</ST.WrapperNews>
 			<Banner
 				role={UserRoleEnum.ADMIN}
 				type={BannerEnum.BANNER_RIGHT}

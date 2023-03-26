@@ -14,11 +14,9 @@ export const Wrapper = styled.div`
 `;
 
 export const WrapperNews = styled.div`
-	width: 100%;
-	max-width: 764px;
-	gap: 40px;
+	max-width: 730px;
+	flex: 1;
 	display: flex;
-	flex-wrap: wrap;
 	@media (max-width: ${BreakPoints.TABLET}px) {
 		max-width: 100%;
 	}

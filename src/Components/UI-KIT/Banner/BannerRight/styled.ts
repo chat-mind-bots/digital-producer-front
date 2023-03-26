@@ -8,10 +8,11 @@ export const AddBlock = styled.div`
 	border-radius: 24px;
 	background: ${Colors.WHITE};
 	max-width: 298px;
+	width: 298px;
+	min-width: 298px;
 	border: 1px solid ${Colors.WHITE2};
 	position: sticky;
 	top: 129px;
-	width: 300px;
 	height: max-content;
 	box-sizing: border-box;
 	min-height: 468px;
