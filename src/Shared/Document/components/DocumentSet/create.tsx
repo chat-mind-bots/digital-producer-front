@@ -19,6 +19,7 @@ import {
 import DocumentSettingsBodyWindow from "../../../../Components/ModalWindows/Body/DocumentSettingsBodyWindow";
 import DocumentCardProducer from "../../../../Components/UI-KIT/DocumentCard/Producer";
 import CourseResultType from "../../../../Components/UI-KIT/Course/course-props.type";
+import { AbsoluteLoader } from "../../../../Components/UI-KIT/Loader";
 
 type LessonCreateProps = Pick<AddDocumentToCourseApiProps, "idCourse"> &
 	Pick<AddDocumentToLessonApiProps, "idLesson"> &
@@ -33,6 +34,7 @@ export const DocumentCreate: FC<LessonCreateProps> = ({
 	const queryAuth = {
 		authToken: auth.token ?? "",
 	};
+	const [loaderWindow, setLoaderWindow] = useState<boolean>(false);
 
 	const [open, setOpen] = useState<boolean>(false);
 
@@ -43,11 +45,13 @@ export const DocumentCreate: FC<LessonCreateProps> = ({
 		useAddDocumentToLessonMutation();
 
 	const create = useCallback(
-		(res: IDocumentState) =>
+		(res: IDocumentState) => {
+			setLoaderWindow(true);
 			createDocument({
 				...queryAuth,
 				data: res,
-			}),
+			});
+		},
 		[createDocument]
 	);
 
@@ -65,6 +69,7 @@ export const DocumentCreate: FC<LessonCreateProps> = ({
 						idCourse: idCourse,
 					};
 					setOpen(false);
+					setLoaderWindow(false);
 					addDocumentToCourse(query);
 				} else {
 					toast.success("Документ создан");
@@ -74,9 +79,11 @@ export const DocumentCreate: FC<LessonCreateProps> = ({
 						idLesson: idLesson,
 					};
 					setOpen(false);
+					setLoaderWindow(false);
 					addDocumentToLesson(query);
 				}
 			} else {
+				setLoaderWindow(false);
 				resultCreateDocument.data?.message?.forEach((e) => {
 					toast.error(`Ошибка:${e}`);
 				});
@@ -132,13 +139,16 @@ export const DocumentCreate: FC<LessonCreateProps> = ({
 					isOpen={open}
 					title={"Создание документа"}
 				>
-					<DocumentSettingsBodyWindow
-						initialValues={initialDocumentState}
-						sendData={async (data: IDocumentState) => {
-							return create(data);
-						}}
-						handleClose={() => setOpen(false)}
-					/>
+					<>
+						{loaderWindow && <AbsoluteLoader />}
+						<DocumentSettingsBodyWindow
+							initialValues={initialDocumentState}
+							sendData={async (data: IDocumentState) => {
+								return create(data);
+							}}
+							handleClose={() => setOpen(false)}
+						/>
+					</>
 				</WindowFormik>
 			)}
 		</>

@@ -1,12 +1,14 @@
 import React, { FC } from "react";
 import { useTranslation } from "react-i18next";
-import { useLocation } from "react-router-dom";
+import { Outlet, useLocation } from "react-router-dom";
 
 import Loader from "Components/UI-KIT/Loader";
 import { useAppSelector } from "Hooks/redux";
 import RequestStatuses from "Constants/RequestStatuses";
 
 import * as ST from "./styled";
+import Button from "../../../Components/UI-KIT/Atoms/Button";
+import Colors from "../../../Constants/Colors";
 
 type SwitchStatusProps = {
 	status?: RequestStatuses;
@@ -15,14 +17,19 @@ type SwitchStatusProps = {
 const Initialization = () => {
 	const location = useLocation();
 
-	const isAuthPage = location.pathname.indexOf("/auth/") === 0;
+	const isAuthPage =
+		location.pathname.indexOf("/auth/") === 0 || location.pathname === "/";
 
 	const auth = useAppSelector((state) => state.auth);
 
 	return (
 		<ST.Initialization>
 			{isAuthPage ? (
-				<SwitchStatus status={auth.statusCode} />
+				location.pathname === "/" ? (
+					<Outlet />
+				) : (
+					<SwitchStatus status={auth.statusCode} />
+				)
 			) : (
 				<ST.MainLoader>
 					<Loader />
@@ -38,7 +45,26 @@ const SwitchStatus: FC<SwitchStatusProps> = ({ status }) => {
 	switch (status) {
 		case RequestStatuses.UNAUTHORIZED:
 			return (
-				<ST.Title isErr={true}>{t("Components.STATUS_TOKEN.ERR")}</ST.Title>
+				<>
+					<ST.Title isErr={true}>{t("Components.STATUS_TOKEN.ERR")}</ST.Title>
+					<ST.WrapperButton>
+						<Button
+							title={"Запросить новую ссылку"}
+							padding={"18px 24px"}
+							fontSize={"16px"}
+							lineHeight={"20px"}
+							fontWeight={"600"}
+							background={Colors.BLUE}
+							color={Colors.WHITE}
+							backgroundAnimation={Colors.BLUE_DARK}
+							colorHover={Colors.WHITE}
+							width={"100%"}
+							onClick={() => {
+								window.open(" https://t.me/DigitalProducerDevelopBot");
+							}}
+						/>
+					</ST.WrapperButton>
+				</>
 			);
 		case RequestStatuses.PENDING:
 			return (

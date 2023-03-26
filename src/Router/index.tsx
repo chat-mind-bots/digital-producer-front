@@ -12,6 +12,8 @@ import NotFound from "Pages/NotFound";
 import ParseToken from "Shared/Auth/components/parseToken";
 import Err from "Components/UI-KIT/Err";
 
+import NoAuth from "../Pages/Main/NoAuth";
+
 export const Router: RouteObject[] = [
 	{
 		path: RoutesList.HOME,
@@ -19,8 +21,27 @@ export const Router: RouteObject[] = [
 		errorElement: <Err />,
 		children: [
 			{
+				path: RoutesList.HOME,
+				element: <ParseToken />,
+				errorElement: <Err />,
+				children: [
+					{
+						index: true,
+						element: <Home />,
+					},
+				],
+			},
+		],
+	},
+	{
+		path: RoutesList.HOME,
+		element: <Main isRegistration={false} />,
+		errorElement: <Err />,
+		children: [
+			{
+				path: RoutesList.NO_AUTH,
 				index: true,
-				element: <Home />,
+				element: <NoAuth />,
 			},
 		],
 	},

@@ -5,6 +5,7 @@ enum RoutesList {
 	// USELESS TODO need remove
 	LOGIN = "/login",
 	REGISTRATION = "/registration",
+	NO_AUTH = "/no_auth",
 
 	COURSES = "course",
 	NEWS = "news",

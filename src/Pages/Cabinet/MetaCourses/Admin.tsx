@@ -12,7 +12,7 @@ const MetaCourses = () => {
 		<ST.MetaCourses>
 			<Courses
 				role={UserRoleEnum.ADMIN}
-				header={"Курсы мета"}
+				header={"Курсы Meta"}
 			/>
 			<Banner
 				role={UserRoleEnum.ADMIN}

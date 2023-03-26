@@ -17,6 +17,7 @@ type ShoppingCardProps = Pick<CourseResultType, "refetch"> &
 		isFree: boolean;
 		price?: Price;
 		isOwner?: boolean;
+		setLoading: (e: boolean) => void;
 	};
 
 export interface Price {
@@ -33,6 +34,7 @@ const ShoppingCard: FC<ShoppingCardProps> = ({
 	idCourse,
 	refetch,
 	isOwner,
+	setLoading,
 }) => {
 	return (
 		<ST.ShoppingCard>
@@ -73,6 +75,7 @@ const ShoppingCard: FC<ShoppingCardProps> = ({
 						idCourse={idCourse}
 						refetch={refetch}
 						disabled={isOwner}
+						setLoading={setLoading}
 					/>
 				)}
 			</ST.WrapperButton>

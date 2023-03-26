@@ -134,98 +134,101 @@ const LessonView: FC<LessonViewProps> = ({
 				/>
 			</ST.WrapperVideo>
 			<ST.Title isLoading={isLoading}>{name}</ST.Title>
-			<ST.LinkToCourse>
-				<ST.WrapperStatuses isLoaded={loaderStatus}>
-					<Loader />
-					<CourseSetStatus
-						id={"APPROVED-admin"}
-						status={CoursesStatuses.APPROVED}
-						idCourse={idCourse}
-						refetch={refetch}
-						setLoader={setLoaderStatus}
-					>
-						<ST.Status
-							onClick={() => setLoaderStatus(true)}
-							isActive={status === CoursesStatuses.APPROVED}
+			{status && (
+				<ST.LinkToCourse>
+					<ST.WrapperStatuses isLoaded={loaderStatus}>
+						<Loader />
+						<CourseSetStatus
+							id={"APPROVED-admin"}
+							status={CoursesStatuses.APPROVED}
+							idCourse={idCourse}
+							refetch={refetch}
+							setLoader={setLoaderStatus}
 						>
-							<Approved />
-						</ST.Status>
-					</CourseSetStatus>
-					<ReactTooltip
-						anchorId="APPROVED-admin"
-						place="right"
-						content="Курс прошел модерацию и ожидает публикации."
-					/>
-					<CourseSetStatus
-						id={"NOT_ACTIVE-admin"}
-						status={CoursesStatuses.NOT_ACTIVE}
-						idCourse={idCourse}
-						refetch={refetch}
-						setLoader={setLoaderStatus}
-					>
-						<ST.Status isActive={status === CoursesStatuses.NOT_ACTIVE}>
-							<StatusFalse />
-						</ST.Status>
-					</CourseSetStatus>
-					<ReactTooltip
-						anchorId="NOT_ACTIVE-admin"
-						place="right"
-						content="Курс заблокирован или удален."
-					/>
-					{/**/}
-					<CourseSetStatus
-						id={"AVAILABLE-admin"}
-						status={CoursesStatuses.AVAILABLE}
-						idCourse={idCourse}
-						refetch={refetch}
-						setLoader={setLoaderStatus}
-					>
-						<ST.Status isActive={status === CoursesStatuses.AVAILABLE}>
-							<StatusTrue />
-						</ST.Status>
-					</CourseSetStatus>
-					<ReactTooltip
-						anchorId="AVAILABLE-admin"
-						place="right"
-						content="Курс опубликован."
-					/>
-					{/**/}
-					<CourseSetStatus
-						id={"IN_REVIEW-admin"}
-						status={CoursesStatuses.IN_REVIEW}
-						idCourse={idCourse}
-						refetch={refetch}
-						setLoader={setLoaderStatus}
-					>
-						<ST.Status isActive={status === CoursesStatuses.IN_REVIEW}>
-							<StatusWait />
-						</ST.Status>
-					</CourseSetStatus>
-					<ReactTooltip
-						anchorId="IN_REVIEW-admin"
-						place="right"
-						content="Курс на проверке у модератора."
-					/>
-					{/**/}
-					<CourseSetStatus
-						id={"IN_PROGRESS"}
-						status={CoursesStatuses.IN_PROGRESS}
-						idCourse={idCourse}
-						refetch={refetch}
-						setLoader={setLoaderStatus}
-					>
-						<ST.Status isActive={status === CoursesStatuses.IN_PROGRESS}>
-							<Progress />
-						</ST.Status>
-					</CourseSetStatus>
-					<ReactTooltip
-						anchorId={"IN_PROGRESS"}
-						place="right"
-						content="Курс в работе или на доработке."
-					/>
-				</ST.WrapperStatuses>
-			</ST.LinkToCourse>
-			{!isLoading && (
+							<ST.Status
+								onClick={() => setLoaderStatus(true)}
+								isActive={status === CoursesStatuses.APPROVED}
+							>
+								<Approved />
+							</ST.Status>
+						</CourseSetStatus>
+						<ReactTooltip
+							anchorId="APPROVED-admin"
+							place="right"
+							content="Курс прошел модерацию и ожидает публикации."
+						/>
+						<CourseSetStatus
+							id={"NOT_ACTIVE-admin"}
+							status={CoursesStatuses.NOT_ACTIVE}
+							idCourse={idCourse}
+							refetch={refetch}
+							setLoader={setLoaderStatus}
+						>
+							<ST.Status isActive={status === CoursesStatuses.NOT_ACTIVE}>
+								<StatusFalse />
+							</ST.Status>
+						</CourseSetStatus>
+						<ReactTooltip
+							anchorId="NOT_ACTIVE-admin"
+							place="right"
+							content="Курс заблокирован или удален."
+						/>
+						{/**/}
+						<CourseSetStatus
+							id={"AVAILABLE-admin"}
+							status={CoursesStatuses.AVAILABLE}
+							idCourse={idCourse}
+							refetch={refetch}
+							setLoader={setLoaderStatus}
+						>
+							<ST.Status isActive={status === CoursesStatuses.AVAILABLE}>
+								<StatusTrue />
+							</ST.Status>
+						</CourseSetStatus>
+						<ReactTooltip
+							anchorId="AVAILABLE-admin"
+							place="right"
+							content="Курс опубликован."
+						/>
+						{/**/}
+						<CourseSetStatus
+							id={"IN_REVIEW-admin"}
+							status={CoursesStatuses.IN_REVIEW}
+							idCourse={idCourse}
+							refetch={refetch}
+							setLoader={setLoaderStatus}
+						>
+							<ST.Status isActive={status === CoursesStatuses.IN_REVIEW}>
+								<StatusWait />
+							</ST.Status>
+						</CourseSetStatus>
+						<ReactTooltip
+							anchorId="IN_REVIEW-admin"
+							place="right"
+							content="Курс на проверке у модератора."
+						/>
+						{/**/}
+						<CourseSetStatus
+							id={"IN_PROGRESS"}
+							status={CoursesStatuses.IN_PROGRESS}
+							idCourse={idCourse}
+							refetch={refetch}
+							setLoader={setLoaderStatus}
+						>
+							<ST.Status isActive={status === CoursesStatuses.IN_PROGRESS}>
+								<Progress />
+							</ST.Status>
+						</CourseSetStatus>
+						<ReactTooltip
+							anchorId={"IN_PROGRESS"}
+							place="right"
+							content="Курс в работе или на доработке."
+						/>
+					</ST.WrapperStatuses>
+				</ST.LinkToCourse>
+			)}
+
+			{!isLoading && status && (
 				<ST.LinkToCourse>
 					<ST.TitleInfo>Статус курса:</ST.TitleInfo>
 					<ST.WrapperSubTitle

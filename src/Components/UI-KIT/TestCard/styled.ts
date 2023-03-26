@@ -38,6 +38,9 @@ export const TestCardProducer = styled.div`
 	border: 2px solid ${Colors.TRANSPARENT};
 	cursor: pointer;
 	max-width: 333px;
+	@media (max-width: ${BreakPoints.MOBILE}px) {
+		margin: auto;
+	}
 	&:hover {
 		border: 2px solid ${Colors.WHITE2};
 	}

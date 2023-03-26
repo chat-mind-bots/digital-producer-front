@@ -7,7 +7,7 @@ import WindowFormik from "../../../../Components/ModalWindows/WrappersModalWindo
 import { useAppSelector } from "../../../../Hooks/redux";
 import RequestStatuses from "../../../../Constants/RequestStatuses";
 import CourseResultType from "../../../../Components/UI-KIT/Course/course-props.type";
-import Loader from "../../../../Components/UI-KIT/Loader";
+import Loader, { AbsoluteLoader } from "../../../../Components/UI-KIT/Loader";
 import {
 	GetCourseApiProps,
 	useGetCourseMutMutation,
@@ -32,6 +32,7 @@ export const CourseUpdate: FC<LessonSetProps> = ({
 	refetch,
 	setLoading,
 }) => {
+	const [loaderWindow, setLoaderWindow] = useState<boolean>(false);
 	const auth = useAppSelector((state) => state.auth);
 	const queryAuth = {
 		authToken: auth.token ?? "",
@@ -50,7 +51,7 @@ export const CourseUpdate: FC<LessonSetProps> = ({
 
 	const update = useCallback(
 		(res: ICourseState) => {
-			setLoading(true);
+			setLoaderWindow(true);
 			updateCourse({
 				...queryAuth,
 				data: res,
@@ -61,7 +62,7 @@ export const CourseUpdate: FC<LessonSetProps> = ({
 
 	const remove = useCallback(
 		(id: string) => {
-			setLoading(true);
+			setLoaderWindow(true);
 			removeCourse({
 				...queryAuth,
 				id,
@@ -78,12 +79,15 @@ export const CourseUpdate: FC<LessonSetProps> = ({
 			) {
 				toast.success("Курс изменен");
 				setOpen(false);
+				setLoaderWindow(false);
+				setLoading(true);
 				refetch && refetch();
 				setTimeout(() => setLoading(false), 2000);
 			} else {
+				setLoaderWindow(false);
+				setTimeout(() => setLoading(false), 2000);
 				resultUpdateCourse.data?.message?.forEach((e) => {
 					toast.error(`Ошибка:${e}`);
-					setTimeout(() => setLoading(false), 2000);
 				});
 			}
 		}
@@ -96,7 +100,11 @@ export const CourseUpdate: FC<LessonSetProps> = ({
 				resultRemoveCourse.data?.statusCode === RequestStatuses.SUCCESS_201
 			) {
 				toast.success("Курс удален");
-
+				setOpen(false);
+				setLoaderWindow(false);
+				setLoading(true);
+				refetch && refetch();
+				setTimeout(() => setLoading(false), 2000);
 				setOpen(false);
 				setTimeout(
 					() =>
@@ -104,9 +112,10 @@ export const CourseUpdate: FC<LessonSetProps> = ({
 					1000
 				);
 			} else {
+				setLoaderWindow(false);
+				setTimeout(() => setLoading(false), 2000);
 				resultRemoveCourse.data?.message?.forEach((e) => {
 					toast.error(`Ошибка:${e}`);
-					setTimeout(() => setLoading(false), 2000);
 				});
 			}
 		}
@@ -143,9 +152,10 @@ export const CourseUpdate: FC<LessonSetProps> = ({
 			<WindowFormik
 				handleClose={() => setOpen(false)}
 				isOpen={open}
-				title={"Редактироване курса"}
+				title={"Редактирование курса"}
 			>
 				<>
+					{loaderWindow && <AbsoluteLoader />}
 					{course.data && data?.data ? (
 						<CourseSettingsBodyWindow
 							initialValues={course.data}

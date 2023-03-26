@@ -110,6 +110,10 @@ const CourseId: FC<ICourseState & Pick<CourseResultType, "refetch">> = ({
 		}, delay);
 	}, []);
 
+	const setLoadingFunction = useCallback((e: boolean) => {
+		setLoading(e);
+	}, []);
+
 	useEffect(() => {
 		if (lesson.status === QueryStatus.fulfilled) {
 			if (lesson.data?.statusCode === RequestStatuses.SUCCESS) {
@@ -179,6 +183,7 @@ const CourseId: FC<ICourseState & Pick<CourseResultType, "refetch">> = ({
 									isEnrolled={isEnrolled}
 									isOwner={owner?.id === auth.id}
 									price={price}
+									setLoading={setLoadingFunction}
 								/>
 							</>
 						) : (
@@ -205,6 +210,7 @@ const CourseId: FC<ICourseState & Pick<CourseResultType, "refetch">> = ({
 									isEnrolled={isEnrolled}
 									isOwner={owner?.id === auth.id}
 									price={price}
+									setLoading={setLoadingFunction}
 								/>
 							</>
 						)}
@@ -307,6 +313,7 @@ const CourseId: FC<ICourseState & Pick<CourseResultType, "refetch">> = ({
 							: undefined
 					}
 					isOwner={owner?.id === auth.id}
+					setLoading={setLoading}
 				/>
 			)}
 		</ST.CourseID>

@@ -21,6 +21,12 @@ const Accordion: FC<AccordionProps & { isOnClick: boolean }> = ({
 			open={openMobile}
 			onClick={() => !openMobile && setOpenMobile(true)}
 		>
+			<ST.OpenTablet
+				isOpen={openMobile}
+				onClick={() => setOpenMobile(true)}
+			>
+				+
+			</ST.OpenTablet>
 			<ST.Title>
 				Модули курса: <Close onClick={() => setOpenMobile(false)} />
 			</ST.Title>

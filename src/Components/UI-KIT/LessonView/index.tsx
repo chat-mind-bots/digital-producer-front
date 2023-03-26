@@ -39,6 +39,7 @@ type LessonViewProps = Pick<
 	refetch?: () => void;
 	isEnrolled?: boolean;
 	isOwner?: boolean;
+	setLoading: (e: boolean) => void;
 };
 
 const LessonView: FC<LessonViewProps> = ({
@@ -62,6 +63,7 @@ const LessonView: FC<LessonViewProps> = ({
 	video,
 	isOwner,
 	price,
+	setLoading,
 }) => {
 	const [startVideo, setStartVideo] = useState<boolean>(false);
 
@@ -197,6 +199,7 @@ const LessonView: FC<LessonViewProps> = ({
 								idCourse={idCourse}
 								refetch={refetch}
 								disabled={isOwner}
+								setLoading={setLoading}
 							/>
 						)
 					)}

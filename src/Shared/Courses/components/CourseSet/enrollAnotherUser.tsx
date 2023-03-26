@@ -10,7 +10,7 @@ import {
 	useEnrollAnotherUserToCourseMutation,
 } from "../../redux/course.api";
 import { useGetCategoriesQuery } from "../../../Category/redux/category.api";
-import Loader from "../../../../Components/UI-KIT/Loader";
+import Loader, { AbsoluteLoader } from "../../../../Components/UI-KIT/Loader";
 import CourseResultType from "../../../../Components/UI-KIT/Course/course-props.type";
 import EnrollAnotherUserSettingsBodyWindow from "../../../../Components/ModalWindows/Body/EnrollAnotherUserSettingsBodyWindow";
 import { useGetUsersByNameMutation } from "../../../User/redux/user.api";
@@ -24,6 +24,7 @@ export const EnrollAnotherUserToCourse: FC<
 	const queryAuth = {
 		authToken: auth.token ?? "",
 	};
+	const [loaderWindow, setLoaderWindow] = useState<boolean>(false);
 
 	const [open, setOpen] = useState<boolean>(false);
 
@@ -36,6 +37,7 @@ export const EnrollAnotherUserToCourse: FC<
 
 	const getUsers = useCallback(
 		(nameUser: string) => {
+			setLoaderWindow(true);
 			getUser({ ...queryAuth, q: nameUser });
 		},
 		[enrollAnotherUserToCourse]
@@ -60,13 +62,16 @@ export const EnrollAnotherUserToCourse: FC<
 			) {
 				if (resultGetUser.data) {
 					toast.success("Пользователь найден");
+					setLoaderWindow(false);
 					setOpen(false);
 					enrollAnotherUser(resultGetUser.data.id);
 				} else {
 					toast.error("Ошибка: пользователь не найден");
+					setLoaderWindow(false);
 				}
 			} else {
 				toast.error("Ошибка: пользователь не найден");
+				setLoaderWindow(false);
 			}
 		}
 	}, [resultGetUser]);
@@ -82,7 +87,9 @@ export const EnrollAnotherUserToCourse: FC<
 				toast.success("Пользователь добавлен в курс");
 				setOpen(false);
 				refetch && refetch();
+				setLoaderWindow(false);
 			} else {
+				setLoaderWindow(false);
 				resultEnrollAnotherUserToCourse.data?.message?.forEach((e) => {
 					toast.error(`Ошибка:${e}`);
 				});
@@ -102,17 +109,20 @@ export const EnrollAnotherUserToCourse: FC<
 					isOpen={open}
 					title={"Добавление пользователя в курс"}
 				>
-					{data?.data ? (
-						<EnrollAnotherUserSettingsBodyWindow
-							initialValues={{ name: "" }}
-							sendData={async (data: string) => {
-								return getUsers(data);
-							}}
-							handleClose={() => setOpen(false)}
-						/>
-					) : (
-						<Loader />
-					)}
+					<>
+						{loaderWindow && <AbsoluteLoader />}
+						{data?.data ? (
+							<EnrollAnotherUserSettingsBodyWindow
+								initialValues={{ name: "" }}
+								sendData={async (data: string) => {
+									return getUsers(data);
+								}}
+								handleClose={() => setOpen(false)}
+							/>
+						) : (
+							<Loader />
+						)}
+					</>
 				</WindowFormik>
 			)}
 		</>

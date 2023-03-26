@@ -18,8 +18,11 @@ const logout = (status: RequestStatusesType): RequestStatusesType => {
 				key: String(localStorage.key(i)),
 			});
 		}
-		if (window.location.pathname.indexOf("/auth/") !== 0) {
-			window.location.href = "/";
+		if (
+			window.location.pathname.indexOf("/auth") !== 0 &&
+			location.pathname !== "/"
+		) {
+			window.location.href = "/no_auth";
 		}
 	}
 

@@ -5,7 +5,7 @@ import { QueryStatus } from "@reduxjs/toolkit/query";
 import { ReactComponent as IcoSettings } from "Icons/Settings2.svg";
 
 import WindowFormik from "../../../../Components/ModalWindows/WrappersModalWindows/Formik";
-import Loader from "../../../../Components/UI-KIT/Loader";
+import Loader, { AbsoluteLoader } from "../../../../Components/UI-KIT/Loader";
 import CourseResultType from "../../../../Components/UI-KIT/Course/course-props.type";
 import { useAppSelector } from "../../../../Hooks/redux";
 import { IDocumentState } from "../../redux/document.slice";
@@ -28,6 +28,7 @@ export const DocumentUpdate: FC<LessonSetProps> = ({
 	idDocument,
 	setLoader,
 }) => {
+	const [loaderWindow, setLoaderWindow] = useState<boolean>(false);
 	const auth = useAppSelector((state) => state.auth);
 	const queryAuth = {
 		authToken: auth.token ?? "",
@@ -43,7 +44,7 @@ export const DocumentUpdate: FC<LessonSetProps> = ({
 
 	const update = useCallback(
 		(res: IDocumentState) => {
-			setLoader(true);
+			setLoaderWindow(true);
 			updateDocument({
 				...queryAuth,
 				data: res,
@@ -54,7 +55,7 @@ export const DocumentUpdate: FC<LessonSetProps> = ({
 
 	const remove = useCallback(
 		(id: string) => {
-			setLoader(true);
+			setLoaderWindow(true);
 			removeDocument({
 				...queryAuth,
 				id,
@@ -71,12 +72,15 @@ export const DocumentUpdate: FC<LessonSetProps> = ({
 			) {
 				toast.success("Документ изменен");
 				setOpen(false);
+				setLoaderWindow(false);
+				setLoader(true);
 				refetch && refetch();
 				setTimeout(() => setLoader(false), 2000);
 			} else {
+				setLoaderWindow(false);
+				setTimeout(() => setLoader(false), 2000);
 				resultUpdateLesson.data?.message?.forEach((e) => {
 					toast.error(`Ошибка:${e}`);
-					setTimeout(() => setLoader(false), 2000);
 				});
 			}
 		}
@@ -90,12 +94,15 @@ export const DocumentUpdate: FC<LessonSetProps> = ({
 			) {
 				toast.success("Документ удален");
 				setOpen(false);
+				setLoaderWindow(false);
+				setLoader(true);
 				refetch && refetch();
 				setTimeout(() => setLoader(false), 2000);
 			} else {
+				setLoaderWindow(false);
+				setTimeout(() => setLoader(false), 2000);
 				resultRemoveDocument.data?.message?.forEach((e) => {
 					toast.error(`Ошибка:${e}`);
-					setTimeout(() => setLoader(false), 2000);
 				});
 			}
 		}
@@ -127,6 +134,7 @@ export const DocumentUpdate: FC<LessonSetProps> = ({
 				title={"Редактирование документа"}
 			>
 				<>
+					{loaderWindow && <AbsoluteLoader />}
 					{document.data ? (
 						<DocumentSettingsBodyWindow
 							initialValues={document.data}

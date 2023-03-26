@@ -39,16 +39,17 @@ const Accordion: FC<
 		<ST.Accordion
 			open={openMobile}
 			onClick={() => !openMobile && setOpenMobile(true)}
+			isLoading={loader}
 		>
-			<ST.Title>
-				Модули курса: <Close onClick={() => setOpenMobile(false)} />
-			</ST.Title>
-			<ST.Wrapper>
-				{loader && (
-					<ST.LoaderWrapper>
-						<Loader />
-					</ST.LoaderWrapper>
-				)}
+			{loader && (
+				<ST.LoaderWrapper>
+					<Loader />
+				</ST.LoaderWrapper>
+			)}
+			<ST.Wrapper isLoading={loader}>
+				<ST.Title>
+					Модули курса: <Close onClick={() => setOpenMobile(false)} />
+				</ST.Title>
 				{sortPosition(array).map((module, indexModule) => (
 					<ST.WrapperItem key={`Accordion-module-${module.id}`}>
 						<ST.WrapperModule

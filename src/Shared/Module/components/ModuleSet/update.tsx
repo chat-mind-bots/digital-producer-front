@@ -16,7 +16,7 @@ import {
 import { useAppSelector } from "../../../../Hooks/redux";
 import RequestStatuses from "../../../../Constants/RequestStatuses";
 import CourseResultType from "../../../../Components/UI-KIT/Course/course-props.type";
-import Loader from "../../../../Components/UI-KIT/Loader";
+import Loader, { AbsoluteLoader } from "../../../../Components/UI-KIT/Loader";
 import ModuleSettingsBodyWindow from "../../../../Components/ModalWindows/Body/ModuleSettingsBodyWindow";
 
 type ModuleUpdateProps = Pick<CourseResultType, "refetch"> &
@@ -29,6 +29,7 @@ export const ModuleUpdate: FC<ModuleUpdateProps> = ({
 	refetch,
 	setLoader,
 }) => {
+	const [loaderWindow, setLoaderWindow] = useState<boolean>(false);
 	const auth = useAppSelector((state) => state.auth);
 	const queryAuth: GetModuleApiProps = {
 		authToken: auth.token ?? "",
@@ -44,7 +45,7 @@ export const ModuleUpdate: FC<ModuleUpdateProps> = ({
 
 	const update = useCallback(
 		(res: IModuleState) => {
-			setLoader(true);
+			setLoaderWindow(true);
 			updateModule({
 				...queryAuth,
 				data: res,
@@ -55,7 +56,7 @@ export const ModuleUpdate: FC<ModuleUpdateProps> = ({
 
 	const remove = useCallback(
 		(id: string) => {
-			setLoader(true);
+			setLoaderWindow(true);
 			removeModule({
 				...queryAuth,
 				id,
@@ -72,11 +73,14 @@ export const ModuleUpdate: FC<ModuleUpdateProps> = ({
 			) {
 				toast.success("Модуль изменен");
 				setOpen(false);
+				setLoaderWindow(false);
+				setLoader(true);
 				refetch && refetch();
 				setTimeout(() => setLoader(false), 2000);
 			} else {
+				setLoaderWindow(false);
+				setTimeout(() => setLoader(false), 2000);
 				resultUpdateModule.data?.message?.forEach((e) => {
-					setTimeout(() => setLoader(false), 2000);
 					toast.error(`Ошибка:${e}`);
 				});
 			}
@@ -91,12 +95,15 @@ export const ModuleUpdate: FC<ModuleUpdateProps> = ({
 			) {
 				toast.success("Модуль удален");
 				setOpen(false);
+				setLoaderWindow(false);
+				setLoader(true);
 				refetch && refetch();
 				setTimeout(() => setLoader(false), 2000);
 			} else {
+				setLoaderWindow(false);
+				setTimeout(() => setLoader(false), 2000);
 				resultRemoveModule.data?.message?.forEach((e) => {
 					toast.error(`Ошибка:${e}`);
-					setTimeout(() => setLoader(false), 2000);
 				});
 			}
 		}
@@ -128,6 +135,7 @@ export const ModuleUpdate: FC<ModuleUpdateProps> = ({
 				title={"Редактирование модуля"}
 			>
 				<>
+					{loaderWindow && <AbsoluteLoader />}
 					{module.data ? (
 						<ModuleSettingsBodyWindow
 							initialValues={module.data}

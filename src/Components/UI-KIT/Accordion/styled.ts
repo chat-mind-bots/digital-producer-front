@@ -7,7 +7,7 @@ type Props = {
 	isActive: boolean;
 };
 
-export const Accordion = styled.div<{ open: boolean }>`
+export const Accordion = styled.div<{ open: boolean; isLoading?: boolean }>`
 	width: 344px;
 	background: ${Colors.WHITE};
 	border-radius: 16px;
@@ -18,18 +18,23 @@ export const Accordion = styled.div<{ open: boolean }>`
 	top: 129px;
 	position: sticky;
 	border: 2px solid ${Colors.WHITE2};
-	overflow-y: auto;
+	overflow-y: ${({ isLoading }) => (isLoading ? "hidden" : "auto")};
+	min-height: ${({ isLoading }) => (isLoading ? "357px" : "100px")};
+	transition: 1s;
 	max-height: 357px;
 	&::-webkit-scrollbar {
 		width: 0;
 		border-radius: 10px;
 	}
 	@media (max-width: ${BreakPoints.TABLET}px) {
+		transform: translate(${({ open }) => (open ? "0" : "354")}px, 0px);
 		position: fixed;
 		right: 30px;
-		z-index: 9;
+		z-index: 9999999999999999999;
 	}
 	@media (max-width: ${BreakPoints.MOBILE}px) {
+		transform: translate(0, 0);
+		min-height: ${({ isLoading }) => (isLoading ? "100%" : "50px")};
 		width: ${({ open }) => (open ? "100%" : "50px")};
 		max-width: ${({ open }) => (open ? "100%" : null)};
 		height: ${({ open }) => (open ? "100vh" : "50px")};
@@ -43,7 +48,7 @@ export const Accordion = styled.div<{ open: boolean }>`
 		bottom: ${({ open }) => (open ? "auto" : "12px")};
 		z-index: 999999999999;
 		transition: 0.3s;
-		& > p {
+		& p {
 			opacity: ${({ open }) => (open ? "1" : "0")};
 		}
 		&:after {
@@ -66,10 +71,12 @@ export const Title = styled.p`
 	font-size: 18px;
 	line-height: 140%;
 	color: ${Colors.BLACK1};
+	margin-bottom: 12px;
+	width: 100%;
 	& > svg {
 		display: none;
 	}
-	@media (max-width: ${BreakPoints.MOBILE}px) {
+	@media (max-width: ${BreakPoints.TABLET}px) {
 		& > svg {
 			display: block;
 		}
@@ -102,12 +109,11 @@ export const Name = styled.p<Props>`
 	}
 `;
 
-export const Wrapper = styled.div`
-	display: flex;
+export const Wrapper = styled.div<{ isLoading?: boolean }>`
 	flex-wrap: wrap;
 	gap: 8px;
-	margin-top: 14px;
 	width: 100%;
+	display: ${({ isLoading }) => (isLoading ? "none" : "flex")};
 	@media (max-width: ${BreakPoints.MOBILE}px) {
 		max-height: 309px;
 		overflow: auto;
@@ -238,4 +244,23 @@ export const LoaderWrapper = styled.div`
 	display: flex;
 	align-items: center;
 	justify-content: center;
+`;
+
+export const OpenTablet = styled.div<{ isOpen: boolean }>`
+	opacity: ${({ isOpen }) => (isOpen ? "0" : "1")};
+	position: absolute;
+	left: 0;
+	top: -10px;
+	z-index: 9999;
+	background: ${Colors.BLUE};
+	width: 36px;
+	height: 100%;
+	transform: translate(-50%, 10px);
+	transition: 0.5s;
+	@media (min-width: ${BreakPoints.TABLET}px) {
+		display: none;
+	}
+	@media (max-width: ${BreakPoints.MOBILE}px) {
+		display: none;
+	}
 `;

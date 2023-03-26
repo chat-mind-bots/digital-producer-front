@@ -16,6 +16,7 @@ import {
 import { useAppSelector } from "../../../../Hooks/redux";
 import RequestStatuses from "../../../../Constants/RequestStatuses";
 import CourseResultType from "../../../../Components/UI-KIT/Course/course-props.type";
+import { AbsoluteLoader } from "../../../../Components/UI-KIT/Loader";
 
 type ModuleCreateProps = Pick<CourseResultType, "refetch"> &
 	Pick<AddModuleToCourseApiProps, "idCourse"> & {
@@ -31,6 +32,7 @@ export const ModuleCreate: FC<ModuleCreateProps> = ({
 	const queryAuth: GetModuleApiProps = {
 		authToken: auth.token ?? "",
 	};
+	const [loaderWindow, setLoaderWindow] = useState<boolean>(false);
 
 	const [open, setOpen] = useState<boolean>(false);
 
@@ -40,7 +42,7 @@ export const ModuleCreate: FC<ModuleCreateProps> = ({
 
 	const create = useCallback(
 		(res: IModuleState) => {
-			setLoader(true);
+			setLoaderWindow(true);
 			createModule({
 				...queryAuth,
 				data: res,
@@ -62,8 +64,11 @@ export const ModuleCreate: FC<ModuleCreateProps> = ({
 					idCourse: idCourse,
 				};
 				setOpen(false);
+				setLoaderWindow(false);
+				setLoader(true);
 				addCourseToModule(query);
 			} else {
+				setLoaderWindow(false);
 				resultCreateModule.data?.message?.forEach((e) => {
 					toast.error(`Ошибка:${e}`);
 				});
@@ -81,9 +86,9 @@ export const ModuleCreate: FC<ModuleCreateProps> = ({
 				refetch && refetch();
 				setTimeout(() => setLoader(false), 2000);
 			} else {
+				setTimeout(() => setLoader(false), 2000);
 				resultCreateModule.data?.message?.forEach((e) => {
 					toast.error(`Ошибка:${e}`);
-					setTimeout(() => setLoader(false), 2000);
 				});
 			}
 		}
@@ -113,13 +118,16 @@ export const ModuleCreate: FC<ModuleCreateProps> = ({
 					isOpen={open}
 					title={"Создание модуля"}
 				>
-					<ModuleSettingsBodyWindow
-						initialValues={initialModuleState}
-						sendData={async (data: IModuleState) => {
-							return create(data);
-						}}
-						handleClose={() => setOpen(false)}
-					/>
+					<>
+						{loaderWindow && <AbsoluteLoader />}
+						<ModuleSettingsBodyWindow
+							initialValues={initialModuleState}
+							sendData={async (data: IModuleState) => {
+								return create(data);
+							}}
+							handleClose={() => setOpen(false)}
+						/>
+					</>
 				</WindowFormik>
 			)}
 		</>

@@ -40,12 +40,19 @@ export const Title = styled.p`
 	word-wrap: break-word;
 	-webkit-box-orient: vertical;
 	overflow: hidden;
+	@media (max-width: ${BreakPoints.MOBILE}px) {
+		font-size: 27px;
+	}
 `;
 
 export const WrapperInfo = styled.div`
 	padding: 48px 36px;
 	max-width: 327px;
 	width: 100%;
+	@media (max-width: ${BreakPoints.MOBILE}px) {
+		padding: 12px 12px 24px 24px;
+		width: auto;
+	}
 `;
 
 export const Description = styled.p`
@@ -61,6 +68,9 @@ export const Description = styled.p`
 	word-wrap: break-word;
 	-webkit-box-orient: vertical;
 	overflow: hidden;
+	@media (max-width: ${BreakPoints.MOBILE}px) {
+		padding-right: 0;
+	}
 `;
 
 export const WrapperButton = styled.div`

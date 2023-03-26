@@ -9,6 +9,20 @@ export const Loader = styled.div`
 	display: flex;
 `;
 
+export const AbsoluteLoader = styled.div`
+	position: absolute;
+	z-index: 2;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+	background: #fff;
+	border-radius: 12px;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+`;
+
 export const WrapperAnimation = styled.div`
 	position: relative;
 	width: 60px;

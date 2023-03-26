@@ -17,7 +17,7 @@ import {
 import { useAppSelector } from "../../../../Hooks/redux";
 import RequestStatuses from "../../../../Constants/RequestStatuses";
 import CourseResultType from "../../../../Components/UI-KIT/Course/course-props.type";
-import Loader from "../../../../Components/UI-KIT/Loader";
+import Loader, { AbsoluteLoader } from "../../../../Components/UI-KIT/Loader";
 
 type LessonSetProps = Pick<AddLessonToModuleApiProps, "idLesson"> &
 	Pick<CourseResultType, "refetch"> & {
@@ -29,6 +29,7 @@ export const LessonUpdate: FC<LessonSetProps> = ({
 	refetch,
 	setLoader,
 }) => {
+	const [loaderWindow, setLoaderWindow] = useState<boolean>(false);
 	const auth = useAppSelector((state) => state.auth);
 	const queryAuth: GetLessonApiProps = {
 		authToken: auth.token ?? "",
@@ -44,7 +45,7 @@ export const LessonUpdate: FC<LessonSetProps> = ({
 
 	const update = useCallback(
 		(res: ILessonState) => {
-			setLoader(true);
+			setLoaderWindow(true);
 			updateLesson({
 				...queryAuth,
 				data: res,
@@ -55,7 +56,7 @@ export const LessonUpdate: FC<LessonSetProps> = ({
 
 	const remove = useCallback(
 		(id: string) => {
-			setLoader(true);
+			setLoaderWindow(true);
 			removeLesson({
 				...queryAuth,
 				id,
@@ -72,12 +73,15 @@ export const LessonUpdate: FC<LessonSetProps> = ({
 			) {
 				toast.success("Урок изменен");
 				setOpen(false);
+				setLoaderWindow(false);
+				setLoader(true);
 				refetch && refetch();
 				setTimeout(() => setLoader(false), 2000);
 			} else {
+				setLoaderWindow(false);
+				setTimeout(() => setLoader(false), 2000);
 				resultUpdateLesson.data?.message?.forEach((e) => {
 					toast.error(`Ошибка:${e}`);
-					setTimeout(() => setLoader(false), 2000);
 				});
 			}
 		}
@@ -91,12 +95,15 @@ export const LessonUpdate: FC<LessonSetProps> = ({
 			) {
 				toast.success("Урок удален");
 				setOpen(false);
+				setLoaderWindow(false);
+				setLoader(true);
 				refetch && refetch();
 				setTimeout(() => setLoader(false), 2000);
 			} else {
+				setLoaderWindow(false);
+				setTimeout(() => setLoader(false), 2000);
 				resultRemoveLesson.data?.message?.forEach((e) => {
 					toast.error(`Ошибка:${e}`);
-					setTimeout(() => setLoader(false), 2000);
 				});
 			}
 		}
@@ -128,6 +135,7 @@ export const LessonUpdate: FC<LessonSetProps> = ({
 				title={"Редактирование урока"}
 			>
 				<>
+					{loaderWindow && <AbsoluteLoader />}
 					{lesson.data ? (
 						<LessonSettingsBodyWindow
 							initialValues={lesson.data}

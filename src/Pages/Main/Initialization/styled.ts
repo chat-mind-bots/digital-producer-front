@@ -37,3 +37,7 @@ export const Title = styled.div<TitleProps>`
 	text-align: center;
 	width: 100%;
 `;
+
+export const WrapperButton = styled.div`
+	margin-top: 28px;
+`;

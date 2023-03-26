@@ -16,6 +16,7 @@ import {
 import { useAppSelector } from "../../../../Hooks/redux";
 import RequestStatuses from "../../../../Constants/RequestStatuses";
 import CourseResultType from "../../../../Components/UI-KIT/Course/course-props.type";
+import { AbsoluteLoader } from "../../../../Components/UI-KIT/Loader";
 
 type LessonCreateProps = Pick<AddLessonToModuleApiProps, "idModule"> &
 	Pick<CourseResultType, "refetch"> & {
@@ -31,6 +32,7 @@ export const LessonCreate: FC<LessonCreateProps> = ({
 	const queryAuth: GetLessonApiProps = {
 		authToken: auth.token ?? "",
 	};
+	const [loaderWindow, setLoaderWindow] = useState<boolean>(false);
 
 	const [open, setOpen] = useState<boolean>(false);
 
@@ -40,7 +42,7 @@ export const LessonCreate: FC<LessonCreateProps> = ({
 
 	const create = useCallback(
 		(res: ILessonState) => {
-			setLoader(true);
+			setLoaderWindow(true);
 			createLesson({
 				...queryAuth,
 				data: res,
@@ -62,8 +64,11 @@ export const LessonCreate: FC<LessonCreateProps> = ({
 					idModule: idModule,
 				};
 				setOpen(false);
+				setLoaderWindow(false);
+				setLoader(true);
 				addLessonToModule(query);
 			} else {
+				setLoaderWindow(false);
 				resultCreateLesson.data?.message?.forEach((e) => {
 					toast.error(`Ошибка:${e}`);
 				});
@@ -81,9 +86,9 @@ export const LessonCreate: FC<LessonCreateProps> = ({
 				refetch && refetch();
 				setTimeout(() => setLoader(false), 2000);
 			} else {
+				setTimeout(() => setLoader(false), 2000);
 				resultCreateLesson.data?.message?.forEach((e) => {
 					toast.error(`Ошибка:${e}`);
-					setTimeout(() => setLoader(false), 2000);
 				});
 			}
 		}
@@ -114,13 +119,16 @@ export const LessonCreate: FC<LessonCreateProps> = ({
 					isOpen={open}
 					title={"Создание урока"}
 				>
-					<LessonSettingsBodyWindow
-						initialValues={initialLessonState}
-						sendData={async (data: ILessonState) => {
-							return create(data);
-						}}
-						handleClose={() => setOpen(false)}
-					/>
+					<>
+						{loaderWindow && <AbsoluteLoader />}
+						<LessonSettingsBodyWindow
+							initialValues={initialLessonState}
+							sendData={async (data: ILessonState) => {
+								return create(data);
+							}}
+							handleClose={() => setOpen(false)}
+						/>
+					</>
 				</WindowFormik>
 			)}
 		</>

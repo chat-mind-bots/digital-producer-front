@@ -13,6 +13,7 @@ import {
 import { initialTestState, ITestState } from "../../redux/test.slice";
 import TestSettingsBodyWindow from "../../../../Components/ModalWindows/Body/TestSettingsBodyWindow";
 import TestCardProducer from "../../../../Components/UI-KIT/TestCard/Producer";
+import { AbsoluteLoader } from "../../../../Components/UI-KIT/Loader";
 
 type TestCreateProps = Pick<CourseResultType, "refetch"> &
 	Pick<AddTestToLessonApiProps, "idLesson">;
@@ -22,17 +23,20 @@ export const TestCreate: FC<TestCreateProps> = ({ idLesson, refetch }) => {
 	const queryAuth = {
 		authToken: auth.token ?? "",
 	};
+	const [loaderWindow, setLoaderWindow] = useState<boolean>(false);
 
 	const [open, setOpen] = useState<boolean>(false);
 
 	const [createTest, resultCreateTest] = useCreateTestMutation();
 
 	const create = useCallback(
-		(res: ITestState) =>
+		(res: ITestState) => {
+			setLoaderWindow(true);
 			createTest({
 				...queryAuth,
 				data: { ...res, lessonId: idLesson },
-			}),
+			});
+		},
 		[createTest]
 	);
 
@@ -44,6 +48,7 @@ export const TestCreate: FC<TestCreateProps> = ({ idLesson, refetch }) => {
 			) {
 				toast.success("Тест создан");
 				setOpen(false);
+				setLoaderWindow(false);
 				refetch && refetch();
 			} else {
 				resultCreateTest.data?.message?.forEach((e) => {
@@ -65,13 +70,16 @@ export const TestCreate: FC<TestCreateProps> = ({ idLesson, refetch }) => {
 					isOpen={open}
 					title={"Создание теста"}
 				>
-					<TestSettingsBodyWindow
-						initialValues={initialTestState}
-						sendData={async (data: ITestState) => {
-							return create(data);
-						}}
-						handleClose={() => setOpen(false)}
-					/>
+					<>
+						{loaderWindow && <AbsoluteLoader />}
+						<TestSettingsBodyWindow
+							initialValues={initialTestState}
+							sendData={async (data: ITestState) => {
+								return create(data);
+							}}
+							handleClose={() => setOpen(false)}
+						/>
+					</>
 				</WindowFormik>
 			)}
 

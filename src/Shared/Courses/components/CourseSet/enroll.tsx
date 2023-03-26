@@ -16,8 +16,9 @@ export const EnrollToCourse: FC<
 	Pick<CourseResultType, "refetch"> &
 		Pick<EnrollToCourseApiProps, "idCourse"> & {
 			disabled?: boolean;
+			setLoading: (e: boolean) => void;
 		}
-> = ({ refetch, idCourse, disabled }) => {
+> = ({ refetch, idCourse, disabled, setLoading }) => {
 	const auth = useAppSelector((state) => state.auth);
 	const queryAuth = {
 		authToken: auth.token ?? "",
@@ -26,11 +27,13 @@ export const EnrollToCourse: FC<
 	const [enrollToCourse, resultEnrollToCourse] = useEnrollToCourseMutation();
 
 	const enroll = useCallback(
-		(idCourse: string) =>
+		(idCourse: string) => {
+			setLoading(true);
 			enrollToCourse({
 				...queryAuth,
 				idCourse: idCourse,
-			}),
+			});
+		},
 		[enrollToCourse]
 	);
 
@@ -42,7 +45,9 @@ export const EnrollToCourse: FC<
 			) {
 				toast.success("Курс успешно добавлен в корзину");
 				refetch && refetch();
+				setTimeout(() => setLoading(false), 2000);
 			} else {
+				setLoading(false);
 				resultEnrollToCourse.data?.message?.forEach((e) => {
 					toast.error(`Ошибка:${e}`);
 				});

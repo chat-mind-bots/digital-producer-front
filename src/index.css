@@ -135,15 +135,23 @@ select:-webkit-autofill:focus {
 	min-height: 100vh;
 }
 
-@media (max-width: 453px) {
-	span.time-wrap {
-		display: none;
-	}
-}
-
 .react-tooltip{
 	background: rgb(46, 108, 238);
 	z-index: 99999999999999;
 	font-size: 14px;
 	font-family: "Vela Sans";
 }
+
+@media (max-width: 453px) {
+	span.time-wrap {
+		display: none;
+	}
+}
+
+@media (max-width: 979px) {
+	.react-tooltip{
+		display: none;
+	}
+}
+
+
