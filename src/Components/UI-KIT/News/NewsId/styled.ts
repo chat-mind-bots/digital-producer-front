@@ -5,7 +5,7 @@ import Colors from "Constants/Colors";
 
 export const NewsView = styled.div`
 	width: 100%;
-	max-width: 730px;
+	max-width: 764px;
 	box-sizing: border-box;
 `;
 

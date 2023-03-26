@@ -52,15 +52,18 @@ export const Accordion = styled.div<{ open: boolean; isLoading?: boolean }>`
 			opacity: ${({ open }) => (open ? "1" : "0")};
 		}
 		&:after {
-			content: ${({ open }) => (open ? null : "'+'")};
+			content: ${({ open }) => (open ? null : "url(/image/Book.svg)")};
 			position: absolute;
 			top: 50%;
 			left: 50%;
 			transform: translate(-50%, -50%);
-			color: ${Colors.WHITE};
-			font-family: "Vela Sans";
+			color: rgb(255, 255, 255);
 			font-weight: 700;
 			font-size: 22px;
+			height: 23px;
+			text-align: center;
+			display: table-cell;
+			vertical-align: middle;
 		}
 	}
 `;

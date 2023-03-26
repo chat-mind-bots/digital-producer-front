@@ -64,3 +64,8 @@ export const CountAll = styled.p`
 	justify-content: center;
 	display: flex;
 `;
+
+export const WrapperButtons = styled.div`
+	width: 100%;
+	display: flex;
+`;

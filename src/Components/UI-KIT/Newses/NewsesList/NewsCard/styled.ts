@@ -57,6 +57,12 @@ export const Title = styled.p`
 	line-height: 140%;
 	color: ${Colors.BLACK1};
 	margin-top: 10px;
+	text-overflow: ellipsis;
+	overflow: hidden;
+	-webkit-line-clamp: 2;
+	display: -webkit-box;
+	overflow-wrap: break-word;
+	-webkit-box-orient: vertical;
 `;
 
 export const Description = styled.p`

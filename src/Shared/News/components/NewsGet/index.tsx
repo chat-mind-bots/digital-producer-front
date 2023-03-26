@@ -6,6 +6,9 @@ import NewsResultType from "Components/UI-KIT/News/news-props.type";
 import Loader from "Components/UI-KIT/Loader";
 
 import { GetNewsApiProps, useGetNewsQuery } from "../../redux/news.api";
+import RequestStatuses from "../../../../Constants/RequestStatuses";
+import NotFound from "../../../../Pages/NotFound";
+import * as ST from "./styled";
 
 type NewsGetProps = Record<"children", React.ReactElement<NewsResultType>>;
 
@@ -19,14 +22,20 @@ const NewsGet: FC<NewsGetProps> = ({ children }) => {
 	const { data, refetch } = useGetNewsQuery(query);
 
 	return data ? (
-		<>
-			{Children.toArray(children).map((child) =>
-				cloneElement(child as React.ReactElement<NewsResultType>, {
-					result: data,
-					refetch: refetch,
-				})
-			)}
-		</>
+		data?.statusCode === RequestStatuses.SUCCESS ? (
+			<>
+				{Children.toArray(children).map((child) =>
+					cloneElement(child as React.ReactElement<NewsResultType>, {
+						result: data,
+						refetch: refetch,
+					})
+				)}
+			</>
+		) : (
+			<ST.NotFoundWrapper>
+				<NotFound />
+			</ST.NotFoundWrapper>
+		)
 	) : (
 		<Loader />
 	);

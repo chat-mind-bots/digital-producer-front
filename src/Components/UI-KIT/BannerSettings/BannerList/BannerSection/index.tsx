@@ -100,7 +100,7 @@ const BannerSection: FC<BannerSectionProps> = ({
 									<ST.WrapperFunctionsButtons isMax={true}>
 										<ST.WrapperFunctionButton>
 											<Button
-												title={`Добаввить ${type}`}
+												title={`Добавить ${type}`}
 												padding={"10px 16px"}
 												fontSize={"16px"}
 												lineHeight={"20px"}
@@ -127,7 +127,7 @@ const BannerSection: FC<BannerSectionProps> = ({
 												.map((e, index) => (
 													<Button
 														key={`BannerSection-BANNER_SLIDER-${e.id}`}
-														title={`Редактироввать ${type} ${e.title}`}
+														title={`Редактировать ${type} ${e.title}`}
 														padding={"10px 16px"}
 														fontSize={"16px"}
 														lineHeight={"20px"}
@@ -154,7 +154,7 @@ const BannerSection: FC<BannerSectionProps> = ({
 									<ST.WrapperFunctionsButtons isMax={false}>
 										{result?.filter((i) => i.type === type)[0] ? (
 											<Button
-												title={`Редактироввать ${type}`}
+												title={`Редактировать ${type}`}
 												padding={"10px 16px"}
 												fontSize={"16px"}
 												lineHeight={"20px"}
@@ -175,7 +175,7 @@ const BannerSection: FC<BannerSectionProps> = ({
 											/>
 										) : (
 											<Button
-												title={`Добаввить ${type}`}
+												title={`Добавить ${type}`}
 												padding={"10px 16px"}
 												fontSize={"16px"}
 												lineHeight={"20px"}

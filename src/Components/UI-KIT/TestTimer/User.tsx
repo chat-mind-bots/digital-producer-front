@@ -1,5 +1,6 @@
 import React, { Dispatch, FC, useEffect, useState } from "react";
 import { toast } from "react-hot-toast";
+import { useNavigate } from "react-router-dom";
 
 import { ReactComponent as Clock } from "Icons/Clock.svg";
 
@@ -34,6 +35,7 @@ const TestTimer: FC<TestTimerProps> = ({
 
 	const CurrentTime = new Date();
 	CurrentTime.setMinutes(CurrentTime.getMinutes() + duration);
+	const navigate = useNavigate();
 
 	return (
 		<ST.TestTimer>
@@ -61,10 +63,27 @@ const TestTimer: FC<TestTimerProps> = ({
 					<ST.Count>{rightAnswers}</ST.Count>
 				</ST.Line>
 			)}
-
-			{!rightAnswers && isButton && (
+			<ST.WrapperButtons>
+				{!rightAnswers && isButton && (
+					<Button
+						title={isStarted ? "Закончить" : "Начать"}
+						padding={"10px 25px"}
+						fontSize={"16px"}
+						lineHeight={"20px"}
+						fontWeight={"400"}
+						background={Colors.BLUE}
+						color={Colors.WHITE}
+						backgroundAnimation={Colors.BLUE}
+						colorHover={Colors.WHITE}
+						border={`1px solid ${Colors.RGBA_GREY}`}
+						width={"100%"}
+						onClick={() =>
+							isStarted ? finishTestHandler() : setStartTest(true)
+						}
+					/>
+				)}
 				<Button
-					title={isStarted ? "Закончить" : "Начать"}
+					title={"Назад"}
 					padding={"10px 25px"}
 					fontSize={"16px"}
 					lineHeight={"20px"}
@@ -75,9 +94,9 @@ const TestTimer: FC<TestTimerProps> = ({
 					colorHover={Colors.WHITE}
 					border={`1px solid ${Colors.RGBA_GREY}`}
 					width={"100%"}
-					onClick={() => (isStarted ? finishTestHandler() : setStartTest(true))}
+					onClick={() => navigate(-1)}
 				/>
-			)}
+			</ST.WrapperButtons>
 		</ST.TestTimer>
 	);
 };

@@ -128,6 +128,9 @@ export const WrapperButton = styled.div`
 
 export const WrapperInfoContent = styled.div`
 	width: 100%;
+	& > div {
+		margin-top: 0;
+	}
 `;
 
 export const ImageWrapper = styled.div`

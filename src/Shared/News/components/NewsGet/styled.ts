@@ -21,3 +21,7 @@ export const WrapperNews = styled.div`
 		max-width: 100%;
 	}
 `;
+
+export const NotFoundWrapper = styled.div`
+	margin: auto;
+`;
