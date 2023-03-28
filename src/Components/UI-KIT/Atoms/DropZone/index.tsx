@@ -1,9 +1,10 @@
 import React, { FC, useRef } from "react";
-import toast from "react-hot-toast";
+import { toast } from "react-hot-toast";
 
 import * as ST from "./styled";
 import ErrText from "../Input/ErrText";
 import { useAppSelector } from "../../../../Hooks/redux";
+import RequestStatuses from "../../../../Constants/RequestStatuses";
 
 type DropZoneProps = {
 	setUrl: (utl: string) => void;
@@ -34,7 +35,7 @@ const DropZone: FC<DropZoneProps> = ({
 		const xhr = new XMLHttpRequest();
 		xhr.onreadystatechange = function () {
 			if (xhr.readyState == XMLHttpRequest.DONE) {
-				setUrl(JSON.parse(xhr.response).url);
+				JSON.parse(xhr.response).url && setUrl(JSON.parse(xhr.response).url);
 			}
 		};
 		xhr.upload.addEventListener("progress", ProgressHandler, false);
@@ -48,7 +49,9 @@ const DropZone: FC<DropZoneProps> = ({
 	};
 
 	const ErrorHandler = () => {
-		toast.error("Произошла ошибка, попробуйте позже");
+		toast.error(
+			"Произошла ошибка, с вашей стороны, выполните все инструкции которые написаны в блоке для загрузки"
+		);
 	};
 	const AbortHandler = () => {
 		toast.error("Произошла ошибка, попробуйте позже");
@@ -59,9 +62,14 @@ const DropZone: FC<DropZoneProps> = ({
 		progressRef.current.value = Math.round(percent);
 	};
 
-	const SuccessHandler = () => {
-		toast.success("Файл успешно загружен");
-		progressRef.current.value = 0;
+	const SuccessHandler = (e: any) => {
+		if (e.srcElement.status === RequestStatuses.SUCCESS_201) {
+			toast.success("Файл успешно загружен");
+			progressRef.current.value = 0;
+		} else {
+			ErrorHandler();
+			progressRef.current.value = 0;
+		}
 	};
 
 	const formatCurrent = `${format.map((e) => `.${e}`)}`;
@@ -81,7 +89,9 @@ const DropZone: FC<DropZoneProps> = ({
 				/>
 				{value
 					? value
-					: `Выберите файл формата: ${formatCurrent}, на латинице без пробелов.`}
+					: `Выберите файл формата: ${formatCurrent},${
+							type === "video" ? "Файл не должен превышать 200мб." : ""
+					  } Все символы должны быть на латинице также название файла без пробелов.`}
 				<ST.Progress
 					ref={progressRef}
 					value="0"

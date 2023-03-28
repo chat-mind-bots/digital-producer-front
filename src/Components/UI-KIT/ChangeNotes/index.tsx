@@ -45,48 +45,54 @@ const ChangeNotes: FC<ChangeNotesProps> = ({
 	return (
 		<>
 			<ST.WrapperNotes>
-				<Input
-					value={name || ""}
-					setValue={(str) => {
-						setFieldValue && setFieldValue(`notes.${index}.name`, str);
-					}}
-					setFocus={(state) => setFieldTouched(`notes.${index}.name`, state)}
-					placeholder={"Ключ"}
-					padding={"10px 14px"}
-					fontSize={"16px"}
-					fontWeight={"400"}
-					borderSize={"1px"}
-				/>
+				<ST.InputWrapper
+					isError={
+						!!(
+							errorTextInput &&
+							touchedTextInput &&
+							JSON.stringify(errorTextInput)?.includes("name")
+						)
+					}
+				>
+					<Input
+						value={name || ""}
+						setValue={(str) => {
+							setFieldValue && setFieldValue(`notes.${index}.name`, str);
+						}}
+						setFocus={(state) => setFieldTouched(`notes.${index}.name`, state)}
+						placeholder={"Ключ"}
+						padding={"10px 14px"}
+						fontSize={"16px"}
+						fontWeight={"400"}
+						borderSize={"1px"}
+					/>
+				</ST.InputWrapper>
 
-				<Input
-					value={value || ""}
-					setValue={(str) => {
-						setFieldValue && setFieldValue(`notes.${index}.value`, str);
-					}}
-					setFocus={(state) => setFieldTouched(`notes.${index}.value`, state)}
-					placeholder={"Значенине"}
-					padding={"10px 14px"}
-					fontSize={"16px"}
-					fontWeight={"400"}
-					borderSize={"1px"}
-				/>
+				<ST.InputWrapper
+					isError={
+						!!(
+							errorTextInput &&
+							touchedTextInput &&
+							JSON.stringify(errorTextInput)?.includes("value")
+						)
+					}
+				>
+					<Input
+						value={value || ""}
+						setValue={(str) => {
+							setFieldValue && setFieldValue(`notes.${index}.value`, str);
+						}}
+						setFocus={(state) => setFieldTouched(`notes.${index}.value`, state)}
+						placeholder={"Значенине"}
+						padding={"10px 14px"}
+						fontSize={"16px"}
+						fontWeight={"400"}
+						borderSize={"1px"}
+					/>
+				</ST.InputWrapper>
 
 				<ST.Remove onClick={() => removeItem(index)}>x</ST.Remove>
 			</ST.WrapperNotes>
-			<ST.ErrText>
-				{errorTextInput && touchedTextInput
-					? JSON.stringify(errorTextInput)
-							.replaceAll("{", "")
-							.replaceAll("}", "")
-							.split(",")
-							.map((el, index) => (
-								<span key={`ChangeTags-err-${index}`}>
-									{el},
-									<br />
-								</span>
-							))
-					: undefined}
-			</ST.ErrText>
 		</>
 	);
 };

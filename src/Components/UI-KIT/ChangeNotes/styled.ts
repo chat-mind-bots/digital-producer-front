@@ -9,10 +9,6 @@ export const WrapperNotes = styled.div`
 	align-items: center;
 `;
 
-export const ErrText = styled.p`
-	color: ${Colors.RED};
-`;
-
 export const Remove = styled.div`
 	min-width: 30px;
 	width: 30px;
@@ -27,5 +23,13 @@ export const Remove = styled.div`
 	transition: 0.3s;
 	&:hover {
 		background: ${Colors.BLUE_DARK};
+	}
+`;
+
+export const InputWrapper = styled.div<{ isError: boolean }>`
+	width: 100%;
+	& > div > div {
+		border: ${({ isError }) =>
+			isError ? `1px solid ${Colors.RED}` : `1px solid ${Colors.GREY1}`};
 	}
 `;

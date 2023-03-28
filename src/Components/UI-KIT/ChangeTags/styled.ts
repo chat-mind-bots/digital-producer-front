@@ -20,7 +20,7 @@ export const WrapperColor = styled.div`
 	width: 100%;
 `;
 
-export const BlockColor = styled.div`
+export const BlockColor = styled.div<{ isError: boolean }>`
 	font-weight: 400;
 	font-size: 16px;
 	line-height: 20px;
@@ -30,20 +30,25 @@ export const BlockColor = styled.div`
 	justify-content: center;
 	height: 40px;
 	width: 100%;
-	border: 1px solid ${Colors.GREY1};
+	border: ${({ isError }) =>
+		isError ? `1px solid ${Colors.RED}` : `1px solid ${Colors.GREY1}`};
 	border-radius: 12px;
 	position: relative;
 	cursor: pointer;
+`;
+
+export const InputWrapper = styled.div<{ isError: boolean }>`
+	width: 100%;
+	& > div > div {
+		border: ${({ isError }) =>
+			isError ? `1px solid ${Colors.RED}` : `1px solid ${Colors.GREY1}`};
+	}
 `;
 
 export const WrapperSketchPicker = styled.div`
 	position: absolute;
 	z-index: 2;
 	top: 100%;
-`;
-
-export const ErrText = styled.p`
-	color: ${Colors.RED};
 `;
 
 export const Remove = styled.div`

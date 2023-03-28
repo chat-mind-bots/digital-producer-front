@@ -51,24 +51,41 @@ const ChangeTags: FC<ChangeTagsProps> = ({
 	return (
 		<>
 			<ST.WrapperTags>
-				<Input
-					value={name || ""}
-					setValue={(str) => {
-						setFieldValue && setFieldValue(`tags.${index}.name`, str);
-					}}
-					setFocus={(state) => setFieldTouched(`tags.${index}.name`, state)}
-					placeholder={"название"}
-					padding={"10px 14px"}
-					fontSize={"16px"}
-					fontWeight={"400"}
-					borderSize={"1px"}
-				/>
+				<ST.InputWrapper
+					isError={
+						!!(
+							errorTextInput &&
+							touchedTextInput &&
+							JSON.stringify(errorTextInput)?.includes("name")
+						)
+					}
+				>
+					<Input
+						value={name || ""}
+						setValue={(str) => {
+							setFieldValue && setFieldValue(`tags.${index}.name`, str);
+						}}
+						setFocus={(state) => setFieldTouched(`tags.${index}.name`, state)}
+						placeholder={"название"}
+						padding={"10px 14px"}
+						fontSize={"16px"}
+						fontWeight={"400"}
+						borderSize={"1px"}
+					/>
+				</ST.InputWrapper>
 
 				<ST.WrapperColor>
 					<ST.BlockColor
 						style={{
 							backgroundColor: background,
 						}}
+						isError={
+							!!(
+								errorTextInput &&
+								touchedTextInput &&
+								JSON.stringify(errorTextInput)?.includes("background")
+							)
+						}
 						onClick={() => setBackgroundWindow(!backgroundWindow)}
 					>
 						{backgroundWindow ? "Закрыть" : "Цвет фона"}
@@ -97,6 +114,13 @@ const ChangeTags: FC<ChangeTagsProps> = ({
 						style={{
 							backgroundColor: color,
 						}}
+						isError={
+							!!(
+								errorTextInput &&
+								touchedTextInput &&
+								JSON.stringify(errorTextInput)?.includes("color")
+							)
+						}
 						onClick={() => setColorWindow(!colorWindow)}
 					>
 						{colorWindow ? "Закрыть" : "Цвет текста"}
@@ -120,20 +144,6 @@ const ChangeTags: FC<ChangeTagsProps> = ({
 				</ST.WrapperColor>
 				<ST.Remove onClick={() => removeItem(index)}>x</ST.Remove>
 			</ST.WrapperTags>
-			<ST.ErrText>
-				{errorTextInput && touchedTextInput
-					? JSON.stringify(errorTextInput)
-							.replaceAll("{", "")
-							.replaceAll("}", "")
-							.split(",")
-							.map((el, index) => (
-								<span key={`ChangeTags-err-${index}`}>
-									{el},
-									<br />
-								</span>
-							))
-					: undefined}
-			</ST.ErrText>
 		</>
 	);
 };
