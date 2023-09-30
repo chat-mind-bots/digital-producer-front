@@ -1,0 +1,16 @@
+import styled from "styled-components";
+
+import Colors from "Constants/Colors";
+
+export const Date = styled.div`
+	font-family: "Vela Sans";
+	font-weight: 700;
+	font-size: 12px;
+	line-height: 120%;
+	color: ${Colors.GREY2};
+	display: flex;
+	align-items: center;
+	gap: 8px;
+`;
+
+export const Value = styled.p``;

@@ -1,25 +1,35 @@
-import React, { Suspense } from 'react';
-import ReactDOM from 'react-dom/client';
-import Router from 'Router';
-import '18n.ts';
-import AddBlock from 'Components/UI-KIT/AddBlock';
-import CourseCard from 'Components/UI-KIT/CourseCard';
-import CardNews from 'Components/UI-KIT/CardNews';
-import Insights from 'Components/UI-KIT/Insights';
-import 'index.css';
+import React from "react";
+import * as ReactDOMClient from "react-dom/client";
+import { createBrowserRouter, RouterProvider } from "react-router-dom";
+import { Provider } from "react-redux";
 
-const root = ReactDOM.createRoot(
-  document.getElementById('root') as HTMLElement
+import { store } from "Store";
+import { Router } from "Router";
+
+import "18n.ts";
+import "react-tooltip/dist/react-tooltip.css";
+import "index.css";
+import ModalToaster from "./Components/ModalWindows/WrappersModalWindows/ModalToaster";
+
+// eslint-disable-next-line import/order
+import { Toaster } from "react-hot-toast";
+
+const root = ReactDOMClient.createRoot(
+	document.getElementById("root") as HTMLElement
 );
 
+const router = createBrowserRouter(Router);
+
 root.render(
-  <React.StrictMode>
-    <Suspense fallback={<div>...loading</div>}>
-      <Insights />
-      <CardNews />
-      <CourseCard />
-      <AddBlock />
-      <Router />
-    </Suspense>
-  </React.StrictMode>
+	<React.StrictMode>
+		<Provider store={store}>
+			<RouterProvider router={router} />
+		</Provider>
+		<ModalToaster>
+			<Toaster
+				position="bottom-left"
+				reverseOrder={false}
+			/>
+		</ModalToaster>
+	</React.StrictMode>
 );

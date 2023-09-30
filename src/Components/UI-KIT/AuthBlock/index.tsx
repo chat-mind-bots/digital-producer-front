@@ -1,0 +1,52 @@
+import React, { useState } from "react";
+import { useTranslation } from "react-i18next";
+
+import Image from "Components/UI-KIT/Atoms/Image";
+import { ReactComponent as ArrowDown } from "Icons/ArrowDown.svg";
+import { ReactComponent as ArrowUp } from "Icons/ArrowUp.svg";
+import { useAppSelector } from "Hooks/redux";
+import logout from "Utils/Logout";
+import RequestStatuses from "Constants/RequestStatuses";
+
+import * as ST from "./styled";
+
+const AuthBlock = () => {
+	const { t } = useTranslation();
+	const [isWindow, setIsWindow] = useState<boolean>(false);
+	const auth = useAppSelector((state) => state.auth);
+
+	const logOutHandler = () => {
+		logout(RequestStatuses.UNAUTHORIZED);
+	};
+
+	return auth ? (
+		<ST.AuthBlock onClick={() => setIsWindow(!isWindow)}>
+			{isWindow && <ST.BlockBackground />}
+			<ST.WrapperAvatar>
+				{auth.photos?.small && <Image src={auth.photos?.small} />}
+				<ST.DefaultImage>
+					{auth.firstName?.length && auth.firstName[0]}
+				</ST.DefaultImage>
+			</ST.WrapperAvatar>
+			<ST.WrapperInfo>
+				<ST.Name>{auth.firstName}</ST.Name>
+				<ST.Mail>@{auth.username}</ST.Mail>
+			</ST.WrapperInfo>
+			<ST.WrapperArrowDown>
+				{!isWindow ? <ArrowDown /> : <ArrowUp />}
+				<ST.Window isOpen={isWindow}>
+					<ST.ItemWindow
+						isExit={true}
+						onClick={logOutHandler}
+					>
+						{t("Components.UIKIT.AuthBlock.Exit")}
+					</ST.ItemWindow>
+				</ST.Window>
+			</ST.WrapperArrowDown>
+		</ST.AuthBlock>
+	) : (
+		<></>
+	);
+};
+
+export default AuthBlock;

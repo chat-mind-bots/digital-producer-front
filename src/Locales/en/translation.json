@@ -1,11 +1,21 @@
 {
-  "Components": {
-    "UIKIT": {
-      "AddBlock": {
-        "Title": "Create your course",
-        "Description": "Become your course producer and deliver lessons on the platform",
-        "Button": "Create course"
-      }
-    }
-  }
+	"Components": {
+		"UIKIT": {
+			"AddBlock": {
+				"Title": "Создайте свой курс",
+				"Description": "Станьте продюсером своего курса и проводите уроки на платформе",
+				"Button": "Создать курс"
+			},
+			"AuthBlock": {
+				"Settings": "Настройки",
+				"Exit": "Выйти"
+			}
+		},
+		"STATUS_TOKEN": {
+			"ERR": "Произошла ошибка ваша авторизация устарела, запросите новую ссылку в telegram.",
+			"PENDING": "Пожалуйста, подождите, идет инициализация...",
+			"CORRECT": "Успешно",
+			"OTHER": "Что-то произошло"
+		}
+	}
 }

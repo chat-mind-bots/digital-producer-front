@@ -1,77 +1,157 @@
-*{
-    font-family: 'Inter', sans-serif;
-}
-body{
-    width: 100vw;
-    overflow-x:hidden;
-    background: blue;
-}
-input{
-    padding: 0;
-    margin: 0;
-}
-input[type="number"]::-webkit-outer-spin-button,input[type="number"]::-webkit-inner-spin-button {
-    -webkit-appearance: none;
-    margin: 0;
-}
-input[type='number'] {
-    -moz-appearance: textfield;
+* {
+	font-family: "Inter", sans-serif;
 }
 body {
-    margin: 0;
-    padding: 0;
-    position: relative;
+	width: 100vw;
+	overflow-x: hidden;
+	background: #fcfcfc;
+	min-height: 100vh;
 }
-ol, ul {
-    list-style: none;
+* {
+	-webkit-tap-highlight-color: transparent;
+}
+*::-webkit-scrollbar {
+	width: 4px;
+	height: 7px;
+	border-radius: 10px;
+}
+*::-webkit-scrollbar-button {
+	width: 0;
+	height: 0;
+	border-radius: 10px;
+}
+*::-webkit-scrollbar-thumb {
+	background: linear-gradient(to right top, #2E6CEE, #2E6CEE, #2E6CEE, #2E6CEE, #2E6CEE);
+	border: 0 none #ffffff;
+	border-radius: 10px;
+}
+*::-webkit-scrollbar-thumb:hover {
+	background: #0505A9;
+}
+*::-webkit-scrollbar-thumb:active {
+	background: #0505A9;
+}
+*::-webkit-scrollbar-track {
+	background: transparent;
+	border: 0 none #ffffff;
+	border-radius: 50px;
+}
+*::-webkit-scrollbar-track:hover {
+	background: transparent;
+}
+*::-webkit-scrollbar-track:active {
+	background: transparent;
+}
+*::-webkit-scrollbar-corner {
+	background: transparent;
+}
+input {
+	padding: 0;
+	margin: 0;
+}
+input[type="number"]::-webkit-outer-spin-button,
+input[type="number"]::-webkit-inner-spin-button {
+	-webkit-appearance: none;
+	margin: 0;
+}
+input[type="number"] {
+	-moz-appearance: textfield;
+}
+body {
+	margin: 0;
+	padding: 0;
+	position: relative;
+	overflow-x: hidden;
+}
+ol,
+ul {
+	list-style: none;
 }
 a {
-    text-decoration: none;
-    outline: none !important;
-    color: inherit;
+	text-decoration: none;
+	outline: none !important;
+	color: inherit;
 }
-p, h1, h2, h3, h4, h5, h6, ul, li {
-    padding: 0;
-    margin: 0;
+p,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+ul,
+li {
+	padding: 0;
+	margin: 0;
 }
-img{
-    width: auto;
-    height: auto;
+img {
+	width: auto;
+	height: auto;
 }
 button {
-    border: none;
-    outline: none;
-    cursor: pointer;
-    background: transparent;
-    padding: 0;
-    margin: 0;
-    display: flex;
+	border: none;
+	outline: none;
+	cursor: pointer;
+	background: transparent;
+	padding: 0;
+	margin: 0;
+	display: flex;
 }
-picture{
-    font-size: 0;
+picture {
+	font-size: 0;
 }
-textarea:focus, input:focus{
-    outline: none;
+textarea:focus,
+input:focus {
+	outline: none;
 }
-input:-webkit-autofill,input:-webkit-autofill:hover,input:-webkit-autofill:focus,textarea:-webkit-autofill,textarea:-webkit-autofill:hover,textarea:-webkit-autofill:focus,select:-webkit-autofill,select:-webkit-autofill:hover,select:-webkit-autofill:focus {
-    -webkit-box-shadow: 0 0 0 1000px #0000 inset;
-    -webkit-transition: background-color 5000s ease-in-out 0s;
-    transition: background-color 5000s ease-in-out 0s;
+input:-webkit-autofill,
+input:-webkit-autofill:hover,
+input:-webkit-autofill:focus,
+textarea:-webkit-autofill,
+textarea:-webkit-autofill:hover,
+textarea:-webkit-autofill:focus,
+select:-webkit-autofill,
+select:-webkit-autofill:hover,
+select:-webkit-autofill:focus {
+	-webkit-box-shadow: 0 0 0 1000px #0000 inset;
+	-webkit-transition: background-color 5000s ease-in-out 0s;
+	transition: background-color 5000s ease-in-out 0s;
 }
 @media (max-width: 767px) {
-    .swiper-slide {
-        width: unset !important;
-        margin-top: 10px;
-        margin-bottom: 15px;
-    }
+	.swiper-slide {
+		width: unset !important;
+		margin-top: 10px;
+		margin-bottom: 15px;
+	}
 }
-.ymaps-2-1-79-events-pane.ymaps-2-1-79-user-selection-none{
-    z-index: 1000 !important;
+.ymaps-2-1-79-events-pane.ymaps-2-1-79-user-selection-none {
+	z-index: 1000 !important;
 }
 .noScrollView::-webkit-scrollbar {
-    width: 0;
-    height: 0;
+	width: 0;
+	height: 0;
 }
-#__next{
-    min-height: 100vh;
+#__next {
+	min-height: 100vh;
 }
+
+.react-tooltip{
+	background: rgb(46, 108, 238);
+	z-index: 99999999999999;
+	font-size: 14px;
+	font-family: "Vela Sans";
+}
+
+@media (max-width: 453px) {
+	span.time-wrap {
+		display: none;
+	}
+}
+
+@media (max-width: 979px) {
+	.react-tooltip{
+		display: none;
+	}
+}
+
+
