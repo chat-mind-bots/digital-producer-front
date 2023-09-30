@@ -51,7 +51,9 @@ export interface AddDocumentToCourseApiProps {
 export const documentApi = createApi({
 	reducerPath: "document/api",
 	baseQuery: fetchBaseQuery({
-		baseUrl: process.env.REACT_APP_API_URL,
+		baseUrl: `${process.env.REACT_APP_MODE === "LOCAL" ? "http" : "https"}://${
+			process.env.REACT_APP_API_URL
+		}`,
 	}),
 	endpoints: (build) => ({
 		getDocument: build.mutation<IDocumentState, GetDocumentApiProps>({

@@ -1,3 +1,5 @@
+import * as process from "process";
+
 import React, { FC, useRef } from "react";
 import { toast } from "react-hot-toast";
 
@@ -42,7 +44,12 @@ const DropZone: FC<DropZoneProps> = ({
 		xhr.addEventListener("load", SuccessHandler, false);
 		xhr.addEventListener("error", ErrorHandler, false);
 		xhr.addEventListener("abort", AbortHandler, false);
-		xhr.open("POST", `${process.env.REACT_APP_API_URL}/file/${type}`);
+		xhr.open(
+			"POST",
+			`${process.env.REACT_APP_MODE === "LOCAL" ? "http" : "https"}://${
+				process.env.REACT_APP_API_URL
+			}/file/${type}`
+		);
 		xhr.setRequestHeader("Authorization", "Bearer " + token);
 		xhr.send(formData);
 		xhr.response;
