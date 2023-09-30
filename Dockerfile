@@ -15,9 +15,7 @@ RUN yarn build --env REACT_APP_API_URL=${REACT_APP_API_URL} --env REACT_APP_URL=
 FROM nginx:alpine AS web
 WORKDIR /app
 
-#COPY --from=build /app/build ./
-
-COPY --from=build /app ./
+COPY --from=build /app/build ./
 COPY ./nginx/nginx.conf /etc/nginx/nginx.conf
 
 EXPOSE 80
