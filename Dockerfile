@@ -17,7 +17,7 @@ WORKDIR /app
 
 #COPY --from=build /app/build ./
 
-COPY --from=build /app/build ./
+COPY --from=build /app ./
 COPY ./nginx/nginx.conf /etc/nginx/nginx.conf
 
 EXPOSE 80
