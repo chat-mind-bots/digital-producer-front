@@ -1,3 +1,5 @@
+import * as process from "process";
+
 import React, { FC } from "react";
 import { Formik } from "formik";
 

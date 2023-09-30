@@ -21,15 +21,22 @@ body {
 	border-radius: 10px;
 }
 *::-webkit-scrollbar-thumb {
-	background: linear-gradient(to right top, #2E6CEE, #2E6CEE, #2E6CEE, #2E6CEE, #2E6CEE);
+	background: linear-gradient(
+		to right top,
+		#2e6cee,
+		#2e6cee,
+		#2e6cee,
+		#2e6cee,
+		#2e6cee
+	);
 	border: 0 none #ffffff;
 	border-radius: 10px;
 }
 *::-webkit-scrollbar-thumb:hover {
-	background: #0505A9;
+	background: #0505a9;
 }
 *::-webkit-scrollbar-thumb:active {
-	background: #0505A9;
+	background: #0505a9;
 }
 *::-webkit-scrollbar-track {
 	background: transparent;
@@ -135,7 +142,7 @@ select:-webkit-autofill:focus {
 	min-height: 100vh;
 }
 
-.react-tooltip{
+.react-tooltip {
 	background: rgb(46, 108, 238);
 	z-index: 99999999999999;
 	font-size: 14px;
@@ -149,9 +156,7 @@ select:-webkit-autofill:focus {
 }
 
 @media (max-width: 979px) {
-	.react-tooltip{
+	.react-tooltip {
 		display: none;
 	}
 }
-
-

@@ -1,3 +1,5 @@
+import * as process from "process";
+
 import { IBannerDTO } from "Shared/Banner/types/banner-dto.type";
 import { IBannerState } from "Shared/Banner/redux/banner.slice";
 

@@ -1,3 +1,5 @@
+import * as process from "process";
+
 import React, { FC, useEffect, useState } from "react";
 import { Tooltip as ReactTooltip } from "react-tooltip";
 
