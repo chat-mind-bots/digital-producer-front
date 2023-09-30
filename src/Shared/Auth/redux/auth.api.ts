@@ -11,7 +11,9 @@ import { HttpMethods } from "Shared/Http/enum/methods-api.enum";
 export const authApi = createApi({
 	reducerPath: "auth/api",
 	baseQuery: fetchBaseQuery({
-		baseUrl: process.env.REACT_APP_API_URL,
+		baseUrl: `${process.env.REACT_APP_MODE === "LOCAL" ? "http" : "https"}://${
+			process.env.REACT_APP_API_URL
+		}`,
 	}),
 	endpoints: (build) => ({
 		getUserInfo: build.query<IAuthUserState, string>({

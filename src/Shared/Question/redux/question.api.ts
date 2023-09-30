@@ -45,7 +45,9 @@ export interface QuestionDataType {
 export const questionApi = createApi({
 	reducerPath: "question/api",
 	baseQuery: fetchBaseQuery({
-		baseUrl: process.env.REACT_APP_API_URL,
+		baseUrl: `${process.env.REACT_APP_MODE === "LOCAL" ? "http" : "https"}://${
+			process.env.REACT_APP_API_URL
+		}`,
 	}),
 
 	endpoints: (build) => ({
