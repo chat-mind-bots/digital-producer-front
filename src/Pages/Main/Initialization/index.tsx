@@ -5,6 +5,7 @@ import { Outlet, useLocation } from "react-router-dom";
 import Loader from "Components/UI-KIT/Loader";
 import { useAppSelector } from "Hooks/redux";
 import RequestStatuses from "Constants/RequestStatuses";
+import { getBotNameService } from "Utils/get-bot-name.service";
 
 import * as ST from "./styled";
 import Button from "../../../Components/UI-KIT/Atoms/Button";
@@ -60,7 +61,7 @@ const SwitchStatus: FC<SwitchStatusProps> = ({ status }) => {
 							colorHover={Colors.WHITE}
 							width={"100%"}
 							onClick={() => {
-								window.open(" https://t.me/DigitalProducerDevelopBot");
+								window.open(`https://t.me/${getBotNameService()}`);
 							}}
 						/>
 					</ST.WrapperButton>

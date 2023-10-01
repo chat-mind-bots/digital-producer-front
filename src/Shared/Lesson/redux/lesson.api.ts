@@ -1,5 +1,3 @@
-import * as process from "process";
-
 import { createApi, fetchBaseQuery } from "@reduxjs/toolkit/query/react";
 
 import {
@@ -9,6 +7,7 @@ import {
 import logout from "Utils/Logout";
 import RequestStatusesType from "Types/RequestStatusesType";
 import { HttpMethods } from "Shared/Http/enum/methods-api.enum";
+import { getApiUrlService } from "Utils/get-api-url.service";
 
 import { lessonFromDtoServiceObject } from "../services/data/lesson-from-dto.service";
 import { ILessonDTO } from "../types/lesson-dto.type";
@@ -42,9 +41,7 @@ export interface LessonDataType {
 export const lessonApi = createApi({
 	reducerPath: "lesson/api",
 	baseQuery: fetchBaseQuery({
-		baseUrl: `${process.env.REACT_APP_MODE === "LOCAL" ? "http" : "https"}://${
-			process.env.REACT_APP_API_URL
-		}`,
+		baseUrl: getApiUrlService(),
 	}),
 	endpoints: (build) => ({
 		getLesson: build.mutation<ILessonState, GetLessonApiProps>({

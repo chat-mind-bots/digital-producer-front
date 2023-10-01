@@ -1,6 +1,8 @@
 import React from "react";
 import { useTranslation } from "react-i18next";
 
+import { getBotNameService } from "Utils/get-bot-name.service";
+
 import * as ST from "./styled";
 import Colors from "../../../Constants/Colors";
 import Button from "../../../Components/UI-KIT/Atoms/Button";
@@ -25,7 +27,7 @@ const NoAuth = () => {
 					colorHover={Colors.WHITE}
 					width={"100%"}
 					onClick={() => {
-						window.open(" https://t.me/DigitalProducerDevelopBot");
+						window.open(`https://t.me/${getBotNameService()}`);
 					}}
 				/>
 			</ST.WrapperButton>

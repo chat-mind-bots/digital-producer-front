@@ -1,4 +1,4 @@
-import React, { FC, useEffect, useState } from "react";
+import React, { FC, useEffect, useState, memo } from "react";
 // eslint-disable-next-line import/named
 import { isNull } from "lodash";
 
@@ -49,4 +49,4 @@ const WrapperContent: FC<WrapperContentProps> = ({
 	);
 };
 
-export default React.memo(WrapperContent);
+export default memo(WrapperContent);

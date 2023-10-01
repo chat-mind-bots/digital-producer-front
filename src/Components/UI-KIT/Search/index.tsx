@@ -1,4 +1,4 @@
-import React, { Dispatch, FC, useState } from "react";
+import React, { Dispatch, FC, useState, memo } from "react";
 
 import { ReactComponent as IconSearch } from "Icons/IconSearch.svg";
 
@@ -38,4 +38,4 @@ const Search: FC<SearchProps> = ({ value, setValue, placeholder }) => {
 	);
 };
 
-export default React.memo(Search);
+export default memo(Search);

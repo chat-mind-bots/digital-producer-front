@@ -1,5 +1,3 @@
-import * as process from "process";
-
 import { createApi, fetchBaseQuery } from "@reduxjs/toolkit/query/react";
 
 import {
@@ -9,6 +7,7 @@ import {
 import logout from "Utils/Logout";
 import RequestStatusesType from "Types/RequestStatusesType";
 import { HttpMethods } from "Shared/Http/enum/methods-api.enum";
+import { getApiUrlService } from "Utils/get-api-url.service";
 
 import { INewsState } from "./news.slice";
 import { INewsDTO } from "../types/news-dto.type";
@@ -55,9 +54,7 @@ enum TagTypesEnum {
 export const newsApi = createApi({
 	reducerPath: "news/api",
 	baseQuery: fetchBaseQuery({
-		baseUrl: `${process.env.REACT_APP_MODE === "LOCAL" ? "http" : "https"}://${
-			process.env.REACT_APP_API_URL
-		}`,
+		baseUrl: getApiUrlService(),
 	}),
 	tagTypes: [TagTypesEnum.NEWS],
 	endpoints: (build) => ({

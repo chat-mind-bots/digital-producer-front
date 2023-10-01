@@ -1,5 +1,3 @@
-import * as process from "process";
-
 import { createApi, fetchBaseQuery } from "@reduxjs/toolkit/query/react";
 
 import { IBannerDTO } from "Shared/Banner/types/banner-dto.type";
@@ -16,6 +14,7 @@ import logout from "Utils/Logout";
 import RequestStatusesType from "Types/RequestStatusesType";
 import ServerResponse from "Types/ServerResponse/pagination";
 import { HttpMethods } from "Shared/Http/enum/methods-api.enum";
+import { getApiUrlService } from "Utils/get-api-url.service";
 
 import { bannerToDtoServiceObject } from "../services/data/banner-to-dto.service";
 
@@ -36,9 +35,7 @@ enum BannersTypesEnum {
 export const bannerApi = createApi({
 	reducerPath: "banner/api",
 	baseQuery: fetchBaseQuery({
-		baseUrl: `${process.env.REACT_APP_MODE === "LOCAL" ? "http" : "https"}://${
-			process.env.REACT_APP_API_URL
-		}`,
+		baseUrl: getApiUrlService(),
 	}),
 	tagTypes: [BannersTypesEnum.BANNER],
 

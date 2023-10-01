@@ -1,7 +1,7 @@
-import * as process from "process";
-
 import React, { FC, useRef } from "react";
 import { toast } from "react-hot-toast";
+
+import { getApiUrlService } from "Utils/get-api-url.service";
 
 import * as ST from "./styled";
 import ErrText from "../Input/ErrText";
@@ -44,12 +44,7 @@ const DropZone: FC<DropZoneProps> = ({
 		xhr.addEventListener("load", SuccessHandler, false);
 		xhr.addEventListener("error", ErrorHandler, false);
 		xhr.addEventListener("abort", AbortHandler, false);
-		xhr.open(
-			"POST",
-			`${process.env.REACT_APP_MODE === "LOCAL" ? "http" : "https"}://${
-				process.env.REACT_APP_API_URL
-			}/file/${type}`
-		);
+		xhr.open("POST", `${getApiUrlService()}/file/${type}`);
 		xhr.setRequestHeader("Authorization", "Bearer " + token);
 		xhr.send(formData);
 		xhr.response;

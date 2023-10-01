@@ -1,11 +1,10 @@
-import * as process from "process";
-
 import { IBannerDTO } from "Shared/Banner/types/banner-dto.type";
 import { IBannerState } from "Shared/Banner/redux/banner.slice";
+import { getFrontendUrlService } from "Utils/get-frontend-url.service";
 
 import { tagFromDtoServiceArray } from "../../../Tag/services/data/tag-from-dto.service";
 
-const URL = `${process.env.REACT_APP_URL}/`;
+const URL = `${getFrontendUrlService()}/`;
 
 export const bannerFromDtoServiceArray = (
 	dto: IBannerDTO[]
