@@ -1,11 +1,10 @@
-import * as process from "process";
-
 import { createApi, fetchBaseQuery } from "@reduxjs/toolkit/query/react";
 
 import { setStatusToDtoService } from "Shared/Http/services/set-status-to-dto.service";
 import logout from "Utils/Logout";
 import RequestStatusesType from "Types/RequestStatusesType";
 import { HttpMethods } from "Shared/Http/enum/methods-api.enum";
+import { getApiUrlService } from "Utils/get-api-url.service";
 
 import { IAuthUserState } from "../../Auth/redux/auth.slice";
 import { IAuthUserDTO } from "../../Auth/types/user-dto.type";
@@ -39,9 +38,7 @@ export interface UserApiPropsSet {
 export const userApi = createApi({
 	reducerPath: "users/api",
 	baseQuery: fetchBaseQuery({
-		baseUrl: `${process.env.REACT_APP_MODE === "LOCAL" ? "http" : "https"}://${
-			process.env.REACT_APP_API_URL
-		}`,
+		baseUrl: getApiUrlService(),
 	}),
 	endpoints: (build) => ({
 		getUsers: build.query<ServerResponse<IAuthUserState[]>, GetUserApiProps>({

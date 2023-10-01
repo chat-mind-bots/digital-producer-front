@@ -1,5 +1,3 @@
-import * as process from "process";
-
 import { createApi, fetchBaseQuery } from "@reduxjs/toolkit/query/react";
 
 import {
@@ -9,6 +7,7 @@ import {
 import logout from "Utils/Logout";
 import RequestStatusesType from "Types/RequestStatusesType";
 import { HttpMethods } from "Shared/Http/enum/methods-api.enum";
+import { getApiUrlService } from "Utils/get-api-url.service";
 
 import { ITestState } from "./test.slice";
 import { ITestDTO } from "../types/test-dto.type";
@@ -64,9 +63,7 @@ export interface TestProgressDataType {
 export const testApi = createApi({
 	reducerPath: "test/api",
 	baseQuery: fetchBaseQuery({
-		baseUrl: `${process.env.REACT_APP_MODE === "LOCAL" ? "http" : "https"}://${
-			process.env.REACT_APP_API_URL
-		}`,
+		baseUrl: getApiUrlService(),
 	}),
 	endpoints: (build) => ({
 		getTest: build.query<ITestState, GetTestApiProps>({

@@ -1,5 +1,3 @@
-import * as process from "process";
-
 import React, { FC } from "react";
 import { Formik } from "formik";
 
@@ -14,6 +12,7 @@ import { BannerListProps } from "Components/UI-KIT/BannerSettings/BannerList";
 import { ButtonSwitchStyleArray } from "Components/ButtonSwitchStyle/button-switch-style.enum";
 import { BannerApiPropsSet } from "Shared/Banner/redux/banner.api";
 import { ValidationSchema } from "Components/ModalWindows/Body/BannerSettingsBodyWindow/validationSchema";
+import { getFrontendUrlService } from "Utils/get-frontend-url.service";
 
 import * as ST from "./styled";
 import Image from "../../../UI-KIT/Atoms/Image";
@@ -292,9 +291,7 @@ const BannerSettingsBodyWindow: FC<CreateBannerProps> = ({
 										value={values?.urlButton || ""}
 										optionalText={
 											values.isThirdPartySource
-												? `${
-														process.env.REACT_APP_URL
-												  }/${role?.toLocaleLowerCase()}/`
+												? `${getFrontendUrlService()}/${role?.toLocaleLowerCase()}/`
 												: undefined
 										}
 										setValue={(str) => {

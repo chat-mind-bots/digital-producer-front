@@ -5,6 +5,7 @@ import RoutesList from "Router/routesList";
 import Logo from "Components/UI-KIT/Logo";
 import Button from "Components/UI-KIT/Atoms/Button";
 import Colors from "Constants/Colors";
+import { getBotNameService } from "Utils/get-bot-name.service";
 
 import * as ST from "./styled";
 import checkAuth from "../../Utils/CheckAuth";
@@ -47,7 +48,7 @@ const Main: FC<MainProps> = ({ isRegistration }) => {
 								if (!isRegistration) {
 									authTokenFromLocalStorage
 										? navigate("/admin")
-										: window.open(" https://t.me/DigitalProducerDevelopBot");
+										: window.open(`https://t.me/${getBotNameService()}`);
 								}
 							}}
 						/>

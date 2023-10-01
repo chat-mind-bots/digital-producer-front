@@ -3,6 +3,7 @@ import { Link, useNavigate } from "react-router-dom";
 
 import Button from "Components/UI-KIT/Atoms/Button";
 import Colors from "Constants/Colors";
+import { getBotNameService } from "Utils/get-bot-name.service";
 
 import * as ST from "./styled";
 import checkRole from "../../../Utils/CheckRole";
@@ -36,7 +37,7 @@ const Home = () => {
 						onClick={() => {
 							authTokenFromLocalStorage
 								? navigate("/admin")
-								: window.open(" https://t.me/DigitalProducerDevelopBot");
+								: window.open(`https://t.me/${getBotNameService()}`);
 						}}
 					/>
 				)}

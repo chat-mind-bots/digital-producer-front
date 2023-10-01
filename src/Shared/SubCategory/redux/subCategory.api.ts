@@ -1,5 +1,3 @@
-import * as process from "process";
-
 import { createApi, fetchBaseQuery } from "@reduxjs/toolkit/query/react";
 
 import {
@@ -10,6 +8,7 @@ import logout from "Utils/Logout";
 import RequestStatusesType from "Types/RequestStatusesType";
 import ServerResponse from "Types/ServerResponse/pagination";
 import { HttpMethods } from "Shared/Http/enum/methods-api.enum";
+import { getApiUrlService } from "Utils/get-api-url.service";
 
 import { ISubCategoryDTO } from "../types/subCategory-dto.type";
 import {
@@ -48,9 +47,7 @@ export interface SubCategoryApiPropsSet {
 export const subCategoryApi = createApi({
 	reducerPath: "subCategory/api",
 	baseQuery: fetchBaseQuery({
-		baseUrl: `${process.env.REACT_APP_MODE === "LOCAL" ? "http" : "https"}://${
-			process.env.REACT_APP_API_URL
-		}`,
+		baseUrl: getApiUrlService(),
 	}),
 	endpoints: (build) => ({
 		getSubCategories: build.query<

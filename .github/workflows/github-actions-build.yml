@@ -2,9 +2,9 @@ name: CI/CD
 run-name: ${{ github.actor }} 🚀
 on:
   push:
-    branches: [ develop ]
+    branches: [develop]
     pull_request:
-      branches: [ develop ]
+      branches: [develop]
 jobs:
   Build-Testing:
     runs-on: ubuntu-latest

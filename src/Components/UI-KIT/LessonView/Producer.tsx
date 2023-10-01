@@ -1,5 +1,3 @@
-import * as process from "process";
-
 import React, { FC, useEffect, useState } from "react";
 import { Tooltip as ReactTooltip } from "react-tooltip";
 
@@ -7,6 +5,7 @@ import LevelDifficulty, {
 	LoadingLevelDifficulty,
 } from "Components/UI-KIT/Atoms/LevelDificulty";
 import { ICourseEnum, ICourseState } from "Shared/Courses/redux/course.slice";
+import { getFrontendUrlService } from "Utils/get-frontend-url.service";
 
 import * as ST from "./styled";
 import Image from "../Atoms/Image";
@@ -226,7 +225,7 @@ const LessonView: FC<LessonViewProps> = ({
 						delay={0.1}
 						isLoading={isLoading}
 					>
-						<ST.SubTitleInfo>{`${process.env.REACT_APP_URL}/user/course/${idCourse}`}</ST.SubTitleInfo>
+						<ST.SubTitleInfo>{`${getFrontendUrlService()}/user/course/${idCourse}`}</ST.SubTitleInfo>
 					</ST.WrapperSubTitle>
 				</ST.LinkToCourse>
 			)}
