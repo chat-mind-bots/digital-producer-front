@@ -10,7 +10,7 @@ import { HttpMethods } from "Shared/Http/enum/methods-api.enum";
 import { getApiUrlService } from "Utils/get-api-url.service";
 
 export const authApi = createApi({
-	reducerPath: "auth",
+	reducerPath: "auth/api",
 	baseQuery: fetchBaseQuery({
 		baseUrl: getApiUrlService(),
 	}),
