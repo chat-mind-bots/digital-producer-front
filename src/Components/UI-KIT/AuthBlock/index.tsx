@@ -48,8 +48,7 @@ const AuthBlock = () => {
 								key={`App-to-${e}`}
 								onClick={() => navigate("/" + e.toLocaleLowerCase())}
 								active={
-									e.toLocaleLowerCase() ===
-									location.pathname.replaceAll("/", "")
+									e.toLocaleLowerCase() === location.pathname.split("/")[1]
 								}
 							>
 								{`Кабинет ${
