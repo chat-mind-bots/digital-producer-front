@@ -15,7 +15,6 @@ export const LessonView = styled.div`
 	border-radius: 16px;
 	padding: 18px;
 	background: ${Colors.WHITE};
-	max-width: 665.5px;
 	box-sizing: border-box;
 	@media (max-width: ${BreakPoints.MOBILE}px) {
 		width: 100%;

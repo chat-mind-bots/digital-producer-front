@@ -31,7 +31,7 @@ export const WrapperInfo = styled.div`
 	display: flex;
 	flex-wrap: wrap;
 	gap: 40px;
-	max-width: 730px;
+	max-width: 764px;
 	@media (max-width: ${BreakPoints.MOBILE}px) {
 		max-width: 100%;
 	}

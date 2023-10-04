@@ -10,7 +10,10 @@ import {
 } from "../../../Shared/User/redux/user.api";
 import Image from "../Atoms/Image";
 import openFileBlank from "../../../Utils/openFileBlank";
-import { UserRoleEnum } from "../../../Shared/Auth/types/role.enum";
+import {
+	UserRoleArray,
+	UserRoleEnum,
+} from "../../../Shared/Auth/types/role.enum";
 import Colors from "../../../Constants/Colors";
 import { useAppSelector } from "../../../Hooks/redux";
 import CourseResultType from "../Course/course-props.type";
@@ -57,11 +60,12 @@ const UsersTable: FC<UserApiPropsSet & Pick<CourseResultType, "refetch">> = ({
 					</ST.Thead>
 					<ST.Tbody>
 						{data.map((user) => {
-							const roleUp = auth.role[user.role.length];
+							const roleUp = UserRoleArray[user.role.length]
+								?.value as UserRoleEnum;
 							const roleDow =
-								auth.role[user.role.length - 1] === UserRoleEnum.USER
+								UserRoleArray[user.role.length - 1]?.value === UserRoleEnum.USER
 									? undefined
-									: auth.role[user.role.length - 1];
+									: UserRoleArray[user.role.length - 1]?.value;
 
 							return (
 								<ST.Tr key={`category-${user.id}`}>

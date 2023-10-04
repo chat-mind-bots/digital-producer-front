@@ -51,6 +51,27 @@ export const InputFile = styled.input`
 `;
 
 export const Progress = styled.progress`
+	bottom: 4px;
+	height: 10px;
+	width: calc(100% - 14px);
+	position: absolute;
+	z-index: 0;
+	background: transparent;
+	border-color: transparent;
+	color: transparent;
+	left: 7px;
+	border-radius: 30px;
+	overflow: hidden;
+	&::-webkit-progress-bar {
+		background-color: transparent;
+		width: 100%;
+	}
+	&::-webkit-progress-value {
+		background: ${Colors.WHITE};
+	}
+`;
+
+export const LoaderWrapper = styled.div`
 	display: block;
 	top: 0;
 	height: 100%;
@@ -60,12 +81,15 @@ export const Progress = styled.progress`
 	border-radius: 2px;
 	background: transparent;
 	border-color: transparent;
-	color: transparent;
-	&::-webkit-progress-bar {
-		background-color: transparent;
-		width: 100%;
+	background: ${Colors.BLUE};
+	& > div {
+		height: 100%;
+		margin-top: 5px;
 	}
-	&::-webkit-progress-value {
-		background: ${Colors.BLUE};
+	& > div > div {
+		margin: 0;
+	}
+	& > div > div > div {
+		border-color: ${Colors.WHITE};
 	}
 `;
