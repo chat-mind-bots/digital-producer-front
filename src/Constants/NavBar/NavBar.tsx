@@ -47,7 +47,7 @@ const NavBarData: NavBarType[] = [
 	},
 	{
 		id: 4,
-		name: "Курсы meta",
+		name: "Все курсы",
 		count: 0,
 		url: routeBuilder([RoutesList.USER, RoutesList.META_COURSES]),
 		svg: <MetaCourses />,

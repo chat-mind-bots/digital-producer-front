@@ -70,7 +70,7 @@ const CourseId: FC<ICourseState & Pick<CourseResultType, "refetch">> = ({
 		{ id: 1, name: "Главная", url: `/${RoutesList.USER.toLocaleLowerCase()}` },
 		{
 			id: 1,
-			name: isEnrolled ? "Мои курсы" : "Курсы Meta",
+			name: isEnrolled ? "Мои курсы" : "Все курсы",
 			url: `/${RoutesList.USER.toLocaleLowerCase()}/${
 				isEnrolled ? "course" : "metaCourses"
 			}`,

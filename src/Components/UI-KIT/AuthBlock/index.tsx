@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import { useTranslation } from "react-i18next";
+import { useLocation, useNavigate } from "react-router-dom";
 
 import Image from "Components/UI-KIT/Atoms/Image";
 import { ReactComponent as ArrowDown } from "Icons/ArrowDown.svg";
@@ -9,6 +10,8 @@ import logout from "Utils/Logout";
 import RequestStatuses from "Constants/RequestStatuses";
 
 import * as ST from "./styled";
+import { UserRoleEnum } from "../../../Shared/Auth/types/role.enum";
+import checkRole from "../../../Utils/CheckRole";
 
 const AuthBlock = () => {
 	const { t } = useTranslation();
@@ -18,6 +21,10 @@ const AuthBlock = () => {
 	const logOutHandler = () => {
 		logout(RequestStatuses.UNAUTHORIZED);
 	};
+	const authRoleFromLocalStorage = checkRole();
+	const navigate = useNavigate();
+
+	const location = useLocation();
 
 	return auth ? (
 		<ST.AuthBlock onClick={() => setIsWindow(!isWindow)}>
@@ -35,6 +42,26 @@ const AuthBlock = () => {
 			<ST.WrapperArrowDown>
 				{!isWindow ? <ArrowDown /> : <ArrowUp />}
 				<ST.Window isOpen={isWindow}>
+					{authRoleFromLocalStorage?.map((e) => {
+						return (
+							<ST.ItemWindow
+								key={`App-to-${e}`}
+								onClick={() => navigate("/" + e.toLocaleLowerCase())}
+								active={
+									e.toLocaleLowerCase() ===
+									location.pathname.replaceAll("/", "")
+								}
+							>
+								{`Кабинет ${
+									e === UserRoleEnum.USER
+										? "пользователя"
+										: e === UserRoleEnum.PRODUCER
+										? "продюсера"
+										: e.toLocaleLowerCase()
+								}`}
+							</ST.ItemWindow>
+						);
+					})}
 					<ST.ItemWindow
 						isExit={true}
 						onClick={logOutHandler}

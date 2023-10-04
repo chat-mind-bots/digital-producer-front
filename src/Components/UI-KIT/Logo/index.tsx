@@ -15,9 +15,9 @@ const Logo: FC<LogoProps> = ({ isMax }) => (
 	>
 		<ST.Logo>
 			{isMax ? (
-				<Image src={"/image/LogoMax.svg"} />
+				<Image src={"/image/LogoMax2.png"} />
 			) : (
-				<Image src={"/image/Logo.svg"} />
+				<Image src={"/image/Logo.png"} />
 			)}
 		</ST.Logo>
 	</Link>

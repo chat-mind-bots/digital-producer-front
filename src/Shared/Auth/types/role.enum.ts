@@ -6,7 +6,7 @@ export enum UserRoleEnum {
 }
 
 export const UserRoleArray = [
-	{ id: UserRoleEnum.USER, value: "USER" },
-	{ id: UserRoleEnum.PRODUCER, value: "PRODUCER" },
-	{ id: UserRoleEnum.ADMIN, value: "ADMIN" },
+	{ id: UserRoleEnum.USER, value: UserRoleEnum.USER },
+	{ id: UserRoleEnum.PRODUCER, value: UserRoleEnum.PRODUCER },
+	{ id: UserRoleEnum.ADMIN, value: UserRoleEnum.ADMIN },
 ];

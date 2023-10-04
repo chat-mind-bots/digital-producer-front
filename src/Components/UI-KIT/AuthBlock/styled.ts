@@ -5,6 +5,7 @@ import Colors from "Constants/Colors";
 
 type ItemWindowProps = {
 	isExit?: boolean;
+	active?: boolean;
 };
 
 type WindowProps = {
@@ -60,13 +61,19 @@ export const ItemWindow = styled.p<ItemWindowProps>`
 	font-weight: 600;
 	font-size: 14px;
 	line-height: 20px;
-	color: ${({ isExit }) => (isExit ? Colors.RED : Colors.BLACK2)};
-	padding: 12px 0;
+	color: ${({ isExit, active }) =>
+		isExit ? Colors.RED : active ? Colors.WHITE + " !important" : Colors.GREY1};
+	padding: ${({ active }) => (active ? "12px 0 12px 10px" : "12px 0")};
 	cursor: pointer;
 	text-transform: ${({ isExit }) => isExit && "uppercase"};
-	transition: 0.3s;
+	border-radius: 12px;
+	background: ${({ active }) => active && Colors.BLUE + " !important"};
+	transition: 0.1s;
 	&:hover {
-		text-decoration: underline;
+		background: ${Colors.SKYBLUE};
+		color: ${Colors.BLUE};
+		padding-left: 10px;
+		transition: padding-left 0.5s;
 	}
 `;
 

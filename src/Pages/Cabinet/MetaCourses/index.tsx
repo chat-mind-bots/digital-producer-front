@@ -12,7 +12,7 @@ const MetaCourses = () => {
 		<ST.MetaCourses>
 			<Courses
 				role={UserRoleEnum.USER}
-				header={"Курсы Meta"}
+				header={"Все курсы"}
 				hideBought={true}
 			/>
 			<Banner
