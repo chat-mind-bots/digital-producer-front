@@ -53,7 +53,7 @@ const Input: FC<InputProps> = ({
 				{icon}
 				{optionalText && (
 					<ST.OptionalText
-						placeholder={placeholder}
+						// placeholder={placeholder}
 						value={value}
 						isError={isError}
 						isFocus={focusCurrent}

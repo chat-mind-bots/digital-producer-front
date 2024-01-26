@@ -23,7 +23,7 @@ type SelectProps = {
 
 const Select: FC<SelectProps> = ({
 	value,
-	placeholder,
+	// placeholder,
 	isError,
 	errorText,
 	icon,
@@ -50,7 +50,7 @@ const Select: FC<SelectProps> = ({
 				{icon}
 				{optionalText && (
 					<ST.OptionalText
-						placeholder={placeholder}
+						// placeholder={placeholder}
 						value={value}
 						isError={isError}
 						isFocus={focusCurrent}
@@ -63,7 +63,7 @@ const Select: FC<SelectProps> = ({
 				)}
 
 				<ST.InputElement
-					placeholder={placeholder}
+					// placeholder={placeholder}
 					onFocus={() => setFocusCurrent(true)}
 					onBlur={() => setFocusCurrent(false)}
 					value={value}
