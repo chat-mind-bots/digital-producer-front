@@ -176,10 +176,10 @@ export const WrapperVideo = styled.div<Props>`
 		width: 0;
 		height: 0;
 		border-top: 363px solid ${Colors.BLUE};
-		border-left: 635px solid transparent;
+		border-left: 664px solid transparent;
 		content: "";
 		position: absolute;
-		margin-left: -635px;
+		margin-left: -664px;
 		transform: ${({ isLoading }) => !isLoading && "translate(100%, -100%)"};
 		transition: 0.7s;
 		transition-timing-function: ease-in-out;
@@ -189,7 +189,7 @@ export const WrapperVideo = styled.div<Props>`
 		width: 0;
 		height: 0;
 		border-bottom: 363px solid ${Colors.BLUE};
-		border-right: 635px solid transparent;
+		border-right: 664px solid transparent;
 		position: absolute;
 		bottom: 0;
 		transform: ${({ isLoading }) => !isLoading && "translate(-100%, 100%)"};

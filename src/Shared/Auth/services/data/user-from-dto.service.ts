@@ -11,16 +11,16 @@ export const userFromDtoService = (
 
 	const role = [];
 
-	if (dto.role.includes(UserRoleEnum.USER)) {
+	if (dto?.role?.includes(UserRoleEnum.USER)) {
 		role.push(UserRoleEnum.USER);
 	}
-	if (dto.role.includes(UserRoleEnum.PRODUCER)) {
+	if (dto?.role?.includes(UserRoleEnum.PRODUCER)) {
 		role.push(UserRoleEnum.PRODUCER);
 	}
-	if (dto.role.includes(UserRoleEnum.ADMIN)) {
+	if (dto?.role?.includes(UserRoleEnum.ADMIN)) {
 		role.push(UserRoleEnum.ADMIN);
 	}
-	if (dto.role.includes(UserRoleEnum.SUPER_ADMIN)) {
+	if (dto?.role?.includes(UserRoleEnum.SUPER_ADMIN)) {
 		role.push(UserRoleEnum.SUPER_ADMIN);
 	}
 
