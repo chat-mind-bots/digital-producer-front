@@ -163,7 +163,7 @@ const CourseId: FC<ICourseState & Pick<CourseResultType, "refetch">> = ({
 		<ST.CourseID>
 			<ST.WrapperInfo>
 				<WrapperContent header={breadCrumbs}>
-					<ST.Content>
+					<ST.Content style={{ pointerEvents: loading ? "none" : undefined }}>
 						{currentLesson ? (
 							<>
 								<LessonView
