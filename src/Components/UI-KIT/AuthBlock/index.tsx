@@ -42,25 +42,27 @@ const AuthBlock = () => {
 			<ST.WrapperArrowDown>
 				{!isWindow ? <ArrowDown /> : <ArrowUp />}
 				<ST.Window isOpen={isWindow}>
-					{authRoleFromLocalStorage?.map((e) => {
-						return (
-							<ST.ItemWindow
-								key={`App-to-${e}`}
-								onClick={() => navigate("/" + e.toLocaleLowerCase())}
-								active={
-									e.toLocaleLowerCase() === location.pathname.split("/")[1]
-								}
-							>
-								{`Кабинет ${
-									e === UserRoleEnum.USER
-										? "пользователя"
-										: e === UserRoleEnum.PRODUCER
-										? "продюсера"
-										: e.toLocaleLowerCase()
-								}`}
-							</ST.ItemWindow>
-						);
-					})}
+					{authRoleFromLocalStorage?.length !== 1
+						? authRoleFromLocalStorage?.map((e) => {
+								return (
+									<ST.ItemWindow
+										key={`App-to-${e}`}
+										onClick={() => navigate("/" + e.toLocaleLowerCase())}
+										active={
+											e.toLocaleLowerCase() === location.pathname.split("/")[1]
+										}
+									>
+										{`Кабинет ${
+											e === UserRoleEnum.USER
+												? "пользователя"
+												: e === UserRoleEnum.PRODUCER
+												? "продюсера"
+												: e.toLocaleLowerCase()
+										}`}
+									</ST.ItemWindow>
+								);
+						  })
+						: null}
 					<ST.ItemWindow
 						isExit={true}
 						onClick={logOutHandler}
