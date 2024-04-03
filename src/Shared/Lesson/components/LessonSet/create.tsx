@@ -108,29 +108,40 @@ export const LessonCreate: FC<LessonCreateProps> = ({
 				colorHover={Colors.WHITE}
 				border={`2px solid ${Colors.GREY4}`}
 				width={"100%"}
-				onClick={() => setOpen(true)}
+				onClick={(e) => {
+					e.preventDefault();
+					e.stopPropagation();
+					setOpen(true);
+				}}
 			/>
 
 			{/*MODAL WINDOW_______________________*/}
-
-			{open && (
-				<WindowFormik
-					handleClose={() => setOpen(false)}
-					isOpen={open}
-					title={"Создание урока"}
-				>
-					<>
-						{loaderWindow && <AbsoluteLoader />}
-						<LessonSettingsBodyWindow
-							initialValues={initialLessonState}
-							sendData={async (data: ILessonState) => {
-								return create(data);
-							}}
+			<div
+				onClick={(e) => {
+					e.stopPropagation();
+				}}
+			>
+				<>
+					{open && (
+						<WindowFormik
 							handleClose={() => setOpen(false)}
-						/>
-					</>
-				</WindowFormik>
-			)}
+							isOpen={open}
+							title={"Создание урока"}
+						>
+							<>
+								{loaderWindow && <AbsoluteLoader />}
+								<LessonSettingsBodyWindow
+									initialValues={initialLessonState}
+									sendData={async (data: ILessonState) => {
+										return create(data);
+									}}
+									handleClose={() => setOpen(false)}
+								/>
+							</>
+						</WindowFormik>
+					)}
+				</>
+			</div>
 		</>
 	);
 };

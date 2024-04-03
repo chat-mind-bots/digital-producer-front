@@ -30,7 +30,7 @@ export const UploadFile = styled.div`
 	}
 `;
 
-export const Instruction = styled.p`
+export const Instruction = styled.div`
 	font-weight: 400;
 	font-size: 16px;
 	line-height: 20px;

@@ -40,7 +40,13 @@ const DropZone: FC<DropZoneProps> = ({
 		const xhr = new XMLHttpRequest();
 		xhr.onreadystatechange = function () {
 			if (xhr.readyState == XMLHttpRequest.DONE) {
-				JSON.parse(xhr.response).url && setUrl(JSON.parse(xhr.response).url);
+				const response = xhr.response;
+				if (response) {
+					const parsedResponse = JSON.parse(response);
+					if (parsedResponse.url) {
+						setUrl(parsedResponse.url);
+					}
+				}
 			}
 		};
 		xhr.upload.addEventListener("progress", ProgressHandler, false);

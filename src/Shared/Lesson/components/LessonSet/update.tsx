@@ -129,26 +129,32 @@ export const LessonUpdate: FC<LessonSetProps> = ({
 			/>
 
 			{/*MODAL WINDOW_______________________*/}
-			<WindowFormik
-				handleClose={() => setOpen(false)}
-				isOpen={open}
-				title={"Редактирование урока"}
+			<div
+				onClick={(e) => {
+					e.stopPropagation();
+				}}
 			>
-				<>
-					{loaderWindow && <AbsoluteLoader />}
-					{lesson.data ? (
-						<LessonSettingsBodyWindow
-							initialValues={lesson.data}
-							sendData={async (data: ILessonState) => {
-								return update(data);
-							}}
-							remove={async (e: string) => remove(e)}
-						/>
-					) : (
-						<Loader />
-					)}
-				</>
-			</WindowFormik>
+				<WindowFormik
+					handleClose={() => setOpen(false)}
+					isOpen={open}
+					title={"Редактирование урока"}
+				>
+					<>
+						{loaderWindow && <AbsoluteLoader />}
+						{lesson.data ? (
+							<LessonSettingsBodyWindow
+								initialValues={lesson.data}
+								sendData={async (data: ILessonState) => {
+									return update(data);
+								}}
+								remove={async (e: string) => remove(e)}
+							/>
+						) : (
+							<Loader />
+						)}
+					</>
+				</WindowFormik>
+			</div>
 		</>
 	);
 };
